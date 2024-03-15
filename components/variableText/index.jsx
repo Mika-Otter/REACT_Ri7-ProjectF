@@ -7,8 +7,41 @@ export default function Variable() {
     const [mediumLineChecked, setMediumLineChecked] = useState(false);
     const [smallLineChecked, setSmallLineChecked] = useState(false);
 
+    const [fonts, setFonts] = useState([]);
+
+    const fileUpload = (e) => {
+        const fontList = e.target.files;
+        const fontsArray = [];
+
+        for (let i = 0; i < fontList.length; i++) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const fontName = fontList[i].name.split(".")[0];
+                fontsArray.push({ name: fontName, url: e.target.result });
+                if (fontsArray.length === fontList.length) {
+                    setFonts(fontsArray);
+                }
+            };
+            reader.readAsDataURL(fontList[i]);
+        }
+    };
+
     return (
         <>
+            {fonts.map((font, index) => (
+                <style key={index}>
+                    {`
+                        @font-face {
+                            font-family: '${font.name}';
+                            src: url(${font.url}) format('truetype');
+                        }
+
+                        .font-${font.name} {
+                            font-family: '${font.name}', sans-serif;
+                        }
+                    `}
+                </style>
+            ))}
             <section>
                 <div className={s.test}>
                     <div className={s.test__text}>
@@ -48,14 +81,20 @@ export default function Variable() {
                         />
                         <label htmlFor="bigLine">Small line</label>
                     </div>
+                    <div className={s.test__buttons}>
+                        <input type="file" accept=".ttf,.otf" multiple onChange={fileUpload} />
+                    </div>
                 </div>
             </section>
             <section>
-                <div className={s.test__view}>
-                    {bigLineChecked && <p>{test}</p>}
-                    {mediumLineChecked && <p>{test}</p>}
-                    {smallLineChecked && <p>{test}</p>}
-                </div>
+                {fonts.map((font, index) => (
+                    <div className={s.test__view}>
+                        {bigLineChecked && <span className={s.test__view__big}>{test}</span>}
+                        {mediumLineChecked && <span className={s.test__view__medium}>{test}</span>}
+                        {smallLineChecked && <span className={s.test__view__small}>{test}</span>}
+                    </div>
+                ))}
+                ;
             </section>
         </>
     );
