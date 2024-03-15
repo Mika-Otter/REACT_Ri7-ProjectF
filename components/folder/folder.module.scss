@@ -1,0 +1,26 @@
+@import url(../../public/styles/_global.scss);
+
+.folder {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    background-color: black;
+
+    &__folder {
+        border: 2px solid red;
+        width: 80%;
+
+        span {
+            color: white;
+            font-family: "Nacelle";
+            font-size: 0.7vw;
+        }
+    }
+}
+
+.fonts > label {
+    color: white;
+    font-size: 0.7vw;
+}
