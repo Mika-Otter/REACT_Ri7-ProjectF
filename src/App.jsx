@@ -1,9 +1,10 @@
 import { useState } from "react";
+import Variable from "../components/variableText";
 
 export default function App() {
     return (
         <>
-            <p>Hello world</p>
+            <Variable />
         </>
     );
 }
