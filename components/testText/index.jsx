@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import s from "./variableText.module.scss";
+import s from "./testText.module.scss";
 import cn from "classnames";
 
-export default function Variable() {
+export default function TestText() {
     const [test, setTest] = useState("");
     const [checkboxes, setCheckboxes] = useState({
         bigCheckbox: true,
@@ -53,7 +53,7 @@ export default function Variable() {
     return (
         <>
             {fonts.map((font, index) => (
-                <style key={index}>
+                <style>
                     {`
                         @font-face {
                             font-family: '${font.name}';
@@ -114,27 +114,18 @@ export default function Variable() {
                 {fonts.map((font, index) => (
                     <div className={s.test__view}>
                         {checkboxes.bigCheckbox && (
-                            <span
-                                className={cn(`font-${font.name}`, s.test__view__big)}
-                                key={index}
-                            >
-                                {test}
+                            <span className={cn(`font-${font.name}`, s.test__view__big)}>
+                                {test == "" ? "It's a magical thing" : test}
                             </span>
                         )}
                         {checkboxes.mediumCheckbox && (
-                            <span
-                                className={cn(`font-${font.name}`, s.test__view__medium)}
-                                key={index}
-                            >
-                                {test}
+                            <span className={cn(`font-${font.name}`, s.test__view__medium)}>
+                                {test == "" ? "It's a magical thing" : test}
                             </span>
                         )}
                         {checkboxes.smallCheckbox && (
-                            <span
-                                className={cn(`font-${font.name}`, s.test__view__small)}
-                                key={index}
-                            >
-                                {test}
+                            <span className={cn(`font-${font.name}`, s.test__view__small)}>
+                                {test == "" ? "It's a magical thing" : test}
                             </span>
                         )}
                         <span className={s.test__view__typeface}>{font.name}</span>

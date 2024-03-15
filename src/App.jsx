@@ -1,10 +1,11 @@
 import { useState } from "react";
-import Variable from "../components/variableText";
+
+import TestText from "../components/testText";
 
 export default function App() {
     return (
         <>
-            <Variable />
+            <TestText />
         </>
     );
 }

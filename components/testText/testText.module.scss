@@ -1,0 +1,27 @@
+@import url(../../public/styles/_global.scss);
+
+.test__view {
+    display: flex;
+    flex-direction: column;
+
+    &__big {
+        margin: 0;
+
+        font-size: 3vw;
+    }
+    &__medium {
+        margin: 0;
+
+        font-size: 2vw;
+    }
+    &__small {
+        margin: 0;
+
+        font-size: 1vw;
+        margin-bottom: 20px;
+    }
+    &__typeface {
+        font-size: 0.7vw;
+        font-family: "Nacelle-Bold";
+    }
+}
