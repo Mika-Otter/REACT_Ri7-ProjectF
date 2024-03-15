@@ -1,14 +1,38 @@
 import React, { useState } from "react";
 import s from "./variableText.module.scss";
+import cn from "classnames";
 
 export default function Variable() {
     const [test, setTest] = useState("");
-    const [bigLineChecked, setBigLineChecked] = useState(false);
-    const [mediumLineChecked, setMediumLineChecked] = useState(false);
-    const [smallLineChecked, setSmallLineChecked] = useState(false);
+    const [checkboxes, setCheckboxes] = useState({
+        bigCheckbox: true,
+        mediumCheckbox: false,
+        smallCheckbox: false,
+    });
 
+    // prevent to have 0 checkbox checked
+    const handleCheckbox = (checkboxName) => {
+        let countNumChecked = 0;
+        for (const name in checkboxes) {
+            if (checkboxes[name]) {
+                countNumChecked++;
+            }
+        }
+        if (checkboxes[checkboxName]) {
+            countNumChecked--;
+        } else {
+            countNumChecked++;
+        }
+        if (checkboxes[checkboxName] == true && countNumChecked === 0) {
+            return;
+        } else {
+            const updatedCheckboxes = { ...checkboxes, [checkboxName]: !checkboxes[checkboxName] };
+            setCheckboxes(updatedCheckboxes);
+        }
+    };
+
+    //update fonts
     const [fonts, setFonts] = useState([]);
-
     const fileUpload = (e) => {
         const fontList = e.target.files;
         const fontsArray = [];
@@ -16,7 +40,7 @@ export default function Variable() {
         for (let i = 0; i < fontList.length; i++) {
             const reader = new FileReader();
             reader.onload = (e) => {
-                const fontName = fontList[i].name.split(".")[0];
+                const fontName = fontList[i].name.split(".")[0]; //store fontName without .ext
                 fontsArray.push({ name: fontName, url: e.target.result });
                 if (fontsArray.length === fontList.length) {
                     setFonts(fontsArray);
@@ -58,8 +82,8 @@ export default function Variable() {
                             type="checkbox"
                             className={s.checkbox}
                             id="bigLine"
-                            checked={bigLineChecked}
-                            onChange={() => setBigLineChecked(!bigLineChecked)}
+                            checked={checkboxes.bigCheckbox}
+                            onChange={() => handleCheckbox("bigCheckbox")}
                         />
                         <label htmlFor="bigLine">Big line</label>
 
@@ -67,8 +91,8 @@ export default function Variable() {
                             type="checkbox"
                             className={s.checkbox}
                             id="mediumLine"
-                            checked={mediumLineChecked}
-                            onChange={() => setMediumLineChecked(!mediumLineChecked)}
+                            checked={checkboxes.mediumCheckbox}
+                            onChange={() => handleCheckbox("mediumCheckbox")}
                         />
                         <label htmlFor="bigLine">Medium line</label>
 
@@ -76,8 +100,8 @@ export default function Variable() {
                             type="checkbox"
                             className={s.checkbox}
                             id="smallLine"
-                            checked={smallLineChecked}
-                            onChange={() => setSmallLineChecked(!smallLineChecked)}
+                            checked={checkboxes.smallCheckbox}
+                            onChange={() => handleCheckbox("smallCheckbox")}
                         />
                         <label htmlFor="bigLine">Small line</label>
                     </div>
@@ -89,12 +113,33 @@ export default function Variable() {
             <section>
                 {fonts.map((font, index) => (
                     <div className={s.test__view}>
-                        {bigLineChecked && <span className={s.test__view__big}>{test}</span>}
-                        {mediumLineChecked && <span className={s.test__view__medium}>{test}</span>}
-                        {smallLineChecked && <span className={s.test__view__small}>{test}</span>}
+                        {checkboxes.bigCheckbox && (
+                            <span
+                                className={cn(`font-${font.name}`, s.test__view__big)}
+                                key={index}
+                            >
+                                {test}
+                            </span>
+                        )}
+                        {checkboxes.mediumCheckbox && (
+                            <span
+                                className={cn(`font-${font.name}`, s.test__view__medium)}
+                                key={index}
+                            >
+                                {test}
+                            </span>
+                        )}
+                        {checkboxes.smallCheckbox && (
+                            <span
+                                className={cn(`font-${font.name}`, s.test__view__small)}
+                                key={index}
+                            >
+                                {test}
+                            </span>
+                        )}
+                        <span className={s.test__view__typeface}>{font.name}</span>
                     </div>
                 ))}
-                ;
             </section>
         </>
     );
