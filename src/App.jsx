@@ -9,7 +9,7 @@ export default function App() {
 
     return (
         <>
-            <TestText fonts={fonts} setFonts={setFonts} choosedFonts={choosedFonts} />
+            <TestText fonts={fonts} choosedFonts={choosedFonts} />
             <Folder
                 fonts={fonts}
                 setFonts={setFonts}

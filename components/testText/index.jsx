@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import s from "./testText.module.scss";
 import cn from "classnames";
 
-export default function TestText({ fonts, setFonts, choosedFonts }) {
+export default function TestText({ fonts, choosedFonts }) {
     const [test, setTest] = useState("");
     const [checkboxes, setCheckboxes] = useState({
         bigCheckbox: true,
@@ -23,6 +23,8 @@ export default function TestText({ fonts, setFonts, choosedFonts }) {
         } else {
             countNumChecked++;
         }
+
+        console.log(countNumChecked);
         if (checkboxes[checkboxName] == true && countNumChecked === 0) {
             return;
         } else {
@@ -75,7 +77,7 @@ export default function TestText({ fonts, setFonts, choosedFonts }) {
                             checked={checkboxes.mediumCheckbox}
                             onChange={() => handleCheckbox("mediumCheckbox")}
                         />
-                        <label htmlFor="bigLine">Medium line</label>
+                        <label htmlFor="mediumLine">Medium line</label>
 
                         <input
                             type="checkbox"
@@ -84,7 +86,7 @@ export default function TestText({ fonts, setFonts, choosedFonts }) {
                             checked={checkboxes.smallCheckbox}
                             onChange={() => handleCheckbox("smallCheckbox")}
                         />
-                        <label htmlFor="bigLine">Small line</label>
+                        <label htmlFor="smallLine">Small line</label>
                     </div>
                 </div>
             </section>
@@ -93,7 +95,7 @@ export default function TestText({ fonts, setFonts, choosedFonts }) {
                     <div className={s.test__view} key={`font-${index}`}>
                         {checkboxes.bigCheckbox && (
                             <span
-                                key={`big-${index}`}
+                                key={`big-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__big)}
                             >
                                 {test == "" ? "It's a magical thing" : test}
@@ -101,7 +103,7 @@ export default function TestText({ fonts, setFonts, choosedFonts }) {
                         )}
                         {checkboxes.mediumCheckbox && (
                             <span
-                                key={`medium-${index}`}
+                                key={`medium-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__medium)}
                             >
                                 {test == "" ? "It's a magical thing" : test}
@@ -109,7 +111,7 @@ export default function TestText({ fonts, setFonts, choosedFonts }) {
                         )}
                         {checkboxes.smallCheckbox && (
                             <span
-                                key={`big-${index}`}
+                                key={`small-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__small)}
                             >
                                 {test == "" ? "It's a magical thing" : test}
