@@ -1,4 +1,4 @@
-@import url(../../public/styles/_global.scss);
+@import "../../public/styles/_global";
 
 .test__view {
     display: flex;
@@ -23,5 +23,12 @@
     &__typeface {
         font-size: 0.7vw;
         font-family: "Nacelle-Bold";
+    }
+}
+
+.test__text {
+    input {
+        border: none;
+        color: $black-color;
     }
 }
