@@ -3,7 +3,7 @@ import { useState } from "react";
 import TestText from "../components/testText";
 import Folder from "../components/folder";
 import VariableText from "../components/variableText";
-import Register from "../components/register";
+import Login from "../components/login";
 
 export default function App() {
     const [fonts, setFonts] = useState([]);
@@ -19,7 +19,7 @@ export default function App() {
                 setChoosedFonts={setChoosedFonts}
             />
             <VariableText />
-            <Register />
+            <Login />
         </>
     );
 }
