@@ -1,0 +1,39 @@
+@import "../../public/styles/_global.scss";
+
+.login,
+.loginForm__connect {
+    border: none;
+    border-radius: 33px;
+    background-color: $black-color;
+    color: $white-color;
+    width: 10%;
+    height: 4vh;
+    font-family: "Nacelle-Bold";
+    font-size: 1.3rem;
+}
+.loginForm__connect {
+    width: 40%;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $black-color;
+    font-family: "Nacelle";
+    font-size: 1rem;
+    width: 30%;
+    font-weight: 600;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+    &__email {
+        display: flex;
+        flex-direction: column;
+    }
+    &__password {
+        display: flex;
+        flex-direction: column;
+    }
+}
