@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import Welcome from "./pages/welcome";
@@ -18,10 +18,6 @@ const router = createBrowserRouter([
         element: <Register />,
     },
     {
-        path: "/testText",
-        element: <TestText />,
-    },
-    {
         path: "/login",
         element: <Login />,
     },
@@ -32,13 +28,15 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-    // const [fonts, setFonts] = useState([]);
-    // const [choosedFonts, setChoosedFonts] = useState([]);
+    const [fonts, setFonts] = useState([]);
+    const [choosedFonts, setChoosedFonts] = useState([]);
 
     return (
         <>
             {/* Utilisation de RouterProvider avec le routeur créé */}
-            <RouterProvider router={router} />
+            <RouterProvider router={router}>
+                <Home fonts={fonts} choosedFonts={choosedFonts} />
+            </RouterProvider>
         </>
     );
 }
