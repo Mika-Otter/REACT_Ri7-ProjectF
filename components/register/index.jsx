@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./register.module.scss";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Register() {
     const [inputs, setInputs] = useState({
@@ -20,7 +20,7 @@ export default function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8080/server/auth/register", inputs);
+            await axios.post("http://localhost:8080/server/auth/register", inputs);
             navigate("/login");
         } catch (err) {
             setError(err.response.data);
@@ -57,9 +57,10 @@ export default function Register() {
                         onClick={handleSubmit}
                         type="button"
                     >
-                        Connect
+                        Subscribe
                     </button>
                     {error && <p>{error}</p>}
+                    <Link to="/login">Back to login page</Link>
                 </form>
             </div>
             {/* menu login username password display full css ? */}

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./folder.module.scss";
-import cn from "classnames";
+import PropTypes from "prop-types";
 
 export default function Folder({ fonts, setFonts, choosedFonts, setChoosedFonts }) {
     //update fonts
@@ -60,3 +60,10 @@ export default function Folder({ fonts, setFonts, choosedFonts, setChoosedFonts 
         </>
     );
 }
+
+Folder.propTypes = {
+    fonts: PropTypes.array.isRequired,
+    setFonts: PropTypes.func.isRequired,
+    choosedFonts: PropTypes.array.isRequired,
+    setChoosedFonts: PropTypes.func.isRequired,
+};

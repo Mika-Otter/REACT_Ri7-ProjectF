@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import s from "./login.module.scss";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
     const [inputs, setInputs] = useState({
@@ -7,8 +9,22 @@ export default function Login() {
         password: "",
     });
 
+    const [err, setError] = useState(null);
+
+    const navigate = useNavigate();
+
     function handleChange(e) {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:8080/server/auth/login", inputs);
+            navigate("/home");
+        } catch (err) {
+            setError(err.response.data);
+        }
     }
 
     return (
@@ -36,10 +52,12 @@ export default function Login() {
                             onChange={handleChange}
                         />
                     </div>
-                    <button className={s.loginForm__connect} onClick={handleSubmit} type="button">
-                        Connect
+                    <button className={s.loginForm__connect} type="button" onClick={handleSubmit}>
+                        Login
                     </button>
-                    {error && <p>{error}</p>}
+                    {err && <p>{err}</p>}
+                    <span>Don&rsquo;t you have an account ? </span>{" "}
+                    <Link to="/register">Register</Link>
                 </form>
             </div>
             {/* menu login username password display full css ? */}

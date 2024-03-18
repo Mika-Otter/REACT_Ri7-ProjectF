@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import s from "./testText.module.scss";
 import cn from "classnames";
+import PropTypes from "prop-types";
 
 export default function TestText({ fonts, choosedFonts }) {
     const [test, setTest] = useState("");
@@ -25,7 +26,7 @@ export default function TestText({ fonts, choosedFonts }) {
         }
 
         console.log(countNumChecked);
-        if (checkboxes[checkboxName] == true && countNumChecked === 0) {
+        if (checkboxes[checkboxName] === true && countNumChecked === 0) {
             return;
         } else {
             const updatedCheckboxes = { ...checkboxes, [checkboxName]: !checkboxes[checkboxName] };
@@ -98,7 +99,7 @@ export default function TestText({ fonts, choosedFonts }) {
                                 key={`big-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__big)}
                             >
-                                {test == "" ? "It's a magical thing" : test}
+                                {test === "" ? "It's a magical thing" : test}
                             </span>
                         )}
                         {checkboxes.mediumCheckbox && (
@@ -106,7 +107,7 @@ export default function TestText({ fonts, choosedFonts }) {
                                 key={`medium-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__medium)}
                             >
-                                {test == "" ? "It's a magical thing" : test}
+                                {test === "" ? "It's a magical thing" : test}
                             </span>
                         )}
                         {checkboxes.smallCheckbox && (
@@ -114,7 +115,7 @@ export default function TestText({ fonts, choosedFonts }) {
                                 key={`small-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__small)}
                             >
-                                {test == "" ? "It's a magical thing" : test}
+                                {test === "" ? "It's a magical thing" : test}
                             </span>
                         )}
                         <span key={index} className={s.test__view__typeface}>
@@ -126,3 +127,8 @@ export default function TestText({ fonts, choosedFonts }) {
         </>
     );
 }
+
+TestText.propTypes = {
+    fonts: PropTypes.array.isRequired,
+    choosedFonts: PropTypes.array.isRequired,
+};
