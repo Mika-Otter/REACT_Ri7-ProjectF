@@ -16,7 +16,7 @@ export default function VariableText() {
             <section>
                 <div className={s.variable}>
                     <div className={cn(s.fontSize, s.range)}>
-                        <label for="fontSize">Font-size : {fontSize}</label>
+                        <label htmlFor="fontSize">Font-size : {fontSize}</label>
                         <input
                             type="range"
                             min={0.3}
@@ -28,7 +28,7 @@ export default function VariableText() {
                         />
                     </div>
                     <div className={cn(s.lineHeight, s.range)}>
-                        <label for="fontSize">Line-height : {lineHeight} %</label>
+                        <label htmlFor="fontSize">Line-height : {lineHeight} %</label>
                         <input
                             type="range"
                             min={0}
