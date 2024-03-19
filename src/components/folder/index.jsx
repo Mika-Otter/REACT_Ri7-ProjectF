@@ -2,7 +2,7 @@ import React from "react";
 import s from "./folder.module.scss";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { setFonts } from "../../src/features/fonts/fontsSlice";
+import { setFonts } from "../../../src/features/fonts/fontsSlice";
 
 export default function Folder({ choosedFonts, setChoosedFonts }) {
     const dispatch = useDispatch();

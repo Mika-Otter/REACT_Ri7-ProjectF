@@ -2,9 +2,9 @@ import { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import Welcome from "./pages/welcome";
-import Register from "../components/register";
-import TestText from "../components/testText";
-import Login from "../components/login";
+import Register from "./components/register";
+import TestText from "./components/testText";
+import Login from "./components/login";
 import Home from "./pages/home";
 
 // Utilisation de createBrowserRouter pour créer l'instance du routeur

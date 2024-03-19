@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./home.module.scss";
-import TestText from "../../../components/testText";
+import TestText from "../../components/testText";
 import PropTypes from "prop-types";
-import Folder from "../../../components/folder";
+import Folder from "../../components/folder";
 
 export default function Home({ choosedFonts }) {
     return (
