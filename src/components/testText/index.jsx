@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import s from "./testText.module.scss";
 import cn from "classnames";
-import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 // import { setFonts } from "../../src/features/fonts/fontsSlice";
 
-export default function TestText({ choosedFonts }) {
-    const fonts = useSelector((state) => state.fonts);
+export default function TestText() {
+    const fonts = useSelector((state) => state.fonts.value);
+    const choosedFonts = useSelector((state) => state.choosedFonts.value);
 
     const [test, setTest] = useState("");
     const [checkboxes, setCheckboxes] = useState({
@@ -131,7 +131,3 @@ export default function TestText({ choosedFonts }) {
         </>
     );
 }
-
-TestText.propTypes = {
-    choosedFonts: PropTypes.array.isRequired,
-};

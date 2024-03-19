@@ -1,12 +1,13 @@
 import React from "react";
 import s from "./folder.module.scss";
-import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { setFonts } from "../../../src/features/fonts/fontsSlice";
+import { setChoosedFonts } from "../../features/fonts/choosedFontSlide";
 
-export default function Folder({ choosedFonts, setChoosedFonts }) {
+export default function Folder() {
     const dispatch = useDispatch();
-    const fonts = useSelector((state) => state.fonts);
+    const fonts = useSelector((state) => state.fonts.value);
+    const choosedFonts = useSelector((state) => state.choosedFonts.value);
 
     //update fonts
     function fileUpload(e) {
@@ -30,11 +31,11 @@ export default function Folder({ choosedFonts, setChoosedFonts }) {
         const selectedFont = fonts.find((font) => font.name === name); //find typeface by name
         if (selectedFont) {
             selectedFont.state = !selectedFont.state; //switch state
-            setFonts([...fonts]); //set global fonts
+            dispatch(setFonts([...fonts])); //set global fonts
             if (selectedFont.state) {
-                setChoosedFonts([...choosedFonts, selectedFont]); //add to choosed
+                dispatch(setChoosedFonts([...choosedFonts, selectedFont])); //add to choosed
             } else {
-                setChoosedFonts(choosedFonts.filter((font) => font !== selectedFont)); //remove to choosed
+                dispatch(setChoosedFonts(choosedFonts.filter((font) => font !== selectedFont))); //remove to choosed
             }
             console.log(choosedFonts);
         }
@@ -65,8 +66,3 @@ export default function Folder({ choosedFonts, setChoosedFonts }) {
         </>
     );
 }
-
-Folder.propTypes = {
-    choosedFonts: PropTypes.array.isRequired,
-    setChoosedFonts: PropTypes.func.isRequired,
-};

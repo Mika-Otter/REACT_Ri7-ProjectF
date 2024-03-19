@@ -8,7 +8,9 @@ const fontsSlice = createSlice({
     name: "fonts",
     initialState,
     reducers: {
-        setFonts: (state, action) => (state.value = action.payload),
+        setFonts: (state, action) => {
+            state.value = action.payload;
+        },
     },
 });
 
