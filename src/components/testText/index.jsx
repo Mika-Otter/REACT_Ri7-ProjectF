@@ -103,7 +103,7 @@ export default function TestText() {
                                 key={`big-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__big)}
                             >
-                                {test === "" ? "It's a magical thing" : test}
+                                {test === "" ? "A quick brown fox jumps over the lazy dog" : test}
                             </span>
                         )}
                         {checkboxes.mediumCheckbox && (
@@ -111,7 +111,7 @@ export default function TestText() {
                                 key={`medium-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__medium)}
                             >
-                                {test === "" ? "It's a magical thing" : test}
+                                {test === "" ? "A quick brown fox jumps over the lazy dog" : test}
                             </span>
                         )}
                         {checkboxes.smallCheckbox && (
@@ -119,7 +119,7 @@ export default function TestText() {
                                 key={`small-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__small)}
                             >
-                                {test === "" ? "It's a magical thing" : test}
+                                {test === "" ? "A quick brown fox jumps over the lazy dog" : test}
                             </span>
                         )}
                         <span key={index} className={s.test__view__typeface}>
