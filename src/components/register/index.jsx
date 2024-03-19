@@ -179,7 +179,7 @@ export default function Register() {
                                     id="password"
                                     required
                                     placeholder="Enter an password"
-                                    name="passeword"
+                                    name="password"
                                     onChange={(e) => {
                                         setPwd(e.target.value);
                                         handleChange(e);
