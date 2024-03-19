@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import s from "./login.module.scss";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserId } from "../../features/fonts/authSlice";
 
 export default function Login() {
+    const dispatch = useDispatch();
+    const userId = useSelector((state) => state.auth.userId);
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
     });
+
+    function handleLogin(userData) {
+        dispatch(setUserId(userData.id));
+        console.log(userId);
+    }
 
     const [err, setError] = useState(null);
 
@@ -20,7 +29,8 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8080/server/auth/login", inputs);
+            const res = await axios.post("http://localhost:8080/server/auth/login", inputs);
+            handleLogin(res.data);
             navigate("/home");
         } catch (err) {
             setError(err.response.data);
