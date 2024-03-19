@@ -4,7 +4,7 @@ import TestText from "../../components/testText";
 import PropTypes from "prop-types";
 import Folder from "../../components/folder";
 
-export default function Home({ choosedFonts }) {
+export default function Home() {
     return (
         <>
             <section>
@@ -30,7 +30,3 @@ export default function Home({ choosedFonts }) {
         </>
     );
 }
-
-Home.propTypes = {
-    choosedFonts: PropTypes.array.isRequired,
-};

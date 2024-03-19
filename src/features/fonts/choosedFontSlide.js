@@ -14,5 +14,5 @@ const choosedFontSlice = createSlice({
     },
 });
 
-export const { setChoosedFonts } = choosedFontSlice.actions;
+export const { setChoosedFonts, toggleFontState } = choosedFontSlice.actions;
 export default choosedFontSlice.reducer;

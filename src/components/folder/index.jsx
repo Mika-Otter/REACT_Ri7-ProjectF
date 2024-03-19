@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setFonts } from "../../../src/features/fonts/fontsSlice";
+import { setFonts, toggleFontState } from "../../../src/features/fonts/fontsSlice";
 import { setChoosedFonts } from "../../features/fonts/choosedFontSlide";
 
 export default function Folder() {
@@ -25,19 +25,20 @@ export default function Folder() {
             };
             reader.readAsDataURL(fontList[i]);
         }
+        console.log(fonts);
     }
 
-    function handleFonts(name, state) {
-        const selectedFont = fonts.find((font) => font.name === name); //find typeface by name
+    function handleFonts(name) {
+        dispatch(toggleFontState({ fontName: name }));
+        const selectedFont = fonts.find((font) => font.name === name); // Trouver la police sélectionnée par son nom
         if (selectedFont) {
-            selectedFont.state = !selectedFont.state; //switch state
-            dispatch(setFonts([...fonts])); //set global fonts
-            if (selectedFont.state) {
-                dispatch(setChoosedFonts([...choosedFonts, selectedFont])); //add to choosed
+            if (!selectedFont.state) {
+                if (!choosedFonts.find((font) => font.name === name)) {
+                    dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
+                }
             } else {
-                dispatch(setChoosedFonts(choosedFonts.filter((font) => font !== selectedFont))); //remove to choosed
+                dispatch(setChoosedFonts(choosedFonts.filter((font) => font.name !== name)));
             }
-            console.log(choosedFonts);
         }
     }
     return (
@@ -51,7 +52,7 @@ export default function Folder() {
                                 type="checkbox"
                                 name={font.name}
                                 checked={font.state}
-                                onChange={() => handleFonts(font.name, font.state)}
+                                onChange={() => handleFonts(font.name)}
                             />
                             <label htmlFor={font.name} style={{ fontFamily: `${font.name}` }}>
                                 {font.name}
