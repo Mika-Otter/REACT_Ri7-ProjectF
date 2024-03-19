@@ -29,18 +29,17 @@ export default function Login() {
 
     return (
         <>
-            <button className={s.login} type="button">
-                Sign up
-            </button>
             <div className={s.loginForm}>
-                <form className={s.loginForm__form}>
+                <form className={s.loginForm__form} onSubmit={handleSubmit}>
                     <div className={s.loginForm__email}>
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
                             placeholder="Enter Email"
+                            autoComplete="on"
                             name="email"
-                            onChange={handleChange}
+                            onChange={(e) => handleChange(e)}
+                            required
                         />
                     </div>
                     <div className={s.loginForm__password}>
@@ -48,11 +47,13 @@ export default function Login() {
                         <input
                             type="password"
                             placeholder="Enter password"
+                            autoComplete="off"
                             name="password"
-                            onChange={handleChange}
+                            onChange={(e) => handleChange(e)}
+                            required
                         />
                     </div>
-                    <button className={s.loginForm__connect} type="button" onClick={handleSubmit}>
+                    <button className={s.loginForm__connect} type="submit">
                         Login
                     </button>
                     {err && <p>{err}</p>}
