@@ -18,6 +18,10 @@ const router = createBrowserRouter([
         element: <Register />,
     },
     {
+        path: "/test",
+        element: <TestText />,
+    },
+    {
         path: "/login",
         element: <Login />,
     },
@@ -33,9 +37,8 @@ export default function App() {
 
     return (
         <>
-            {/* Utilisation de RouterProvider avec le routeur créé */}
             <RouterProvider router={router}>
-                <Home fonts={fonts} choosedFonts={choosedFonts} />
+                <TestText fonts={fonts} choosedFonts={choosedFonts} />
             </RouterProvider>
         </>
     );

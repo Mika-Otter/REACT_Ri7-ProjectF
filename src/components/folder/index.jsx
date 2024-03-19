@@ -1,8 +1,13 @@
 import React from "react";
 import s from "./folder.module.scss";
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { setFonts } from "../../src/features/fonts/fontsSlice";
 
-export default function Folder({ fonts, setFonts, choosedFonts, setChoosedFonts }) {
+export default function Folder({ choosedFonts, setChoosedFonts }) {
+    const dispatch = useDispatch();
+    const fonts = useSelector((state) => state.fonts);
+
     //update fonts
     function fileUpload(e) {
         const fontList = e.target.files;
@@ -14,7 +19,7 @@ export default function Folder({ fonts, setFonts, choosedFonts, setChoosedFonts 
                 const fontName = fontList[i].name.split(".")[0]; //store fontName without .ext
                 fontsArray.push({ name: fontName, url: e.target.result, state: false });
                 if (fontsArray.length === fontList.length) {
-                    setFonts(fontsArray);
+                    dispatch(setFonts(fontsArray));
                 }
             };
             reader.readAsDataURL(fontList[i]);
@@ -62,8 +67,6 @@ export default function Folder({ fonts, setFonts, choosedFonts, setChoosedFonts 
 }
 
 Folder.propTypes = {
-    fonts: PropTypes.array.isRequired,
-    setFonts: PropTypes.func.isRequired,
     choosedFonts: PropTypes.array.isRequired,
     setChoosedFonts: PropTypes.func.isRequired,
 };

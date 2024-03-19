@@ -2,8 +2,9 @@ import React from "react";
 import s from "./home.module.scss";
 import TestText from "../../../components/testText";
 import PropTypes from "prop-types";
+import Folder from "../../../components/folder";
 
-export default function Home({ fonts, choosedFonts }) {
+export default function Home({ choosedFonts }) {
     return (
         <>
             <section>
@@ -23,13 +24,13 @@ export default function Home({ fonts, choosedFonts }) {
                         {/* <span>{font.name}</span> */}
                     </div>
                 </div>
-                <TestText fonts={fonts} choosedFonts={choosedFonts} />
+                <Folder />
+                <TestText />
             </section>
         </>
     );
 }
 
 Home.propTypes = {
-    fonts: PropTypes.array.isRequired,
     choosedFonts: PropTypes.array.isRequired,
 };

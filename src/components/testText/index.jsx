@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import s from "./testText.module.scss";
 import cn from "classnames";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+// import { setFonts } from "../../src/features/fonts/fontsSlice";
 
-export default function TestText({ fonts, choosedFonts }) {
+export default function TestText({ choosedFonts }) {
+    const fonts = useSelector((state) => state.fonts);
+
     const [test, setTest] = useState("");
     const [checkboxes, setCheckboxes] = useState({
         bigCheckbox: true,
@@ -11,7 +15,7 @@ export default function TestText({ fonts, choosedFonts }) {
         smallCheckbox: false,
     });
 
-    // prevent to have 0 checkbox checked
+    // PREVENT 0 CHECKED BOX
     const handleCheckbox = (checkboxName) => {
         let countNumChecked = 0;
         for (const name in checkboxes) {
@@ -129,6 +133,5 @@ export default function TestText({ fonts, choosedFonts }) {
 }
 
 TestText.propTypes = {
-    fonts: PropTypes.array.isRequired,
     choosedFonts: PropTypes.array.isRequired,
 };
