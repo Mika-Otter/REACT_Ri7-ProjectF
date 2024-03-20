@@ -7,5 +7,5 @@ export default function RequireAuth() {
 
     console.log(userId);
 
-    return userId === true ? <Outlet /> : <Navigate to="/" state={{ from: location }} replace />;
+    return userId ? <Outlet /> : <Navigate to="/unauthorized" state={{ from: location }} replace />;
 }

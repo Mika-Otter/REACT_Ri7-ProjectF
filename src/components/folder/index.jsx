@@ -1,31 +1,54 @@
 import React from "react";
 import s from "./folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setFonts, toggleFontState } from "../../features/fontsSlice";
+import { toggleFontState } from "../../features/fontsSlice";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
+import axios from "../../app/api/axios";
 
 export default function Folder() {
     const dispatch = useDispatch();
     const fonts = useSelector((state) => state.fonts.value);
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
+    const userId = useSelector((state) => state.auth.userId);
 
     //update fonts
-    function fileUpload(e) {
+    // function fileUpload(e) {
+    //     const fontList = e.target.files;
+    //     const fontsArray = [];
+
+    //     for (let i = 0; i < fontList.length; i++) {
+    //         const reader = new FileReader();
+    //         reader.onload = (e) => {
+    //             const fontName = fontList[i].name.split(".")[0]; //store fontName without .ext
+    //             fontsArray.push({ name: fontName, url: e.target.result, state: false });
+    //             if (fontsArray.length === fontList.length) {
+    //                 dispatch(setFonts(fontsArray));
+    //             }
+    //         };
+    //         reader.readAsDataURL(fontList[i]);
+    //     }
+    //     console.log(fonts);
+    // }
+
+    async function fileUpload(e, userId) {
         const fontList = e.target.files;
-        const fontsArray = [];
+
+        const formData = new FormData(); // Créez un nouvel objet FormData
 
         for (let i = 0; i < fontList.length; i++) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const fontName = fontList[i].name.split(".")[0]; //store fontName without .ext
-                fontsArray.push({ name: fontName, url: e.target.result, state: false });
-                if (fontsArray.length === fontList.length) {
-                    dispatch(setFonts(fontsArray));
-                }
-            };
-            reader.readAsDataURL(fontList[i]);
+            formData.append("files", fontList[i]); // Ajoutez chaque fichier à l'objet FormData
         }
-        console.log(fonts);
+        try {
+            const res = await axios.post("/upload", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    userId: userId, // Passer l'userId comme en-tête de la requête
+                },
+            });
+            console.log(res.data);
+        } catch (err) {
+            console.error("Failed to upload files :", err);
+        }
     }
 
     function handleFonts(name) {
@@ -61,7 +84,12 @@ export default function Folder() {
                     ))}
                 </div>
                 <div className={s.test__buttons}>
-                    <input type="file" accept=".ttf,.otf" multiple onChange={fileUpload} />
+                    <input
+                        type="file"
+                        accept=".ttf,.otf"
+                        multiple
+                        onChange={(e) => fileUpload(e, userId)}
+                    />
                 </div>
             </section>
         </>
