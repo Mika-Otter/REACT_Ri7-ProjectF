@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import s from "./register.module.scss";
 import axios from "../../app/api/axios";
 import { useNavigate, Link } from "react-router-dom";

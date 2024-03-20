@@ -1,18 +1,11 @@
-import React from "react";
-import { Route, Navigate } from "react-router-dom";
+import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
 
 export default function RequireAuth() {
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const userId = useSelector((state) => state.auth.userId);
+    const location = useLocation();
 
-    return isAuthenticated ? (
-        <Outlet />
-    ) : (
-        <Navigate to="/unauthorized" state={{ from: location }} repalce />
-    );
+    console.log(userId);
+
+    return userId === true ? <Outlet /> : <Navigate to="/" state={{ from: location }} replace />;
 }
-
-ProtectedRoute.propTypes = {
-    element: PropTypes.node.isRequired,
-};

@@ -6,6 +6,7 @@ import TestText from "./components/testText";
 import Login from "./components/login";
 import Home from "./pages/home";
 import Unauthorized from "./components/unauthorized";
+import RequireAuth from "./components/requireAuth";
 
 export default function App() {
     return (
@@ -18,9 +19,10 @@ export default function App() {
                 <Route path="unauthorized" element={<Unauthorized />}></Route>
 
                 {/* protected routes */}
-                <Route path="test" element={<TestText />}></Route>
-                <Route path="home" element={<Home />}></Route>
-
+                <Route element={<RequireAuth />}>
+                    <Route path="test" element={<TestText />}></Route>
+                    <Route path="home" element={<Home />}></Route>
+                </Route>
                 {/* catch all */}
                 {/* <Route path="*" element={<Missing />}></Route> */}
             </Routes>
