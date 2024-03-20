@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { setFonts, toggleFontState } from "../../../src/features/fonts/fontsSlice";
-import { setChoosedFonts } from "../../features/fonts/choosedFontSlide";
+import { setFonts, toggleFontState } from "../../features/fontsSlice";
+import { setChoosedFonts } from "../../features/choosedFontSlide";
 
 export default function Folder() {
     const dispatch = useDispatch();

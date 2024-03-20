@@ -60,11 +60,11 @@ export default function Register() {
 
     const navigate = useNavigate();
 
-    function handleChange(e) {
+    const handleChange = (e) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    }
+    };
 
-    async function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         //prevent button JS hack
         const v1 = USER_REGEX.test(user);
@@ -91,7 +91,7 @@ export default function Register() {
                 setError("Registration Failed", err.response.data);
             }
         }
-    }
+    };
 
     return (
         <>

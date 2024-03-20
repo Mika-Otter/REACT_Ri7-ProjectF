@@ -1,0 +1,8 @@
+@import "../../../public/styles/global";
+
+.logout > button {
+    border-radius: 13px;
+    background-color: $black-color;
+    color: $white-color;
+    font-size: 3rem;
+}

@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./home.module.scss";
 import TestText from "../../components/testText";
-import PropTypes from "prop-types";
 import Folder from "../../components/folder";
+import Logout from "../../components/logout";
 
 export default function Home() {
     return (
@@ -26,6 +26,7 @@ export default function Home() {
                 </div>
                 <Folder />
                 <TestText />
+                <Logout />
             </section>
         </>
     );
