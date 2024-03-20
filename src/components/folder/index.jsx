@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleFontState } from "../../features/fontsSlice";
+import { setFonts, toggleFontState } from "../../features/fontsSlice";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
 
@@ -11,38 +11,19 @@ export default function Folder() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
     const userId = useSelector((state) => state.auth.userId);
 
-    //update fonts
-    // function fileUpload(e) {
-    //     const fontList = e.target.files;
-    //     const fontsArray = [];
-
-    //     for (let i = 0; i < fontList.length; i++) {
-    //         const reader = new FileReader();
-    //         reader.onload = (e) => {
-    //             const fontName = fontList[i].name.split(".")[0]; //store fontName without .ext
-    //             fontsArray.push({ name: fontName, url: e.target.result, state: false });
-    //             if (fontsArray.length === fontList.length) {
-    //                 dispatch(setFonts(fontsArray));
-    //             }
-    //         };
-    //         reader.readAsDataURL(fontList[i]);
-    //     }
-    //     console.log(fonts);
-    // }
-
     async function fileUpload(e, userId) {
         const fontList = e.target.files;
 
         const formData = new FormData(); // Créez un nouvel objet FormData
 
         for (let i = 0; i < fontList.length; i++) {
-            formData.append("files", fontList[i]); // Ajoutez chaque fichier à l'objet FormData
+            formData.append("files", fontList[i]); // Add each files to formData
         }
         try {
             const res = await axios.post("/upload", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    userId: userId, // Passer l'userId comme en-tête de la requête
+                    userId: userId, // pass userId in the headers
                 },
             });
             console.log(res.data);
@@ -50,6 +31,39 @@ export default function Folder() {
             console.error("Failed to upload files :", err);
         }
     }
+
+    async function fetchTyposFromServer() {
+        try {
+            const res = await axios.get("/upload");
+            const files = res.data.files;
+            console.log(files);
+            console.log("YYYYEAAAH RECUP");
+            const fontsArray = [];
+
+            for (const file of files) {
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    const firstFontName = file.split(".")[0];
+                    const fontName = firstFontName.split("_")[1];
+                    fontsArray.push({ name: fontName, url: e.target.result, state: false });
+
+                    if (fontsArray.length === files.length) {
+                        dispatch(setFonts(fontsArray));
+                        console.log(fonts);
+                        console.log("DAAAA FONTS");
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        } catch (err) {
+            console.error("Failed to fetch typos from server : ", err);
+        }
+    }
+
+    useEffect(() => {
+        fetchTyposFromServer();
+    });
 
     function handleFonts(name) {
         dispatch(toggleFontState({ fontName: name }));
@@ -95,3 +109,26 @@ export default function Folder() {
         </>
     );
 }
+
+//update fonts
+// function fileUpload(e) {
+//     const fontList = e.target.files;
+//     const fontsArray = [];
+
+//     for (let i = 0; i < fontList.length; i++) {
+//         const reader = new FileReader();
+//         reader.onload = (e) => {
+//             const fontName = fontList[i].name.split(".")[0]; //store fontName without .ext
+//             fontsArray.push({ name: fontName, url: e.target.result, state: false });
+//             if (fontsArray.length === fontList.length) {
+//                 dispatch(setFonts(fontsArray));
+//             }
+//         };
+//         reader.readAsDataURL(fontList[i]);
+//     }
+//     console.log(fonts);
+// }
+
+// const fontNameSplit = fontList[i].name.split(".")[0];
+// const fontUrl = `http://localhost:8080/uploads/${userId}_${fontNameSplit}.ttf`;
+// setFontsArray((prev) => [...prev, { name: fontNameSplit, url: fontUrl, state: false }]);
