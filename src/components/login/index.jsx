@@ -3,7 +3,7 @@ import s from "./login.module.scss";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserId } from "../../features/fonts/authSlice";
+import { setUserId } from "../../features/authSlice";
 
 export default function Login() {
     const dispatch = useDispatch();

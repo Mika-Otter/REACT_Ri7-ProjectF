@@ -15,7 +15,7 @@ export default function Register() {
         username: "",
     });
 
-    const userRef = useRef();
+    // const userRef = useRef();
 
     const [email, setEmail] = useState("");
     const [validEmail, setValidEmail] = useState(false);
@@ -36,9 +36,9 @@ export default function Register() {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, []);
+    // useEffect(() => {
+    //     userRef.current.focus();
+    // }, []);
 
     useEffect(() => {
         setValidEmail(EMAIL_REGEX.test(email));
@@ -115,7 +115,6 @@ export default function Register() {
                                     className={s.registerForm__input}
                                     type="text"
                                     id="username"
-                                    ref={userRef}
                                     required
                                     placeholder="Enter an username"
                                     name="username"

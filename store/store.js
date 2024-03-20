@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import fontsSlice from "../src/features/fonts/fontsSlice";
-import choosedFontSlice from "../src/features/fonts/choosedFontSlide";
-import authSlice from "../src/features/fonts/authSlice";
+import fontsSlice from "../src/features/fontsSlice";
+import choosedFontSlice from "../src/features/choosedFontSlide";
+import authSlice from "../src/features/authSlice";
 
 export const store = configureStore({
     reducer: {
