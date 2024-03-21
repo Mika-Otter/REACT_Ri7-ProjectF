@@ -63,7 +63,9 @@ export default function Folder() {
             const listFonts = [].concat(...fontsData);
 
             listFonts.forEach((font) => {
-                dispatch(setFonts(font));
+                const fontName = font.split(".")[0];
+                console.log(fontName);
+                dispatch(setFonts({ name: fontName, url: font }));
             });
             console.log("YAAAAH", fonts);
         } catch (err) {
@@ -95,8 +97,8 @@ export default function Folder() {
             <section className={s.folder}>
                 <div className={s.folder__folder}>
                     <span>Main :</span>
-                    {fonts.map((font) => (
-                        <div className={s.fonts} key={font.name}>
+                    {fonts.map((font, i) => (
+                        <div className={s.fonts} key={font.name + i}>
                             <input
                                 type="checkbox"
                                 name={font.name}

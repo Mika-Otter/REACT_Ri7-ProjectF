@@ -9,7 +9,8 @@ const fontsSlice = createSlice({
     initialState,
     reducers: {
         setFonts: (state, action) => {
-            state.value = [...state.value, action.payload];
+            const { name, url, ...rest } = action.payload; // Récupérer name, url et les autres propriétés de la typo
+            state.value = [...state.value, { name, url, ...rest }]; // Ajouter la typo avec name et url au state
         },
         toggleFontState: (state, action) => {
             const { fontName } = action.payload;
