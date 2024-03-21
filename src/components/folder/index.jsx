@@ -34,7 +34,7 @@ export default function Folder() {
         }
     }
 
-    async function fetchTyposFromServer() {
+    async function fetchTyposFromServer(nameFonts) {
         try {
             const res = await axios.get("/static/upload/test.otf");
             const fontUrl = res.request.responseURL; // Obtenez l'URL de la police
@@ -44,16 +44,36 @@ export default function Folder() {
         }
     }
 
-    // async function addUserFonts() {
-    //     try {
-    //         const res = await axios.post("/addFonts");
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // }
+    // GET FONTSNAME FOR A USER
+    async function getUserFonts() {
+        try {
+            const res = await axios.post("/getFonts", { userId });
+            console.log(res.data);
+            const data = res.data.data; // Accéder à la propriété data de la réponse
+            const fontsData = data.map((item) => {
+                const fontsJSON = item.userFonts;
+                const fontsArray = JSON.parse(fontsJSON);
+                console.log(item); // Parser la chaîne JSON
+                console.log("font array", fontsArray);
+                return fontsArray;
+            });
+
+            console.log("fonts data", fontsData);
+
+            const listFonts = [].concat(...fontsData);
+
+            listFonts.forEach((font) => {
+                dispatch(setFonts(font));
+            });
+            console.log("YAAAAH", fonts);
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
     useEffect(() => {
         fetchTyposFromServer();
+        getUserFonts();
         console.log(fonts);
     }, []);
 
