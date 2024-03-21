@@ -28,7 +28,6 @@ export default function Folder() {
                     userId: userId, // pass userId in the headers
                 },
             });
-            console.log(res.data);
         } catch (err) {
             console.error("Failed to upload files :", err);
         }
@@ -38,7 +37,6 @@ export default function Folder() {
         try {
             const res = await axios.get("/static/upload/test.otf");
             const fontUrl = res.request.responseURL; // Obtenez l'URL de la police
-            console.log(fontUrl);
         } catch (err) {
             console.error("Failed to fetch typos from server : ", err);
         }
@@ -48,7 +46,6 @@ export default function Folder() {
     async function getUserFonts() {
         try {
             const res = await axios.post("/getFonts", { userId });
-            console.log(res.data);
             const data = res.data.data; // Accéder à la propriété data de la réponse
             const fontsData = data.map((item) => {
                 const fontsJSON = item.userFonts;
@@ -58,16 +55,12 @@ export default function Folder() {
                 return fontsArray;
             });
 
-            console.log("fonts data", fontsData);
-
             const listFonts = [].concat(...fontsData);
 
             listFonts.forEach((font) => {
                 const fontName = font.split(".")[0];
-                console.log(fontName);
                 dispatch(setFonts({ name: fontName, url: font }));
             });
-            console.log("YAAAAH", fonts);
         } catch (err) {
             console.error(err);
         }
@@ -76,7 +69,6 @@ export default function Folder() {
     useEffect(() => {
         fetchTyposFromServer();
         getUserFonts();
-        console.log(fonts);
     }, []);
 
     function handleFonts(name) {
