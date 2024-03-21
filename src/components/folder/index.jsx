@@ -33,41 +33,25 @@ export default function Folder() {
         }
     }
 
-    async function fetchTyposFromServer() {
-        try {
-            const res = await axios.get("/static/upload/test.otf");
-            const fontUrl = res.request.responseURL; // Obtenez l'URL de la police
-        } catch (err) {
-            console.error("Failed to fetch typos from server : ", err);
-        }
-    }
-
     // GET FONTSNAME FOR A USER
     async function getUserFonts() {
         try {
-            const res = await axios.post("/getFonts", { userId });
-            const data = res.data.data; // Accéder à la propriété data de la réponse
-            const fontsData = data.map((item) => {
-                const fontsJSON = item.userFonts;
-                const fontsArray = JSON.parse(fontsJSON);
-                console.log(item); // Parser la chaîne JSON
-                console.log("font array", fontsArray);
-                return fontsArray;
-            });
+            const res = await axios.post("/fonts/added", { userId });
+            if (res.status === 200) {
+                const fontsData = res.data.fonts; // Accédez aux données renvoyées par la requête
 
-            const listFonts = [].concat(...fontsData);
-
-            listFonts.forEach((font) => {
-                const fontName = font.split(".")[0];
-                dispatch(setFonts({ name: fontName, url: font }));
-            });
+                fontsData.forEach((font) => {
+                    dispatch(setFonts({ name: font.name, url: font.url }));
+                });
+            } else {
+                console.error("Failed to fetch user fonts: ", res.statusText);
+            }
         } catch (err) {
             console.error(err);
         }
     }
 
     useEffect(() => {
-        fetchTyposFromServer();
         getUserFonts();
     }, []);
 
@@ -115,3 +99,12 @@ export default function Folder() {
         </>
     );
 }
+
+// async function fetchTyposFromServer() {
+//     try {
+//         const res = await axios.get("/static/upload/test.otf");
+//         const fontUrl = res.request.responseURL; // Obtenez l'URL de la police
+//     } catch (err) {
+//         console.error("Failed to fetch typos from server : ", err);
+//     }
+// }
