@@ -28,6 +28,7 @@ export default function Folder() {
                     "Content-Type": "multipart/form-data",
                 },
             });
+            getUserFonts();
         } catch (err) {
             console.error("Failed to upload files :", err);
         }
@@ -38,10 +39,13 @@ export default function Folder() {
         try {
             const res = await axios.post("/fonts/added", { userId });
             if (res.status === 200) {
-                const fontsData = res.data.fonts; // Accédez aux données renvoyées par la requête
+                const fontsData = res.data.fonts;
 
                 fontsData.forEach((font) => {
-                    dispatch(setFonts({ name: font.name, url: font.url }));
+                    // If the typo isn't already in the redux
+                    if (!fonts.some((existingFont) => existingFont.name === font.name)) {
+                        dispatch(setFonts({ name: font.name, url: font.url }));
+                    }
                 });
             } else {
                 console.error("Failed to fetch user fonts: ", res.statusText);
