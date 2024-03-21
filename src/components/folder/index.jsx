@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setFonts, toggleFontState } from "../../features/fontsSlice";
@@ -18,7 +18,9 @@ export default function Folder() {
 
         for (let i = 0; i < fontList.length; i++) {
             formData.append("files", fontList[i]); // Add each files to formData
+            formData.append("fontNames", fontList[i].name);
         }
+
         try {
             const res = await axios.post("/upload", formData, {
                 headers: {
@@ -34,36 +36,26 @@ export default function Folder() {
 
     async function fetchTyposFromServer() {
         try {
-            const res = await axios.get("/upload");
-            const files = res.data.files;
-            console.log(files);
-            console.log("YYYYEAAAH RECUP");
-            const fontsArray = [];
-
-            for (const file of files) {
-                const reader = new FileReader();
-
-                reader.onload = (e) => {
-                    const firstFontName = file.split(".")[0];
-                    const fontName = firstFontName.split("_")[1];
-                    fontsArray.push({ name: fontName, url: e.target.result, state: false });
-
-                    if (fontsArray.length === files.length) {
-                        dispatch(setFonts(fontsArray));
-                        console.log(fonts);
-                        console.log("DAAAA FONTS");
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
+            const res = await axios.get("/static/upload/test.otf");
+            const fontUrl = res.request.responseURL; // Obtenez l'URL de la police
+            console.log(fontUrl);
         } catch (err) {
             console.error("Failed to fetch typos from server : ", err);
         }
     }
 
+    // async function addUserFonts() {
+    //     try {
+    //         const res = await axios.post("/addFonts");
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // }
+
     useEffect(() => {
         fetchTyposFromServer();
-    });
+        console.log(fonts);
+    }, []);
 
     function handleFonts(name) {
         dispatch(toggleFontState({ fontName: name }));
