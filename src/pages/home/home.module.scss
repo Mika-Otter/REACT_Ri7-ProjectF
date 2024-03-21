@@ -1,0 +1,51 @@
+@import "../../../public/styles/global";
+
+.favorite__box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    &__wrapper {
+        width: 20%;
+        height: 13vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .legend {
+            font-family: "Nacelle";
+            font-size: 1.3rem;
+            margin-top: 0px;
+        }
+    }
+}
+
+.favorite {
+    width: 100%;
+    height: 10vh;
+    border: 2px solid $black-color;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+    overflow: hidden;
+
+    &__wrapper {
+        width: 100%;
+        padding-left: 10px;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        &__text {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            white-space: nowrap;
+            height: 3vh;
+            span {
+                font-size: 6rem;
+            }
+        }
+    }
+}

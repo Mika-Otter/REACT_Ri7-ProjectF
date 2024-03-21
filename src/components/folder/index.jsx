@@ -11,21 +11,21 @@ export default function Folder() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
     const userId = useSelector((state) => state.auth.userId);
 
-    async function fileUpload(e, userId) {
+    async function fileUpload(e) {
         const fontList = e.target.files;
 
-        const formData = new FormData(); // Créez un nouvel objet FormData
+        const formData = new FormData();
 
         for (let i = 0; i < fontList.length; i++) {
-            formData.append("files", fontList[i]); // Add each files to formData
+            formData.append("files", fontList[i]);
             formData.append("fontNames", fontList[i].name);
         }
 
+        formData.append("userId", userId);
         try {
-            const res = await axios.post("/upload", formData, {
+            const res = await axios.post("/upload/newFonts", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    userId: userId, // pass userId in the headers
                 },
             });
         } catch (err) {
@@ -33,7 +33,7 @@ export default function Folder() {
         }
     }
 
-    async function fetchTyposFromServer(nameFonts) {
+    async function fetchTyposFromServer() {
         try {
             const res = await axios.get("/static/upload/test.otf");
             const fontUrl = res.request.responseURL; // Obtenez l'URL de la police
@@ -108,33 +108,10 @@ export default function Folder() {
                         type="file"
                         accept=".ttf,.otf"
                         multiple
-                        onChange={(e) => fileUpload(e, userId)}
+                        onChange={(e) => fileUpload(e)}
                     />
                 </div>
             </section>
         </>
     );
 }
-
-//update fonts
-// function fileUpload(e) {
-//     const fontList = e.target.files;
-//     const fontsArray = [];
-
-//     for (let i = 0; i < fontList.length; i++) {
-//         const reader = new FileReader();
-//         reader.onload = (e) => {
-//             const fontName = fontList[i].name.split(".")[0]; //store fontName without .ext
-//             fontsArray.push({ name: fontName, url: e.target.result, state: false });
-//             if (fontsArray.length === fontList.length) {
-//                 dispatch(setFonts(fontsArray));
-//             }
-//         };
-//         reader.readAsDataURL(fontList[i]);
-//     }
-//     console.log(fonts);
-// }
-
-// const fontNameSplit = fontList[i].name.split(".")[0];
-// const fontUrl = `http://localhost:8080/uploads/${userId}_${fontNameSplit}.ttf`;
-// setFontsArray((prev) => [...prev, { name: fontNameSplit, url: fontUrl, state: false }]);

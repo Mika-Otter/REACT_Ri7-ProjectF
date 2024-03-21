@@ -4,6 +4,7 @@ const initialState = {
     userId: null,
     isAuthenticated: false,
     userFonts: [],
+    username: "",
 };
 
 const authSlice = createSlice({
@@ -21,8 +22,11 @@ const authSlice = createSlice({
         setUserFonts: (state, action) => {
             state.userFonts = [...state.userFonts, action.payload];
         },
+        setUserName: (state, action) => {
+            state.username = action.payload;
+        },
     },
 });
 
-export const { setUserId, clearUserId } = authSlice.actions;
+export const { setUserId, clearUserId, setUserFonts, setUserName } = authSlice.actions;
 export default authSlice.reducer;

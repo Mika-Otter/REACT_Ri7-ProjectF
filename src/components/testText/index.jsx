@@ -45,7 +45,7 @@ export default function TestText() {
                     {`
                         @font-face {
                             font-family: '${font.name}';
-                            src: url(http://localhost:8080/static/upload/${font.url}) format('truetype');
+                            src: url(${font.url}) format('truetype');
                         }
 
                         .font-${font.name} {
