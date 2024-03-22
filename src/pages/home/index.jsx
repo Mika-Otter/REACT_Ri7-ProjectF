@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import s from "./home.module.scss";
 import TestText from "../../components/testText";
 import Folder from "../../components/folder";
@@ -8,10 +8,24 @@ import { useSelector } from "react-redux";
 export default function Home() {
     const username = useSelector((state) => state.auth.username);
     const fonts = useSelector((state) => state.fonts.value);
+    const userId = useSelector((state) => state.auth.userId);
 
-    console.log(fonts);
+    const [ratings, setRatings] = useState({});
 
-    const [rating, setRating] = useState(null);
+    const handleRating = (userId, fontId, fontName, rating) => {
+        setRatings((prev) => ({
+            ...prev,
+            [fontName]: rating,
+        }));
+        sendRate(userId, fontId, fontName, rating);
+    };
+
+    const sendRate = (userId, fontId, fontName, rating) => {
+        console.log(fontName, " = ", rating, "END", userId, "OR", fontId);
+    };
+    useEffect(() => {
+        console.log(ratings); // Cela affichera la valeur mise à jour de l'état ratings
+    }, [ratings]);
 
     return (
         <>
@@ -35,25 +49,16 @@ export default function Home() {
                                 </div>
                                 <span className={s.legend}>{font.name}</span>
                                 <div className={s.favorite__wrapper__note}>
-                                    {[...Array(5)].map((square, i) => {
-                                        const currentRate = i + 1;
-                                        return (
-                                            <label key={i}>
-                                                <input
-                                                    type="radio"
-                                                    name="rate"
-                                                    value={currentRate}
-                                                    onClick={() => setRating(currentRate)}
-                                                    color={
-                                                        currentRate <= rating
-                                                            ? "#000000"
-                                                            : "#ffffff"
-                                                    }
-                                                    className={s.rate__square}
-                                                ></input>
-                                            </label>
-                                        );
-                                    })}
+                                    {Array.from({ length: 5 }, (_, i) => (
+                                        <input
+                                            key={font.name + i}
+                                            type="checkbox"
+                                            checked={ratings[font.name] >= i + 1}
+                                            onChange={() =>
+                                                handleRating(font.id, userId, font.name, i + 1)
+                                            }
+                                        />
+                                    ))}
                                 </div>
                             </div>
                         ))}

@@ -12,6 +12,10 @@ const fontsSlice = createSlice({
             const { name, url, ...rest } = action.payload;
             state.value = [...state.value, { name, url, ...rest }];
         },
+        setRate: (state, action) => {
+            const { rate, ...rest } = action.payload;
+            state.value = [];
+        },
         toggleFontState: (state, action) => {
             const { fontName } = action.payload;
             const font = state.value.find((font) => font.name === fontName);

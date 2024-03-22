@@ -37,6 +37,25 @@
         display: flex;
         align-items: center;
 
+        &__note {
+            display: flex;
+            flex-direction: row-reverse;
+            input {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 20px;
+                height: 20px;
+                border: 2px solid $black-color;
+                cursor: pointer;
+            }
+            input:checked {
+                width: 20px;
+                height: 20px;
+                background-color: $black-color;
+                border: 2px solid $black-color;
+            }
+        }
+
         &__text {
             display: flex;
             align-items: center;
@@ -48,10 +67,4 @@
             }
         }
     }
-}
-
-.rate__square {
-    width: 10px;
-    height: 10px;
-    border: 1px solid $black-color;
 }
