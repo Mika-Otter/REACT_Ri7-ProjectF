@@ -23,12 +23,17 @@ export default function Folder() {
 
         formData.append("userId", userId);
         try {
-            const res = await axios.post("/upload/newFonts", formData, {
+            const res = await axios.post("/upload/add", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            getUserFonts();
+            if (res.status === 200) {
+                const newFonts = res.data.fonts;
+                newFonts.forEach((font) => {
+                    dispatch(setFonts({ name: font.name, url: font.url }));
+                });
+            }
         } catch (err) {
             console.error("Failed to upload files :", err);
         }
@@ -37,12 +42,10 @@ export default function Folder() {
     // GET FONTSNAME FOR A USER
     async function getUserFonts() {
         try {
-            const res = await axios.post("/fonts/added", { userId });
+            const res = await axios.post("/fonts/getAll", { userId });
             if (res.status === 200) {
                 const fontsData = res.data.fonts;
-
                 fontsData.forEach((font) => {
-                    // If the typo isn't already in the redux
                     if (!fonts.some((existingFont) => existingFont.name === font.name)) {
                         dispatch(setFonts({ name: font.name, url: font.url }));
                     }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./home.module.scss";
 import TestText from "../../components/testText";
 import Folder from "../../components/folder";
@@ -10,6 +10,8 @@ export default function Home() {
     const fonts = useSelector((state) => state.fonts.value);
 
     console.log(fonts);
+
+    const [rating, setRating] = useState(null);
 
     return (
         <>
@@ -33,7 +35,25 @@ export default function Home() {
                                 </div>
                                 <span className={s.legend}>{font.name}</span>
                                 <div className={s.favorite__wrapper__note}>
-                                    {/* rating squares */}
+                                    {[...Array(5)].map((square, i) => {
+                                        const currentRate = i + 1;
+                                        return (
+                                            <label key={i}>
+                                                <input
+                                                    type="radio"
+                                                    name="rate"
+                                                    value={currentRate}
+                                                    onClick={() => setRating(currentRate)}
+                                                    color={
+                                                        currentRate <= rating
+                                                            ? "#000000"
+                                                            : "#ffffff"
+                                                    }
+                                                    className={s.rate__square}
+                                                ></input>
+                                            </label>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         ))}

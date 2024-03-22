@@ -6,7 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const REGISTER_URL = "/server/auth/register";
+const REGISTER_URL = "http://localhost:8080/server/auth/register";
 
 export default function Register() {
     const [inputs, setInputs] = useState({
