@@ -30,8 +30,9 @@ export default function Folder() {
             });
             if (res.status === 200) {
                 const newFonts = res.data.fonts;
+                console.log(newFonts, "NEEEEWS");
                 newFonts.forEach((font) => {
-                    dispatch(setFonts({ name: font.name, url: font.url }));
+                    dispatch(setFonts({ name: font.name, url: font.url, id: font.id }));
                 });
             }
         } catch (err) {
@@ -47,7 +48,7 @@ export default function Folder() {
                 const fontsData = res.data.fonts;
                 fontsData.forEach((font) => {
                     if (!fonts.some((existingFont) => existingFont.name === font.name)) {
-                        dispatch(setFonts({ name: font.name, url: font.url }));
+                        dispatch(setFonts({ name: font.name, url: font.url, id: font.id }));
                     }
                 });
             } else {

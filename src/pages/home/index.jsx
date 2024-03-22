@@ -4,6 +4,7 @@ import TestText from "../../components/testText";
 import Folder from "../../components/folder";
 import Logout from "../../components/logout";
 import { useSelector } from "react-redux";
+import axios from "../../app/api/axios";
 
 export default function Home() {
     const username = useSelector((state) => state.auth.username);
@@ -17,12 +18,18 @@ export default function Home() {
             ...prev,
             [fontName]: rating,
         }));
-        sendRate(userId, fontId, fontName, rating);
+        sendRate(userId, fontId, rating);
     };
 
-    const sendRate = (userId, fontId, fontName, rating) => {
-        console.log(fontName, " = ", rating, "END", userId, "OR", fontId);
+    const sendRate = async (userId, fontId, rating) => {
+        try {
+            const response = await axios.post("/fonts/rate", { userId, fontId, rating });
+            return response.status === 200;
+        } catch (err) {
+            console.error("FAILED : Try to rate typeface");
+        }
     };
+
     useEffect(() => {
         console.log(ratings); // Cela affichera la valeur mise à jour de l'état ratings
     }, [ratings]);
@@ -55,7 +62,7 @@ export default function Home() {
                                             type="checkbox"
                                             checked={ratings[font.name] >= i + 1}
                                             onChange={() =>
-                                                handleRating(font.id, userId, font.name, i + 1)
+                                                handleRating(userId, font.id, font.name, i + 1)
                                             }
                                         />
                                     ))}
