@@ -23,16 +23,36 @@ export default function Home() {
 
     const sendRate = async (userId, fontId, rating) => {
         try {
-            const response = await axios.post("/fonts/rate", { userId, fontId, rating });
-            return response.status === 200;
+            const res = await axios.post("/fonts/rate", { userId, fontId, rating });
+            return res.status === 200;
         } catch (err) {
-            console.error("FAILED : Try to rate typeface");
+            console.error("FAILED : Try to rate typeface => ", err);
+        }
+    };
+
+    const getRate = async (userId) => {
+        try {
+            const res = await axios.post("/fonts/rate/getAll", { userId });
+            console.log(res.data.data);
+            const fontRates = res.data.data;
+            fontRates.forEach((rate) => {
+                setRatings((prev) => ({
+                    ...prev,
+                    [rate.fontName]: rate.rating,
+                }));
+            });
+        } catch (err) {
+            console.error("FAILED : Try to get all rates => ", err);
         }
     };
 
     useEffect(() => {
         console.log(ratings); // Cela affichera la valeur mise à jour de l'état ratings
     }, [ratings]);
+
+    useEffect(() => {
+        getRate(userId);
+    }, []);
 
     return (
         <>
