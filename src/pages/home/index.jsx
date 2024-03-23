@@ -12,6 +12,7 @@ export default function Home() {
     const userId = useSelector((state) => state.auth.userId);
 
     const [ratings, setRatings] = useState({});
+    const [hoveredRating, setHoveredRating] = useState({});
 
     const handleRating = (userId, fontId, fontName, rating) => {
         setRatings((prev) => ({
@@ -19,6 +20,10 @@ export default function Home() {
             [fontName]: rating,
         }));
         sendRate(userId, fontId, rating);
+    };
+
+    const handleHoverRating = (fontName, rating) => {
+        setHoveredRating((prev) => ({ ...prev, [fontName]: rating }));
     };
 
     const sendRate = async (userId, fontId, rating) => {
@@ -64,28 +69,47 @@ export default function Home() {
                     <h3>Your favorites typographies</h3>
                     <div className={s.favorite__box}>
                         {fonts.map((font, i) => (
-                            <div className={s.favorite__box__wrapper} key={font.name + i}>
-                                <div className={s.favorite}>
-                                    <div className={s.favorite__wrapper}>
-                                        <div className={s.favorite__wrapper__text}>
-                                            <span style={{ fontFamily: font.name }}>
-                                                {font.name}
-                                            </span>
+                            <div className={s.favorite__ctn} key={font.name + i}>
+                                <div className={s.favorite__ctn__wrapper}>
+                                    <div className={s.favorite}>
+                                        <div className={s.favorite__wrapper}>
+                                            <div className={s.favorite__wrapper__text}>
+                                                <span style={{ fontFamily: font.name }}>
+                                                    {font.name}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <span className={s.legend}>{font.name}</span>
-                                <div className={s.favorite__wrapper__note}>
-                                    {Array.from({ length: 5 }, (_, i) => (
-                                        <input
-                                            key={font.name + i}
-                                            type="checkbox"
-                                            checked={ratings[font.name] >= i + 1}
-                                            onChange={() =>
-                                                handleRating(userId, font.id, font.name, i + 1)
-                                            }
-                                        />
-                                    ))}
+                                    <div className={s.favorite__legend}>
+                                        <span className={s.legend}>{font.name}</span>
+                                        <div className={s.favorite__wrapper__note}>
+                                            {Array.from({ length: 5 }, (_, i) => (
+                                                <input
+                                                    key={font.name + i}
+                                                    type="checkbox"
+                                                    checked={
+                                                        hoveredRating[font.name]
+                                                            ? hoveredRating[font.name] >= i + 1
+                                                            : ratings[font.name] >= i + 1
+                                                    }
+                                                    onClick={() =>
+                                                        handleRating(
+                                                            userId,
+                                                            font.id,
+                                                            font.name,
+                                                            i + 1
+                                                        )
+                                                    }
+                                                    onMouseEnter={() =>
+                                                        handleHoverRating(font.name, i + 1)
+                                                    }
+                                                    onMouseLeave={() => {
+                                                        setHoveredRating({});
+                                                    }}
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ))}
