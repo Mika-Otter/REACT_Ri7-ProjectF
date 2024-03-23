@@ -12,5 +12,12 @@
     src: url(../typefaces/Nacelle-Bold.otf);
 }
 
-$black-color: #141212;
-$white-color: #f8f8f1;
+$black-color: #100b07;
+$white-color: #f8f7f7;
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: $white-color;
+}

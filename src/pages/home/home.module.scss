@@ -28,7 +28,7 @@
         justify-content: center;
         .legend {
             font-family: "Nacelle";
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-top: 0px;
         }
     }
@@ -36,7 +36,7 @@
 
 .favorite {
     width: 100%;
-    height: 17vh;
+    height: 80%;
     border: 2px solid $black-color;
     text-overflow: ellipsis;
     margin-bottom: 5px;
@@ -53,9 +53,10 @@
         align-items: center;
 
         &__note {
+            height: 80%;
             display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
+            flex-direction: column-reverse;
+            justify-content: center;
 
             gap: 4px;
             input {

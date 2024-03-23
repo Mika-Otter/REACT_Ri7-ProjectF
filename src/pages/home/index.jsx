@@ -12,7 +12,7 @@ export default function Home() {
     const userId = useSelector((state) => state.auth.userId);
 
     const [ratings, setRatings] = useState({});
-    const [hoveredRating, setHoveredRating] = useState({});
+    // const [hoveredRating, setHoveredRating] = useState({});
 
     const handleRating = (userId, fontId, fontName, rating) => {
         setRatings((prev) => ({
@@ -22,9 +22,9 @@ export default function Home() {
         sendRate(userId, fontId, rating);
     };
 
-    const handleHoverRating = (fontName, rating) => {
-        setHoveredRating((prev) => ({ ...prev, [fontName]: rating }));
-    };
+    // const handleHoverRating = (fontName, rating) => {
+    //     setHoveredRating((prev) => ({ ...prev, [fontName]: rating }));
+    // };
 
     const sendRate = async (userId, fontId, rating) => {
         try {
@@ -82,34 +82,26 @@ export default function Home() {
                                     </div>
                                     <div className={s.favorite__legend}>
                                         <span className={s.legend}>{font.name}</span>
-                                        <div className={s.favorite__wrapper__note}>
-                                            {Array.from({ length: 5 }, (_, i) => (
-                                                <input
-                                                    key={font.name + i}
-                                                    type="checkbox"
-                                                    checked={
-                                                        hoveredRating[font.name]
-                                                            ? hoveredRating[font.name] >= i + 1
-                                                            : ratings[font.name] >= i + 1
-                                                    }
-                                                    onClick={() =>
-                                                        handleRating(
-                                                            userId,
-                                                            font.id,
-                                                            font.name,
-                                                            i + 1
-                                                        )
-                                                    }
-                                                    onMouseEnter={() =>
-                                                        handleHoverRating(font.name, i + 1)
-                                                    }
-                                                    onMouseLeave={() => {
-                                                        setHoveredRating({});
-                                                    }}
-                                                />
-                                            ))}
-                                        </div>
                                     </div>
+                                </div>
+                                <div className={s.favorite__wrapper__note}>
+                                    {Array.from({ length: 5 }, (_, i) => (
+                                        <input
+                                            key={font.name + i}
+                                            type="checkbox"
+                                            checked={ratings[font.name] >= i + 1}
+                                            //   hoveredRating[font.name] ? hoveredRating[font.name] >= i + 1
+                                            onClick={() =>
+                                                handleRating(userId, font.id, font.name, i + 1)
+                                            }
+                                            // onMouseEnter={() =>
+                                            //     handleHoverRating(font.name, i + 1)
+                                            // }
+                                            // onMouseLeave={() => {
+                                            //     setHoveredRating({});
+                                            // }}
+                                        />
+                                    ))}
                                 </div>
                             </div>
                         ))}
