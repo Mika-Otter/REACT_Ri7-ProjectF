@@ -1,13 +1,31 @@
 import React, { useState } from "react";
 import s from "./variableText.module.scss";
 import cn from "classnames";
+import Folder from "../folder";
+import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
-export default function VariableText() {
+export default function Variable() {
+    const choosedFonts = useSelector((state) => state.choosedFonts.value);
+
+    return (
+        <>
+            <Folder />
+            <div>
+                {choosedFonts.map((font, i) => (
+                    <VariableText fontName={font.name} key={i} />
+                ))}
+            </div>
+        </>
+    );
+}
+
+function VariableText({ fontName }) {
     const [fontSize, setFonSize] = useState(2);
-    const [lineHeight, setLineHeight] = useState(30);
+    const [lineHeight, setLineHeight] = useState(100);
 
     function changeLineHeight(e) {
-        const updatedLineHeight = parseFloat(e.target.value) + 50;
+        const updatedLineHeight = parseFloat(e.target.value);
         setLineHeight(updatedLineHeight);
     }
 
@@ -32,15 +50,21 @@ export default function VariableText() {
                         <input
                             type="range"
                             min={0}
-                            max={100}
+                            max={200}
                             step={1}
                             name="lineHeight"
-                            value={lineHeight - 50}
+                            value={lineHeight}
                             onChange={(e) => changeLineHeight(e)}
                         />
                     </div>
                 </div>
-                <p style={{ fontSize: `${fontSize}rem`, lineHeight: `${lineHeight}%` }}>
+                <p
+                    style={{
+                        fontSize: `${fontSize}rem`,
+                        lineHeight: `${lineHeight}%`,
+                        fontFamily: fontName,
+                    }}
+                >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas optio
                     nihil nobis numquam voluptate, saepe nam est. Reiciendis deleniti omnis corporis
                     quaerat aliquid deserunt magni illo soluta iusto exercitationem.
@@ -49,3 +73,7 @@ export default function VariableText() {
         </>
     );
 }
+
+VariableText.propTypes = {
+    fontName: PropTypes.node.isRequired,
+};

@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./home.module.scss";
-import TestText from "../../components/testText";
 import Folder from "../../components/folder";
-import Logout from "../../components/logout";
 import Favorites from "../../components/favorites";
 
 export default function Home() {
@@ -11,8 +9,6 @@ export default function Home() {
             <section>
                 <Favorites />
                 <Folder />
-                <TestText />
-                <Logout />
             </section>
         </>
     );

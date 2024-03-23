@@ -6,7 +6,6 @@ import Folder from "../folder";
 // import { setFonts } from "../../src/features/fonts/fontsSlice";
 
 export default function TestText() {
-    const fonts = useSelector((state) => state.fonts.value);
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
 
     const [test, setTest] = useState("");
@@ -41,20 +40,6 @@ export default function TestText() {
 
     return (
         <>
-            {fonts.map((font, index) => (
-                <style key={`style-${index}`}>
-                    {`
-                        @font-face {
-                            font-family: '${font.name}';
-                            src: url(${font.url}) format('truetype');
-                        }
-
-                        .font-${font.name} {
-                            font-family: '${font.name}', sans-serif;
-                        }
-                    `}
-                </style>
-            ))}
             <section>
                 <div className={s.test}>
                     <div className={s.test__text}>

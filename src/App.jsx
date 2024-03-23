@@ -7,10 +7,13 @@ import Login from "./components/login";
 import Home from "./pages/home";
 import Unauthorized from "./components/unauthorized";
 import RequireAuth from "./components/requireAuth";
+import Loaderfont from "./components/loaderfont";
+import Variable from "./components/variableText";
 
 export default function App() {
     return (
         <>
+            <Loaderfont />
             <Routes>
                 {/* public routes */}
                 <Route path="/" element={<Welcome />}></Route>
@@ -22,6 +25,7 @@ export default function App() {
                 <Route element={<RequireAuth />}>
                     <Route path="fonttest" element={<TestText />}></Route>
                     <Route path="home" element={<Home />}></Route>
+                    <Route path="variable" element={<Variable />}></Route>
                 </Route>
                 {/* catch all */}
                 {/* <Route path="*" element={<Missing />}></Route> */}

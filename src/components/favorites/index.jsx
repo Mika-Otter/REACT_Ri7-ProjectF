@@ -90,13 +90,24 @@ export default function Favorites() {
         }
     };
 
-    // GO TO TEST______________________________________________________________________________
+    // GO TO ______________________________________________________________________________
 
     const gotoTest = (fontId) => {
         const selectedFont = fonts.find((font) => font.id === fontId);
-        dispatch(toggleFontState({ fontName: selectedFont.name }));
-        dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
+        if (!selectedFont.state) {
+            dispatch(toggleFontState({ fontName: selectedFont.name }));
+            dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
+        }
         navigate("/fonttest");
+    };
+
+    const gotoVariable = (fontId) => {
+        const selectedFont = fonts.find((font) => font.id === fontId);
+        if (!selectedFont.state) {
+            dispatch(toggleFontState({ fontName: selectedFont.name }));
+            dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
+        }
+        navigate("/variable");
     };
 
     // OTHERS__________________________________________________________________________________
@@ -218,6 +229,12 @@ export default function Favorites() {
                                             </button>
                                             <button type="button" onClick={() => gotoTest(font.id)}>
                                                 T
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => gotoVariable(font.id)}
+                                            >
+                                                V
                                             </button>
                                         </div>
                                     </div>

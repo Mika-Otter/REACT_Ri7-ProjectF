@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFonts, toggleFontState } from "../../features/fontsSlice";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
+import Logout from "../logout";
 
 export default function Folder() {
     const dispatch = useDispatch();
@@ -107,6 +108,7 @@ export default function Folder() {
                         onChange={(e) => fileUpload(e)}
                     />
                 </div>
+                <Logout />
             </section>
         </>
     );
