@@ -20,7 +20,7 @@ export default function App() {
 
                 {/* protected routes */}
                 <Route element={<RequireAuth />}>
-                    <Route path="test" element={<TestText />}></Route>
+                    <Route path="fonttest" element={<TestText />}></Route>
                     <Route path="home" element={<Home />}></Route>
                 </Route>
                 {/* catch all */}

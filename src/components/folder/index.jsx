@@ -76,6 +76,10 @@ export default function Folder() {
             }
         }
     }
+
+    useEffect(() => {
+        console.log(choosedFonts);
+    }, [choosedFonts]);
     return (
         <>
             <section className={s.folder}>

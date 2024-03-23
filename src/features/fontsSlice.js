@@ -21,13 +21,16 @@ const fontsSlice = createSlice({
         },
         toggleFavorite: (state, action) => {
             const { fontId, favorite } = action.payload;
-            const font = state.value.find((font) => font.id === fontId);
-            if (font) {
-                font.favorite = favorite;
-            }
+            state.value = state.value.map((font) =>
+                font.id === fontId ? { ...font, favorite: favorite } : font
+            );
+        },
+        deleteFont: (state, action) => {
+            const fontId = action.payload;
+            state.value = state.value.filter((font) => font.id !== fontId);
         },
     },
 });
 
-export const { setFonts, toggleFontState, toggleFavorite } = fontsSlice.actions;
+export const { setFonts, toggleFontState, toggleFavorite, deleteFont } = fontsSlice.actions;
 export default fontsSlice.reducer;
