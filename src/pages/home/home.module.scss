@@ -3,11 +3,15 @@
 .favorite__box {
     width: 80%;
     display: flex;
+    height: 35vh;
+    overflow-y: scroll;
 
     flex-wrap: wrap;
     gap: 40px;
     row-gap: 20px;
     padding: 2vh 2vw;
+    border-radius: 23px;
+    border: 2px solid $black-color;
 }
 
 .favorite__ctn {
@@ -83,7 +87,7 @@
             }
         }
         &__text:hover {
-            margin-left: -50px;
+            transform: translateX(-20%);
         }
     }
     &__legend {
