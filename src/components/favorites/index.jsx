@@ -1,30 +1,24 @@
 import React, { useState, useEffect } from "react";
 import s from "./favorites.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleFavorite } from "../../features/fontsSlice";
 import axios from "../../app/api/axios";
 
 export default function Favorites() {
+    const dispatch = useDispatch();
     const username = useSelector((state) => state.auth.username);
     const fonts = useSelector((state) => state.fonts.value);
     const userId = useSelector((state) => state.auth.userId);
 
     const [ratings, setRatings] = useState({});
-    const [favorites, setFavorites] = useState([]);
 
+    // _HANDLE RATE FAVORITE ______________________________________________________________________________
     const handleRating = (userId, fontId, fontName, rating) => {
         setRatings((prev) => ({
             ...prev,
             [fontName]: rating,
         }));
         sendRate(userId, fontId, rating);
-    };
-
-    const handleFavorite = (userId, fontId, state) => {
-        setFavorites((prev) => ({
-            ...prev,
-            [fontId]: state,
-        }));
-        sendFavorite(userId, fontId, state);
     };
 
     const sendRate = async (userId, fontId, rating) => {
@@ -51,8 +45,14 @@ export default function Favorites() {
         }
     };
 
+    // _HANDLE FAVORITE ______________________________________________________________________________
+    const handleFavorite = (userId, fontId, state) => {
+        dispatch(toggleFavorite({ fontId: fontId, favorite: state }));
+        sendFavorite(userId, fontId, state);
+        console.log("heeeere ", fonts);
+    };
+
     const sendFavorite = async (userId, fontId, state) => {
-        console.log(favorites);
         try {
             const res = await axios.post("/fonts/favorite", { userId, fontId, state });
             return res.status === 200;
@@ -66,10 +66,8 @@ export default function Favorites() {
             const res = await axios.post("/fonts/favorite/getAll", { userId });
             const data = res.data.data;
             data.forEach((favorite) => {
-                setFavorites((prev) => ({
-                    ...prev,
-                    [favorite.fontId]: true,
-                }));
+                console.log(favorite);
+                dispatch(toggleFavorite({ fontId: favorite.fontId, favorite: true }));
             });
             return res.status === 200;
         } catch (err) {
@@ -77,13 +75,12 @@ export default function Favorites() {
         }
     };
 
-    // useEffect(() => {
-    //     console.log(ratings);
-    // }, [ratings]);
+    // OTHERS__________________________________________________________________________________
 
     useEffect(() => {
         getRate(userId);
         getFavorites(userId);
+        console.log("heeeere ", fonts);
     }, []);
 
     return (
@@ -92,9 +89,7 @@ export default function Favorites() {
                 <div className={s.hey}>
                     <h2>Hey {username}_</h2>
                 </div>
-                <div className={s.favorites__typos}>
-                    <h3>Your favorites typographies</h3>
-
+                <div className={s.typos}>
                     <div className={s.favorite__box}>
                         {fonts.map((font, i) => (
                             <div className={s.favorite__ctn} key={font.name + i}>
@@ -114,9 +109,7 @@ export default function Favorites() {
                                         <div className={s.tools}>
                                             <input
                                                 type="checkbox"
-                                                checked={
-                                                    favorites[font.id] ? favorites[font.id] : false
-                                                }
+                                                checked={font.favorite ? font.favorite : false}
                                                 onChange={(e) =>
                                                     handleFavorite(
                                                         userId,
@@ -144,6 +137,9 @@ export default function Favorites() {
                             </div>
                         ))}
                     </div>
+                </div>
+                <div className={s.favorites__typos}>
+                    <h3>Your favorites typographies</h3>
                 </div>
             </section>
         </>

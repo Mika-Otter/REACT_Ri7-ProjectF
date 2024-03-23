@@ -19,8 +19,15 @@ const fontsSlice = createSlice({
                 font.state = !font.state;
             }
         },
+        toggleFavorite: (state, action) => {
+            const { fontId, favorite } = action.payload;
+            const font = state.value.find((font) => font.id === fontId);
+            if (font) {
+                font.favorite = favorite;
+            }
+        },
     },
 });
 
-export const { setFonts, toggleFontState } = fontsSlice.actions;
+export const { setFonts, toggleFontState, toggleFavorite } = fontsSlice.actions;
 export default fontsSlice.reducer;
