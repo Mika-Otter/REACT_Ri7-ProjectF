@@ -9,6 +9,7 @@ export default function Favorites() {
     const userId = useSelector((state) => state.auth.userId);
 
     const [ratings, setRatings] = useState({});
+    const [favorites, setFavorites] = useState([]);
 
     const handleRating = (userId, fontId, fontName, rating) => {
         setRatings((prev) => ({
@@ -16,6 +17,14 @@ export default function Favorites() {
             [fontName]: rating,
         }));
         sendRate(userId, fontId, rating);
+    };
+
+    const handleFavorite = (userId, fontId, state) => {
+        setFavorites((prev) => ({
+            ...prev,
+            [fontId]: state,
+        }));
+        sendFavorite(userId, fontId, state);
     };
 
     const sendRate = async (userId, fontId, rating) => {
@@ -30,7 +39,6 @@ export default function Favorites() {
     const getRate = async (userId) => {
         try {
             const res = await axios.post("/fonts/rate/getAll", { userId });
-            console.log(res.data.data);
             const fontRates = res.data.data;
             fontRates.forEach((rate) => {
                 setRatings((prev) => ({
@@ -43,8 +51,8 @@ export default function Favorites() {
         }
     };
 
-    const handleFavorite = async (userId, fontId, state) => {
-        console.log(state);
+    const sendFavorite = async (userId, fontId, state) => {
+        console.log(favorites);
         try {
             const res = await axios.post("/fonts/favorite", { userId, fontId, state });
             return res.status === 200;
@@ -56,15 +64,22 @@ export default function Favorites() {
     const getFavorites = async (userId) => {
         try {
             const res = await axios.post("/fonts/favorite/getAll", { userId });
+            const data = res.data.data;
+            data.forEach((favorite) => {
+                setFavorites((prev) => ({
+                    ...prev,
+                    [favorite.fontId]: true,
+                }));
+            });
             return res.status === 200;
         } catch (err) {
             console.error("FAILED : Try to get all favorites =>, ", err);
         }
     };
 
-    useEffect(() => {
-        console.log(ratings);
-    }, [ratings]);
+    // useEffect(() => {
+    //     console.log(ratings);
+    // }, [ratings]);
 
     useEffect(() => {
         getRate(userId);
@@ -99,6 +114,9 @@ export default function Favorites() {
                                         <div className={s.tools}>
                                             <input
                                                 type="checkbox"
+                                                checked={
+                                                    favorites[font.id] ? favorites[font.id] : false
+                                                }
                                                 onChange={(e) =>
                                                     handleFavorite(
                                                         userId,
@@ -117,7 +135,7 @@ export default function Favorites() {
                                             key={font.name + i}
                                             type="checkbox"
                                             checked={ratings[font.name] >= i + 1}
-                                            onClick={() =>
+                                            onChange={() =>
                                                 handleRating(userId, font.id, font.name, i + 1)
                                             }
                                         />
