@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import s from "./folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { setFonts, toggleFontState } from "../../features/fontsSlice";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
@@ -109,6 +111,10 @@ export default function Folder() {
                     />
                 </div>
                 <Logout />
+                <Link to="/profil">Profil</Link>
+                <Link to="/home">Home</Link>
+                <Link to="/variable">Variable</Link>
+                <Link to="/fonttest">Font test</Link>
             </section>
         </>
     );
