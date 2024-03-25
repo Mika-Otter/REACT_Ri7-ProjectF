@@ -14,8 +14,8 @@ export default function Folder() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
     const userId = useSelector((state) => state.auth.userId);
 
-    // Upload new typos
-    async function fileUpload(e) {
+    // UPLOAD A NEW TYPEFACE
+    const fileUpload = async (e) => {
         const fontList = e.target.files;
 
         const formData = new FormData();
@@ -27,6 +27,7 @@ export default function Folder() {
 
         formData.append("userId", userId);
         try {
+            console.log(formData, "YOOOO");
             const res = await axios.post("/upload/add", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
@@ -41,10 +42,10 @@ export default function Folder() {
         } catch (err) {
             console.error("Failed to upload files :", err);
         }
-    }
+    };
 
-    // Get font name for the user
-    async function getUserFonts() {
+    // GET FONT USER'S FONTS
+    const getUserFonts = async () => {
         try {
             const res = await axios.post("/fonts/getAll", { userId });
             if (res.status === 200) {
@@ -66,34 +67,33 @@ export default function Folder() {
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     useEffect(() => {
-        getUserFonts();
+        getUserFonts(); //First rendering get all user's fonts
     }, []);
 
-    // Handle changing checked fonts
+    // HANDLE CHANGING CHECKED FONT
     function handleFonts(name) {
-        dispatch(toggleFontState({ fontName: name }));
+        dispatch(toggleFontState({ fontName: name })); //reverse state
 
-        const selectedFont = fonts.find((font) => font.name === name);
-        console.log(selectedFont.name); // Trouver la police sélectionnée par son nom
+        const selectedFont = fonts.find((font) => font.name === name); //Find font by name
         if (selectedFont) {
             if (!selectedFont.checked) {
+                //Add font if not checked and font name doesn't already exist
                 if (!choosedFonts.find((font) => font.name === name)) {
                     dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
                 }
             } else {
-                console.log("YOOOO");
-                dispatch(deleteChoosedFont(selectedFont));
+                dispatch(deleteChoosedFont(selectedFont)); //if font already exist delete
             }
         }
     }
 
     //TEST
-    useEffect(() => {
-        console.log("Choooosed", choosedFonts);
-    }, [choosedFonts]);
+    // useEffect(() => {
+    //     console.log("Choooosed", choosedFonts);
+    // }, [choosedFonts]);
 
     //RETURN________________________________________________________________________________________________________
     return (
