@@ -7,6 +7,17 @@
     color: #fe4444;
 }
 
+.instructions {
+    padding: 3px 5px;
+    color: #fe4444;
+    border: 1px solid #fe4444;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+.offscreen {
+    display: none;
+}
+
 .profil__section {
     display: flex;
     justify-content: center;
