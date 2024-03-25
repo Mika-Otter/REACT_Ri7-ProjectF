@@ -97,7 +97,7 @@ export default function Register() {
         <>
             {success ? (
                 <section>
-                    <h1>Succes!</h1>
+                    <h1>Success!</h1>
                     <p>
                         <Link to="/login">Back to login page</Link>
                     </p>

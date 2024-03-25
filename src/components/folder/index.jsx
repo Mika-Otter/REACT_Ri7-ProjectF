@@ -111,7 +111,7 @@ export default function Folder() {
                     />
                 </div>
                 <Logout />
-                <Link to="/profil">Profil</Link>
+                <Link to="/settings">Settings</Link>
                 <Link to="/home">Home</Link>
                 <Link to="/variable">Variable</Link>
                 <Link to="/fonttest">Font test</Link>

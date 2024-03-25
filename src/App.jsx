@@ -9,7 +9,7 @@ import Unauthorized from "./components/unauthorized";
 import RequireAuth from "./components/requireAuth";
 import Loaderfont from "./components/loaderfont";
 import Variable from "./components/variableText";
-import Profil from "./components/profil";
+import Settings from "./components/settings";
 
 export default function App() {
     return (
@@ -27,7 +27,7 @@ export default function App() {
                     <Route path="fonttest" element={<TestText />}></Route>
                     <Route path="home" element={<Home />}></Route>
                     <Route path="variable" element={<Variable />}></Route>
-                    <Route path="profil" element={<Profil />}></Route>
+                    <Route path="settings" element={<Settings />}></Route>
                 </Route>
                 {/* catch all */}
                 {/* <Route path="*" element={<Missing />}></Route> */}

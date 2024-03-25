@@ -1,0 +1,87 @@
+@import "../../../public/styles/global";
+
+.profil__section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 85%;
+}
+.profil {
+    border: 2px solid $black-color;
+    width: 32%;
+    height: 60vh;
+    font-family: "Nacelle";
+    font-weight: 500;
+    padding: 1.5vw;
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+form {
+    margin-bottom: 50px;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid $black-color;
+    background-color: inherit;
+    color: $black-color;
+
+    border-radius: 8px;
+    font-family: "Nacelle";
+    font-style: italic;
+    font-size: 1rem;
+    padding: 10px 18px 7px 15px;
+}
+
+.profil__user {
+    &__name,
+    &__email {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        label {
+            margin-bottom: 4px;
+        }
+        input {
+            height: 2vh;
+            border: 1px solid #3f3c3caa;
+            border-radius: 5px;
+        }
+    }
+}
+
+.profil__password {
+    &__old,
+    &__new,
+    &__confirm {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        label {
+            margin-bottom: 4px;
+        }
+        input {
+            height: 2vh;
+            border: 1px solid #3f3c3caa;
+            border-radius: 5px;
+        }
+    }
+}
+
+.email__preferences {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.manage {
+    background-color: $black-color;
+    color: $white-color;
+}

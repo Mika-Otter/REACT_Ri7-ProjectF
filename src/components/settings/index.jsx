@@ -1,24 +1,22 @@
 import React from "react";
-import s from "./profil.module.scss";
+import s from "./settings.module.scss";
 import Folder from "../folder";
 
-export default function Profil() {
+export default function Settings() {
     return (
         <>
             <Folder />
-            <section>
-                <h1>Accessibility</h1>
+            <section className={s.profil__section}>
                 <div className={s.profil}>
-                    <h3>User Profil</h3>
+                    <h1>Accessibility</h1>
+
                     <form className={s.profil__user} method="post">
+                        <h3>User Profil</h3>
                         <div className={s.profil__user__name}>
                             <label htmlFor="username">Name</label>
                             <input type="text" value="user.name" />
                         </div>
-                        <div className={s.profil__user__email}>
-                            <label htmlFor="email">Email address</label>
-                            <input type="email" name="email" value="user.email" />
-                        </div>
+                        <button type="submit">Update profil</button>
                     </form>
                     <h3>Change password</h3>
                     <form className={s.profil__password} method="post">
@@ -39,7 +37,9 @@ export default function Profil() {
                     <h3>Email preferences</h3>
                     <div className={s.email__preferences}>
                         <span>user.email</span>
-                        <button type="button">Manage</button>
+                        <button type="button" className={s.manage}>
+                            Manage
+                        </button>
                     </div>
                     <h3>Custom</h3>
                     <div className={s.email__preferences}>
