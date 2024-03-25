@@ -1,5 +1,12 @@
 @import "../../../public/styles/global";
 
+.error {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: #fe4444;
+}
+
 .profil__section {
     display: flex;
     justify-content: center;

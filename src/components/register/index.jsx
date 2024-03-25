@@ -77,9 +77,6 @@ export default function Register() {
         setSuccess(true);
         try {
             const res = await axios.post(REGISTER_URL, inputs);
-
-            console.log(res.data);
-            console.log(res.accessToken);
             setSuccess(true);
             navigate("/login");
         } catch (err) {
