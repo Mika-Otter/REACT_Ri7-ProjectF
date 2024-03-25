@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { setFonts, toggleFontState } from "../../features/fontsSlice";
-import { setChoosedFonts } from "../../features/choosedFontSlide";
+import { deleteChoosedFont, setChoosedFonts } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
 import Logout from "../logout";
 
@@ -14,6 +14,7 @@ export default function Folder() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
     const userId = useSelector((state) => state.auth.userId);
 
+    // Upload new typos
     async function fileUpload(e) {
         const fontList = e.target.files;
 
@@ -33,7 +34,6 @@ export default function Folder() {
             });
             if (res.status === 200) {
                 const newFonts = res.data.fonts;
-                console.log(newFonts, "NEEEEWS");
                 newFonts.forEach((font) => {
                     dispatch(setFonts({ name: font.name, url: font.url, id: font.id }));
                 });
@@ -43,7 +43,7 @@ export default function Folder() {
         }
     }
 
-    // GET FONTSNAME FOR A USER
+    // Get font name for the user
     async function getUserFonts() {
         try {
             const res = await axios.post("/fonts/getAll", { userId });
@@ -51,7 +51,13 @@ export default function Folder() {
                 const fontsData = res.data.fonts;
                 fontsData.forEach((font) => {
                     if (!fonts.some((existingFont) => existingFont.name === font.name)) {
-                        dispatch(setFonts({ name: font.name, url: font.url, id: font.id }));
+                        dispatch(
+                            setFonts({
+                                name: font.name,
+                                url: font.url,
+                                id: font.id,
+                            })
+                        );
                     }
                 });
             } else {
@@ -66,23 +72,30 @@ export default function Folder() {
         getUserFonts();
     }, []);
 
+    // Handle changing checked fonts
     function handleFonts(name) {
         dispatch(toggleFontState({ fontName: name }));
-        const selectedFont = fonts.find((font) => font.name === name); // Trouver la police sélectionnée par son nom
+
+        const selectedFont = fonts.find((font) => font.name === name);
+        console.log(selectedFont.name); // Trouver la police sélectionnée par son nom
         if (selectedFont) {
-            if (!selectedFont.state) {
+            if (!selectedFont.checked) {
                 if (!choosedFonts.find((font) => font.name === name)) {
                     dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
                 }
             } else {
-                dispatch(setChoosedFonts(choosedFonts.filter((font) => font.name !== name)));
+                console.log("YOOOO");
+                dispatch(deleteChoosedFont(selectedFont));
             }
         }
     }
 
+    //TEST
     useEffect(() => {
-        console.log(choosedFonts);
+        console.log("Choooosed", choosedFonts);
     }, [choosedFonts]);
+
+    //RETURN________________________________________________________________________________________________________
     return (
         <>
             <section className={s.folder}>
@@ -93,7 +106,7 @@ export default function Folder() {
                             <input
                                 type="checkbox"
                                 name={font.name}
-                                checked={font.state}
+                                checked={font.checked}
                                 onChange={() => handleFonts(font.name)}
                             />
                             <label htmlFor={font.name} style={{ fontFamily: `${font.name}` }}>
@@ -119,12 +132,3 @@ export default function Folder() {
         </>
     );
 }
-
-// async function fetchTyposFromServer() {
-//     try {
-//         const res = await axios.get("/static/upload/test.otf");
-//         const fontUrl = res.request.responseURL; // Obtenez l'URL de la police
-//     } catch (err) {
-//         console.error("Failed to fetch typos from server : ", err);
-//     }
-// }

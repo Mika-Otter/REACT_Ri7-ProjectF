@@ -3,14 +3,26 @@
 .variable {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    // border: 2px solid purple;
+}
+
+.fontcard__ctn {
+    width: 50%;
+    height: 14vh;
+    // border: 2px solid blue;
+}
+
+.cursor__box {
+    display: flex;
 }
 
 .range {
+    // border: 2px solid red;
     display: flex;
+    width: 15%;
     flex-direction: column;
     gap: 10px;
     input {
-        width: 5%;
+        width: 70%;
     }
 }

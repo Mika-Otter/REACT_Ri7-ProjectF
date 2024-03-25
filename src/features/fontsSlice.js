@@ -14,9 +14,10 @@ const fontsSlice = createSlice({
         },
         toggleFontState: (state, action) => {
             const { fontName } = action.payload;
+
             const font = state.value.find((font) => font.name === fontName);
             if (font) {
-                font.state = !font.state;
+                font.checked = !font.checked;
             }
         },
         toggleFavorite: (state, action) => {

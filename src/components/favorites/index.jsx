@@ -5,13 +5,13 @@ import { toggleFavorite, deleteFont, toggleFontState } from "../../features/font
 import axios from "../../app/api/axios";
 import { useNavigate } from "react-router-dom";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
+import CardFont from "../cardFont";
 
 export default function Favorites() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const username = useSelector((state) => state.auth.username);
     const fonts = useSelector((state) => state.fonts.value);
-    const choosedFonts = useSelector((state) => state.choosedFonts.value);
     const [fontsLoaded, setFontsLoaded] = useState(false);
     const userId = useSelector((state) => state.auth.userId);
 
@@ -70,44 +70,12 @@ export default function Favorites() {
             const res = await axios.post("/fonts/favorite/getAll", { userId });
             const data = res.data.data;
             data.forEach((favorite) => {
-                console.log(favorite);
                 dispatch(toggleFavorite({ fontId: favorite.fontId, favorite: true }));
             });
             return res.status === 200;
         } catch (err) {
             console.error("FAILED : Try to get all favorites =>, ", err);
         }
-    };
-
-    // DELETE FONTS____________________________________________________________________________
-    const deleteFonts = async (fontId) => {
-        try {
-            dispatch(deleteFont(fontId));
-            const res = await axios.post("/fonts/delete", { fontId });
-            return res.status === 200;
-        } catch (err) {
-            console.error("FAILED : Try to delete typo => ", err);
-        }
-    };
-
-    // GO TO ______________________________________________________________________________
-
-    const gotoTest = (fontId) => {
-        const selectedFont = fonts.find((font) => font.id === fontId);
-        if (!selectedFont.state) {
-            dispatch(toggleFontState({ fontName: selectedFont.name }));
-            dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
-        }
-        navigate("/fonttest");
-    };
-
-    const gotoVariable = (fontId) => {
-        const selectedFont = fonts.find((font) => font.id === fontId);
-        if (!selectedFont.state) {
-            dispatch(toggleFontState({ fontName: selectedFont.name }));
-            dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
-        }
-        navigate("/variable");
     };
 
     // OTHERS__________________________________________________________________________________
@@ -125,7 +93,6 @@ export default function Favorites() {
         if (fonts.length > 0) {
             setFontsLoaded(true);
         }
-        console.log(fonts);
     }, [fonts]);
 
     if (!fontsLoaded) {
@@ -194,65 +161,7 @@ export default function Favorites() {
                     <h3>All your types : </h3>
                     <div className={s.favorite__box}>
                         {fonts.map((font, i) => (
-                            <div className={s.favorite__ctn} key={font.name + i}>
-                                <div className={s.favorite__ctn__wrapper}>
-                                    <div className={s.favorite}>
-                                        <div className={s.favorite__wrapper}>
-                                            <div className={s.favorite__wrapper__text}>
-                                                <span style={{ fontFamily: font.name }}>
-                                                    {font.name}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className={s.favorite__legend}>
-                                        <span className={s.legend}>{font.name}</span>
-                                        <div className={s.tools}>
-                                            <input
-                                                type="checkbox"
-                                                checked={font.favorite ? font.favorite : false}
-                                                onChange={(e) =>
-                                                    handleFavorite(
-                                                        userId,
-                                                        font.id,
-                                                        e.target.checked
-                                                    )
-                                                }
-                                            />{" "}
-                                            F
-                                            <button
-                                                type="button"
-                                                onClick={() => deleteFonts(font.id)}
-                                            >
-                                                D
-                                            </button>
-                                            <button type="button" onClick={() => gotoTest(font.id)}>
-                                                T
-                                            </button>
-                                            <button
-                                                type="button"
-                                                onClick={() => gotoVariable(font.id)}
-                                            >
-                                                V
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className={s.favorite__wrapper__note}>
-                                    {Array.from({ length: 5 }, (_, i) => (
-                                        <input
-                                            key={font.name + i}
-                                            type="checkbox"
-                                            checked={ratings[font.name] >= i + 1}
-                                            onChange={() =>
-                                                handleRating(userId, font.id, font.name, i + 1)
-                                            }
-                                        />
-                                    ))}
-                                </div>
-                            </div>
+                            <CardFont font={font} key={font.name + i} small={false} />
                         ))}
                     </div>
                 </div>
@@ -260,20 +169,3 @@ export default function Favorites() {
         </>
     );
 }
-
-//______HOVER RATING__________________________________________________________
-
-//const [hoveredRating, setHoveredRating] = useState({});
-
-// const handleHoverRating = (fontName, rating) => {
-//     setHoveredRating((prev) => ({ ...prev, [fontName]: rating }));
-// };
-
-//--------------- in input[checkbox] ------------v
-//   hoveredRating[font.name] ? hoveredRating[font.name] >= i + 1
-// onMouseEnter={() =>
-//     handleHoverRating(font.name, i + 1)
-// }
-// onMouseLeave={() => {
-//     setHoveredRating({});
-// }}

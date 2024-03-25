@@ -4,6 +4,7 @@ import cn from "classnames";
 import Folder from "../folder";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import CardFont from "../cardFont";
 
 export default function Variable() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
@@ -13,14 +14,14 @@ export default function Variable() {
             <Folder />
             <div>
                 {choosedFonts.map((font, i) => (
-                    <VariableText fontName={font.name} key={i} />
+                    <VariableText fontName={font.name} key={i} font={font} small={true} />
                 ))}
             </div>
         </>
     );
 }
 
-function VariableText({ fontName }) {
+function VariableText({ fontName, font }) {
     const [fontSize, setFonSize] = useState(2);
     const [lineHeight, setLineHeight] = useState(100);
 
@@ -33,29 +34,34 @@ function VariableText({ fontName }) {
         <>
             <section>
                 <div className={s.variable}>
-                    <div className={cn(s.fontSize, s.range)}>
-                        <label htmlFor="fontSize">Font-size : {fontSize}</label>
-                        <input
-                            type="range"
-                            min={0.3}
-                            max={20}
-                            step={0.1}
-                            name="fontSize"
-                            value={fontSize}
-                            onChange={(e) => setFonSize(parseFloat(e.target.value))}
-                        />
+                    <div className={s.fontcard__ctn}>
+                        <CardFont font={font} small={true} />
                     </div>
-                    <div className={cn(s.lineHeight, s.range)}>
-                        <label htmlFor="fontSize">Line-height : {lineHeight} %</label>
-                        <input
-                            type="range"
-                            min={0}
-                            max={200}
-                            step={1}
-                            name="lineHeight"
-                            value={lineHeight}
-                            onChange={(e) => changeLineHeight(e)}
-                        />
+                    <div className={s.cursor__box}>
+                        <div className={cn(s.fontSize, s.range)}>
+                            <label htmlFor="fontSize">Font-size : {fontSize}</label>
+                            <input
+                                type="range"
+                                min={0.3}
+                                max={20}
+                                step={0.1}
+                                name="fontSize"
+                                value={fontSize}
+                                onChange={(e) => setFonSize(parseFloat(e.target.value))}
+                            />
+                        </div>
+                        <div className={cn(s.lineHeight, s.range)}>
+                            <label htmlFor="fontSize">Line-height : {lineHeight} %</label>
+                            <input
+                                type="range"
+                                min={0}
+                                max={200}
+                                step={1}
+                                name="lineHeight"
+                                value={lineHeight}
+                                onChange={(e) => changeLineHeight(e)}
+                            />
+                        </div>
                     </div>
                 </div>
                 <p
@@ -76,4 +82,5 @@ function VariableText({ fontName }) {
 
 VariableText.propTypes = {
     fontName: PropTypes.node.isRequired,
+    font: PropTypes.node.isRequired,
 };
