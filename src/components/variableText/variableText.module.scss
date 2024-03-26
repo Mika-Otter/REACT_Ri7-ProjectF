@@ -1,8 +1,31 @@
 @import "../../../public/styles/global";
 
+.box__variable {
+    margin-top: 3vh;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    font-family: "Nacelle";
+    // border: 2px solid cyan;
+}
+
+.withTitle,
+.withoutTitle {
+    font-style: normal;
+    border-radius: 100px;
+    padding: 5px 10px;
+    width: 70%;
+}
+
+.withTitle {
+    background-color: $black-color;
+    color: $white-color;
+}
+
 .variable {
     display: flex;
     flex-direction: column;
+    width: 90%;
     // border: 2px solid purple;
 }
 
@@ -25,4 +48,10 @@
     input {
         width: 70%;
     }
+}
+
+.paragraph__section {
+    margin-top: 4vh;
+    padding: 20px 30px;
+    border: 2px solid $black-color;
 }
