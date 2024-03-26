@@ -161,7 +161,7 @@ export default function Favorites() {
                     <h3>All your types : </h3>
                     <div className={s.favorite__box}>
                         {fonts.map((font, i) => (
-                            <CardFont font={font} key={font.name + i} small={false} />
+                            <CardFont font={font} small={false} i={i} key={font.name + i} />
                         ))}
                     </div>
                 </div>

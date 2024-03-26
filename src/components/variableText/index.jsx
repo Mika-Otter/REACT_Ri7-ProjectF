@@ -14,14 +14,20 @@ export default function Variable() {
             <Folder />
             <div>
                 {choosedFonts.map((font, i) => (
-                    <VariableText fontName={font.name} key={i} font={font} small={true} />
+                    <VariableText
+                        fontName={font.name}
+                        key={font.name + i}
+                        font={font}
+                        small={true}
+                        i={i}
+                    />
                 ))}
             </div>
         </>
     );
 }
 
-function VariableText({ fontName, font }) {
+function VariableText({ fontName, font, i }) {
     const [fontSize, setFonSize] = useState(2);
     const [lineHeight, setLineHeight] = useState(100);
     const [addTitle, setAddTitle] = useState(false);
@@ -38,7 +44,7 @@ function VariableText({ fontName, font }) {
                     <div className={s.variable}>
                         <div className={s.variable__fontcard}>
                             <div className={s.fontcard__ctn}>
-                                <CardFont font={font} small={true} />
+                                <CardFont font={font} small={true} i={i} />
                             </div>
                             <div className={s.cursor__box}>
                                 <div className={cn(s.fontSize, s.range)}>
@@ -118,5 +124,6 @@ function VariableText({ fontName, font }) {
 
 VariableText.propTypes = {
     fontName: PropTypes.node.isRequired,
-    font: PropTypes.node.isRequired,
+    font: PropTypes.object.isRequired,
+    i: PropTypes.node.isRequired,
 };

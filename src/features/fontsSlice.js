@@ -10,7 +10,7 @@ const fontsSlice = createSlice({
     reducers: {
         setFonts: (state, action) => {
             const { name, url, id, ...rest } = action.payload;
-            state.value = [...state.value, { name, url, id, ...rest }];
+            state.value = [...state.value, { name, url, id, checked: false, ...rest }];
         },
         toggleFontState: (state, action) => {
             const { fontName } = action.payload;

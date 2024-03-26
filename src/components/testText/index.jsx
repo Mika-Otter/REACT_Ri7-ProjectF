@@ -23,13 +23,8 @@ export default function TestText() {
                 countNumChecked++;
             }
         }
-        if (checkboxes[checkboxName]) {
-            countNumChecked--;
-        } else {
-            countNumChecked++;
-        }
+        countNumChecked = checkboxes[checkboxName] ? countNumChecked-- : countNumChecked++;
 
-        console.log(countNumChecked);
         if (checkboxes[checkboxName] === true && countNumChecked === 0) {
             return;
         } else {

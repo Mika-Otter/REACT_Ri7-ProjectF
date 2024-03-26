@@ -184,7 +184,7 @@ export default function CardFont({ font, small, i }) {
 }
 
 CardFont.propTypes = {
-    font: PropTypes.node.isRequired,
+    font: PropTypes.object.isRequired,
     i: PropTypes.node.isRequired,
-    small: PropTypes.node.isRequired,
+    small: PropTypes.bool.isRequired,
 };
