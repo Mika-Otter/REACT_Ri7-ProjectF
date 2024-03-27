@@ -90,9 +90,9 @@ export default function CardFont({ font, small, i }) {
         }
     };
 
-    // GO TO ______________________________________________________________________________
-
+    // GO TO _________(can be update in one function ?)___________________________________________________________________
     const gotoTest = (fontId) => {
+        //select and add the selected font to choosedfonts before go to /fontest
         const selectedFont = fonts.find((font) => font.id === fontId);
         if (!selectedFont.checked) {
             dispatch(toggleFontState({ fontName: selectedFont.name }));
@@ -102,6 +102,7 @@ export default function CardFont({ font, small, i }) {
     };
 
     const gotoVariable = (fontId) => {
+        //select and add the selected font to choosedfonts before go to /variable
         const selectedFont = fonts.find((font) => font.id === fontId);
         if (!selectedFont.checked) {
             dispatch(toggleFontState({ fontName: selectedFont.name }));

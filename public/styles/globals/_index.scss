@@ -1,0 +1,27 @@
+@forward "typefaces";
+
+html {
+    box-sizing: border-box; //if box width is 300px and you add 20px of padding, the size of the box stay 300px instead 340px
+    font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+//___COLORS________________________
+$black-color: #100b07;
+$white-color: #f8f7f7;
+
+//___RULES_________________________
+$padding-s: 1vw;
+$padding-m: 1.5vw;
+$padding-l: 2vw;
+$padding-xl: 3vw;
