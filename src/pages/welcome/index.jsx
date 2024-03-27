@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import s from "./welcome.module.scss";
 import Login from "../../components/login";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 export default function Welcome() {
+    const [login, setLogin] = useState(false);
+    const container = useRef();
+
+    useEffect(() => {
+        console.log(login);
+    }, [login]);
+
+    useGSAP(() => {
+        if (login) {
+            gsap.to(container.current, {
+                height: "300px",
+                width: "20vw",
+                borderRadius: "23px",
+            });
+        } else {
+            gsap.to(container.current, {
+                height: "60%",
+                width: "7vw",
+                borderRadius: "80px",
+                duration: 0.5,
+            });
+        }
+    }, [login]);
+
     return (
         <>
             <section>
@@ -11,8 +38,10 @@ export default function Welcome() {
                         <span className={s.navbar__title__Typ}>typ_</span>
                         <span className={s.navbar__title__Pov}>pov</span>
                     </div>
-                    <div className={s.navbar__login}>
-                        <button type="button">Login</button>
+                    <div className={s.navbar__login} ref={container}>
+                        <button type="button" onClick={() => setLogin(!login)}>
+                            Login
+                        </button>
                         {/* <Login /> */}
                     </div>
                 </div>
@@ -24,7 +53,7 @@ export default function Welcome() {
                             <h2>one place</h2>
                         </div>
                         <button type="button">
-                            Get started{" "}
+                            Get started
                             <div id={s.wrapper__arrow}>
                                 <img
                                     src="/assets/welcome-img/arrow-started.png"
