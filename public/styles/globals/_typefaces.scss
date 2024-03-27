@@ -1,3 +1,5 @@
+@use "../utils/functions" as f;
+
 @font-face {
     font-family: "Poppins";
     src: url(../typefaces/Poppins-Regular.ttf);
@@ -10,6 +12,19 @@
     font-family: "Nacelle-Bold";
     src: url(../typefaces/Nacelle-Bold.otf);
 }
+@font-face {
+    font-family: "Vidaloka";
+    src: url(../typefaces/Vidaloka-Regular.ttf);
+}
+@font-face {
+    font-family: "VCR_OSD";
+    src: url(../typefaces/VCR_OSD_MONO.ttf);
+}
 
 //___FONT-SIZE______________________________
-$fontsize-xs: clamp(0.5rem, 9px + 0.5vw, 0.9rem);
+$fontsize-xs: clamp(f.rem(12), f.rem(9) + 0.5vw, f.rem(20));
+$fontsize-s: clamp(f.rem(14), f.rem(20) + 0.3vw, f.rem(31));
+$fontsize-m: clamp(f.rem(33), f.rem(27) + 0.7vw, f.rem(40));
+$fontsize-l: clamp(f.rem(44), f.rem(32) + 1.5vw, f.rem(70));
+$fontsize-xl: clamp(f.rem(50), f.rem(55) + 1.7vw, f.rem(84));
+$fontsize-xxl: clamp(f.rem(90), f.rem(50) + 2vw, f.rem(120));

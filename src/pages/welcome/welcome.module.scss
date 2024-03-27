@@ -1,0 +1,92 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../public/styles/global";
+
+.navbar {
+    display: flex;
+    height: f.rem(100);
+    justify-content: space-between;
+    align-items: center;
+    padding-right: $padding-m;
+
+    &__title {
+        padding: $padding-xxs;
+        &__Typ {
+            font-family: "VCR_OSD";
+            font-size: $fontsize-l;
+        }
+        &__Pov {
+            font-family: "Vidaloka";
+            font-size: $fontsize-l;
+        }
+    }
+
+    &__login > button {
+        width: f.rem(130);
+        height: clamp(f.rem(45), f.rem(45) + 2vh, f.rem(55));
+        text-align: center;
+        font-family: "Nacelle";
+        font-style: normal;
+        font-weight: 400;
+        font-size: $fontsize-s;
+        border-radius: 200px;
+        background-color: $black-color;
+        color: $white-color;
+    }
+}
+
+.getstarted {
+    margin-top: $padding-xl;
+    font-family: "Nacelle";
+    border: 2px solid red;
+    width: 70%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    h2 {
+        font-size: $fontsize-xl;
+        margin: 0;
+        margin-bottom: -20px;
+    }
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $grey-color;
+        color: $white-color;
+        font-style: normal;
+        font-weight: 400;
+        font-size: $fontsize-s;
+        text-align: left;
+        padding-left: 2rem;
+        border-radius: 50px;
+        width: clamp(f.rem(120), f.rem(200) + 3vw, f.rem(295));
+        height: clamp(f.rem(45), f.rem(45) + 2vh, f.rem(69));
+        transition: 0.3s ease-in-out;
+    }
+
+    button:hover {
+        width: clamp(f.rem(130), f.rem(220) + 3vw, f.rem(315));
+    }
+
+    #arrow {
+        transition: 0.2s ease-in-out;
+    }
+
+    button:hover #arrow {
+        transform: rotate(-90deg);
+    }
+}
+
+#wrapper__arrow {
+    background-color: #b02bde;
+    height: clamp(f.rem(25), f.rem(32) + 1vh, f.rem(37));
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+}
