@@ -4,13 +4,13 @@
 
 .navbar {
     display: flex;
-    height: f.rem(100);
+    height: f.rem(80);
     justify-content: space-between;
     align-items: center;
     padding-right: $padding-m;
 
     &__title {
-        padding: $padding-xxs;
+        padding: $padding-xs;
         &__Typ {
             font-family: "VCR_OSD";
             font-size: $fontsize-l;
@@ -22,26 +22,38 @@
     }
 
     &__login > button {
+        margin-top: 1vh;
         width: f.rem(130);
         height: clamp(f.rem(45), f.rem(45) + 2vh, f.rem(55));
         text-align: center;
-        font-family: "Nacelle";
+        font-family: Arial, Helvetica, sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: $fontsize-s;
         border-radius: 200px;
         background-color: $black-color;
         color: $white-color;
+        animation: changeFontOut 2s;
+    }
+
+    &__login > button:hover {
+        animation: changeFont 3s;
+        animation-fill-mode: both;
     }
 }
 
 .content {
     display: flex;
-
     justify-content: center;
     align-items: self-start;
-    width: 70%;
+    width: 75%;
     margin-inline: auto;
+    // border: 2px solid rgb(55, 255, 0);
+
+    @include u.breakpoint-down(large) {
+        width: 80%;
+        flex-direction: column;
+    }
 }
 
 .getstarted {
@@ -53,9 +65,17 @@
     gap: 1.5rem;
 
     h2 {
+        width: 100%;
         font-size: $fontsize-xl;
         margin: 0;
-        margin-bottom: -20px;
+        margin-bottom: -0.7rem;
+
+        @include u.breakpoint-down(xlarge) {
+            font-size: $fontsize-l;
+        }
+        @include u.breakpoint-down(large) {
+            text-align: center;
+        }
     }
     button {
         display: flex;
@@ -68,12 +88,17 @@
         border-radius: 50px;
         background-color: $grey-color;
         color: $white-color;
+        font-family: Arial, Helvetica, sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: $fontsize-s;
         text-align: left;
 
         transition: 0.3s ease-in-out;
+        @include u.breakpoint-down(large) {
+            text-align: center;
+            margin-inline: auto;
+        }
     }
 
     button:hover {
@@ -86,6 +111,13 @@
 
     button:hover #arrow {
         transform: rotate(-90deg);
+    }
+
+    p {
+        margin-top: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: $fontsize-xs;
+        width: 90%;
     }
 }
 
@@ -101,38 +133,108 @@
 }
 
 .pictures {
-    padding-top: calc($padding-xl * 2);
+    padding-top: calc($padding-xl + 30px);
     height: 60vh;
     display: flex;
-    width: 60%;
+    width: 50%;
     flex-wrap: wrap;
     row-gap: 30px;
     position: relative;
     gap: 30px;
+    // border: 2px solid blue;
+    @include u.breakpoint-down(large) {
+        width: 120%;
+        margin-left: -10%;
+        height: 70dvh;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
     &__variabletext {
         &__pic {
-            border: 2px solid $black-color;
-            margin-left: 8vw;
+            border: 1px solid rgba(198, 198, 198, 0.7);
+            margin-left: 3vw;
             border-radius: 1.7rem;
-            width: 900px;
-            height: fit-content;
+            width: clamp(33vw, 35vw, 40vw);
+            @include u.breakpoint-down(large) {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+            }
         }
     }
     &__tweens {
         display: flex;
         gap: 30px;
         &__favorites {
-            border: 2px solid $black-color;
+            border: 1px solid rgba(198, 198, 198, 0.7);
             border-radius: 1.7rem;
-            width: 300px;
-            height: 300px;
-            margin-left: 25vw;
+            border-radius: 1.7rem;
+            width: clamp(f.rem(125), 10vw, f.rem(300));
+            height: clamp(f.rem(125), 10vw, f.rem(300));
+            object-fit: cover;
+            margin-left: 15vw;
+            @include u.breakpoint-down(large) {
+                margin-left: -10%;
+                width: 120%;
+                flex-direction: column;
+            }
         }
         &__folder {
             border-radius: 23px;
-            height: 40vh;
+            width: clamp(f.rem(125), 15vw, f.rem(200));
             right: -4vw;
             top: 70%;
         }
+    }
+}
+
+//___KEY FRAMES_________________________________________________________
+@keyframes changeFont {
+    0% {
+        font-family: "Courier New", Courier, monospace;
+    }
+    2% {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
+            Geneva, Verdana, sans-serif;
+    }
+    3% {
+        font-family: "Poppins";
+    }
+    5% {
+        font-family: "Nacelle";
+    }
+    7% {
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    }
+    9% {
+        font-family: "VCR_OSD";
+    }
+    100% {
+        font-family: "VCR_OSD";
+    }
+}
+
+@keyframes changeFontOut {
+    0% {
+        font-family: "VCR_OSD";
+    }
+    2% {
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    }
+    3% {
+        font-family: "Nacelle";
+    }
+    5% {
+        font-family: "Poppins";
+    }
+    7% {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
+            Geneva, Verdana, sans-serif;
+    }
+    9% {
+        font-family: "Courier New", Courier, monospace;
+    }
+    12% {
+        font-family: Arial, Helvetica, sans-serif;
     }
 }

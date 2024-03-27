@@ -33,7 +33,11 @@ export default function Welcome() {
                                 />
                             </div>
                         </button>
-                        <p>A ㅅЖㅍ C ﺏDㅟ EЙ F G예 Hは I J Kﺙ УL 우むM ﺽNびЦﻕㅟO み... </p>
+                        <p>
+                            This project is born for my diploma in Ri7 School. <br /> A place for
+                            upload, rate, find, set and try many fonts.
+                        </p>
+                        <span>A ㅅЖㅍ C ﺏDㅟ EЙ F G예 Hは I J Kﺙ УL 우むM ﺽNびЦﻕㅟO み... </span>
                     </div>
                     <aside className={s.pictures}>
                         <div className={s.pictures__variabletext}>
