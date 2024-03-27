@@ -16,41 +16,47 @@ export default function Welcome() {
                         {/* <Login /> */}
                     </div>
                 </div>
-                <div className={s.getstarted}>
-                    <div className={s.getstarted__title}>
-                        <h2>All your favorites</h2>
-                        <h2>typographies</h2>
-                        <h2>one place</h2>
+                <div className={s.content}>
+                    <div className={s.getstarted}>
+                        <div className={s.getstarted__title}>
+                            <h2>All your favorites</h2>
+                            <h2>typographies in</h2>
+                            <h2>one place</h2>
+                        </div>
+                        <button type="button">
+                            Get started{" "}
+                            <div id={s.wrapper__arrow}>
+                                <img
+                                    src="/assets/welcome-img/arrow-started.png"
+                                    alt="arrow"
+                                    id={s.arrow}
+                                />
+                            </div>
+                        </button>
+                        <p>A ㅅЖㅍ C ﺏDㅟ EЙ F G예 Hは I J Kﺙ УL 우むM ﺽNびЦﻕㅟO み... </p>
                     </div>
-                    <button type="button">
-                        Get started{" "}
-                        <div id={s.wrapper__arrow}>
+                    <aside className={s.pictures}>
+                        <div className={s.pictures__variabletext}>
                             <img
-                                src="/assets/welcome-img/arrow-started.png"
-                                alt="arrow"
-                                id={s.arrow}
+                                src="/assets/welcome-img/variabletex2.png"
+                                alt="variabletext"
+                                className={s.pictures__variabletext__pic}
                             />
                         </div>
-                    </button>
-                    <p>A ㅅЖㅍ C ﺏDㅟ EЙ F G예 Hは I J Kﺙ УL 우むM ﺽNびЦﻕㅟO み... </p>
+                        <div className={s.pictures__tweens}>
+                            <img
+                                src="/assets/welcome-img/favorites.png"
+                                alt="favorites"
+                                className={s.pictures__tweens__favorites}
+                            />
+                            <img
+                                src="/assets/welcome-img/folder2.png"
+                                alt="folder"
+                                className={s.pictures__tweens__folder}
+                            />
+                        </div>
+                    </aside>
                 </div>
-                <aside className={s.pictures}>
-                    <img
-                        src="/assets/welcome-img/favorites.png"
-                        alt="favorites"
-                        className={s.pictures__favorites}
-                    />
-                    <img
-                        src="/assets/welcome-img/folder.png"
-                        alt="folder"
-                        className={s.pictures__folder}
-                    />
-                    <img
-                        src="/assets/welcome-img/variabletext.png"
-                        alt="variabletext"
-                        className={s.pictures__variabletext}
-                    />
-                </aside>
             </section>
         </>
     );
