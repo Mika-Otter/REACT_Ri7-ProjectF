@@ -1,79 +1,92 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import s from "./login.module.scss";
-import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setUserId, setUserName } from "../../features/authSlice";
+import PropTypes from "prop-types";
+import Connect from "../../components/connect";
 
-export default function Login() {
-    const dispatch = useDispatch();
-    const userId = useSelector((state) => state.auth.userId);
-    const [inputs, setInputs] = useState({
-        email: "",
-        password: "",
-    });
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-    function handleLogin(userData) {
-        dispatch(setUserId(userData.id));
-        dispatch(setUserName(userData.username));
-        console.log(userId);
-    }
+export default function Login({ active, setActive }) {
+    const container = useRef();
+    const tl = useRef();
+    const button = useRef();
 
-    const [err, setError] = useState(null);
+    useEffect(() => {
+        console.log("yoo", active);
+    }, [active]);
 
-    const navigate = useNavigate();
+    useGSAP(() => {
+        tl.current = gsap.timeline({ pause: true, duration: 0.2 });
 
-    function handleChange(e) {
-        setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    }
+        tl.current
+            .to(
+                container.current,
+                {
+                    height: "+=350px",
+                    width: "+=250px",
+                    ease: "linear",
+                    duration: 0.2,
+                },
+                0
+            )
+            .to(
+                button.current,
+                {
+                    marginLeft: "10px",
+                },
+                0
+            )
+            .to(
+                "#connect",
+                {
+                    opacity: 1,
+                    duration: 1,
+                },
+                0
+            );
+    }, []);
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        try {
-            const res = await axios.post("http://localhost:8080/server/auth/login", inputs);
-            handleLogin(res.data);
-            navigate("/home");
-        } catch (err) {
-            setError(err.response.data);
-        }
-    }
+    useEffect(() => {
+        active ? tl.current.play() : tl.current.reverse();
+    }, [active]);
 
     return (
         <>
-            <div className={s.loginForm}>
-                <form className={s.loginForm__form} onSubmit={handleSubmit}>
-                    <div className={s.loginForm__email}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            placeholder="Enter Email"
-                            autoComplete="on"
-                            name="email"
-                            onChange={(e) => handleChange(e)}
-                            required
-                        />
-                    </div>
-                    <div className={s.loginForm__password}>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            placeholder="Enter password"
-                            autoComplete="off"
-                            name="password"
-                            onChange={(e) => handleChange(e)}
-                            required
-                        />
-                    </div>
-                    <button className={s.loginForm__connect} type="submit">
+            <div className={s.login} ref={container}>
+                <div className={s.login__ctn} ref={button}>
+                    <button className={s.login__btn} type="submit" onClick={() => setActive()}>
                         Login
                     </button>
-                    {err && <p>{err}</p>}
-                    <span>Don&rsquo;t you have an account ? </span>{" "}
-                    <Link to="/register">Register</Link>
-                </form>
+                </div>
+                <div className={active ? s.connect : s.offscreen} id="connect">
+                    <Connect />
+                </div>
             </div>
-            {/* menu login username password display full css ? */}
-            {/* menu subscribe username password display full css ? */}
         </>
     );
 }
+
+// const [login, setLogin] = useState(false);
+// const container = useRef();
+
+Login.propTypes = {
+    active: PropTypes.bool.isRequired,
+    setActive: PropTypes.node.isRequired,
+};
+
+// useGSAP(() => {
+//     if (active) {
+//         gsap.to(container.current, {
+//             height: "300px",
+//             width: "20vw",
+//             borderRadius: "23px",
+//         });
+//     } else {
+//         gsap.to(container.current, {
+//             height: "60%",
+//             width: "7vw",
+//             borderRadius: "80px",
+//             duration: 0.5,
+//         });
+//     }
+// }, [active]);

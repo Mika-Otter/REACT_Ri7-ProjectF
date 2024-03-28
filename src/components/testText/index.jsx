@@ -8,7 +8,7 @@ import Folder from "../folder";
 export default function TestText() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
 
-    const [test, setTest] = useState("");
+    const [test, setTest] = useState("A quick brown fox jumps over the lazy dog");
     const [checkboxes, setCheckboxes] = useState({
         bigCheckbox: true,
         mediumCheckbox: false,
@@ -84,7 +84,7 @@ export default function TestText() {
                                 key={`big-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__big)}
                             >
-                                {test === "" ? "A quick brown fox jumps over the lazy dog" : test}
+                                {test}
                             </span>
                         )}
                         {checkboxes.mediumCheckbox && (
@@ -92,7 +92,7 @@ export default function TestText() {
                                 key={`medium-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__medium)}
                             >
-                                {test === "" ? "A quick brown fox jumps over the lazy dog" : test}
+                                {test}
                             </span>
                         )}
                         {checkboxes.smallCheckbox && (
@@ -100,7 +100,7 @@ export default function TestText() {
                                 key={`small-${font.name}`}
                                 className={cn(`font-${font.name}`, s.test__view__small)}
                             >
-                                {test === "" ? "A quick brown fox jumps over the lazy dog" : test}
+                                {test}
                             </span>
                         )}
                         <span key={index} className={s.test__view__typeface}>

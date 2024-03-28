@@ -31,6 +31,7 @@ export default function Folder() {
             const res = await axios.post("/upload/add", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
+                    Authorization: localStorage.getItem("token"),
                 },
             });
             if (res.status === 200) {

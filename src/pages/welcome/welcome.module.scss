@@ -21,34 +21,6 @@
             font-size: $fontsize-l;
         }
     }
-
-    &__login {
-        position: absolute;
-        top: 2vh;
-        right: 2vw;
-        background-color: $black-color;
-        z-index: 100;
-        border-radius: 100px;
-
-        button {
-            margin-right: 2vw;
-            width: f.rem(130);
-            height: clamp(f.rem(45), f.rem(45) + 2vh, f.rem(55));
-            text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: $fontsize-s;
-            border-radius: 50px;
-            background-color: $black-color;
-            color: $white-color;
-            animation: changeFontOut 2s;
-        }
-        button:hover {
-            animation: changeFont 3s;
-            animation-fill-mode: both;
-        }
-    }
 }
 
 .content {
@@ -194,56 +166,5 @@
             right: -4vw;
             top: 70%;
         }
-    }
-}
-
-//___KEY FRAMES_________________________________________________________
-@keyframes changeFont {
-    0% {
-        font-family: "Courier New", Courier, monospace;
-    }
-    2% {
-        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
-            Geneva, Verdana, sans-serif;
-    }
-    3% {
-        font-family: "Poppins";
-    }
-    5% {
-        font-family: "Nacelle";
-    }
-    7% {
-        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    }
-    9% {
-        font-family: "VCR_OSD";
-    }
-    100% {
-        font-family: "VCR_OSD";
-    }
-}
-
-@keyframes changeFontOut {
-    0% {
-        font-family: "VCR_OSD";
-    }
-    2% {
-        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    }
-    3% {
-        font-family: "Nacelle";
-    }
-    5% {
-        font-family: "Poppins";
-    }
-    7% {
-        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
-            Geneva, Verdana, sans-serif;
-    }
-    9% {
-        font-family: "Courier New", Courier, monospace;
-    }
-    12% {
-        font-family: Arial, Helvetica, sans-serif;
     }
 }
