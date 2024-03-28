@@ -8,7 +8,9 @@
 }
 
 .connect {
-    opacity: 0;
+    width: calc(f.rem(130) + 200px); //+= 200 px GSAP
+    margin-inline: auto;
+    animation: opacity 0.6s;
 }
 
 .login {
@@ -17,42 +19,60 @@
     right: 2vw;
     background-color: $black-color;
     border-radius: 33px;
-    width: f.rem(130);
-    height: clamp(f.rem(45), f.rem(45) + 2vh, f.rem(55));
     z-index: 10;
     display: flex;
     flex-direction: column;
 
-    &__ctn {
-        position: relative;
-        border: 2px solid purple;
-        z-index: 15;
-        border: none;
-        margin-inline: auto;
-        background: transparent;
-        font-family: "Nacelle-Bold";
-        font-size: $fontsize-s;
+    &__inactive {
+        width: f.rem(130);
+        height: clamp(f.rem(35), f.rem(35) + 2vh, f.rem(55));
+        transition: 0.4s;
     }
-    &__btn {
-        border: none;
-        color: $white-color;
+    &__active {
+        width: f.rem(370);
+        height: clamp(f.rem(300), f.rem(300) + 3vh, f.rem(360));
+        transition: 0.5s;
     }
 
-    button {
+    &__btn__ctn {
+        height: f.rem(60);
+    }
+
+    &__ctn {
+        height: f.rem(60);
+    }
+
+    &__btn {
+        text-align: center;
+        width: f.rem(130);
+        border: none;
+        color: $white-color;
         font-family: Arial, Helvetica, sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: $fontsize-s;
-        color: $white-color;
+        font-size: $fontsize-m;
         animation: changeFontOut 2s;
     }
-    button:hover {
+
+    &__btn:hover {
         animation: changeFont 3s;
         animation-fill-mode: both;
     }
 }
 
 //___KEY FRAMES_________________________________________________________
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 @keyframes changeFont {
     0% {
         font-family: "Courier New", Courier, monospace;

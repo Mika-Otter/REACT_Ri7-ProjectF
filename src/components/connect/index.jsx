@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserId, setUserName } from "../../features/authSlice";
+import cn from "classnames";
 
 export default function Connect() {
     const dispatch = useDispatch();
@@ -44,34 +45,44 @@ export default function Connect() {
         <>
             <div className={s.loginForm}>
                 <form className={s.loginForm__form} onSubmit={handleSubmit}>
-                    <div className={s.loginForm__email}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            placeholder="Enter Email"
-                            autoComplete="on"
-                            name="email"
-                            onChange={(e) => handleChange(e)}
-                            required
-                        />
+                    <div className={s.loginForm__fields}>
+                        <div className={s.loginForm__email}>
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                autoComplete="on"
+                                name="email"
+                                onChange={(e) => handleChange(e)}
+                                required
+                            />
+                        </div>
+                        <div className={s.loginForm__password}>
+                            <label htmlFor="password">Password</label>
+                            <input
+                                type="password"
+                                autoComplete="off"
+                                name="password"
+                                onChange={(e) => handleChange(e)}
+                                required
+                            />
+                        </div>
+                    </div>{" "}
+                    <div className={s.wrapper}>
+                        <div id={s.hover}></div>
+                        <button type="submit" className={s.loginForm__btn}>
+                            <span>Login</span>
+                        </button>
                     </div>
-                    <div className={s.loginForm__password}>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            placeholder="Enter password"
-                            autoComplete="off"
-                            name="password"
-                            onChange={(e) => handleChange(e)}
-                            required
-                        />
-                    </div>
-                    <button type="submit">Login</button>
                     {err && <p>{err}</p>}
-                    <span>Don&rsquo;t you have an account ? </span>{" "}
-                    <Link to="/register">Register</Link>
+                    <div className={s.register}>
+                        <span>Don&rsquo;t you have an account ? </span>{" "}
+                        <Link to="/register">Register</Link>
+                    </div>
                 </form>
             </div>
+
+            <button className={s.btn}></button>
+
             {/* menu login username password display full css ? */}
             {/* menu subscribe username password display full css ? */}
         </>

@@ -27,11 +27,10 @@ export default function Folder() {
 
         formData.append("userId", userId);
         try {
-            console.log(formData, "YOOOO");
             const res = await axios.post("/upload/add", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    Authorization: localStorage.getItem("token"),
+                    Authorization: localStorage.getItem("token"), //send token from localStorage //CHANGE TO SESSION STORAGE !!!
                 },
             });
             if (res.status === 200) {
