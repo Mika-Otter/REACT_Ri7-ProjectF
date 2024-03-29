@@ -1,155 +1,99 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
-.favorite__ctn {
-    display: flex;
-    width: 30%;
-    // border: 2px solid red;
-    gap: 10px;
+//___DETAILS________________________________________________
 
-    &__wrapper {
-        width: max(300px, 90%);
-        height: 15vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        .legend {
-            font-family: "Nacelle";
-            font-size: 1rem;
-            margin-top: 0px;
-        }
-    }
+.checkbox__fav {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
-.favorite__wrapper__box {
-    width: 100%;
-    display: flex;
-    gap: 10px;
+.checkbox__ctn {
+    right: 7.1rem;
+    bottom: 1.8rem;
+    position: absolute;
+    z-index: 10;
+    display: inline-block;
 }
+
+.checkbox__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Permet aux événements de pointer de passer à travers l'image */
+}
+
+//___GLOBAL__________________________________________________
 
 .favorite {
-    width: 100%;
-    height: 80%;
-    text-overflow: ellipsis;
-    margin-bottom: 5px;
-    overflow: hidden;
-    border: 2px solid $black-color;
-    cursor: pointer;
+    border: 2px solid red;
+    height: clamp(f.rem(90), 20vh, f.rem(130));
+    display: flex;
+    flex-direction: column;
 
-    &__wrapper {
-        width: 100%;
-        padding-left: 10px;
-        overflow: hidden;
+    &__box {
+        width: clamp(f.rem(200), 27vw, f.rem(800));
+        height: clamp(f.rem(80), 17vh, f.rem(100));
+        position: relative;
+        display: flex;
+        // border: 2px solid blue;
+    }
+
+    &__ctn {
+        border: 1.5px solid $black-color;
+        width: 80%;
         height: 100%;
-        width: 100%;
+        font-size: $fontsize-xl;
+        overflow: hidden;
+        text-overflow: clip;
         display: flex;
         align-items: center;
 
-        &__note {
-            height: 80%;
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: center;
-
-            gap: 4px;
-            input {
-                margin: 0;
-                -webkit-appearance: none;
-                appearance: none;
-                width: 13px;
-                height: 13px;
-                border: 2px solid $black-color;
-                cursor: pointer;
-            }
-            input:checked {
-                width: 13px;
-                height: 13px;
-                background-color: $black-color;
-                border: 2px solid $black-color;
-            }
-        }
-
-        &__text {
+        &__wrapper {
+            margin-left: 1vw;
             display: flex;
             align-items: center;
-            justify-content: left;
             white-space: nowrap;
-            height: 3vh;
-            transition: 1s;
-            span {
-                font-size: 4rem;
-            }
+            height: 2px;
+            width: 400%;
+            // border: 2px solid green;
         }
-        &__text:hover {
-            transform: translateX(-20%);
-        }
-    }
-    &__legend {
-        display: flex;
-        width: calc(100% + 4px);
-        justify-content: space-between;
     }
 }
 
-.favorite__S {
-    width: 100%;
-    height: 50%;
-    border: 2px solid $black-color;
-    text-overflow: ellipsis;
-    margin-bottom: 5px;
-    overflow: hidden;
-    cursor: pointer;
-
-    &__wrapper {
-        width: 100%;
-        padding-left: 10px;
-        overflow: hidden;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-
-        &__note {
-            height: 80%;
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: center;
-
-            gap: 4px;
-            input {
-                margin: 0;
-                -webkit-appearance: none;
-                appearance: none;
-                width: 13px;
-                height: 13px;
-                border: 2px solid $black-color;
-                cursor: pointer;
-            }
-            input:checked {
-                width: 13px;
-                height: 13px;
-                background-color: $black-color;
-                border: 2px solid $black-color;
-            }
-        }
-
-        &__text {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            white-space: nowrap;
-            height: 3vh;
-            transition: 1s;
-            span {
-                font-size: 4rem;
-            }
-        }
-        &__text:hover {
-            transform: translateX(-20%);
-        }
+.tools {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid purple;
+    background-color: $grey-color;
+    width: f.rem(75);
+    button {
+        width: 30px;
     }
-    &__legend {
+}
+
+.rate {
+    width: 80%;
+    height: 30px;
+
+    &__note {
         display: flex;
-        width: calc(100% + 4px);
-        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-right: 5px;
+        margin-top: 3px;
+
+        input {
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            border: 1px solid $black-color;
+            width: 15px;
+            height: 15px;
+        }
+        input:checked {
+            background-color: $black-color;
+        }
     }
 }

@@ -35,6 +35,20 @@
         font-size: $fontsize-s;
         line-height: 1.7;
     }
+    .selector {
+        font-family: "Nacelle";
+        font-size: $fontsize-s;
+        color: $white-color;
+        background-color: $black-color;
+        margin-top: -3px;
+        margin-left: -0.4rem;
+        padding: 3px 3px 3px 0px;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        width: calc(50px + 1vw);
+        line-height: 1.7;
+    }
 }
 
 .favorite__box {

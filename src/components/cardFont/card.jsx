@@ -133,47 +133,37 @@ export default function CardFont({ font, small, i }) {
     }
     return (
         <>
-            <div className={s.favorite} key={font.name + i}>
-                <div className={s.favorite__box}>
-                    <div className={s.checkbox__ctn}>
-                        <input
-                            className={s.checkbox__fav}
-                            type="checkbox"
-                            checked={font.favorite ? font.favorite : false}
-                            onChange={(e) => handleFavorite(userId, font.id, e.target.checked)}
+            <div className={s.favorite__ctn} key={font.name + i}>
+                <div className={s.checkbox__ctn}>
+                    <input
+                        type="checkbox"
+                        checked={font.favorite ? font.favorite : false}
+                        onChange={(e) => handleFavorite(userId, font.id, e.target.checked)}
+                    />
+                    {font.favorite ? (
+                        <img
+                            className={s.checkbox__img}
+                            src="./assets/icones/favorite-active.png"
                         />
-                        {font.favorite ? (
-                            <img
-                                className={s.checkbox__img}
-                                src="./assets/icones/favorite-active.png"
-                            />
-                        ) : (
-                            <img
-                                className={s.checkbox__img}
-                                src="./assets/icones/favorite-inactive.png"
-                            />
-                        )}
-                    </div>
-                    <div className={s.favorite__ctn}>
-                        <div className={s.favorite__ctn__wrapper}>
-                            <span style={{ fontFamily: font.name }}>{font.name}</span>
+                    ) : (
+                        <img
+                            className={s.checkbox__img}
+                            src="./assets/icones/favorite-inactive.png"
+                        />
+                    )}
+                </div>
+                <div className={s.favorite__wrapper__box}>
+                    <div className={s.favorite__ctn__wrapper}>
+                        <div className={small ? s.favorite__S : s.favorite}>
+                            <div className={s.favorite__wrapper}>
+                                <div className={s.favorite__wrapper__text}>
+                                    <span style={{ fontFamily: font.name }}>{font.name}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className={s.tools}>
-                        {" "}
-                        <button type="button" onClick={() => deleteFonts(font.id)}>
-                            D
-                        </button>
-                        <button type="button" onClick={() => gotoTest(font.id)}>
-                            T
-                        </button>
-                        <button type="button" onClick={() => gotoVariable(font.id)}>
-                            V
-                        </button>
-                    </div>
-                </div>
-                <div className={s.rate}>
-                    <div className={s.rate__note}>
+
+                    <div className={s.favorite__wrapper__note}>
                         {Array.from({ length: 5 }, (_, i) => (
                             <input
                                 key={font.name + i}
@@ -182,6 +172,19 @@ export default function CardFont({ font, small, i }) {
                                 onChange={() => handleRating(userId, font.id, font.name, i + 1)}
                             />
                         ))}
+                    </div>
+                    <div className={s.favorite__legend}>
+                        <div className={s.tools}>
+                            <button type="button" onClick={() => deleteFonts(font.id)}>
+                                D
+                            </button>
+                            <button type="button" onClick={() => gotoTest(font.id)}>
+                                T
+                            </button>
+                            <button type="button" onClick={() => gotoVariable(font.id)}>
+                                V
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

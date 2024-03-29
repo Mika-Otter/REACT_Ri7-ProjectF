@@ -116,53 +116,12 @@ export default function Favorites() {
                             className={s.squares}
                         />
                         <span>Sort by</span>
+                        <span className={s.selector}>Rate</span>
                     </div>
                     <div className={s.favorite__box}>
                         {fonts.map((font, i) =>
                             font.favorite ? (
-                                <div className={s.favorite__ctn} key={font.name + i}>
-                                    <div className={s.favorite__ctn__wrapper}>
-                                        <div className={s.favorite}>
-                                            <div className={s.favorite__wrapper}>
-                                                <div className={s.favorite__wrapper__text}>
-                                                    <span style={{ fontFamily: font.name }}>
-                                                        {font.name}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className={s.favorite__legend}>
-                                            <span className={s.legend}>{font.name}</span>
-                                            <div className={s.tools}>
-                                                <input
-                                                    type="checkbox"
-                                                    checked={font.favorite ? font.favorite : false}
-                                                    onChange={(e) =>
-                                                        handleFavorite(
-                                                            userId,
-                                                            font.id,
-                                                            e.target.checked
-                                                        )
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className={s.favorite__wrapper__note}>
-                                        {Array.from({ length: 5 }, (_, i) => (
-                                            <input
-                                                key={font.name + i}
-                                                type="checkbox"
-                                                checked={ratings[font.name] >= i + 1}
-                                                onChange={() =>
-                                                    handleRating(userId, font.id, font.name, i + 1)
-                                                }
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
+                                <CardFont font={font} small={false} i={i} key={font.name + i} />
                             ) : null
                         )}
                     </div>
