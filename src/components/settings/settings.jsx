@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import s from "./settings.module.scss";
-import Folder from "../folder";
+import Folder from "../folder/folder";
 import axios from "../../app/api/axios";
 import { setUserName } from "../../features/authSlice";
 import { useDispatch } from "react-redux";

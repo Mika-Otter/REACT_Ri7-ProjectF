@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import s from "./variableText.module.scss";
 import cn from "classnames";
-import Folder from "../folder";
+import Folder from "../folder/folder";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import CardFont from "../cardFont";
+import CardFont from "../cardFont/cardFont";
 
 export default function Variable() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);

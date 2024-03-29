@@ -5,7 +5,7 @@ import { toggleFavorite, deleteFont, toggleFontState } from "../../features/font
 import axios from "../../app/api/axios";
 import { useNavigate } from "react-router-dom";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
-import CardFont from "../cardFont";
+import CardFont from "../cardFont/cardFont";
 
 export default function Favorites() {
     const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import s from "./login.module.scss";
-import Connect from "../../components/connect";
+import Connect from "../connect/connect";
 import cn from "classnames";
 
-export default function Login({ active, setActive }) {
+export default function Login({ active, setActive, toggleRegister }) {
     const container = useRef();
     const tl = useRef();
     const button = useRef();
@@ -25,7 +25,7 @@ export default function Login({ active, setActive }) {
                         </button>
                     </div>
                     <div className={active ? s.connect : s.offscreen} id="connect">
-                        <Connect />
+                        <Connect toggleRegister={toggleRegister} />
                     </div>
                 </div>
             </div>

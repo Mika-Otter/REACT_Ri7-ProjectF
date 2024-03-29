@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import s from "./testText.module.scss";
 import cn from "classnames";
 import { useSelector } from "react-redux";
-import Folder from "../folder";
+import Folder from "../folder/folder";
 // import { setFonts } from "../../src/features/fonts/fontsSlice";
 
 export default function TestText() {

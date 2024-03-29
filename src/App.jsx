@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
-import Welcome from "./pages/welcome";
-import Register from "./components/register";
-import TestText from "./components/testText";
-import Login from "./components/login";
+import Welcome from "./pages/welcome/welcome";
+import Register from "./components/register/register";
+import TestText from "./components/testText/testText";
+import Login from "./components/login/login";
 import Home from "./pages/home";
 import Unauthorized from "./components/unauthorized";
-import RequireAuth from "./components/requireAuth";
-import Loaderfont from "./components/loaderfont";
+import RequireAuth from "./components/requireAuth/requireAuth";
+import Loaderfont from "./components/loaderfont/loaderfont";
 import Variable from "./components/variableText";
-import Settings from "./components/settings";
+import Settings from "./components/settings/settings";
 
 export default function App() {
     return (

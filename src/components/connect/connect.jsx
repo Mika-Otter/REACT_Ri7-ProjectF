@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserId, setUserName } from "../../features/authSlice";
 import cn from "classnames";
 
-export default function Connect() {
+export default function Connect({ toggleRegister }) {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.auth.userId);
     const [inputs, setInputs] = useState({
@@ -76,7 +76,7 @@ export default function Connect() {
                     {err && <p>{err}</p>}
                     <div className={s.register}>
                         <span>Don&rsquo;t you have an account ? </span>{" "}
-                        <Link to="/register">Register</Link>
+                        <Link onClick={() => toggleRegister()}>Register</Link>
                     </div>
                 </form>
             </div>

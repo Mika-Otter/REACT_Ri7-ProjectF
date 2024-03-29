@@ -8,7 +8,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const REGISTER_URL = "http://localhost:8080/server/auth/register";
 
-export default function Register() {
+export default function Register({ register, toggleRegister }) {
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
@@ -36,9 +36,9 @@ export default function Register() {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
 
-    // useEffect(() => {
-    //     userRef.current.focus();
-    // }, []);
+    useEffect(() => {
+        console.log("yooooo", register);
+    }, [register]);
 
     useEffect(() => {
         setValidEmail(EMAIL_REGEX.test(email));
@@ -104,12 +104,18 @@ export default function Register() {
                     <p className={error ? s.error : s.offscreen} aria-live="assertive">
                         {error}
                     </p>
-                    <div className={s.registerForm}>
+                    <div className={register ? s.registerForm : s.offscreen}>
+                        <div className={s.welcome}>
+                            <h2>
+                                Welcome, <br />
+                                <span>{user ? user : "font lover !"}</span>
+                            </h2>
+                        </div>
                         <form className={s.registerForm__form} onSubmit={handleSubmit}>
                             <div className={s.registerForm__username}>
                                 <label htmlFor="username">Username</label>
                                 <input
-                                    className={s.registerForm__input}
+                                    className={s.registerForm__input__field}
                                     type="text"
                                     id="username"
                                     required
@@ -124,6 +130,7 @@ export default function Register() {
                                     aria-invalid={validName ? "false" : "true"}
                                     aria-describedby="uidnote"
                                 />
+
                                 <p
                                     id="uidnote"
                                     className={
@@ -132,9 +139,8 @@ export default function Register() {
                                             : s.offscreen
                                     }
                                 >
-                                    4 to 24 characters. <br />
-                                    Must begin with a letter. <br />
-                                    Letters, numbers, underscores, hyphens allowed.
+                                    4 to 15 characters. Must begin with a letter. Letters, numbers,
+                                    underscores, <br /> hyphens allowed.
                                 </p>
                             </div>
                             <div className={s.registerForm__email}>
@@ -189,17 +195,8 @@ export default function Register() {
                                     id="pwdnote"
                                     className={pwdFocus && !validPwd ? s.instructions : s.offscreen}
                                 >
-                                    8 to 24 characters. <br />
-                                    Must includ uppercase and lowercase letters, a number and a
-                                    special character. <br />
-                                    Allowed special characters:
-                                    <span aria-label="exclamation mark">!</span>
-                                    <span aria-label="dot mark">.</span>
-                                    <span aria-label="at symbol">@</span>
-                                    <span aria-label="hashtag">#</span>
-                                    <span aria-label="dollar sign">$</span>
-                                    <span aria-label="percent">%</span>
-                                    <br />
+                                    8 to 25 characters. Must includ uppercase and lowercase letters,
+                                    a number <br /> and a special character.
                                 </p>
                             </div>
                             <div className={s.registerForm__confirmPwd}>
@@ -223,24 +220,29 @@ export default function Register() {
                                         matchFocus && !validMatch ? s.instructions : s.offscreen
                                     }
                                 >
-                                    Must match the first password input field. <br />
+                                    Must match with the first password input field. <br />
                                     <br />
                                 </p>
                             </div>
 
-                            <button
-                                className={s.registerForm__connect}
-                                disabled={
-                                    !validEmail || !validName || !validMatch || !validPwd
-                                        ? true
-                                        : false
-                                }
-                                type="submit"
-                            >
-                                Subscribe
-                            </button>
+                            <div className={s.wrapper}>
+                                <div id={s.hover}></div>
+                                <button
+                                    className={s.registerForm__btn}
+                                    disabled={
+                                        !validEmail || !validName || !validMatch || !validPwd
+                                            ? true
+                                            : false
+                                    }
+                                    type="submit"
+                                >
+                                    Subscribe
+                                </button>
+                            </div>
                             {error && <p>{error}</p>}
-                            <Link to="/login">Back to login page</Link>
+                            <span className={s.backhome} onClick={() => toggleRegister()}>
+                                Back to login page
+                            </span>
                         </form>
                     </div>
                 </section>

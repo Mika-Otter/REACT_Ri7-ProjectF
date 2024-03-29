@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { setFonts, toggleFontState } from "../../features/fontsSlice";
 import { deleteChoosedFont, setChoosedFonts } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
-import Logout from "../logout";
+import Logout from "../logout/logout";
 
 export default function Folder() {
     const dispatch = useDispatch();
