@@ -1,5 +1,10 @@
 @import "../../../public/styles/global";
 
+body {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 .box__variable {
     margin-top: 3vh;
     width: 85%;
@@ -41,6 +46,7 @@
 
 .range {
     // border: 2px solid red;
+    z-index: 100;
     display: flex;
     width: 15%;
     flex-direction: column;

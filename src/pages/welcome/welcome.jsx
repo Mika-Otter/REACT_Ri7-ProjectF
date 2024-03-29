@@ -10,7 +10,7 @@ import Register from "../../components/register/register";
 
 export default function Welcome() {
     const [loginBtn, setLoginBtn] = useState(false);
-    const [register, setRegister] = useState(true);
+    const [register, setRegister] = useState(false);
     const bigboxContent = useRef();
 
     const toggleLogin = () => {
@@ -98,7 +98,11 @@ export default function Welcome() {
                     </div>
                 </div>
                 <div className={s.register}>
-                    <Register register={register} toggleRegister={toggleRegister} />
+                    <Register
+                        register={register}
+                        toggleRegister={toggleRegister}
+                        setLoginBtn={setLoginBtn}
+                    />
                 </div>
             </section>
         </>

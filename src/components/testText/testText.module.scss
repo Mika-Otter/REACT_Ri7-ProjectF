@@ -1,4 +1,10 @@
 @import "../../../public/styles/global";
+
+.test,
+.test__section {
+    width: 65%;
+    margin-inline: auto;
+}
 .test__view {
     display: flex;
     flex-direction: column;

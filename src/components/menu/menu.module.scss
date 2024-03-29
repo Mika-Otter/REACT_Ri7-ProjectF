@@ -1,0 +1,113 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../public/styles/global";
+
+.menu {
+    padding: 2vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    background-color: $black-color;
+    z-index: 10;
+    border-radius: 0px 50px 50px 0px;
+    display: flex;
+    color: $white-color;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__profil {
+        font-family: "Nacelle-Bold";
+        margin-left: 13px; //padding menu
+        margin-top: 2dvh;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        position: relative;
+
+        &__text {
+            font-size: $fontsize-s;
+            display: flex;
+            flex-direction: column;
+            span {
+                max-width: 120px;
+                overflow: hidden;
+                text-overflow: ellipsis " ...";
+            }
+
+            &__bigletter {
+                font-size: $fontsize-l;
+                margin: 0;
+                line-height: 0.6;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+        }
+    }
+
+    &__menu {
+        box-sizing: content-box;
+
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: -5vh;
+        font-family: "Nacelle";
+        font-weight: 400;
+        font-size: $fontsize-s;
+        a,
+        a:active,
+        a:visited {
+            padding: 13px;
+            text-decoration: none;
+            color: $white-color;
+        }
+        a:hover {
+            border-radius: 12px;
+            background-color: $grey-color;
+        }
+    }
+
+    &__settings {
+        margin-bottom: 17vh;
+
+        font-family: "Nacelle";
+        font-size: $fontsize-s;
+        display: flex;
+        flex-direction: column;
+        a,
+        a:active,
+        a:visited {
+            padding: 13px;
+            text-decoration: none;
+            color: $white-color;
+        }
+        a:hover {
+            border-radius: 12px;
+            text-decoration: underline;
+        }
+    }
+    button {
+        color: $white-color;
+        border: none;
+        text-align: left;
+        font-style: normal;
+        font-size: $fontsize-m;
+    }
+
+    &__logo {
+        position: absolute;
+        bottom: 6vh;
+        left: 2.3vw;
+        &__typ {
+            font-family: "VCR_OSD";
+            font-size: clamp(f.rem(27), f.rem(30) + 1vw, f.rem(40));
+        }
+        &__pov {
+            font-family: "Vidaloka";
+            font-size: clamp(f.rem(27), f.rem(30) + 1vw, f.rem(40));
+        }
+    }
+}

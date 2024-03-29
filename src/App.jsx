@@ -4,7 +4,7 @@ import Welcome from "./pages/welcome/welcome";
 import Register from "./components/register/register";
 import TestText from "./components/testText/testText";
 import Login from "./components/login/login";
-import Home from "./pages/home";
+import Home from "./pages/home/home";
 import Unauthorized from "./components/unauthorized";
 import RequireAuth from "./components/requireAuth/requireAuth";
 import Loaderfont from "./components/loaderfont/loaderfont";

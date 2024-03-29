@@ -102,9 +102,6 @@ export default function Favorites() {
     return (
         <>
             <section>
-                <div className={s.hey}>
-                    <h2>Hey {username}_</h2>
-                </div>
                 <div className={s.typos}>
                     <h3>Your favorites fonts </h3>
                     <div className={s.favorite__box}>

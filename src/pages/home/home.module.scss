@@ -1,0 +1,8 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../public/styles/global";
+
+.content {
+    width: 70%;
+    margin-inline: auto;
+}

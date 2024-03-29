@@ -3,6 +3,7 @@ import s from "./testText.module.scss";
 import cn from "classnames";
 import { useSelector } from "react-redux";
 import Folder from "../folder/folder";
+import Menu from "../menu/menu";
 // import { setFonts } from "../../src/features/fonts/fontsSlice";
 
 export default function TestText() {
@@ -36,6 +37,7 @@ export default function TestText() {
     return (
         <>
             <section>
+                <Menu />
                 <div className={s.test}>
                     <div className={s.test__text}>
                         <input
@@ -76,7 +78,7 @@ export default function TestText() {
                     </div>
                 </div>
             </section>
-            <section>
+            <section className={s.test__section}>
                 {choosedFonts.map((font, index) => (
                     <div className={s.test__view} key={`font-${index}`}>
                         {checkboxes.bigCheckbox && (
