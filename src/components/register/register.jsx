@@ -240,8 +240,13 @@ export default function Register({ register, toggleRegister }) {
                                 </button>
                             </div>
                             {error && <p>{error}</p>}
-                            <span className={s.backhome} onClick={() => toggleRegister()}>
-                                Back to login page
+                            <span
+                                className={s.backhome}
+                                onClick={() => {
+                                    toggleRegister();
+                                }}
+                            >
+                                Back to home page
                             </span>
                         </form>
                     </div>

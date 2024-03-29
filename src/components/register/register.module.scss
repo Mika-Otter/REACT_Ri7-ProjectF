@@ -36,7 +36,7 @@
     border-radius: 33px;
     margin-inline: auto;
     width: clamp(f.rem(250), f.rem(150) + 30vw, f.rem(800));
-    height: clamp(f.rem(350), f.rem(150) + 53vh, f.rem(800));
+    height: clamp(f.rem(350), f.rem(150) + 53vh, f.rem(650));
 
     font-weight: 600;
 
@@ -144,8 +144,10 @@
     cursor: pointer;
     font-size: $fontsize-xxs;
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
     text-decoration: underline;
     color: $white-color;
+    opacity: 0.8;
     margin-inline: auto;
 }
 

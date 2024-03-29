@@ -3,7 +3,7 @@ import s from "./login.module.scss";
 import Connect from "../connect/connect";
 import cn from "classnames";
 
-export default function Login({ active, setActive, toggleRegister }) {
+export default function Login({ active, toggleLogin, toggleRegister }) {
     const container = useRef();
     const tl = useRef();
     const button = useRef();
@@ -20,12 +20,16 @@ export default function Login({ active, setActive, toggleRegister }) {
             >
                 <div className={s.login__ctn}>
                     <div className={s.login__btn__ctn} ref={button}>
-                        <button className={s.login__btn} type="submit" onClick={() => setActive()}>
+                        <button
+                            className={s.login__btn}
+                            type="submit"
+                            onClick={() => toggleLogin()}
+                        >
                             Login
                         </button>
                     </div>
                     <div className={active ? s.connect : s.offscreen} id="connect">
-                        <Connect toggleRegister={toggleRegister} />
+                        <Connect toggleRegister={toggleRegister} toggleLogin={toggleLogin} />
                     </div>
                 </div>
             </div>

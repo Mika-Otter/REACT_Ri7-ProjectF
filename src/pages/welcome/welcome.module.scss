@@ -58,7 +58,7 @@
 }
 
 .getstarted {
-    margin-top: $padding-xl;
+    margin-top: calc($padding-xl * 3);
     font-family: "Nacelle";
     margin-inline: auto;
     display: flex;
@@ -134,7 +134,7 @@
 }
 
 .pictures {
-    padding-top: calc($padding-xl + 30px);
+    margin-top: calc($padding-xl * 3);
     height: 60vh;
     display: flex;
     width: 50%;

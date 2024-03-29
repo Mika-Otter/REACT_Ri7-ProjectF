@@ -26,14 +26,13 @@ export default function Welcome() {
     useGSAP(() => {
         const up = () =>
             gsap.to(bigboxContent.current, {
-                top: "-100%",
+                top: -800,
                 opacity: 0,
-                duration: 1.5,
-                ease: "power2.ou",
+                duration: 0.5,
             });
         const down = () => gsap.to(bigboxContent.current, { top: 0, opacity: 1, duration: 1 });
-        loginBtn ? up() : down();
-    }, [loginBtn]);
+        register ? up() : down();
+    }, [register]);
 
     return (
         <>
@@ -45,7 +44,7 @@ export default function Welcome() {
                     </div>
                     <Login
                         active={loginBtn}
-                        setActive={toggleLogin}
+                        toggleLogin={toggleLogin}
                         toggleRegister={toggleRegister}
                     />
                 </div>
@@ -57,7 +56,7 @@ export default function Welcome() {
                                 <h2>typographies in</h2>
                                 <h2>one place</h2>
                             </div>
-                            <button type="button">
+                            <button type="button" onClick={() => toggleRegister()}>
                                 Get started
                                 <div id={s.wrapper__arrow}>
                                     <img
