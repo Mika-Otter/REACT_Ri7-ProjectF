@@ -6,6 +6,10 @@ import PropTypes from "prop-types";
 import axios from "../../app/api/axios";
 import { toggleFavorite, deleteFont, toggleFontState } from "../../features/fontsSlice";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
+import TrashIcone from "../SVG/trash";
+import VariableIcone from "../SVG/variable";
+import FontTestIcone from "../SVG/fonttest";
+import WatchIcone from "../SVG/watch";
 
 export default function CardFont({ font, small, i }) {
     const dispatch = useDispatch();
@@ -160,19 +164,25 @@ export default function CardFont({ font, small, i }) {
                         </div>
                     </div>
                     <div className={s.tools}>
-                        {" "}
-                        <button type="button" onClick={() => deleteFonts(font.id)}>
-                            D
+                        <button type="button">
+                            <WatchIcone />
                         </button>
-                        <button type="button" onClick={() => gotoTest(font.id)}>
-                            T
+                        <button
+                            className={s.fonttest}
+                            type="button"
+                            onClick={() => gotoTest(font.id)}
+                        >
+                            <FontTestIcone />
                         </button>
                         <button type="button" onClick={() => gotoVariable(font.id)}>
-                            V
+                            <VariableIcone />
                         </button>
                     </div>
                 </div>
                 <div className={s.rate}>
+                    <div className={s.rate__trash} onClick={() => deleteFonts(font.id)}>
+                        <TrashIcone />
+                    </div>
                     <div className={s.rate__note}>
                         {Array.from({ length: 5 }, (_, i) => (
                             <input
