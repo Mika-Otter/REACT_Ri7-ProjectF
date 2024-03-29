@@ -28,6 +28,7 @@
 //___GLOBAL__________________________________________________
 
 .favorite {
+    cursor: pointer;
     // border: 2px solid red;
     height: clamp(f.rem(90), 20vh, f.rem(130));
     display: flex;
@@ -59,11 +60,13 @@
             height: 2px;
             width: 400%;
             // border: 2px solid green;
+            transition: 0.7s;
         }
     }
 }
 
 .tools {
+    opacity: 0;
     display: flex;
     flex-direction: column;
 
@@ -82,6 +85,8 @@
 }
 
 .rate {
+    opacity: 0;
+    display: contents;
     width: 80%;
     height: 30px;
     display: flex;
@@ -113,4 +118,17 @@
         width: 20px;
         height: 20px;
     }
+}
+
+.favorite:hover .rate {
+    opacity: 1;
+}
+
+.favorite:hover .tools {
+    opacity: 1;
+}
+
+.favorite:hover .favorite__ctn__wrapper {
+    transform: translateX(-70px);
+    transition: 0.7s;
 }
