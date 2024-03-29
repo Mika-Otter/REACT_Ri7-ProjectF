@@ -103,7 +103,20 @@ export default function Favorites() {
         <>
             <section>
                 <div className={s.typos}>
-                    <h3>Your favorites fonts </h3>
+                    <h3>Your favorites typesfaces</h3>
+                    <div className={s.typos__params}>
+                        <img
+                            src="./assets/icones/viewpanel.png"
+                            alt="panels"
+                            className={s.panels}
+                        />
+                        <img
+                            src="./assets/icones/viewsquares.png"
+                            alt="squares"
+                            className={s.squares}
+                        />
+                        <span>Sort by</span>
+                    </div>
                     <div className={s.favorite__box}>
                         {fonts.map((font, i) =>
                             font.favorite ? (
