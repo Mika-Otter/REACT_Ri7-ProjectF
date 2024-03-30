@@ -1,16 +1,53 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
+
+.folder__name {
+    font-family: "Nacelle";
+    font-size: $fontsize-s;
+    color: $white-color;
+    margin-left: 10%;
+    padding-bottom: 3vh;
+}
 
 .folder {
     position: fixed;
     right: 0;
     top: 0;
     bottom: 0;
-    width: 15%;
+    width: clamp(f.rem(150), 29vw, f.rem(300));
     background-color: black;
+    border-radius: 23px 0px 0px 23px;
+
+    &__title {
+        color: $white-color;
+        font-size: $fontsize-m;
+        font-family: "Nacelle";
+        width: 90%;
+        margin-inline: auto;
+        margin-top: 3vh;
+    }
 
     &__folder {
-        border: 2px solid red;
-        width: 80%;
+        margin-inline: auto;
+        border-top: 0.5px solid $white-color;
+        border-bottom: 0.5px solid $white-color;
+        width: 90%;
+        height: 35vh;
+        margin-bottom: 3vh;
+        margin-top: 1vh;
+        overflow-y: auto;
+
+        &__favorite {
+            margin-inline: auto;
+            border-top: 0.5px solid $white-color;
+            border-bottom: 0.5px solid $white-color;
+            width: 90%;
+            height: 20vh;
+            margin-top: 1vh;
+            margin-bottom: 3vh;
+            overflow-y: auto;
+        }
 
         span {
             color: white;
@@ -20,7 +57,64 @@
     }
 }
 
-.fonts > label {
-    color: white;
-    font-size: 0.7vw;
+.fonts {
+    cursor: pointer;
+    width: 90%;
+    margin-inline: auto;
+    margin-top: 5px;
+    height: 27px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    display: flex;
+
+    input {
+        appearance: none;
+        width: 13px;
+        height: 13px;
+        border: 1px solid $white-color;
+        cursor: pointer;
+    }
+
+    input:checked {
+        background-color: $white-color;
+    }
+
+    label {
+        margin-left: 5px;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis " ...";
+        color: white;
+        font-size: $fontsize-xxs;
+    }
+}
+
+.inputFile {
+    position: relative;
+    margin-left: 10%;
+
+    &__label {
+        position: absolute;
+        color: $white-color;
+        font-family: "Nacelle";
+        border: 1px solid $white-color;
+        border-radius: 35px;
+        padding: 3px 7px;
+        font-size: $fontsize-xxs;
+        top: 0;
+        z-index: 3;
+        cursor: pointer;
+    }
+
+    &__label:hover {
+        background-color: $white-color;
+        color: $black-color;
+    }
+
+    &__input {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        z-index: -1;
+    }
 }

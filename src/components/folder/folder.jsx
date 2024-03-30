@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import s from "./folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { setFonts, toggleFontState } from "../../features/fontsSlice";
 import { deleteChoosedFont, setChoosedFonts } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
-import Logout from "../logout/logout";
 
 export default function Folder() {
     const dispatch = useDispatch();
@@ -99,8 +97,31 @@ export default function Folder() {
     return (
         <>
             <section className={s.folder}>
+                <div className={s.folder__title}>
+                    <h3>Folder</h3>
+                </div>
+                <span className={s.folder__name}>Favorites fonts</span>
+                <div className={s.folder__folder__favorite}>
+                    {fonts.map((font, i) =>
+                        font.favorite ? (
+                            <div className={s.fonts} key={font.name + i}>
+                                <input
+                                    type="checkbox"
+                                    name={font.name}
+                                    checked={font.checked}
+                                    onChange={() => handleFonts(font.name)}
+                                />
+                                <label htmlFor={font.name} style={{ fontFamily: `${font.name}` }}>
+                                    {font.name}
+                                </label>
+                            </div>
+                        ) : (
+                            ""
+                        )
+                    )}
+                </div>
+                <span className={s.folder__name}>All fonts</span>
                 <div className={s.folder__folder}>
-                    <span>Main :</span>
                     {fonts.map((font, i) => (
                         <div className={s.fonts} key={font.name + i}>
                             <input
@@ -115,19 +136,20 @@ export default function Folder() {
                         </div>
                     ))}
                 </div>
-                <div className={s.test__buttons}>
+
+                <div className={s.inputFile}>
+                    <label htmlFor="inputFile" className={s.inputFile__label}>
+                        + Add font(s){" "}
+                    </label>
                     <input
+                        id="inputFile"
                         type="file"
                         accept=".ttf,.otf"
                         multiple
                         onChange={(e) => fileUpload(e)}
+                        className={s.inputFile__input}
                     />
                 </div>
-                <Logout />
-                <Link to="/settings">Settings</Link>
-                <Link to="/home">Home</Link>
-                <Link to="/variable">Variable</Link>
-                <Link to="/fonttest">Font test</Link>
             </section>
         </>
     );
