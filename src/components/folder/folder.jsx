@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import s from "./folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,11 +6,17 @@ import { setFonts, toggleFontState } from "../../features/fontsSlice";
 import { deleteChoosedFont, setChoosedFonts } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 export default function Folder() {
     const dispatch = useDispatch();
     const fonts = useSelector((state) => state.fonts.value);
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
     const userId = useSelector((state) => state.auth.userId);
+    const [folder, setFolder] = useState(false);
+    const folderRef = useRef();
+    const cacheRef = useRef();
 
     // UPLOAD A NEW TYPEFACE
     const fileUpload = async (e) => {
@@ -88,6 +94,19 @@ export default function Folder() {
         }
     }
 
+    function handleFolder() {
+        setFolder(!folder);
+    }
+
+    useGSAP(() => {
+        if (folder) {
+            gsap.to(folderRef.current, { right: "-14vw", duration: 1.3 });
+            gsap.to(cacheRef.current, { opacity: 1, duration: 1.3, zIndex: 100 });
+        } else {
+            gsap.to(folderRef.current, { right: 0, duration: 1.3, ease: "power3.inOut" });
+            gsap.to(cacheRef.current, { opacity: 0, duration: 1.3, zIndex: -1 });
+        }
+    }, [folder]);
     //TEST
     // useEffect(() => {
     //     console.log("Choooosed", choosedFonts);
@@ -96,10 +115,11 @@ export default function Folder() {
     //RETURN________________________________________________________________________________________________________
     return (
         <>
-            <section className={s.folder}>
+            <section className={s.folder} ref={folderRef}>
                 <div className={s.folder__title}>
-                    <h3>Folder</h3>
+                    <h3 onClick={() => handleFolder()}>{folder ? "F" : "Folder"}</h3>
                 </div>
+                {folder ? <div className={s.cache} ref={cacheRef}></div> : null}
                 <span className={s.folder__name}>Favorites fonts</span>
                 <div className={s.folder__folder__favorite}>
                     {fonts.map((font, i) =>
