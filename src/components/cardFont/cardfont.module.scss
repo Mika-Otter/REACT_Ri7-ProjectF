@@ -11,7 +11,7 @@
 }
 
 .checkbox__ctn {
-    right: 7.1rem;
+    right: 2.1rem;
     bottom: 1.8rem;
     position: absolute;
     z-index: 10;
@@ -29,13 +29,13 @@
 
 .favorite {
     cursor: pointer;
-    // border: 2px solid red;
+    border: 2px solid red;
     height: clamp(f.rem(90), 20vh, f.rem(130));
     display: flex;
     flex-direction: column;
 
     &__box {
-        width: clamp(f.rem(200), 27vw, f.rem(800));
+        width: clamp(f.rem(200), 24vw, f.rem(800));
         height: clamp(f.rem(80), 17vh, f.rem(100));
         position: relative;
         display: flex;
@@ -43,10 +43,11 @@
     }
 
     &__ctn {
+        border-radius: 13px;
         border: 1.5px solid $black-color;
-        width: 80%;
+        width: 100%;
         height: 100%;
-        font-size: $fontsize-xl;
+        font-size: $fontsize-l;
         overflow: hidden;
         text-overflow: clip;
         display: flex;
@@ -59,7 +60,7 @@
             white-space: nowrap;
             height: 2px;
             width: 400%;
-            // border: 2px solid green;
+
             transition: 0.7s;
         }
     }
@@ -68,26 +69,26 @@
 .tools {
     opacity: 0;
     display: flex;
-    flex-direction: column;
-
-    background-color: $grey-color;
-    width: f.rem(45);
+    flex-direction: row-reverse;
+    gap: 13px;
+    width: f.rem(25);
+    margin-top: -5px;
     button {
-        margin-left: -5px;
         border: none;
         background: none;
         height: 30px;
         width: 30px;
     }
     .fonttest {
-        margin-left: -3px;
+        margin-left: -7px;
+        margin-right: 19px;
     }
 }
 
 .rate {
     opacity: 0;
     display: contents;
-    width: 80%;
+    width: 100%;
     height: 30px;
     display: flex;
     justify-content: space-between;
@@ -95,26 +96,43 @@
     &__note {
         display: flex;
         flex-direction: row-reverse;
+        gap: 3px;
         margin-right: 5px;
         margin-top: 3px;
 
-        input {
-            cursor: pointer;
-            -webkit-appearance: none;
-            appearance: none;
-            border: 1px solid $black-color;
-            width: 15px;
-            height: 15px;
+        &__ctn {
+            position: relative;
+
+            width: 22px;
+            display: flex;
+            &__input {
+                position: absolute;
+                z-index: 10;
+                input {
+                    opacity: 0;
+                    cursor: pointer;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    border: 1px solid $magenta-color;
+                    width: 15px;
+                    height: 15px;
+                }
+                input:checked {
+                    background-color: $magenta-color;
+                }
+            }
         }
-        input:checked {
-            background-color: $black-color;
+        &__icone {
+            width: 20px;
+            top: 0;
+            position: absolute;
         }
     }
 
     &__trash {
         cursor: pointer;
         margin-top: 3px;
-        margin-left: 3px;
+        margin-left: 11px;
         width: 20px;
         height: 20px;
     }

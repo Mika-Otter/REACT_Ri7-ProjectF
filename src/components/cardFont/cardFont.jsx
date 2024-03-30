@@ -7,9 +7,11 @@ import axios from "../../app/api/axios";
 import { toggleFavorite, deleteFont, toggleFontState } from "../../features/fontsSlice";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
 import TrashIcone from "../SVG/trash";
-import VariableIcone from "../SVG/variable";
-import FontTestIcone from "../SVG/fonttest";
-import WatchIcone from "../SVG/watch";
+import VariableSVG from "../SVG/variable";
+import FontTestSVG from "../SVG/fonttest";
+import WatchingSVG from "../SVG/watch";
+import BlackTSVG from "../SVG/blackT";
+import WhiteTSVG from "../SVG/whiteT";
 
 export default function CardFont({ font, small, i }) {
     const dispatch = useDispatch();
@@ -163,21 +165,6 @@ export default function CardFont({ font, small, i }) {
                             <span style={{ fontFamily: font.name }}>{font.name}</span>
                         </div>
                     </div>
-                    <div className={s.tools}>
-                        <button type="button">
-                            <WatchIcone />
-                        </button>
-                        <button
-                            className={s.fonttest}
-                            type="button"
-                            onClick={() => gotoTest(font.id)}
-                        >
-                            <FontTestIcone />
-                        </button>
-                        <button type="button" onClick={() => gotoVariable(font.id)}>
-                            <VariableIcone />
-                        </button>
-                    </div>
                 </div>
                 <div className={s.rate}>
                     <div className={s.rate__trash} onClick={() => deleteFonts(font.id)}>
@@ -185,13 +172,36 @@ export default function CardFont({ font, small, i }) {
                     </div>
                     <div className={s.rate__note}>
                         {Array.from({ length: 5 }, (_, i) => (
-                            <input
-                                key={font.name + i}
-                                type="checkbox"
-                                checked={ratings[font.name] >= i + 1}
-                                onChange={() => handleRating(userId, font.id, font.name, i + 1)}
-                            />
+                            <div key={font.name + i} className={s.rate__note__ctn}>
+                                <div className={s.rate__note__ctn__input}>
+                                    <input
+                                        type="checkbox"
+                                        checked={ratings[font.name] >= i + 1}
+                                        onChange={() =>
+                                            handleRating(userId, font.id, font.name, i + 1)
+                                        }
+                                    />
+                                </div>
+                                <div className={s.rate__note__icone}>
+                                    {ratings[font.name] >= i + 1 ? <BlackTSVG /> : <WhiteTSVG />}
+                                </div>
+                            </div>
                         ))}
+                    </div>
+                    <div className={s.tools}>
+                        <button
+                            className={s.fonttest}
+                            type="button"
+                            onClick={() => gotoTest(font.id)}
+                        >
+                            <FontTestSVG />
+                        </button>
+                        <button type="button" onClick={() => gotoVariable(font.id)}>
+                            <VariableSVG />
+                        </button>
+                        <button type="button">
+                            <WatchingSVG />
+                        </button>
                     </div>
                 </div>
             </div>

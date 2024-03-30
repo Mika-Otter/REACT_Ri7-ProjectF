@@ -1,16 +1,8 @@
-<svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Group 15">
-<g id="Group 13">
-<path id="Line 27" d="M1.10938 3.27509H24.6353" stroke="#FEFBFB" stroke-width="2" stroke-linecap="round"/>
-<path id="Ellipse 4" d="M19.271 3.27514C19.271 4.93573 17.9969 6.25921 16.4524 6.25921C14.9079 6.25921 13.6338 4.93573 13.6338 3.27514C13.6338 1.61456 14.9079 0.291077 16.4524 0.291077C17.9969 0.291077 19.271 1.61456 19.271 3.27514Z" fill="#FEFBFB" stroke="#FEFBFB" stroke-width="0.5"/>
-</g>
-<g id="Group 12">
-<path id="Line 28" d="M1.10938 9.74341H24.6353" stroke="#FEFBFB" stroke-width="2" stroke-linecap="round"/>
-<path id="Ellipse 5" d="M10.0654 9.74341C10.0654 11.404 8.79129 12.7275 7.24683 12.7275C5.70236 12.7275 4.42822 11.404 4.42822 9.74341C4.42822 8.08282 5.70236 6.75934 7.24683 6.75934C8.79129 6.75934 10.0654 8.08282 10.0654 9.74341Z" fill="#FEFBFB" stroke="#FEFBFB" stroke-width="0.5"/>
-</g>
-<g id="Group 14">
-<path id="Line 29" d="M1.10938 16.2114H24.6353" stroke="#FEFBFB" stroke-width="2" stroke-linecap="round"/>
-<path id="Ellipse 6" d="M23.3623 16.2114C23.3623 17.872 22.0882 19.1955 20.5437 19.1955C18.9992 19.1955 17.7251 17.872 17.7251 16.2114C17.7251 14.5508 18.9992 13.2274 20.5437 13.2274C22.0882 13.2274 23.3623 14.5508 23.3623 16.2114Z" fill="#FEFBFB" stroke="#FEFBFB" stroke-width="0.5"/>
-</g>
-</g>
+<svg width="26" height="14" viewBox="0 0 26 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 2H24.526" stroke="#120C0C" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M1 7H24.526" stroke="#120C0C" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M1 12H24.526" stroke="#120C0C" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M17.7495 2C17.7495 2.9665 16.966 3.75 15.9995 3.75C15.033 3.75 14.2495 2.9665 14.2495 2C14.2495 1.0335 15.033 0.25 15.9995 0.25C16.966 0.25 17.7495 1.0335 17.7495 2Z" fill="#120C0C" stroke="#120C0C" stroke-width="0.5"/>
+<path d="M9.74951 7C9.74951 7.9665 8.96601 8.75 7.99951 8.75C7.03301 8.75 6.24951 7.9665 6.24951 7C6.24951 6.0335 7.03301 5.25 7.99951 5.25C8.96601 5.25 9.74951 6.0335 9.74951 7Z" fill="#120C0C" stroke="#120C0C" stroke-width="0.5"/>
+<path d="M21.7495 12C21.7495 12.9665 20.966 13.75 19.9995 13.75C19.033 13.75 18.2495 12.9665 18.2495 12C18.2495 11.0335 19.033 10.25 19.9995 10.25C20.966 10.25 21.7495 11.0335 21.7495 12Z" fill="#120C0C" stroke="#120C0C" stroke-width="0.5"/>
 </svg>
