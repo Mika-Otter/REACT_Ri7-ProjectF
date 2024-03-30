@@ -34,10 +34,11 @@
             border-radius: 7px;
             height: f.rem(38);
             margin-bottom: f.rem(10);
-            border-bottom: 3px solid $magenta-color;
+            border-bottom: 3px solid $grey-color;
         }
         input:focus {
-            outline: 2px solid $magenta-color;
+            outline: none;
+            border-bottom: 3px solid $magenta-color;
         }
     }
 

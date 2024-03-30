@@ -1,10 +1,10 @@
 import React from "react";
-import s from "./home.module.scss";
+import s from "../pages.module.scss";
 import Folder from "../../components/folder/folder";
-import Favorites from "../../components/favorites/favorites";
 import Menu from "../../components/menu/menu";
+import Favorites from "../../components/favorites/favorites";
 
-export default function Home() {
+export default function FavoritesPage() {
     return (
         <>
             <section>

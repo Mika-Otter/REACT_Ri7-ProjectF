@@ -1,36 +1,50 @@
 import React, { useState } from "react";
-import s from "./variableText.module.scss";
+import s from "./variable.module.scss";
 import cn from "classnames";
-import Folder from "../folder/folder";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import CardFont from "../cardFont/cardFont";
 
 export default function Variable() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
+    const [addTitle, setAddTitle] = useState(false);
 
     return (
         <>
-            <Folder />
-            <div>
-                {choosedFonts.map((font, i) => (
-                    <VariableText
-                        fontName={font.name}
-                        key={font.name + i}
-                        font={font}
-                        small={true}
-                        i={i}
-                    />
-                ))}
-            </div>
+            <section>
+                <div className={s.variable__section}>
+                    <div className={s.variable__title}>
+                        <h2>Variable text</h2>
+                        <button
+                            type="button"
+                            id={s.title__btn}
+                            className={addTitle ? s.withTitle : s.withoutTitle}
+                            onClick={() => setAddTitle(!addTitle)}
+                        >
+                            {addTitle ? <span>With title</span> : <span>Without title</span>}
+                        </button>
+                    </div>
+                    <div>
+                        {choosedFonts.map((font, i) => (
+                            <VariableText
+                                fontName={font.name}
+                                key={font.name + i}
+                                font={font}
+                                small={true}
+                                i={i}
+                                addTitle={addTitle}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
         </>
     );
 }
 
-function VariableText({ fontName, font, i }) {
+function VariableText({ fontName, font, i, addTitle }) {
     const [fontSize, setFonSize] = useState(2);
     const [lineHeight, setLineHeight] = useState(100);
-    const [addTitle, setAddTitle] = useState(false);
 
     function changeLineHeight(e) {
         const updatedLineHeight = parseFloat(e.target.value);
@@ -48,8 +62,12 @@ function VariableText({ fontName, font, i }) {
                             </div>
                             <div className={s.cursor__box}>
                                 <div className={cn(s.fontSize, s.range)}>
-                                    <label htmlFor="fontSize">Font-size : {fontSize}</label>
+                                    <label htmlFor="fontSize" className={s.range__label}>
+                                        Font-size{" "}
+                                    </label>
+
                                     <input
+                                        className={s.input__range}
                                         type="range"
                                         min={0.3}
                                         max={20}
@@ -58,10 +76,15 @@ function VariableText({ fontName, font, i }) {
                                         value={fontSize}
                                         onChange={(e) => setFonSize(parseFloat(e.target.value))}
                                     />
+                                    <span className={s.range__span}>{fontSize} rem</span>
                                 </div>
+
                                 <div className={cn(s.lineHeight, s.range)}>
-                                    <label htmlFor="fontSize">Line-height : {lineHeight} %</label>
+                                    <label htmlFor="fontSize" className={s.range__label}>
+                                        Line-height
+                                    </label>
                                     <input
+                                        className={s.input__range}
                                         type="range"
                                         min={0}
                                         max={200}
@@ -70,21 +93,9 @@ function VariableText({ fontName, font, i }) {
                                         value={lineHeight}
                                         onChange={(e) => changeLineHeight(e)}
                                     />
+                                    <span className={s.range__span}>{lineHeight} %</span>
                                 </div>
-                                <div className={s.range}>
-                                    <button
-                                        type="button"
-                                        id={s.title__btn}
-                                        className={addTitle ? s.withTitle : s.withoutTitle}
-                                        onClick={() => setAddTitle(!addTitle)}
-                                    >
-                                        {addTitle ? (
-                                            <span>With title</span>
-                                        ) : (
-                                            <span>Without title</span>
-                                        )}
-                                    </button>
-                                </div>
+                                <div className={s.range}></div>
                             </div>
                         </div>
                         <div className={s.paragraph__section}>
@@ -98,7 +109,7 @@ function VariableText({ fontName, font, i }) {
                                         marginBottom: "20px",
                                     }}
                                 >
-                                    Lorem title
+                                    Title
                                 </h1>
                             ) : null}
                             <p
@@ -109,10 +120,14 @@ function VariableText({ fontName, font, i }) {
                                     margin: 0,
                                 }}
                             >
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-                                quas optio nihil nobis numquam voluptate, saepe nam est. Reiciendis
-                                deleniti omnis corporis quaerat aliquid deserunt magni illo soluta
-                                iusto exercitationem.
+                                Contrast is a term that gets used to describe a wide variety of
+                                mediums including music, food, paintings, and even typography. When
+                                describing type in terms of contrast, what you&rsquo;re referring to
+                                is the balance between black and white on your page — if you were to
+                                set everything to greyscale of course. You can affect the contrast
+                                of your type by adjusting elements such as kerning, leading, font
+                                size, font weight, and margins. Learning how to adjust them to
+                                create a harmonious balance within your composition is the trick.
                             </p>
                         </div>
                     </div>

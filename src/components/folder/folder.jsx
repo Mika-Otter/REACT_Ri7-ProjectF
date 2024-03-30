@@ -14,7 +14,7 @@ export default function Folder() {
     const fonts = useSelector((state) => state.fonts.value);
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
     const userId = useSelector((state) => state.auth.userId);
-    const [folder, setFolder] = useState(false);
+    const [folder, setFolder] = useState(true);
     const folderRef = useRef();
     const cacheRef = useRef();
 
@@ -100,10 +100,11 @@ export default function Folder() {
 
     useGSAP(() => {
         if (folder) {
-            gsap.to(folderRef.current, { right: "-14vw", duration: 1.3 });
+            gsap.to(folderRef.current, { right: "-12vw", duration: 1.3, ease: "power3.inOut" });
+
             gsap.to(cacheRef.current, { opacity: 1, duration: 1.3, zIndex: 100 });
         } else {
-            gsap.to(folderRef.current, { right: 0, duration: 1.3, ease: "power3.inOut" });
+            gsap.to(folderRef.current, { right: 0, duration: 1.3 });
             gsap.to(cacheRef.current, { opacity: 0, duration: 1.3, zIndex: -1 });
         }
     }, [folder]);

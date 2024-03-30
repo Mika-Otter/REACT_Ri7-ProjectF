@@ -20,7 +20,8 @@
 }
 .folder {
     position: fixed;
-    right: 0;
+    right: -12vw;
+    z-index: 999;
     top: 0;
     bottom: 0;
     width: clamp(f.rem(150), 23vw, f.rem(270));
@@ -46,8 +47,8 @@
 
     &__folder {
         margin-inline: auto;
-        border-top: 0.5px solid $white-color;
-        border-bottom: 0.5px solid $white-color;
+        // border-top: 0.5px solid $white-color;
+        // border-bottom: 0.5px solid $white-color;
         width: 90%;
         height: 35vh;
         margin-bottom: 3vh;
@@ -56,8 +57,8 @@
 
         &__favorite {
             margin-inline: auto;
-            border-top: 0.5px solid $white-color;
-            border-bottom: 0.5px solid $white-color;
+            // border-top: 0.5px solid $white-color;
+            // border-bottom: 0.5px solid $white-color;
             width: 90%;
             height: 20vh;
             margin-top: 1vh;
