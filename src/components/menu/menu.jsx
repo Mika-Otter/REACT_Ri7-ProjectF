@@ -16,7 +16,7 @@ export default function Menu() {
                     <span className={s.menu__profil__text__bigletter}>{username[0]}</span>
                 </div>
                 <div className={s.menu__menu}>
-                    <Link to="/favfonts">
+                    <Link to="/home">
                         Your favorites <br />
                         typefaces
                     </Link>

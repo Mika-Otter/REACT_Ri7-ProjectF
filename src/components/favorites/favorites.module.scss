@@ -9,6 +9,10 @@
 
 .typos > h3,
 .favorites__typos > h3 {
+    display: flex;
+    gap: 90px;
+    flex-wrap: wrap;
+    row-gap: 0px;
     font-family: "Nacelle-Bold";
     font-size: $fontsize-m;
     width: 90%;
@@ -54,17 +58,16 @@
 .favorite__box {
     margin-inline: auto;
     width: 90%;
-    display: flex;
-    height: 35vh;
+    height: 85vh;
     overflow-y: scroll;
-
-    flex-wrap: wrap;
-    gap: 40px;
-    row-gap: 20px;
-    padding: 2vh 2vw;
-    // border-radius: 5px;
+    padding: 2vw;
     border-top: 1px solid $black-color;
-    border-bottom: 1px solid $black-color;
+    // border-bottom: 1px solid $black-color;
+
+    &__ctn {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .favorite__ctn {

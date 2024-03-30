@@ -10,8 +10,9 @@ import TrashIcone from "../SVG/trash";
 import VariableSVG from "../SVG/variable";
 import FontTestSVG from "../SVG/fonttest";
 import WatchingSVG from "../SVG/watch";
-import BlackTSVG from "../SVG/blackT";
-import WhiteTSVG from "../SVG/whiteT";
+import CardSVG from "../SVG/card";
+// import BlackTSVG from "../SVG/blackT";
+// import WhiteTSVG from "../SVG/whiteT";
 
 export default function CardFont({ font, small, i }) {
     const dispatch = useDispatch();
@@ -141,6 +142,9 @@ export default function CardFont({ font, small, i }) {
         <>
             <div className={s.favorite} key={font.name + i}>
                 <div className={s.favorite__box}>
+                    <div className={s.favorite__card}>
+                        <img src="./assets/icones/Cardre.png" alt="cadre" />
+                    </div>
                     <div className={s.checkbox__ctn}>
                         <input
                             className={s.checkbox__fav}
@@ -182,9 +186,6 @@ export default function CardFont({ font, small, i }) {
                                         }
                                     />
                                 </div>
-                                <div className={s.rate__note__icone}>
-                                    {ratings[font.name] >= i + 1 ? <BlackTSVG /> : <WhiteTSVG />}
-                                </div>
                             </div>
                         ))}
                     </div>
@@ -196,7 +197,11 @@ export default function CardFont({ font, small, i }) {
                         >
                             <FontTestSVG />
                         </button>
-                        <button type="button" onClick={() => gotoVariable(font.id)}>
+                        <button
+                            type="button"
+                            onClick={() => gotoVariable(font.id)}
+                            className={s.variable}
+                        >
                             <VariableSVG />
                         </button>
                         <button type="button">

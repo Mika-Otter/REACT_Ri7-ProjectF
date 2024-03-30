@@ -119,22 +119,29 @@ export default function Favorites() {
                         <span className={s.selector}>Rate</span>
                     </div>
                     <div className={s.favorite__box}>
-                        {fonts.map((font, i) =>
-                            font.favorite ? (
-                                <CardFont font={font} small={false} i={i} key={font.name + i} />
-                            ) : null
-                        )}
-                    </div>
-                </div>
-                <div className={s.favorites__typos}>
-                    <h3>All your types : </h3>
-                    <div className={s.favorite__box}>
-                        {fonts.map((font, i) => (
-                            <CardFont font={font} small={false} i={i} key={font.name + i} />
-                        ))}
+                        <div className={s.favorite__box__ctn}>
+                            {fonts.map((font, i) =>
+                                font.favorite ? (
+                                    <CardFont font={font} small={false} i={i} key={font.name + i} />
+                                ) : null
+                            )}
+                        </div>
                     </div>
                 </div>
             </section>
         </>
     );
+}
+
+{
+    /* <div className={s.favorites__typos}>
+<h3>All your types : </h3>
+<div className={s.favorite__box}>
+    <div className={s.favorite__box__ctn}>
+        {fonts.map((font, i) => (
+            <CardFont font={font} small={false} i={i} key={font.name + i} />
+        ))}
+    </div>
+</div>
+</div> */
 }
