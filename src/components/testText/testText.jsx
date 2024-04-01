@@ -4,6 +4,7 @@ import cn from "classnames";
 import { useSelector } from "react-redux";
 import Folder from "../folder/folder";
 import Menu from "../menu/menu";
+import Border from "../SVG/border";
 // import { setFonts } from "../../src/features/fonts/fontsSlice";
 
 export default function TestText() {
@@ -15,39 +16,45 @@ export default function TestText() {
         mediumCheckbox: false,
         smallCheckbox: false,
     });
+    const [checked, setChecked] = useState(1);
 
     // PREVENT 0 CHECKED BOX
     const handleCheckbox = (checkboxName) => {
-        let countNumChecked = 0;
-        for (const name in checkboxes) {
-            if (checkboxes[name]) {
-                countNumChecked++;
-            }
-        }
-        countNumChecked = checkboxes[checkboxName] ? countNumChecked-- : countNumChecked++;
-
-        if (checkboxes[checkboxName] === true && countNumChecked === 0) {
+        if (checked === 1 && checkboxes[checkboxName]) {
             return;
         } else {
-            const updatedCheckboxes = { ...checkboxes, [checkboxName]: !checkboxes[checkboxName] };
-            setCheckboxes(updatedCheckboxes);
+            checkboxes[checkboxName]
+                ? setChecked((prev) => prev - 1)
+                : setChecked((prev) => prev + 1);
         }
+
+        const updatedCheckboxes = { ...checkboxes, [checkboxName]: !checkboxes[checkboxName] };
+        setCheckboxes(updatedCheckboxes);
     };
 
     return (
         <>
             <section>
                 <Menu />
+
                 <div className={s.test}>
+                    <div className={s.test__title}>
+                        <h2>Test fonts</h2>
+                    </div>
                     <div className={s.test__text}>
+                        <div className={s.border__left}>
+                            <Border />
+                        </div>
                         <input
                             type="text"
                             name="test"
                             value={test}
                             onChange={(e) => setTest(e.target.value)}
                         />
+                        <div className={s.border__right}>
+                            <Border />
+                        </div>
                     </div>
-
                     <div className={s.test__buttons}>
                         <input
                             type="checkbox"

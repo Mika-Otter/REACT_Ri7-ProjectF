@@ -1,17 +1,48 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
 .test,
 .test__section {
     width: 65%;
     margin-inline: auto;
+
+    // border: 2px solid red;
+}
+
+.test__section {
+    overflow-y: auto;
+    height: 73vh;
+}
+
+.test__title {
+    position: sticky;
+    z-index: 300;
+    top: 0;
+    margin-top: 3vh;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    background-color: $white-color;
+    margin-inline: auto;
+    border-bottom: 1px solid $black-color;
+    gap: 10px;
+    h2 {
+        font-family: "Nacelle-Bold";
+        font-size: $fontsize-m;
+    }
 }
 .test__view {
     display: flex;
     flex-direction: column;
 
     &__big {
+        overflow: hidden;
+        width: 150%;
+        text-overflow: clip;
         margin: 0;
-
+        margin-bottom: -10px;
         font-size: 3vw;
     }
     &__medium {
@@ -32,8 +63,67 @@
 }
 
 .test__text {
+    display: flex;
+    align-items: center;
     input {
+        box-sizing: content-box;
+        margin-top: 3vh;
         border: none;
+        height: f.rem(30);
+        width: 70%;
+        background: none;
         color: $black-color;
+        border-bottom: 2px solid $black-color;
+        font-size: $fontsize-s;
+        display: flex;
+        align-items: center;
+        font-family: "Nacelle";
     }
+    input:focus {
+        outline: none;
+        border-bottom: 3px solid $black-color;
+    }
+}
+
+.test__buttons {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    label {
+        margin-left: -10px;
+        font-family: "Nacelle";
+        font-size: $fontsize-xxs;
+    }
+    input {
+        cursor: pointer;
+        appearance: none;
+        border: 2px solid $black-color;
+        height: 13px;
+        width: 13px;
+    }
+
+    input:checked {
+        background-color: $black-color;
+    }
+}
+
+.border__left,
+.border__right {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.border__left {
+    margin-right: 10px;
+}
+
+.border__right {
+    // border: 2px solid red;
+    transform: rotate(180deg);
+    margin-left: 10px;
 }
