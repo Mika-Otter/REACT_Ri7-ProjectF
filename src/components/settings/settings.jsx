@@ -246,17 +246,20 @@ export default function Settings() {
                             Manage
                         </button>
                     </div>
-                    <h3>Custom</h3>
-                    <div className={s.email__preferences}>
-                        <label htmlFor="custonFont">Change the font :</label>
-                        <select name="customfont" id="custonFont">
-                            <option>Nacelle</option>
-                            <option>Other</option>
-                            <option>Last</option>
-                        </select>
-                    </div>
                 </div>
             </section>
         </>
     );
+}
+
+{
+    /* <h3>Custom</h3>
+<div className={s.email__preferences}>
+    <label htmlFor="custonFont">Change the font :</label>
+    <select name="customfont" id="custonFont">
+        <option>Nacelle</option>
+        <option>Other</option>
+        <option>Last</option>
+    </select>
+</div> */
 }

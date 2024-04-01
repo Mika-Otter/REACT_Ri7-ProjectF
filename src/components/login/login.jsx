@@ -8,10 +8,6 @@ export default function Login({ active, toggleLogin, toggleRegister }) {
     const tl = useRef();
     const button = useRef();
 
-    useEffect(() => {
-        console.log("yoo", active);
-    }, [active]);
-
     return (
         <>
             <div

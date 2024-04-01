@@ -6,12 +6,18 @@ body {
     overflow-y: hidden;
 }
 
+.nochoosedfont {
+    font-size: $fontsize-s;
+    font-family: "Nacelle";
+    margin-left: -1.7vw;
+}
+
 .variable__section {
     height: 100dvh;
     width: 90%;
     overflow-y: scroll;
     // border: 2px solid brown;
-    margin-left: 10%;
+    margin-left: 3vw;
 }
 
 .box__variable {
@@ -44,8 +50,8 @@ body {
         border-bottom: 1px solid $black-color;
         gap: 10px;
         h2 {
-            font-family: "Nacelle";
-            font-size: $fontsize-l;
+            font-family: "Nacelle-Bold";
+            font-size: $fontsize-m;
         }
     }
 

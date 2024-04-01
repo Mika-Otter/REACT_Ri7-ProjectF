@@ -17,7 +17,6 @@ export default function Connect({ toggleRegister, toggleLogin }) {
     function handleLogin(userData) {
         dispatch(setUserId(userData.id));
         dispatch(setUserName(userData.username));
-        console.log(userId);
     }
 
     const [err, setError] = useState(null);
@@ -32,7 +31,6 @@ export default function Connect({ toggleRegister, toggleLogin }) {
         e.preventDefault();
         try {
             const res = await axios.post("http://localhost:8080/server/auth/login", inputs);
-            console.log(res.data, "DAAAAAATA"); // ENV !!!!
             localStorage.setItem("token", res.data.token);
             handleLogin(res.data);
             navigate("/home");

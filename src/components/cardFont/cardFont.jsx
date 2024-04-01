@@ -11,8 +11,6 @@ import VariableSVG from "../SVG/variable";
 import FontTestSVG from "../SVG/fonttest";
 import WatchingSVG from "../SVG/watch";
 import CardSVG from "../SVG/card";
-// import BlackTSVG from "../SVG/blackT";
-// import WhiteTSVG from "../SVG/whiteT";
 
 export default function CardFont({ font, small, i }) {
     const dispatch = useDispatch();

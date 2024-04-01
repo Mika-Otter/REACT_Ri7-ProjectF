@@ -86,37 +86,45 @@ export default function TestText() {
                 </div>
             </section>
             <section className={s.test__section}>
-                {choosedFonts.map((font, index) => (
-                    <div className={s.test__view} key={`font-${index}`}>
-                        {checkboxes.bigCheckbox && (
-                            <span
-                                key={`big-${font.name}`}
-                                className={cn(`font-${font.name}`, s.test__view__big)}
-                            >
-                                {test}
+                {choosedFonts.length === 0 ? (
+                    <>
+                        <p className={s.nochoosedfont}>Please select a font in your folder...</p>
+                        <button type="button">Folder</button>
+                    </>
+                ) : (
+                    choosedFonts.map((font, index) => (
+                        <div className={s.test__view} key={`font-${index}`}>
+                            {checkboxes.bigCheckbox && (
+                                <span
+                                    key={`big-${font.name}`}
+                                    className={cn(`font-${font.name}`, s.test__view__big)}
+                                >
+                                    {test}
+                                </span>
+                            )}
+                            {checkboxes.mediumCheckbox && (
+                                <span
+                                    key={`medium-${font.name}`}
+                                    className={cn(`font-${font.name}`, s.test__view__medium)}
+                                >
+                                    {test}
+                                </span>
+                            )}
+                            {checkboxes.smallCheckbox && (
+                                <span
+                                    key={`small-${font.name}`}
+                                    className={cn(`font-${font.name}`, s.test__view__small)}
+                                >
+                                    {test}
+                                </span>
+                            )}
+                            <span key={index} className={s.test__view__typeface}>
+                                {font.name}
                             </span>
-                        )}
-                        {checkboxes.mediumCheckbox && (
-                            <span
-                                key={`medium-${font.name}`}
-                                className={cn(`font-${font.name}`, s.test__view__medium)}
-                            >
-                                {test}
-                            </span>
-                        )}
-                        {checkboxes.smallCheckbox && (
-                            <span
-                                key={`small-${font.name}`}
-                                className={cn(`font-${font.name}`, s.test__view__small)}
-                            >
-                                {test}
-                            </span>
-                        )}
-                        <span key={index} className={s.test__view__typeface}>
-                            {font.name}
-                        </span>
-                    </div>
-                ))}
+                        </div>
+                    ))
+                )}
+
                 <Folder />
             </section>
         </>

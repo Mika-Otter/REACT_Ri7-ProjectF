@@ -2,6 +2,11 @@
 @use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
+.nochoosedfont {
+    font-size: $fontsize-s;
+    font-family: "Nacelle";
+}
+
 .test,
 .test__section {
     width: 65%;
@@ -43,20 +48,24 @@
         text-overflow: clip;
         margin: 0;
         margin-bottom: -10px;
+        min-height: f.rem(75);
         font-size: 3vw;
+        padding-left: 20px;
     }
     &__medium {
         margin: 0;
-
+        margin-top: -10px;
+        padding-left: 20px;
         font-size: 2vw;
     }
     &__small {
         margin: 0;
-
+        padding-left: 20px;
         font-size: 1vw;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     &__typeface {
+        padding-left: 20px;
         font-size: 0.7vw;
         font-family: "Nacelle-Bold";
     }

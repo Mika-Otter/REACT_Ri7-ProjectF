@@ -15,12 +15,10 @@ export default function Welcome() {
 
     const toggleLogin = () => {
         setLoginBtn(!loginBtn);
-        console.log(loginBtn);
     };
 
     const toggleRegister = () => {
         setRegister(!register);
-        console.log("heeeeeelllo", register);
     };
 
     useGSAP(() => {

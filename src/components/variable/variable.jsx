@@ -25,16 +25,24 @@ export default function Variable() {
                         </button>
                     </div>
                     <div>
-                        {choosedFonts.map((font, i) => (
-                            <VariableText
-                                fontName={font.name}
-                                key={font.name + i}
-                                font={font}
-                                small={true}
-                                i={i}
-                                addTitle={addTitle}
-                            />
-                        ))}
+                        {choosedFonts.length === 0 ? (
+                            <div className={s.paragraph__section}>
+                                <p className={s.nochoosedfont}>
+                                    Please select a font in your folder...
+                                </p>
+                            </div>
+                        ) : (
+                            choosedFonts.map((font, i) => (
+                                <VariableText
+                                    fontName={font.name}
+                                    key={font.name + i}
+                                    font={font}
+                                    small={true}
+                                    i={i}
+                                    addTitle={addTitle}
+                                />
+                            ))
+                        )}
                     </div>
                 </div>
             </section>
@@ -42,7 +50,7 @@ export default function Variable() {
     );
 }
 
-function VariableText({ fontName, font, i, addTitle }) {
+function VariableText({ fontName, font, i, addTitle, choosedFonts }) {
     const [fontSize, setFonSize] = useState(2);
     const [lineHeight, setLineHeight] = useState(100);
 
@@ -98,6 +106,7 @@ function VariableText({ fontName, font, i, addTitle }) {
                                 <div className={s.range}></div>
                             </div>
                         </div>
+
                         <div className={s.paragraph__section}>
                             {addTitle ? (
                                 <h1
