@@ -1,3 +1,5 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
 .error {
@@ -22,18 +24,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    margin-top: 2vh;
+    height: 90dvh;
+    margin-left: 7vw;
     width: 85%;
+    overflow-y: auto;
 }
 .profil {
-    border: 2px solid $black-color;
-    width: 32%;
-    height: 60vh;
+    width: 90%;
     font-family: "Nacelle";
     font-weight: 500;
-    padding: 1.5vw;
+
     h1 {
-        font-size: 2rem;
+        position: sticky;
+        top: 0;
+        padding-top: 3vh;
+        font-family: "Nacelle-Bold";
+        font-size: $fontsize-m;
+        height: f.rem(80);
+        margin-top: 3vh;
+        border-bottom: 1px solid $black-color;
+        background-color: $white-color;
     }
 }
 
@@ -55,6 +66,7 @@ button {
 }
 
 .profil__user {
+    margin-top: 12vh;
     &__name,
     &__email {
         display: flex;
@@ -65,7 +77,8 @@ button {
             margin-bottom: 4px;
         }
         input {
-            height: 2vh;
+            height: f.rem(30);
+
             border: 1px solid #3f3c3caa;
             border-radius: 5px;
         }
@@ -84,7 +97,7 @@ button {
             margin-bottom: 4px;
         }
         input {
-            height: 2vh;
+            height: f.rem(30);
             border: 1px solid #3f3c3caa;
             border-radius: 5px;
         }
@@ -102,4 +115,41 @@ button {
 .manage {
     background-color: $black-color;
     color: $white-color;
+}
+
+.wrapper__settings {
+    background-color: $grey-color;
+    margin-top: f.rem(10);
+    margin-bottom: f.rem(15);
+    height: calc(f.rem(38) + 3px);
+
+    border-radius: 7px;
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    button {
+        font-size: $fontsize-xxs;
+        color: $white-color;
+        z-index: 1000;
+        background: none;
+        border: none;
+        font-style: normal;
+    }
+}
+
+.wrapper__settings:hover #hover {
+    bottom: 0;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#hover {
+    width: 100%;
+    height: calc(f.rem(38) + 3px);
+    background-color: $magenta-color;
+    bottom: calc((f.rem(38) + 3px) * -1);
+    position: absolute;
+    transition: 0.3s;
 }

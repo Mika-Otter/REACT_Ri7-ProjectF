@@ -7,10 +7,10 @@ import Login from "./components/login/login";
 import Unauthorized from "./components/unauthorized";
 import RequireAuth from "./components/requireAuth/requireAuth";
 import Loaderfont from "./components/loaderfont/loaderfont";
-import Settings from "./components/settings/settings";
 import AllFontsPage from "./pages/allfontsPage/allFontsPage";
 import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 import VariablePage from "./pages/variablePage/variablePage";
+import SettingsPage from "./pages/settingsPage/settingsPage";
 
 export default function App() {
     return (
@@ -29,7 +29,7 @@ export default function App() {
                     <Route path="fonttest" element={<TestText />}></Route>
                     <Route path="home" element={<AllFontsPage />}></Route>
                     <Route path="variable" element={<VariablePage />}></Route>
-                    <Route path="settings" element={<Settings />}></Route>
+                    <Route path="settings" element={<SettingsPage />}></Route>
                 </Route>
                 {/* catch all */}
                 {/* <Route path="*" element={<Missing />}></Route> */}

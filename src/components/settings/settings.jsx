@@ -80,7 +80,8 @@ export default function Settings() {
             try {
                 console.log("TOOOOOO");
                 const res = await axios.post(SETTING_URL + "/pwd", { userId, pwd, newPwd });
-                setSuccess(true);
+                setSuccess("password");
+                setError("");
                 return res.status === 200;
             } catch (err) {
                 if (!err?.response) {
@@ -96,7 +97,6 @@ export default function Settings() {
 
     return (
         <>
-            <Folder />
             <section className={s.profil__section}>
                 <div className={s.profil}>
                     <h1>Settings</h1>
@@ -134,97 +134,111 @@ export default function Settings() {
                                 ""
                             )}
                         </div>
-                        <button type="submit" form="usernameForm">
-                            Update profil
-                        </button>
+                        <div className={s.wrapper__settings}>
+                            <div id={s.hover}></div>
+                            <button type="submit" form="usernameForm">
+                                Update profil
+                            </button>
+                        </div>
                     </form>
                     <h3>Change password</h3>
-                    <form
-                        className={s.profil__password}
-                        autoComplete="off"
-                        onSubmit={(e) => {
-                            handleChangePassword(e, userId, pwd, matchPwd);
-                        }}
-                        id="passwordForm"
-                    >
-                        <div className={s.profil__password__old}>
-                            <label htmlFor="oldPassword">Old password</label>
-                            <input
-                                type="password"
-                                id="oldPassword"
-                                name="oldPassword"
-                                autoComplete="off"
-                                required
-                                onChange={(e) => {
-                                    setPwd(e.target.value);
-                                }}
-                                onBlur={() => setPwdBlur(true)}
-                                aria-invalid={validPwd ? "false" : "true"}
-                                aria-describedby="pwdnote"
-                            />
-                            <p
-                                id="pwdnote"
-                                className={pwdBlur && !validPwd ? s.instructions : s.offscreen}
-                            >
-                                This password is not valid !
-                            </p>
-                        </div>
-                        <div className={s.profil__password__new}>
-                            <label htmlFor="newPassword">New password</label>
-                            <input
-                                type="password"
-                                id="newPassword"
-                                name="newPassword"
-                                autoComplete="off"
-                                required
-                                onChange={(e) => {
-                                    setNewPwd(e.target.value);
-                                }}
-                                onBlur={() => {
-                                    if (newPwd.length > 0) setNewPwdBlur(true);
-                                }}
-                                aria-invalid={validNewPwd ? "false" : "true"}
-                                aria-describedby="newpwdnote"
-                            />
-                            <p
-                                id="newpwdnote"
-                                className={
-                                    newPwdBlur && !validNewPwd ? s.instructions : s.offscreen
-                                }
-                            >
-                                This password is not valid !
-                            </p>
-                        </div>
-                        <div className={s.profil__password__confirm}>
-                            <label htmlFor="confirmPassword">Confirm new password</label>
-                            <input
-                                type="password"
-                                id="matchPassword"
-                                name="matchPassword"
-                                autoComplete="off"
-                                required
-                                onChange={(e) => {
-                                    setMatchPwd(e.target.value);
-                                    handleChangePassword(e);
-                                }}
-                                onBlur={() => {
-                                    if (matchPwd.length > 0) setMatchBlur(true);
-                                }}
-                                aria-invalid={validMatch ? "false" : "true"}
-                                aria-describedby="matchnote"
-                            />
-                            <p
-                                id="matchnote"
-                                className={matchBlur && !validMatch ? s.instructions : s.offscreen}
-                            >
-                                This password need to be the same of the precedent field !
-                            </p>
-                        </div>
-                        <p></p>
-                        <button type="submit" form="passwordForm">
-                            Update password
-                        </button>
-                    </form>
+                    {success === "password" ? (
+                        <p>Password correctly changed ! </p>
+                    ) : (
+                        <form
+                            className={s.profil__password}
+                            autoComplete="off"
+                            onSubmit={(e) => {
+                                handleChangePassword(e, userId, pwd, matchPwd);
+                            }}
+                            id="passwordForm"
+                        >
+                            <div className={s.profil__password__old}>
+                                <label htmlFor="oldPassword">Old password</label>
+                                <input
+                                    type="password"
+                                    id="oldPassword"
+                                    name="oldPassword"
+                                    autoComplete="off"
+                                    required
+                                    onChange={(e) => {
+                                        setPwd(e.target.value);
+                                    }}
+                                    onBlur={() => setPwdBlur(true)}
+                                    aria-invalid={validPwd ? "false" : "true"}
+                                    aria-describedby="pwdnote"
+                                />
+                                <p
+                                    id="pwdnote"
+                                    className={pwdBlur && !validPwd ? s.instructions : s.offscreen}
+                                >
+                                    This password is not valid !
+                                </p>
+                            </div>
+                            <div className={s.profil__password__new}>
+                                <label htmlFor="newPassword">New password</label>
+                                <input
+                                    type="password"
+                                    id="newPassword"
+                                    name="newPassword"
+                                    autoComplete="off"
+                                    required
+                                    onChange={(e) => {
+                                        setNewPwd(e.target.value);
+                                    }}
+                                    onBlur={() => {
+                                        if (newPwd.length > 0) setNewPwdBlur(true);
+                                    }}
+                                    aria-invalid={validNewPwd ? "false" : "true"}
+                                    aria-describedby="newpwdnote"
+                                />
+                                <p
+                                    id="newpwdnote"
+                                    className={
+                                        newPwdBlur && !validNewPwd ? s.instructions : s.offscreen
+                                    }
+                                >
+                                    8 to 25 characters. Must includ uppercase and lowercase letters,
+                                    a number <br /> and a special character.
+                                </p>
+                            </div>
+                            <div className={s.profil__password__confirm}>
+                                <label htmlFor="confirmPassword">Confirm new password</label>
+                                <input
+                                    type="password"
+                                    id="matchPassword"
+                                    name="matchPassword"
+                                    autoComplete="off"
+                                    required
+                                    onChange={(e) => {
+                                        setMatchPwd(e.target.value);
+                                        handleChangePassword(e);
+                                    }}
+                                    onBlur={() => {
+                                        if (matchPwd.length > 0) setMatchBlur(true);
+                                    }}
+                                    aria-invalid={validMatch ? "false" : "true"}
+                                    aria-describedby="matchnote"
+                                />
+                                <p
+                                    id="matchnote"
+                                    className={
+                                        matchBlur && !validMatch ? s.instructions : s.offscreen
+                                    }
+                                >
+                                    This password need to be the same of the precedent field !
+                                </p>
+                            </div>
+                            <p></p>
+                            <div className={s.wrapper__settings}>
+                                <div id={s.hover}></div>
+                                <button type="submit" form="passwordForm">
+                                    Change Password
+                                </button>
+                            </div>
+                        </form>
+                    )}
+
                     <h3>Email preferences</h3>
                     <div className={s.email__preferences}>
                         <span>user.email</span>
