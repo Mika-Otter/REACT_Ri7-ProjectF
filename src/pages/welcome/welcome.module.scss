@@ -2,189 +2,29 @@
 @use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
-.bigbox__navbar {
-    width: 100%;
-    height: 100dvh;
-    position: absolute;
+.fade {
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("/background.png");
+    z-index: -1;
 }
 
-.offscreen {
-    display: none;
+.logo {
+    position: fixed;
+    top: 1vw;
+    left: 1vw;
+    width: 7vw;
 }
 
-.register {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 8vh;
-    left: 25%;
-    right: 25%;
-}
 
-.navbar {
-    display: flex;
-    height: f.rem(80);
-    justify-content: space-between;
-    align-items: center;
-    padding-right: $padding-m;
+.welcome {
+    // z-index: 1;
     position: relative;
-
-    &__title {
-        padding: $padding-xs;
-        &__Typ {
-            font-family: "VCR_OSD";
-            font-size: $fontsize-l;
-        }
-        &__Pov {
-            font-family: "Vidaloka";
-            font-size: $fontsize-l;
-        }
-    }
+    height: 100vh;
 }
 
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: self-start;
-    width: 75%;
-    margin-inline: auto;
-    // border: 2px solid rgb(55, 255, 0);
 
-    @include u.breakpoint-down(large) {
-        width: 80%;
-        flex-direction: column;
-    }
-}
 
-.getstarted {
-    margin-top: calc($padding-xl * 3);
-    font-family: "Nacelle";
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
-    h2 {
-        width: 100%;
-        font-size: $fontsize-xl;
-        margin: 0;
-        margin-bottom: -0.7rem;
-
-        @include u.breakpoint-down(xlarge) {
-            font-size: $fontsize-l;
-        }
-        @include u.breakpoint-down(large) {
-            text-align: center;
-        }
-    }
-    button {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: clamp(f.rem(120), f.rem(200) + 3vw, f.rem(295));
-        height: clamp(f.rem(45), f.rem(45) + 2vh, f.rem(69));
-        padding-left: 2rem;
-        padding-right: 1.5rem;
-        border-radius: 50px;
-        background-color: $grey-color;
-        color: $white-color;
-        font-family: Arial, Helvetica, sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: $fontsize-s;
-        text-align: left;
-
-        transition: 0.3s ease-in-out;
-        @include u.breakpoint-down(large) {
-            text-align: center;
-            margin-inline: auto;
-        }
-    }
-
-    button:hover {
-        width: clamp(f.rem(130), f.rem(220) + 3vw, f.rem(315));
-    }
-
-    #arrow {
-        transition: 0.2s ease-in-out;
-    }
-
-    button:hover #arrow {
-        transform: rotate(-90deg);
-    }
-
-    p {
-        margin-top: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: $fontsize-xs;
-        width: 90%;
-    }
-}
-
-#wrapper__arrow {
-    background-color: #b02bde;
-    height: clamp(f.rem(25), f.rem(32) + 1vh, f.rem(37));
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s ease-in-out;
-}
-
-.pictures {
-    margin-top: calc($padding-xl * 3);
-    height: 60vh;
-    display: flex;
-    width: 50%;
-    flex-wrap: wrap;
-    row-gap: 30px;
-    position: relative;
-    gap: 30px;
-    // border: 2px solid blue;
-    @include u.breakpoint-down(large) {
-        width: 120%;
-        margin-left: -10%;
-        height: 70dvh;
-        flex-direction: column;
-        flex-wrap: nowrap;
-    }
-    &__variabletext {
-        &__pic {
-            border: 1px solid rgba(198, 198, 198, 0.7);
-            margin-left: 3vw;
-            border-radius: 1.7rem;
-            width: clamp(33vw, 35vw, 40vw);
-            @include u.breakpoint-down(large) {
-                margin-left: 0;
-                width: 100%;
-                flex-direction: column;
-            }
-        }
-    }
-    &__tweens {
-        display: flex;
-        gap: 30px;
-        &__favorites {
-            border: 1px solid rgba(198, 198, 198, 0.7);
-            border-radius: 1.7rem;
-            border-radius: 1.7rem;
-            width: clamp(f.rem(125), 10vw, f.rem(300));
-            height: clamp(f.rem(125), 10vw, f.rem(300));
-            object-fit: cover;
-            margin-left: 15vw;
-            @include u.breakpoint-down(large) {
-                margin-left: -10%;
-                width: 120%;
-                flex-direction: column;
-            }
-        }
-        &__folder {
-            border-radius: 23px;
-            width: clamp(f.rem(125), 15vw, f.rem(200));
-            right: -4vw;
-            top: 70%;
-        }
-    }
-}

@@ -32,12 +32,21 @@
     font-family: "InstrumentSans-SemiBold";
     src: url(../typefaces/InstrumentSans-SemiBold.ttf);
 }
+@font-face {
+    font-family: "InstrumentSans-Bold";
+    src: url(../typefaces/InstrumentSans-Bold.ttf);
+}
+@font-face {
+    font-family: "RightDidone-CompactDark";
+    src: url(../typefaces/RightDidone-CompactDark.otf);
+}
 
 //___FONT-SIZE______________________________
 $fontsize-xxs: clamp(f.rem(10), f.rem(10) + 0.3vw, f.rem(17));
 $fontsize-xs: clamp(f.rem(12), f.rem(9) + 0.5vw, f.rem(20));
 $fontsize-s: clamp(f.rem(14), f.rem(13) + 0.3vw, f.rem(17));
 $fontsize-m: 1vw;
-$fontsize-l: clamp(f.rem(32), f.rem(32) + 1vw, f.rem(70));
+$fontsize-l: clamp(f.rem(20), f.rem(18) + 0.5vw, f.rem(30));
+$fontsize-big-letter: clamp(f.rem(300), 50vh, f.rem(600));
 $fontsize-xl: clamp(f.rem(50), f.rem(45) + 1.7vw, f.rem(74));
 $fontsize-xxl: clamp(f.rem(80), f.rem(50) + 2vw, f.rem(120));
