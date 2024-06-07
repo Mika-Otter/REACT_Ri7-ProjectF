@@ -94,7 +94,7 @@ export default function Register({ register, toggleRegister, setLoginBtn }) {
         <p className={error ? s.error : s.offscreen} aria-live="assertive">
           {error}
         </p>
-        <div className={register ? s.registerForm : s.offscreen}>
+        <div className={s.registerForm}>
           <div className={s.welcome}>
             <h2>
               Welcome, <br />
