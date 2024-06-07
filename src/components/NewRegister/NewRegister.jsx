@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import s from "./NewRegister.module.scss";
 import axios from "../../app/api/axios";
+import ArrowRegisterSVG from "../SVG/ArrowRegisterSVG";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const REGISTER_URL = "http://localhost:8080/server/auth/register";
 
-export default function NewRegister({ toggleRegister, setLoginBtn }) {
+export default function NewRegister({ handleRegister, setLoginBtn }) {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isValid },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: "onBlur" });
 
   const [error, setError] = useState("");
 
@@ -22,7 +23,7 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
     try {
       await axios.post(REGISTER_URL, data);
       setLoginBtn(true);
-      toggleRegister();
+      handleRegister();
     } catch (err) {
       console.error(err);
       setError("Registration failed. Please try again.");
@@ -32,6 +33,18 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
   return (
     <div className={s.register}>
       <div className={s.register__content}>
+        <div
+          className={s.register__backtohome}
+          onClick={() => handleRegister()}
+        >
+          <div className={s.register__backtohome__arrow}>
+            <ArrowRegisterSVG />
+          </div>
+          <div className={s.register__backtohome__wrapper}>
+            <span className={s.backhome}>Back to home page</span>
+            <span className={s.backhome}>Back to home page</span>
+          </div>
+        </div>
         <div className={s.register__content__frame}>
           <h2>Start here</h2>
           <form className={s.register__form} onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +53,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               <input
                 type="text"
                 id="username"
-                placeholder="Enter your username"
                 {...register("username", {
                   required: "Username is required",
                   pattern: {
@@ -53,9 +65,12 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
                 aria-describedby="uidnote"
                 className={s.formInput__input}
               />
-              {errors.username && (
-                <p className={s.error}>{errors.username.message}</p>
-              )}
+              {errors.username &&
+                (errors.username.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.username.message}</p>
+                ))}
             </div>
 
             <div className={s.formInput}>
@@ -63,7 +78,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               <input
                 type="email"
                 id="email"
-                placeholder="Enter your email"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -75,9 +89,12 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
                 aria-describedby="emailnote"
                 className={s.formInput__input}
               />
-              {errors.email && (
-                <p className={s.error}>{errors.email.message}</p>
-              )}
+              {errors.email &&
+                (errors.email.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.email.message}</p>
+                ))}
             </div>
 
             <div className={s.formInput}>
@@ -85,7 +102,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               <input
                 type="password"
                 id="password"
-                placeholder="Enter your password"
                 {...register("password", {
                   required: "Password is required",
                   pattern: {
@@ -98,9 +114,12 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
                 aria-describedby="pwdnote"
                 className={s.formInput__input}
               />
-              {errors.password && (
-                <p className={s.error}>{errors.password.message}</p>
-              )}
+              {errors.password &&
+                (errors.password.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.password.message}</p>
+                ))}
             </div>
 
             <div className={s.formInput}>
@@ -108,7 +127,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               <input
                 type="password"
                 id="confirmPwd"
-                placeholder="Confirm your password"
                 {...register("confirmPwd", {
                   required: "Please confirm your password",
                   validate: (value) =>
@@ -118,9 +136,12 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
                 aria-describedby="confirmPwdnote"
                 className={s.formInput__input}
               />
-              {errors.confirmPwd && (
-                <p className={s.error}>{errors.confirmPwd.message}</p>
-              )}
+              {errors.confirmPwd &&
+                (errors.confirmPwd.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.confirmPwd.message}</p>
+                ))}
             </div>
 
             <div className={s.register__submit}>
@@ -134,10 +155,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
             </div>
 
             {error && <p className={s.error}>{error}</p>}
-
-            <span className={s.backhome} onClick={toggleRegister}>
-              Back to home page
-            </span>
           </form>
         </div>
       </div>
