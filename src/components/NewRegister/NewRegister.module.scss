@@ -2,6 +2,10 @@
 @use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
+.backhome {
+  height: 1.5vw;
+  transition: 0.3s ease-in-out;
+}
 .register {
   z-index: 3000;
   position: fixed;
@@ -13,21 +17,48 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  &__backtohome {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    margin-left: 2.5vw;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: $button-blue;
+    cursor: pointer;
 
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 1.5vw;
+      overflow: hidden;
+      // border: 2px solid blue;
+    }
+    &__arrow {
+      margin-top: 0.3vw;
+      transform: rotate(180deg);
+      width: 2vw;
+    }
+  }
+  &__backtohome:hover .backhome {
+    transform: translateY(-100%);
+  }
   &__content {
     width: 50%;
-    background-color: $white-color;
+    background-color: #fffbfb;
     padding: 3vw 3vw;
     display: flex;
     flex-direction: column;
     gap: 15px;
+
     box-shadow: -5px 0px 7px -2px rgba(54, 54, 54, 0.062);
 
     h2 {
       font-weight: 400;
       font-size: 1.5vw;
       margin: 0;
-      margin-top: 4vw;
+      margin-top: 2vw;
     }
 
     &__frame {
@@ -49,7 +80,7 @@
     &__btn {
       margin-top: 1.5vw;
       background-color: #8095e1;
-      color: #fff8f8c5;
+      color: #fff8f8d7;
       font-style: normal;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       font-size: 1.3vw;
@@ -64,11 +95,14 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  position: relative;
   &__input {
+    padding-left: 0.5vw;
     height: 2.4vw;
     border-radius: 5px;
     border: 1px solid #c8c5c5;
-    background: #fff;
+    background: #fffbfb;
+    z-index: 3;
 
     box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.103);
   }
@@ -82,13 +116,62 @@
   }
 }
 
+.required {
+  position: absolute;
+  top: 0.2vw;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8vw;
+  color: rgb(240, 61, 61);
+}
+.error,
+.success {
+  font-size: 0.9vw;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideIn 0.5s ease-in-out forwards;
+
+  margin: 0;
+  padding: 0;
+  padding: 0.3vw 0.3vw;
+  height: fit-content;
+  z-index: 1;
+}
+
 .error {
-  font-size: 10px;
-  font-family: "Courier New", Courier, monospace;
-  z-index: 1000;
-  color: red;
+  color: rgb(240, 61, 61);
+}
+
+.error__email {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  &__clickhere {
+    display: flex;
+  }
+}
+
+.success {
+  color: rgb(92, 170, 62);
 }
 
 .formInput__input[aria-invalid="true"] {
-  border-color: red;
+  border-color: rgb(240, 61, 61);
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+
+    margin: 0;
+    padding: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+
+    margin: 0;
+    padding: 0;
+    transform: translateY(0);
+  }
 }

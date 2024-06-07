@@ -1,37 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import s from "./NewRegister.module.scss";
 import axios from "../../app/api/axios";
+import ArrowRegisterSVG from "../SVG/ArrowRegisterSVG";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const REGISTER_URL = "http://localhost:8080/server/auth/register";
 
-export default function NewRegister({ toggleRegister, setLoginBtn }) {
+export default function NewRegister({ handleRegister, setLoginBtn }) {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isValid },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: "onBlur" });
 
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorInput, setErrorInput] = useState("");
+  const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    console.log(errorInput, "Error input");
+  }, [errorInput]);
 
   const onSubmit = async (data) => {
     try {
       await axios.post(REGISTER_URL, data);
       setLoginBtn(true);
-      toggleRegister();
-    } catch (err) {
-      console.error(err);
-      setError("Registration failed. Please try again.");
+      setSuccess(
+        "Registration successful ! You will redirected in a few seconds..."
+      );
+      setTimeout(() => {
+        handleRegister();
+      }, 3000);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        setErrorMessage(error.response.data.message);
+        setErrorInput(error.response.data.input);
+        console.log(error.response.data.message); // "Username already exists!"
+      } else if (error.request) {
+        console.log(
+          "No response received from server... Whoops ! Please, try again later."
+        );
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+      }
     }
   };
 
   return (
     <div className={s.register}>
       <div className={s.register__content}>
+        <div
+          className={s.register__backtohome}
+          onClick={() => handleRegister()}
+        >
+          <div className={s.register__backtohome__arrow}>
+            <ArrowRegisterSVG />
+          </div>
+          <div className={s.register__backtohome__wrapper}>
+            <span className={s.backhome}>Back to home page</span>
+            <span className={s.backhome}>Back to home page</span>
+          </div>
+        </div>
         <div className={s.register__content__frame}>
           <h2>Start here</h2>
           <form className={s.register__form} onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +75,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               <input
                 type="text"
                 id="username"
-                placeholder="Enter your username"
                 {...register("username", {
                   required: "Username is required",
                   pattern: {
@@ -52,9 +86,17 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
                 aria-invalid={errors.username ? "true" : "false"}
                 aria-describedby="uidnote"
                 className={s.formInput__input}
+                onChange={() => setErrorInput("")}
               />
-              {errors.username && (
-                <p className={s.error}>{errors.username.message}</p>
+              {errors.username &&
+                (errors.username.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.username.message}</p>
+                ))}
+
+              {errorInput === "username" && (
+                <p className={s.required}>REQUIRED</p>
               )}
             </div>
 
@@ -63,7 +105,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               <input
                 type="email"
                 id="email"
-                placeholder="Enter your email"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -75,9 +116,12 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
                 aria-describedby="emailnote"
                 className={s.formInput__input}
               />
-              {errors.email && (
-                <p className={s.error}>{errors.email.message}</p>
-              )}
+              {errors.email &&
+                (errors.email.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.email.message}</p>
+                ))}
             </div>
 
             <div className={s.formInput}>
@@ -85,7 +129,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               <input
                 type="password"
                 id="password"
-                placeholder="Enter your password"
                 {...register("password", {
                   required: "Password is required",
                   pattern: {
@@ -98,9 +141,12 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
                 aria-describedby="pwdnote"
                 className={s.formInput__input}
               />
-              {errors.password && (
-                <p className={s.error}>{errors.password.message}</p>
-              )}
+              {errors.password &&
+                (errors.password.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.password.message}</p>
+                ))}
             </div>
 
             <div className={s.formInput}>
@@ -108,7 +154,6 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               <input
                 type="password"
                 id="confirmPwd"
-                placeholder="Confirm your password"
                 {...register("confirmPwd", {
                   required: "Please confirm your password",
                   validate: (value) =>
@@ -118,9 +163,12 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
                 aria-describedby="confirmPwdnote"
                 className={s.formInput__input}
               />
-              {errors.confirmPwd && (
-                <p className={s.error}>{errors.confirmPwd.message}</p>
-              )}
+              {errors.confirmPwd &&
+                (errors.confirmPwd.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.confirmPwd.message}</p>
+                ))}
             </div>
 
             <div className={s.register__submit}>
@@ -133,11 +181,22 @@ export default function NewRegister({ toggleRegister, setLoginBtn }) {
               </button>
             </div>
 
-            {error && <p className={s.error}>{error}</p>}
-
-            <span className={s.backhome} onClick={toggleRegister}>
-              Back to home page
-            </span>
+            {errorMessage && success === "" && errorInput !== "email" && (
+              <p className={s.error}>{errorMessage}</p>
+            )}
+            {errorInput === "email" && (
+              <>
+                <div className={s.error__email}>
+                  <span className={s.error}>{errorMessage}</span>
+                  <div className={s.error__email__clickhere}>
+                    <span className={s.error}>Click&nbsp;</span>
+                    <a href="">here </a>
+                    <span className={s.error}>&nbsp;to sign in.</span>
+                  </div>
+                </div>
+              </>
+            )}
+            {success && <p className={s.success}>{success}</p>}
           </form>
         </div>
       </div>

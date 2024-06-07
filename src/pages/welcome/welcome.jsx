@@ -12,20 +12,30 @@ import ScrollDiscover from "../../components/ScrollDiscover/ScrollDiscover";
 import RegisterNow from "../../components/RegisterNow/RegisterNow";
 import Register from "../../components/Register/Register";
 import NewRegister from "../../components/NewRegister/NewRegister";
+import TransitionLayout from "../../components/TransitionLayout/TransitionLayout";
 
 // , { useEffect, useState, useRef }
 
 export default function Welcome() {
   const [loginBtn, setLoginBtn] = useState(false);
   const [register, setRegister] = useState(false);
+  const [isTransition, setIsTransition] = useState(false);
   const bigboxContent = useRef();
+
+  const handleTransition = () => {
+    setIsTransition((prev) => !prev);
+  };
 
   const toggleLogin = () => {
     setLoginBtn(!loginBtn);
+    handleTransition();
   };
 
-  const toggleRegister = () => {
-    setRegister(!register);
+  const handleRegister = () => {
+    handleTransition();
+    setTimeout(() => {
+      setRegister(!register);
+    }, 500);
   };
 
   useEffect(() => {
@@ -46,6 +56,7 @@ export default function Welcome() {
 
   return (
     <>
+      <TransitionLayout isTransition={isTransition} />
       <div className={s.fade}></div>
       <section className={s.welcome}>
         <div className={s.logo}>
@@ -54,16 +65,18 @@ export default function Welcome() {
         <Navbar
           active={loginBtn}
           toggleLogin={toggleLogin}
-          toggleRegister={toggleRegister}
+          handleRegister={handleRegister}
         />
         <BigLetter />
         <ScrollDiscover />
-        <RegisterNow />
-        <NewRegister
-          register={register}
-          toggleRegister={toggleRegister}
-          setLoginBtn={setLoginBtn}
-        />
+        <RegisterNow handleRegister={handleRegister} />
+        {register && (
+          <NewRegister
+            register={register}
+            handleRegister={handleRegister}
+            setLoginBtn={setLoginBtn}
+          />
+        )}
       </section>
     </>
   );
