@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import s from "./welcome.module.scss";
+import s from "./Welcome.module.scss";
 
 import Login from "../../components/Login/Login";
 import gsap from "gsap";

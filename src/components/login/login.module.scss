@@ -2,123 +2,28 @@
 @use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
-.offscreen {
-    display: none;
-    opacity: 0;
-}
 
-.connect {
-    width: calc(f.rem(130) + 200px); //+= 200 px GSAP
-    margin-inline: auto;
-    animation: opacity 0.6s;
-}
 
 .login {
-    // position: absolute;
-    // top: 2vh;
-    // right: 2vw;
-    background-color: $black-color;
-    border-radius: 33px;
-    z-index: 10;
-    // display: flex;
-    // flex-direction: column;
-
-    &__inactive {
-        width: f.rem(130);
-        height: clamp(f.rem(35), f.rem(35) + 2vh, f.rem(55));
-        transition: 0.4s;
-    }
-    &__active {
-        width: f.rem(370);
-        height: clamp(f.rem(300), f.rem(300) + 3vh, f.rem(360));
-        transition: 0.5s;
-    }
-
-    &__btn__ctn {
-        height: f.rem(60);
-    }
-
-    &__ctn {
-        height: f.rem(60);
-    }
+    position: relative;
+    font-family: "InstrumentSans-Regular";
+    font-size: $fontsize-m;
+    background-color: $primary-color;
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
+    padding: 0.4vw 1.5vw;
+    cursor: pointer;
 
     &__btn {
-        text-align: center;
-        width: f.rem(130);
-        border: none;
-        color: $white-color;
         font-family: "InstrumentSans-Regular";
         font-style: normal;
-        font-weight: 400;
-        font-size: $fontsize-m;
-        // animation: changeFontOut 2s;
+        border: none;
+        padding: 0;
+        margin: 0;
+        color: $white-color;
+     
     }
-
-    // &__btn:hover {
-    //     animation: changeFont 3s;
-    //     animation-fill-mode: both;
-    // }
+  
 }
 
-// //___KEY FRAMES_________________________________________________________
-// @keyframes opacity {
-//     0% {
-//         opacity: 0;
-//     }
-//     40% {
-//         opacity: 0;
-//     }
-//     100% {
-//         opacity: 1;
-//     }
-// }
-
-// @keyframes changeFont {
-//     0% {
-//         font-family: "Courier New", Courier, monospace;
-//     }
-//     2% {
-//         font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
-//             Geneva, Verdana, sans-serif;
-//     }
-//     3% {
-//         font-family: "Poppins";
-//     }
-//     5% {
-//         font-family: "Nacelle";
-//     }
-//     7% {
-//         font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-//     }
-//     9% {
-//         font-family: "VCR_OSD";
-//     }
-//     100% {
-//         font-family: "VCR_OSD";
-//     }
-// }
-
-// @keyframes changeFontOut {
-//     0% {
-//         font-family: "VCR_OSD";
-//     }
-//     2% {
-//         font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-//     }
-//     3% {
-//         font-family: "Nacelle";
-//     }
-//     5% {
-//         font-family: "Poppins";
-//     }
-//     7% {
-//         font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
-//             Geneva, Verdana, sans-serif;
-//     }
-//     9% {
-//         font-family: "Courier New", Courier, monospace;
-//     }
-//     12% {
-//         font-family: Arial, Helvetica, sans-serif;
-//     }
-// }
