@@ -9,6 +9,7 @@ import Register from "../../components/Register/Register";
 import Navbar from "../../components/Navbar/Navbar";
 import LogoSVG from "../../components/SVG/LogoSVG";
 import BigLetter from "../../components/BigLetter/BigLetter";
+import ScrollDiscover from "../../components/ScrollDiscover/ScrollDiscover";
 
 // , { useEffect, useState, useRef }
 
@@ -48,14 +49,13 @@ export default function Welcome() {
         <div className={s.logo}>
           <LogoSVG />
         </div>
-
         <Navbar
           active={loginBtn}
           toggleLogin={toggleLogin}
           toggleRegister={toggleRegister}
         />
-
         <BigLetter />
+        <ScrollDiscover />
       </section>
     </>
   );

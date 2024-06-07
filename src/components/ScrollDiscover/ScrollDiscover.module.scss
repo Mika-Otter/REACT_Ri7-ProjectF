@@ -1,0 +1,39 @@
+@use "/public/styles/utils/breakpoints" as u;
+@import "../../../public/styles/global";
+
+.scrollDiscover {
+  display: flex;
+  position: fixed;
+  bottom: 1vw;
+  left: 1vw;
+  align-items: center;
+  gap: 15px;
+
+  &__circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    background-color: black;
+    animation: UpAndDown 2.5s infinite ease-out;
+  }
+  span {
+    text-align: center;
+    font-family: "Instrument Sans";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+@keyframes UpAndDown {
+  0% {
+    transform: translateY(7px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+  100% {
+    transform: translateY(7px);
+  }
+}
