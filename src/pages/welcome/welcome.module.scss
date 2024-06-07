@@ -3,28 +3,25 @@
 @import "../../../public/styles/global";
 
 .fade {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-image: url("/background.png");
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/background.png");
+  background-size: cover;
+  z-index: -1;
 }
 
 .logo {
-    position: fixed;
-    top: 1vw;
-    left: 1vw;
-    width: 7vw;
+  position: fixed;
+  top: 1vw;
+  left: 1vw;
+  width: 7vw;
 }
-
 
 .welcome {
-    // z-index: 1;
-    position: relative;
-    height: 100vh;
+  // z-index: 1;
+  position: relative;
+  height: 100vh;
 }
-
-
-

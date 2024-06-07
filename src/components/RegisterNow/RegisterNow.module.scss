@@ -1,0 +1,53 @@
+@use "/public/styles/utils/breakpoints" as u;
+@import "../../../public/styles/global";
+
+.registerNow {
+  cursor: pointer;
+  position: fixed;
+  bottom: 1vw;
+  right: 2vw;
+  width: 13vw;
+  height: 3vh;
+  display: flex;
+  font-family: "InstrumentSans-Medium";
+  font-size: 1.1vw;
+  height: 2.8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 1vw;
+  border-radius: 100px;
+  box-shadow: 0px 2px 11.7px -3px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  background-color: #fff8f8af;
+  color: $button-blue;
+  z-index: 1000;
+  padding-right: 1vw;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 1.3vw;
+    overflow: hidden;
+    margin-top: 0.1vw;
+
+    &__span {
+      height: 2vw;
+      //   border: 2px solid red;
+      //   color: black;
+      margin-right: 2vw;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  &__wrapper:hover &__wrapper__span {
+    transform: translateY(-100%);
+  }
+
+  &__arrow {
+    margin-top: 0.3vw;
+    // border: 2px solid red;
+    width: 20%;
+    margin-left: -2vw;
+  }
+}

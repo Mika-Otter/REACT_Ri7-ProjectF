@@ -1,0 +1,94 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../public/styles/global";
+
+.register {
+  z-index: 3000;
+  position: fixed;
+  display: flex;
+  justify-content: end;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  &__content {
+    width: 50%;
+    background-color: $white-color;
+    padding: 3vw 3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: -5px 0px 7px -2px rgba(54, 54, 54, 0.062);
+
+    h2 {
+      font-weight: 400;
+      font-size: 1.5vw;
+      margin: 0;
+      margin-top: 4vw;
+    }
+
+    &__frame {
+      margin-left: 2.5vw;
+    }
+  }
+
+  &__form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #646464;
+    font-size: 0.9vw;
+    margin-top: 3vw;
+  }
+
+  &__submit {
+    &__btn {
+      margin-top: 1.5vw;
+      background-color: #8095e1;
+      color: #fff8f8c5;
+      font-style: normal;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 1.3vw;
+      padding-bottom: 0.8vw;
+      border: none;
+      width: 100%;
+    }
+  }
+}
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  &__input {
+    height: 2.4vw;
+    border-radius: 5px;
+    border: 1px solid #c8c5c5;
+    background: #fff;
+
+    box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.103);
+  }
+  &__input:focus {
+    transition: 0.2s ease-in-out;
+
+    outline: 3.5px solid rgba(181, 197, 255, 0.63);
+
+    border-radius: 7px;
+    border: 1px solid $primary-color;
+  }
+}
+
+.error {
+  font-size: 10px;
+  font-family: "Courier New", Courier, monospace;
+  z-index: 1000;
+  color: red;
+}
+
+.formInput__input[aria-invalid="true"] {
+  border-color: red;
+}
