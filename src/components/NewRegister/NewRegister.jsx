@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import s from "./NewRegister.module.scss";
 import axios from "../../app/api/axios";
@@ -17,16 +17,38 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
     formState: { errors, isValid },
   } = useForm({ mode: "onBlur" });
 
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorInput, setErrorInput] = useState("");
+  const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    console.log(errorInput, "Error input");
+  }, [errorInput]);
 
   const onSubmit = async (data) => {
     try {
       await axios.post(REGISTER_URL, data);
       setLoginBtn(true);
-      handleRegister();
-    } catch (err) {
-      console.error(err);
-      setError("Registration failed. Please try again.");
+      setSuccess(
+        "Registration successful ! You will redirected in a few seconds..."
+      );
+      setTimeout(() => {
+        handleRegister();
+      }, 3000);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        setErrorMessage(error.response.data.message);
+        setErrorInput(error.response.data.input);
+        console.log(error.response.data.message); // "Username already exists!"
+      } else if (error.request) {
+        console.log(
+          "No response received from server... Whoops ! Please, try again later."
+        );
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+      }
     }
   };
 
@@ -64,6 +86,7 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
                 aria-invalid={errors.username ? "true" : "false"}
                 aria-describedby="uidnote"
                 className={s.formInput__input}
+                onChange={() => setErrorInput("")}
               />
               {errors.username &&
                 (errors.username.type === "required" ? (
@@ -71,6 +94,10 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
                 ) : (
                   <p className={s.error}>{errors.username.message}</p>
                 ))}
+
+              {errorInput === "username" && (
+                <p className={s.required}>REQUIRED</p>
+              )}
             </div>
 
             <div className={s.formInput}>
@@ -154,7 +181,22 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
               </button>
             </div>
 
-            {error && <p className={s.error}>{error}</p>}
+            {errorMessage && success === "" && errorInput !== "email" && (
+              <p className={s.error}>{errorMessage}</p>
+            )}
+            {errorInput === "email" && (
+              <>
+                <div className={s.error__email}>
+                  <span className={s.error}>{errorMessage}</span>
+                  <div className={s.error__email__clickhere}>
+                    <span className={s.error}>Click&nbsp;</span>
+                    <a href="">here </a>
+                    <span className={s.error}>&nbsp;to sign in.</span>
+                  </div>
+                </div>
+              </>
+            )}
+            {success && <p className={s.success}>{success}</p>}
           </form>
         </div>
       </div>

@@ -125,11 +125,10 @@
   font-size: 0.8vw;
   color: rgb(240, 61, 61);
 }
-.error {
+.error,
+.success {
   font-size: 0.9vw;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  z-index: 1000;
-  color: rgb(240, 61, 61);
   animation: slideIn 0.5s ease-in-out forwards;
 
   margin: 0;
@@ -137,6 +136,23 @@
   padding: 0.3vw 0.3vw;
   height: fit-content;
   z-index: 1;
+}
+
+.error {
+  color: rgb(240, 61, 61);
+}
+
+.error__email {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  &__clickhere {
+    display: flex;
+  }
+}
+
+.success {
+  color: rgb(92, 170, 62);
 }
 
 .formInput__input[aria-invalid="true"] {
