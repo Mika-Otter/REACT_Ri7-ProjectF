@@ -1,33 +1,20 @@
 import React, { useEffect, useRef } from "react";
-import s from "./login.module.scss";
-import Connect from "../connect/connect";
-import cn from "classnames";
+import s from "./Login.module.scss";
 
 export default function Login({ active, toggleLogin, toggleRegister }) {
-    const containerRef = useRef();
-    const buttonRef = useRef();
+  const buttonRef = useRef();
 
-    return (
-        <>
-            <div
-                className={cn(s.login, active ? s.login__active : s.login__inactive)}
-                ref={containerRef}
-            >
-                <div className={s.login__ctn}>
-                    <div className={s.login__btn__ctn} ref={buttonRef}>
-                        <button
-                            className={s.login__btn}
-                            type="submit"
-                            onClick={() => toggleLogin()}
-                        >
-                            Login
-                        </button>
-                    </div>
-                    <div className={active ? s.connect : s.offscreen} id="connect">
-                        <Connect toggleRegister={toggleRegister} toggleLogin={toggleLogin} />
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+  return (
+    <>
+      <div className={s.login} ref={buttonRef}>
+        <button
+          type="button"
+          onClick={() => toggleLogin()}
+          className={s.login__btn}
+        >
+          Login
+        </button>
+      </div>
+    </>
+  );
 }

@@ -4,19 +4,49 @@
 
 .navbar {
     position: fixed;
-    width: 30vw;
-    border: 2px solid red;
-    display: flex;
+    top: 1vw;
+    right: 2vw;
+    // width: 15vw;
+    // border: 2px solid red;
     font-family: "InstrumentSans-Regular";
+    display: flex;
+    padding-left: 1vw;
+    padding: 0.3vw 0.2vw;
+    border-radius: 100px;
+    box-shadow: 0px 2px 11.7px -3px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    background-color: #fff8f8af;
+
+    justify-content: flex-end;
+    z-index: 1000;
+  
 
     &__links {
-        button {
+        display: flex;  
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        &__link {
+            margin: 0;
+            padding: 0;
             border: none;
             background: none;
             font-size: $fontsize-m;
             font-style: normal;
             font-family: "InstrumentSans-Regular";
+            display: flex;
+            justify-content: center;
+            // width: 5vw;
+    
+            &__button {
+                width: 6vw;
+            }
+            &__contact {
+                padding-left:1vw;
+            }
         }
+ 
     }
    
 }
