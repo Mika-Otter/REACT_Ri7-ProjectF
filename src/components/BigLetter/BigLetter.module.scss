@@ -60,11 +60,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  row-gap: 3px;
+  row-gap: 1.3vw;
   position: relative;
   height: 90vh;
   width: 50%;
-  margin-top: 5vh;
+  margin-top: 4vh;
   margin-left: -1vw;
   min-height: 600px;
 }
@@ -75,7 +75,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  row-gap: 3px;
+  row-gap: 1.5vw;
   position: relative;
 
   height: 90vh;
@@ -101,14 +101,14 @@
     &__first {
       display: flex;
       justify-content: end;
-      gap: 25px;
+      gap: 2vw;
 
       span {
         // border: 2px solid blue;
       }
       &__text {
         z-index: 2000;
-        color: black;
+        color: $font-black-color;
         width: 65%;
         height: 100%;
         // border: 2px solid green;
@@ -138,14 +138,14 @@
     &__third {
       display: flex;
       // border: 2px solid red;
-      gap: 0.4vw;
+      gap: 0.5vw;
 
       span {
         // border: 2px solid blue;
       }
       &__text {
         z-index: 2000;
-        color: black;
+        color: $font-black-color;
         width: 65%;
         height: 100%;
         margin-top: 1vw;

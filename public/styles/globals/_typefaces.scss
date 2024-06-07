@@ -1,44 +1,44 @@
 @use "../utils/functions" as f;
 
 @font-face {
-    font-family: "Poppins";
-    src: url(../typefaces/Poppins-Regular.ttf);
+  font-family: "Poppins";
+  src: url(../typefaces/Poppins-Regular.ttf);
 }
 @font-face {
-    font-family: "Nacelle";
-    src: url(../typefaces/Nacelle-Regular.otf);
+  font-family: "Nacelle";
+  src: url(../typefaces/Nacelle-Regular.otf);
 }
 @font-face {
-    font-family: "Nacelle-Bold";
-    src: url(../typefaces/Nacelle-Bold.otf);
+  font-family: "Nacelle-Bold";
+  src: url(../typefaces/Nacelle-Bold.otf);
 }
 @font-face {
-    font-family: "Vidaloka";
-    src: url(../typefaces/Vidaloka-Regular.ttf);
+  font-family: "Vidaloka";
+  src: url(../typefaces/Vidaloka-Regular.ttf);
 }
 @font-face {
-    font-family: "VCR_OSD";
-    src: url(../typefaces/VCR_OSD_MONO.ttf);
+  font-family: "VCR_OSD";
+  src: url(../typefaces/VCR_OSD_MONO.ttf);
 }
 @font-face {
-    font-family: "InstrumentSans-Medium";
-    src: url(../typefaces/InstrumentSans-Medium.ttf);
+  font-family: "InstrumentSans-Medium";
+  src: url(../typefaces/InstrumentSans-Medium.ttf);
 }
 @font-face {
-    font-family: "InstrumentSans-Regular";
-    src: url(../typefaces/InstrumentSans-Regular.ttf);
+  font-family: "InstrumentSans-Regular";
+  src: url(../typefaces/InstrumentSans-Regular.ttf);
 }
 @font-face {
-    font-family: "InstrumentSans-SemiBold";
-    src: url(../typefaces/InstrumentSans-SemiBold.ttf);
+  font-family: "InstrumentSans-SemiBold";
+  src: url(../typefaces/InstrumentSans-SemiBold.ttf);
 }
 @font-face {
-    font-family: "InstrumentSans-Bold";
-    src: url(../typefaces/InstrumentSans-Bold.ttf);
+  font-family: "InstrumentSans-Bold";
+  src: url(../typefaces/InstrumentSans-Bold.ttf);
 }
 @font-face {
-    font-family: "RightDidone-CompactDark";
-    src: url(../typefaces/RightDidone-CompactDark.otf);
+  font-family: "RightDidone-CompactDark";
+  src: url(../typefaces/RightDidone-CompactDark.otf);
 }
 
 //___FONT-SIZE______________________________
@@ -47,6 +47,6 @@ $fontsize-xs: clamp(f.rem(12), f.rem(9) + 0.5vw, f.rem(20));
 $fontsize-s: clamp(f.rem(14), f.rem(13) + 0.3vw, f.rem(17));
 $fontsize-m: 1vw;
 $fontsize-l: clamp(f.rem(20), f.rem(18) + 0.5vw, f.rem(30));
-$fontsize-big-letter: clamp(f.rem(300), 50vh, f.rem(600));
+$fontsize-big-letter: clamp(f.rem(300), 54vh, f.rem(600));
 $fontsize-xl: clamp(f.rem(50), f.rem(45) + 1.7vw, f.rem(74));
 $fontsize-xxl: clamp(f.rem(80), f.rem(50) + 2vw, f.rem(120));

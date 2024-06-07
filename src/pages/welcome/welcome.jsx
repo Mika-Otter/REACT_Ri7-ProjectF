@@ -10,6 +10,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import LogoSVG from "../../components/SVG/LogoSVG";
 import BigLetter from "../../components/BigLetter/BigLetter";
 import ScrollDiscover from "../../components/ScrollDiscover/ScrollDiscover";
+import RegisterNow from "../../components/RegisterNow/RegisterNow";
 
 // , { useEffect, useState, useRef }
 
@@ -56,6 +57,7 @@ export default function Welcome() {
         />
         <BigLetter />
         <ScrollDiscover />
+        <RegisterNow />
       </section>
     </>
   );

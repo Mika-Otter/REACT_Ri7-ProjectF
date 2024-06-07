@@ -2,13 +2,15 @@
 
 //___COLORS________________________
 $black-color: #120c08;
-$white-color: #FFF8F8;
+$white-color: #fff8f8;
 $grey-color: #302f2d;
 $ghost-color: #6f6d6d97;
 $magenta-color: #b02bde;
 
-$primary-color: #3857F9;
-$secondary-color: #B8C3FF;
+$primary-color: #3857f9;
+$secondary-color: #b8c3ff;
+$button-blue: #4f6bff;
+$font-black-color: rgb(36, 36, 73);
 
 //___RULES_________________________
 $padding-xxs: 0.2vw;
@@ -19,23 +21,23 @@ $padding-l: 2vw;
 $padding-xl: 3vw;
 
 html {
-    box-sizing: border-box; //if box width is 300px and you add 20px of padding, the size of the box stay 300px instead 340px
-    font-size: 100%;
-    background-color: $white-color;
+  box-sizing: border-box; //if box width is 300px and you add 20px of padding, the size of the box stay 300px instead 340px
+  font-size: 100%;
+  background-color: $white-color;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .content {
-    width: 70%;
-    margin-inline: auto;
+  width: 70%;
+  margin-inline: auto;
 }

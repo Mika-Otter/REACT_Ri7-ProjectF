@@ -10,16 +10,17 @@
   gap: 15px;
 
   &__circle {
-    width: 15px;
-    height: 15px;
+    width: 0.9vw;
+    height: 0.9vw;
     border-radius: 20px;
-    background-color: black;
+    background-color: $font-black-color;
     animation: UpAndDown 2.5s infinite ease-out;
   }
   span {
     text-align: center;
+    color: $font-black-color;
     font-family: "Instrument Sans";
-    font-size: 17px;
+    font-size: 1.1vw;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
