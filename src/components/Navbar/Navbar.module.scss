@@ -1,0 +1,22 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../public/styles/global";
+
+.navbar {
+    position: fixed;
+    width: 30vw;
+    border: 2px solid red;
+    display: flex;
+    font-family: "InstrumentSans-Regular";
+
+    &__links {
+        button {
+            border: none;
+            background: none;
+            font-size: $fontsize-m;
+            font-style: normal;
+            font-family: "InstrumentSans-Regular";
+        }
+    }
+   
+}

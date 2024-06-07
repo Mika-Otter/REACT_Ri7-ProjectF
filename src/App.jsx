@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
 import Welcome from "./pages/welcome/welcome";
-import Register from "./components/register/register";
+import Register from "./components/Register/Register";
 import TestText from "./components/testText/testText";
-import Login from "./components/login/login";
+import Login from "./components/Login/Login";
 import Unauthorized from "./components/unauthorized";
 import RequireAuth from "./components/requireAuth/requireAuth";
 import Loaderfont from "./components/loaderfont/loaderfont";

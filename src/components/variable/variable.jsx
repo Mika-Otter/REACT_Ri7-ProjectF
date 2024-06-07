@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
+import CardFont from "../cardFont/cardFont";
+
 import s from "./variable.module.scss";
 import cn from "classnames";
-import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
-import CardFont from "../cardFont/cardFont";
 
 export default function Variable() {
     const choosedFonts = useSelector((state) => state.choosedFonts.value);
@@ -145,9 +146,3 @@ function VariableText({ fontName, font, i, addTitle, choosedFonts }) {
         </>
     );
 }
-
-VariableText.propTypes = {
-    fontName: PropTypes.node.isRequired,
-    font: PropTypes.object.isRequired,
-    i: PropTypes.node.isRequired,
-};

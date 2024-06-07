@@ -1,0 +1,141 @@
+Date : 2024-04-01 17:11:19
+Directory : c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF
+Total : 72 files,  12236 codes, 131 comments, 433 blanks, all 12800 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          2 |      8,456 |          0 |          2 |      8,458 |
+| JavaScript JSX |         30 |      1,881 |         58 |        178 |      2,117 |
+| SCSS           |         21 |      1,678 |         42 |        215 |      1,935 |
+| JavaScript     |          8 |        122 |         31 |         23 |        176 |
+| XML            |          9 |         79 |          0 |          9 |         88 |
+| HTML           |          1 |         13 |          0 |          1 |         14 |
+| Markdown       |          1 |          7 |          0 |          5 |         12 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                               | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                  |         72 |     12,236 |        131 |        433 |     12,800 |
+| . (Files)                                                                                                          |          6 |      8,502 |          1 |         11 |      8,514 |
+| public                                                                                                             |         15 |        176 |          8 |         29 |        213 |
+| public\assets                                                                                                      |          9 |         79 |          0 |          9 |         88 |
+| public\assets\icones                                                                                               |          9 |         79 |          0 |          9 |         88 |
+| public\styles                                                                                                      |          6 |         97 |          8 |         20 |        125 |
+| public\styles (Files)                                                                                              |          1 |          1 |          0 |          1 |          2 |
+| public\styles\globals                                                                                              |          2 |         58 |          3 |         10 |         71 |
+| public\styles\utils                                                                                                |          3 |         38 |          5 |          9 |         52 |
+| src                                                                                                                |         50 |      3,547 |        122 |        391 |      4,060 |
+| src (Files)                                                                                                        |          2 |         45 |          6 |          6 |         57 |
+| src\app                                                                                                            |          2 |          4 |         30 |          5 |         39 |
+| src\app\api                                                                                                        |          1 |          4 |          0 |          2 |          6 |
+| src\app\services                                                                                                   |          1 |          0 |         30 |          3 |         33 |
+| src\components                                                                                                     |         35 |      3,065 |         83 |        330 |      3,478 |
+| src\components\SVG                                                                                                 |          8 |        144 |          0 |         10 |        154 |
+| src\components\allfonts                                                                                            |          1 |        116 |          3 |         14 |        133 |
+| src\components\cardFont                                                                                            |          2 |        341 |         11 |         43 |        395 |
+| src\components\connect                                                                                             |          2 |        180 |          2 |         20 |        202 |
+| src\components\favorites                                                                                           |          2 |        259 |         15 |         30 |        304 |
+| src\components\folder                                                                                              |          2 |        318 |         13 |         35 |        366 |
+| src\components\loaderfont                                                                                          |          1 |         23 |          0 |          3 |         26 |
+| src\components\login                                                                                               |          2 |        144 |          1 |         15 |        160 |
+| src\components\logout                                                                                              |          2 |         26 |          0 |          5 |         31 |
+| src\components\menu                                                                                                |          2 |        141 |          0 |         12 |        153 |
+| src\components\register                                                                                            |          2 |        393 |          4 |         36 |        433 |
+| src\components\requireAuth                                                                                         |          1 |          7 |          0 |          3 |         10 |
+| src\components\settings                                                                                            |          2 |        375 |         10 |         37 |        422 |
+| src\components\testText                                                                                            |          2 |        245 |          4 |         23 |        272 |
+| src\components\unauthorized                                                                                        |          2 |          9 |          0 |          3 |         12 |
+| src\components\variable                                                                                            |          2 |        344 |         20 |         41 |        405 |
+| src\features                                                                                                       |          3 |         81 |          0 |         13 |         94 |
+| src\pages                                                                                                          |          8 |        352 |          3 |         37 |        392 |
+| src\pages (Files)                                                                                                  |          2 |         11 |          0 |          3 |         14 |
+| src\pages\allfontsPage                                                                                             |          1 |         18 |          0 |          2 |         20 |
+| src\pages\favoritesPage                                                                                            |          1 |         18 |          0 |          2 |         20 |
+| src\pages\settingsPage                                                                                             |          1 |         16 |          0 |          2 |         18 |
+| src\pages\variablePage                                                                                             |          1 |         18 |          0 |          2 |         20 |
+| src\pages\welcome                                                                                                  |          2 |        271 |          3 |         26 |        300 |
+| store                                                                                                              |          1 |         11 |          0 |          2 |         13 |
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                           | language       | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\.eslintrc.cjs                                        | JavaScript     |         20 |          0 |          1 |         21 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\README.md                                            | Markdown       |          7 |          0 |          5 |         12 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\index.html                                           | HTML           |         13 |          0 |          1 |         14 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\package-lock.json                                    | JSON           |      8,416 |          0 |          1 |      8,417 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\package.json                                         | JSON           |         40 |          0 |          1 |         41 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\black-T.svg                     | XML            |         23 |          0 |          0 |         23 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\card.svg                        | XML            |          3 |          0 |          1 |          4 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\fonttest-border.svg             | XML            |          3 |          0 |          1 |          4 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\fonttest-icone.svg              | XML            |          3 |          0 |          1 |          4 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\test.svg                        | XML            |          3 |          0 |          1 |          4 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\trash.svg                       | XML            |          3 |          0 |          1 |          4 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\variable.svg                    | XML            |          8 |          0 |          1 |          9 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\watching.svg                    | XML            |          5 |          0 |          1 |          6 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\white-T.svg                     | XML            |         28 |          0 |          2 |         30 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\_global.scss                           | SCSS           |          1 |          0 |          1 |          2 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\globals\_index.scss                    | SCSS           |         30 |          2 |          7 |         39 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\globals\_typefaces.scss                | SCSS           |         28 |          1 |          3 |         32 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\utils\_breakpoints.scss                | SCSS           |         21 |          2 |          5 |         28 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\utils\_functions.scss                  | SCSS           |         15 |          3 |          3 |         21 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\utils\_index.scss                      | SCSS           |          2 |          0 |          1 |          3 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\App.jsx                                          | JavaScript JSX |         32 |          4 |          4 |         40 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\app\api\axios.js                                 | JavaScript     |          4 |          0 |          2 |          6 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\app\services\fontApi.js                          | JavaScript     |          0 |         30 |          3 |         33 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\blackT.jsx                        | JavaScript JSX |         33 |          0 |          1 |         34 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\border.jsx                        | JavaScript JSX |          7 |          0 |          1 |          8 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\card.jsx                          | JavaScript JSX |          7 |          0 |          1 |          8 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\fonttest.jsx                      | JavaScript JSX |         10 |          0 |          1 |         11 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\trash.jsx                         | JavaScript JSX |         13 |          0 |          3 |         16 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\variable.jsx                      | JavaScript JSX |         18 |          0 |          1 |         19 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\watch.jsx                         | JavaScript JSX |         23 |          0 |          1 |         24 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\whiteT.jsx                        | JavaScript JSX |         33 |          0 |          1 |         34 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\allfonts\allFonts.jsx                 | JavaScript JSX |        116 |          3 |         14 |        133 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\cardFont\cardFont.jsx                 | JavaScript JSX |        195 |          8 |         17 |        220 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\cardFont\cardfont.module.scss         | SCSS           |        146 |          3 |         26 |        175 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\connect\connect.jsx                   | JavaScript JSX |         83 |          2 |          9 |         94 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\connect\connect.module.scss           | SCSS           |         97 |          0 |         11 |        108 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\favorites\favorites.jsx               | JavaScript JSX |        120 |         13 |         15 |        148 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\favorites\favorites.module.scss       | SCSS           |        139 |          2 |         15 |        156 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\folder\folder.jsx                     | JavaScript JSX |        152 |          9 |         17 |        178 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\folder\folder.module.scss             | SCSS           |        166 |          4 |         18 |        188 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\loaderfont\loaderfont.jsx             | JavaScript JSX |         23 |          0 |          3 |         26 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\login\login.jsx                       | JavaScript JSX |         32 |          0 |          3 |         35 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\login\login.module.scss               | SCSS           |        112 |          1 |         12 |        125 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\logout\logout.jsx                     | JavaScript JSX |         19 |          0 |          3 |         22 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\logout\logout.module.scss             | SCSS           |          7 |          0 |          2 |          9 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\menu\menu.jsx                         | JavaScript JSX |         37 |          0 |          2 |         39 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\menu\menu.module.scss                 | SCSS           |        104 |          0 |         10 |        114 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\register\register.jsx                 | JavaScript JSX |        226 |          4 |         20 |        250 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\register\register.module.scss         | SCSS           |        167 |          0 |         16 |        183 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\requireAuth\requireAuth.jsx           | JavaScript JSX |          7 |          0 |          3 |         10 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\settings\settings.jsx                 | JavaScript JSX |        238 |         10 |         18 |        266 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\settings\settings.module.scss         | SCSS           |        137 |          0 |         19 |        156 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\testText\testText.jsx                 | JavaScript JSX |        121 |          2 |         10 |        133 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\testText\testText.module.scss         | SCSS           |        124 |          2 |         13 |        139 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\unauthorized\index.jsx                | JavaScript JSX |          9 |          0 |          2 |         11 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\unauthorized\unauthorized.module.scss | SCSS           |          0 |          0 |          1 |          1 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\variable\variable.jsx                 | JavaScript JSX |        144 |          0 |         10 |        154 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\variable\variable.module.scss         | SCSS           |        200 |         20 |         31 |        251 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\features\authSlice.js                            | JavaScript     |         29 |          0 |          4 |         33 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\features\choosedFontSlide.js                     | JavaScript     |         19 |          0 |          4 |         23 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\features\fontsSlice.js                           | JavaScript     |         33 |          0 |          5 |         38 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\main.jsx                                         | JavaScript JSX |         13 |          2 |          2 |         17 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\allfontsPage\allFontsPage.jsx              | JavaScript JSX |         18 |          0 |          2 |         20 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\favoritesPage\favoritesPage.jsx            | JavaScript JSX |         18 |          0 |          2 |         20 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\page.module.scss                           | SCSS           |          7 |          0 |          2 |          9 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\pages.module.scss                          | SCSS           |          4 |          0 |          1 |          5 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\settingsPage\settingsPage.jsx              | JavaScript JSX |         16 |          0 |          2 |         18 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\variablePage\variablePage.jsx              | JavaScript JSX |         18 |          0 |          2 |         20 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\welcome\welcome.jsx                        | JavaScript JSX |        100 |          1 |          8 |        109 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\welcome\welcome.module.scss                | SCSS           |        171 |          2 |         18 |        191 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\store\store.js                                       | JavaScript     |         11 |          0 |          2 |         13 |
+| c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\vite.config.js                                       | JavaScript     |          6 |          1 |          2 |          9 |
+| Total                                                                                                              |                |     12,236 |        131 |        433 |     12,800 |
++--------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

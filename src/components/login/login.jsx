@@ -4,18 +4,17 @@ import Connect from "../connect/connect";
 import cn from "classnames";
 
 export default function Login({ active, toggleLogin, toggleRegister }) {
-    const container = useRef();
-    const tl = useRef();
-    const button = useRef();
+    const containerRef = useRef();
+    const buttonRef = useRef();
 
     return (
         <>
             <div
                 className={cn(s.login, active ? s.login__active : s.login__inactive)}
-                ref={container}
+                ref={containerRef}
             >
                 <div className={s.login__ctn}>
-                    <div className={s.login__btn__ctn} ref={button}>
+                    <div className={s.login__btn__ctn} ref={buttonRef}>
                         <button
                             className={s.login__btn}
                             type="submit"

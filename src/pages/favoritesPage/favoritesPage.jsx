@@ -1,7 +1,7 @@
 import React from "react";
 import s from "../pages.module.scss";
 import Folder from "../../components/folder/folder";
-import Menu from "../../components/menu/menu";
+import Menu from "../../components/Menu/Menu";
 import Favorites from "../../components/favorites/favorites";
 
 export default function FavoritesPage() {

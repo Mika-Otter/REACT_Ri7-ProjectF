@@ -1,8 +1,8 @@
 import React from "react";
 import s from "../pages.module.scss";
 import Folder from "../../components/folder/folder";
-import Menu from "../../components/menu/menu";
-import Variable from "../../components/variable/variable";
+import Menu from "../../components/Menu/Menu";
+import Variable from "../../components/Variable/Variable";
 
 export default function VariablePage() {
     return (

@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import s from "./connect.module.scss";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserId, setUserName } from "../../features/authSlice";
-import cn from "classnames";
+
+import s from "./connect.module.scss";
+import axios from "axios";
 
 export default function Connect({ toggleRegister, toggleLogin }) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const userId = useSelector((state) => state.auth.userId);
-    const [inputs, setInputs] = useState({
+    const [err, setError] = useState(null);
+    const [inputsConnect, setInputsConnect] = useState({
         email: "",
         password: "",
     });
@@ -19,18 +21,14 @@ export default function Connect({ toggleRegister, toggleLogin }) {
         dispatch(setUserName(userData.username));
     }
 
-    const [err, setError] = useState(null);
-
-    const navigate = useNavigate();
-
     function handleChange(e) {
-        setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+        setInputsConnect((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8080/server/auth/login", inputs);
+            const res = await axios.post("http://localhost:8080/server/auth/login", inputsConnect);
             localStorage.setItem("token", res.data.token);
             handleLogin(res.data);
             navigate("/home");
@@ -85,9 +83,6 @@ export default function Connect({ toggleRegister, toggleLogin }) {
                     </div>
                 </form>
             </div>
-
-            {/* menu login username password display full css ? */}
-            {/* menu subscribe username password display full css ? */}
         </>
     );
 }

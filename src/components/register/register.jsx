@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import s from "./register.module.scss";
 import axios from "../../app/api/axios";
-import { useNavigate, Link } from "react-router-dom";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
@@ -9,13 +10,12 @@ const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const REGISTER_URL = "http://localhost:8080/server/auth/register";
 
 export default function Register({ register, toggleRegister, setLoginBtn }) {
-    const [inputs, setInputs] = useState({
+    const [inputConnection, setInputConnection] = useState({
         email: "",
         password: "",
         username: "",
     });
-
-    // const userRef = useRef();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [validEmail, setValidEmail] = useState(false);
@@ -37,10 +37,6 @@ export default function Register({ register, toggleRegister, setLoginBtn }) {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        console.log("yooooo", register);
-    }, [register]);
-
-    useEffect(() => {
         setValidEmail(EMAIL_REGEX.test(email));
     }, [email]);
 
@@ -58,10 +54,8 @@ export default function Register({ register, toggleRegister, setLoginBtn }) {
         setError("");
     }, [user, pwd, matchPwd]);
 
-    const navigate = useNavigate();
-
     const handleChange = (e) => {
-        setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+        setInputConnection((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     const handleSubmit = async (e) => {
@@ -76,7 +70,7 @@ export default function Register({ register, toggleRegister, setLoginBtn }) {
         }
         setSuccess(true);
         try {
-            const res = await axios.post(REGISTER_URL, inputs);
+            const res = await axios.post(REGISTER_URL, inputConnection);
             setSuccess(true);
             toggleRegister();
             setLoginBtn(true);
@@ -242,8 +236,6 @@ export default function Register({ register, toggleRegister, setLoginBtn }) {
                     </form>
                 </div>
             </section>
-            {/* menu login username password display full css ? */}
-            {/* menu subscribe username password display full css ? */}
         </>
     );
 }

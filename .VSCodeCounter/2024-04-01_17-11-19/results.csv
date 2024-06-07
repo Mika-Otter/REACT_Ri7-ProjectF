@@ -1,0 +1,74 @@
+"filename", "language", "JSON", "JavaScript", "JavaScript JSX", "SCSS", "Markdown", "XML", "HTML", "comment", "blank", "total"
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\.eslintrc.cjs", "JavaScript", 0, 20, 0, 0, 0, 0, 0, 0, 1, 21
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\README.md", "Markdown", 0, 0, 0, 0, 7, 0, 0, 0, 5, 12
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\index.html", "HTML", 0, 0, 0, 0, 0, 0, 13, 0, 1, 14
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\package-lock.json", "JSON", 8416, 0, 0, 0, 0, 0, 0, 0, 1, 8417
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\package.json", "JSON", 40, 0, 0, 0, 0, 0, 0, 0, 1, 41
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\black-T.svg", "XML", 0, 0, 0, 0, 0, 23, 0, 0, 0, 23
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\card.svg", "XML", 0, 0, 0, 0, 0, 3, 0, 0, 1, 4
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\fonttest-border.svg", "XML", 0, 0, 0, 0, 0, 3, 0, 0, 1, 4
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\fonttest-icone.svg", "XML", 0, 0, 0, 0, 0, 3, 0, 0, 1, 4
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\test.svg", "XML", 0, 0, 0, 0, 0, 3, 0, 0, 1, 4
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\trash.svg", "XML", 0, 0, 0, 0, 0, 3, 0, 0, 1, 4
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\variable.svg", "XML", 0, 0, 0, 0, 0, 8, 0, 0, 1, 9
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\watching.svg", "XML", 0, 0, 0, 0, 0, 5, 0, 0, 1, 6
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\assets\icones\white-T.svg", "XML", 0, 0, 0, 0, 0, 28, 0, 0, 2, 30
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\_global.scss", "SCSS", 0, 0, 0, 1, 0, 0, 0, 0, 1, 2
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\globals\_index.scss", "SCSS", 0, 0, 0, 30, 0, 0, 0, 2, 7, 39
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\globals\_typefaces.scss", "SCSS", 0, 0, 0, 28, 0, 0, 0, 1, 3, 32
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\utils\_breakpoints.scss", "SCSS", 0, 0, 0, 21, 0, 0, 0, 2, 5, 28
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\utils\_functions.scss", "SCSS", 0, 0, 0, 15, 0, 0, 0, 3, 3, 21
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\public\styles\utils\_index.scss", "SCSS", 0, 0, 0, 2, 0, 0, 0, 0, 1, 3
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\App.jsx", "JavaScript JSX", 0, 0, 32, 0, 0, 0, 0, 4, 4, 40
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\app\api\axios.js", "JavaScript", 0, 4, 0, 0, 0, 0, 0, 0, 2, 6
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\app\services\fontApi.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 30, 3, 33
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\blackT.jsx", "JavaScript JSX", 0, 0, 33, 0, 0, 0, 0, 0, 1, 34
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\border.jsx", "JavaScript JSX", 0, 0, 7, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\card.jsx", "JavaScript JSX", 0, 0, 7, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\fonttest.jsx", "JavaScript JSX", 0, 0, 10, 0, 0, 0, 0, 0, 1, 11
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\trash.jsx", "JavaScript JSX", 0, 0, 13, 0, 0, 0, 0, 0, 3, 16
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\variable.jsx", "JavaScript JSX", 0, 0, 18, 0, 0, 0, 0, 0, 1, 19
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\watch.jsx", "JavaScript JSX", 0, 0, 23, 0, 0, 0, 0, 0, 1, 24
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\SVG\whiteT.jsx", "JavaScript JSX", 0, 0, 33, 0, 0, 0, 0, 0, 1, 34
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\allfonts\allFonts.jsx", "JavaScript JSX", 0, 0, 116, 0, 0, 0, 0, 3, 14, 133
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\cardFont\cardFont.jsx", "JavaScript JSX", 0, 0, 195, 0, 0, 0, 0, 8, 17, 220
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\cardFont\cardfont.module.scss", "SCSS", 0, 0, 0, 146, 0, 0, 0, 3, 26, 175
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\connect\connect.jsx", "JavaScript JSX", 0, 0, 83, 0, 0, 0, 0, 2, 9, 94
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\connect\connect.module.scss", "SCSS", 0, 0, 0, 97, 0, 0, 0, 0, 11, 108
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\favorites\favorites.jsx", "JavaScript JSX", 0, 0, 120, 0, 0, 0, 0, 13, 15, 148
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\favorites\favorites.module.scss", "SCSS", 0, 0, 0, 139, 0, 0, 0, 2, 15, 156
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\folder\folder.jsx", "JavaScript JSX", 0, 0, 152, 0, 0, 0, 0, 9, 17, 178
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\folder\folder.module.scss", "SCSS", 0, 0, 0, 166, 0, 0, 0, 4, 18, 188
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\loaderfont\loaderfont.jsx", "JavaScript JSX", 0, 0, 23, 0, 0, 0, 0, 0, 3, 26
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\login\login.jsx", "JavaScript JSX", 0, 0, 32, 0, 0, 0, 0, 0, 3, 35
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\login\login.module.scss", "SCSS", 0, 0, 0, 112, 0, 0, 0, 1, 12, 125
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\logout\logout.jsx", "JavaScript JSX", 0, 0, 19, 0, 0, 0, 0, 0, 3, 22
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\logout\logout.module.scss", "SCSS", 0, 0, 0, 7, 0, 0, 0, 0, 2, 9
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\menu\menu.jsx", "JavaScript JSX", 0, 0, 37, 0, 0, 0, 0, 0, 2, 39
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\menu\menu.module.scss", "SCSS", 0, 0, 0, 104, 0, 0, 0, 0, 10, 114
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\register\register.jsx", "JavaScript JSX", 0, 0, 226, 0, 0, 0, 0, 4, 20, 250
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\register\register.module.scss", "SCSS", 0, 0, 0, 167, 0, 0, 0, 0, 16, 183
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\requireAuth\requireAuth.jsx", "JavaScript JSX", 0, 0, 7, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\settings\settings.jsx", "JavaScript JSX", 0, 0, 238, 0, 0, 0, 0, 10, 18, 266
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\settings\settings.module.scss", "SCSS", 0, 0, 0, 137, 0, 0, 0, 0, 19, 156
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\testText\testText.jsx", "JavaScript JSX", 0, 0, 121, 0, 0, 0, 0, 2, 10, 133
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\testText\testText.module.scss", "SCSS", 0, 0, 0, 124, 0, 0, 0, 2, 13, 139
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\unauthorized\index.jsx", "JavaScript JSX", 0, 0, 9, 0, 0, 0, 0, 0, 2, 11
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\unauthorized\unauthorized.module.scss", "SCSS", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\variable\variable.jsx", "JavaScript JSX", 0, 0, 144, 0, 0, 0, 0, 0, 10, 154
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\components\variable\variable.module.scss", "SCSS", 0, 0, 0, 200, 0, 0, 0, 20, 31, 251
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\features\authSlice.js", "JavaScript", 0, 29, 0, 0, 0, 0, 0, 0, 4, 33
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\features\choosedFontSlide.js", "JavaScript", 0, 19, 0, 0, 0, 0, 0, 0, 4, 23
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\features\fontsSlice.js", "JavaScript", 0, 33, 0, 0, 0, 0, 0, 0, 5, 38
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\main.jsx", "JavaScript JSX", 0, 0, 13, 0, 0, 0, 0, 2, 2, 17
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\allfontsPage\allFontsPage.jsx", "JavaScript JSX", 0, 0, 18, 0, 0, 0, 0, 0, 2, 20
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\favoritesPage\favoritesPage.jsx", "JavaScript JSX", 0, 0, 18, 0, 0, 0, 0, 0, 2, 20
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\page.module.scss", "SCSS", 0, 0, 0, 7, 0, 0, 0, 0, 2, 9
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\pages.module.scss", "SCSS", 0, 0, 0, 4, 0, 0, 0, 0, 1, 5
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\settingsPage\settingsPage.jsx", "JavaScript JSX", 0, 0, 16, 0, 0, 0, 0, 0, 2, 18
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\variablePage\variablePage.jsx", "JavaScript JSX", 0, 0, 18, 0, 0, 0, 0, 0, 2, 20
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\welcome\welcome.jsx", "JavaScript JSX", 0, 0, 100, 0, 0, 0, 0, 1, 8, 109
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\src\pages\welcome\welcome.module.scss", "SCSS", 0, 0, 0, 171, 0, 0, 0, 2, 18, 191
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\store\store.js", "JavaScript", 0, 11, 0, 0, 0, 0, 0, 0, 2, 13
+"c:\Users\remic\Desktop\In Progress\Code\Ri7-ProjectF\projectF\vite.config.js", "JavaScript", 0, 6, 0, 0, 0, 0, 0, 1, 2, 9
+"Total", "-", 8456, 122, 1881, 1678, 7, 79, 13, 131, 433, 12800
