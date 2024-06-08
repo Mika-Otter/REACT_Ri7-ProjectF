@@ -13,7 +13,6 @@ export default function BigLetter() {
 
   useGSAP(() => {
     const handleMouseMove = (e) => {
-      console.log("yooo");
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
 

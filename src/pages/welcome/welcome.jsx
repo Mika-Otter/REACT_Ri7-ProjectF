@@ -20,15 +20,20 @@ export default function Welcome() {
   const [loginBtn, setLoginBtn] = useState(false);
   const [register, setRegister] = useState(false);
   const [isTransition, setIsTransition] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const [isAnimationLogin, setIsAnimationLogin] = useState(false);
   const bigboxContent = useRef();
+
+  const handleLogin = () => {
+    if (isLogin) {
+      setIsAnimationLogin(false);
+    } else {
+      setIsAnimationLogin(true); // opens immediately
+    }
+  };
 
   const handleTransition = () => {
     setIsTransition((prev) => !prev);
-  };
-
-  const toggleLogin = () => {
-    setLoginBtn(!loginBtn);
-    handleTransition();
   };
 
   const handleRegister = () => {
@@ -37,10 +42,6 @@ export default function Welcome() {
       setRegister(!register);
     }, 500);
   };
-
-  useEffect(() => {
-    console.log(window.innerHeight, window.innerWidth);
-  });
 
   useGSAP(() => {
     const up = () =>
@@ -63,9 +64,11 @@ export default function Welcome() {
           <LogoSVG />
         </div>
         <Navbar
-          active={loginBtn}
-          toggleLogin={toggleLogin}
           handleRegister={handleRegister}
+          isLogin={isLogin}
+          setIsLogin={setIsLogin}
+          handleLogin={handleLogin}
+          isAnimationLogin={isAnimationLogin}
         />
         <BigLetter />
         <ScrollDiscover />

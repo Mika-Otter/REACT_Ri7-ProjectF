@@ -7,7 +7,7 @@
   transition: 0.3s ease-in-out;
 }
 .register {
-  z-index: 3000;
+  z-index: 30000;
   position: fixed;
   display: flex;
   justify-content: end;
@@ -47,7 +47,7 @@
         height: 2vw;
         width: 5vw;
         z-index: 2;
-        transition: 0.5s ease-in-out;
+        transition: 0.2s ease-in-out;
       }
     }
     &__arrow {
@@ -59,7 +59,7 @@
   &__backtohome:hover &__backtohome__wrapper__logo {
     opacity: 0;
     transform: translateX(-10%);
-    transition: 0.3s 0.2s ease-in-out;
+    transition: 0.2s 0.1s ease-in-out;
   }
   &__backtohome:hover .backhome {
     opacity: 1;
