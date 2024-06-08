@@ -17,29 +17,31 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
   &__backtohome {
     margin: 0;
     padding: 0;
     width: 50%;
-    margin-left: 2.5vw;
+    margin-left: -0.2vw;
     display: flex;
-    font-weight: 300;
+    font-weight: 600;
     gap: 10px;
+    font-size: 0.9vw;
+    color: #8095e1dc;
     align-items: center;
-    color: #b9b7b7;
+    // color: $button-blue;
     cursor: pointer;
 
     &__wrapper {
       display: flex;
       flex-direction: column;
-      height: 1.5vw;
+      height: 1.2vw;
       overflow: hidden;
-      // border: 2px solid blue;
     }
     &__arrow {
-      margin-top: 0.3vw;
-      transform: rotate(180deg);
+      // margin-top: 0.3vw;
       width: 2vw;
+      margin-bottom: 0.2vw;
     }
   }
   &__backtohome:hover .backhome {
@@ -47,20 +49,22 @@
   }
   &__content {
     width: 50%;
-    background-color: #fffbfb;
-    padding: 3vw 3vw;
+    background-color: $white-color;
+    padding: 1vw 3.5vw;
     display: flex;
     flex-direction: column;
+    // justify-content: space-between;
     gap: 15px;
+    // border: 2px solid blue;
 
-    box-shadow: -5px 0px 7px -2px rgba(54, 54, 54, 0.062);
+    box-shadow: -5px 0px 8px -2px rgba(54, 54, 54, 0.062);
 
     h2 {
       font-weight: 400;
       font-size: 1.4vw;
       color: $font-darkgrey-color;
       margin: 0;
-      margin-top: 2vw;
+      margin-top: 1.5vw;
     }
 
     &__frame {
@@ -72,15 +76,18 @@
     width: 60%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 17px;
     color: #646464;
     font-size: 0.9vw;
+    margin: 0;
     margin-top: 2vw;
+    // border: 2px solid blue;
   }
 
   &__submit {
     &__btn {
-      margin-top: 1.5vw;
+      height: 2.8vw;
+      margin-top: 1vw;
       background-color: #8095e1;
       color: #fff8f8d7;
       font-style: normal;
@@ -90,9 +97,12 @@
       border: none;
       width: 100%;
       transition: 0.3s ease-in-out;
+      line-height: 70%;
+      cursor: not-allowed;
 
       &__valid {
-        margin-top: 1.5vw;
+        height: 2.8vw;
+        margin-top: 1vw;
         font-style: normal;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         font-size: 1.2vw;
@@ -102,6 +112,8 @@
         background-color: $button-blue;
         color: $white-color;
         transition: 0.3s ease-in-out;
+        line-height: 70%;
+        cursor: pointer;
       }
     }
   }
@@ -110,7 +122,7 @@
 .formInput {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
   position: relative;
   label {
     font-size: 0.9vw;
@@ -123,7 +135,7 @@
     background: #fffbfb;
     z-index: 3;
 
-    box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.103);
+    box-shadow: 0px 4px 7px -2px rgba(87, 87, 87, 0.103);
   }
   &__input:focus {
     transition: 0.2s ease-in-out;

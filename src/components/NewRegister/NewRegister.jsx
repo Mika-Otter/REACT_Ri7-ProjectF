@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import s from "./NewRegister.module.scss";
 import axios from "../../app/api/axios";
 import ArrowRegisterSVG from "../SVG/ArrowRegisterSVG";
+import ArrowRegisterBackSVG from "../SVG/ArrowRegisterBackSVG";
+import PrivacyPolicy from "../PrivacyPolicy/PrivacyPolicy";
 
 const USER_REGEX = /^[A-Za-z][A-Za-z0-9-]{3,22}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
@@ -73,16 +75,40 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
           onClick={() => handleRegister()}
         >
           <div className={s.register__backtohome__arrow}>
-            <ArrowRegisterSVG color={"#8b8a8a"} />
+            <ArrowRegisterBackSVG />
           </div>
           <div className={s.register__backtohome__wrapper}>
-            <span className={s.backhome}>Back to home page</span>
-            <span className={s.backhome}>Back to home page</span>
+            <span className={s.backhome}>Back to home</span>
+            <span className={s.backhome}>Back to home</span>
           </div>
         </div>
         <div className={s.register__content__frame}>
           <h2>Start here</h2>
           <form className={s.register__form} onSubmit={handleSubmit(onSubmit)}>
+            <div className={s.formInput}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: EMAIL_REGEX,
+                    message: "Invalid email format",
+                  },
+                })}
+                aria-invalid={errors.email ? "true" : "false"}
+                aria-describedby="emailnote"
+                className={s.formInput__input}
+              />
+              {errors.email &&
+                (errors.email.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.email.message}</p>
+                ))}
+            </div>
+
             <div className={s.formInput}>
               <label htmlFor="username">Username</label>
               <input
@@ -107,30 +133,6 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
               {errorInput === "username" && (
                 <p className={s.required}>REQUIRED</p>
               )}
-            </div>
-
-            <div className={s.formInput}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: EMAIL_REGEX,
-                    message: "Invalid email format",
-                  },
-                })}
-                aria-invalid={errors.email ? "true" : "false"}
-                aria-describedby="emailnote"
-                className={s.formInput__input}
-              />
-              {errors.email &&
-                (errors.email.type === "required" ? (
-                  <p className={s.required}>REQUIRED</p>
-                ) : (
-                  <p className={s.error}>{errors.email.message}</p>
-                ))}
             </div>
 
             <div className={s.formInput}>
@@ -211,6 +213,7 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
             )}
             {success && <p className={s.success}>{success}</p>}
           </form>
+          <PrivacyPolicy />
         </div>
       </div>
     </div>
