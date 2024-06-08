@@ -35,8 +35,11 @@
       font-family: "InstrumentSans-Regular";
       display: flex;
       justify-content: center;
+      transition: all 0.3s ease-in-out;
       // width: 5vw;
-
+      &:hover {
+        color: $font-fade-blue;
+      }
       &__button {
         width: 6vw;
       }

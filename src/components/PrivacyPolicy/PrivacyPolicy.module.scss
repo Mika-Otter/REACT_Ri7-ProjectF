@@ -1,0 +1,64 @@
+@import "../../../public/styles/global";
+.privacy {
+  display: flex;
+  flex-direction: column;
+  color: #625e5e;
+
+  font-family: "Segoe UI";
+  font-size: 0.9vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  margin-top: 0.6vw;
+  &__span {
+    text-decoration-line: underline;
+  }
+  &__content {
+    display: flex;
+    cursor: pointer;
+
+    gap: 5px;
+
+    &__arrow {
+      // border: 2px solid blue;
+      margin-top: 0.1vw;
+      width: 0.7vw;
+      transition: 0.2s ease-in-out;
+      // border: 2px solid blue;
+
+      &__active {
+        transform: rotate(-180deg);
+      }
+    }
+
+    &__text {
+      height: 0px;
+      opacity: 0;
+      overflow: hidden;
+      animation: fadeIn 0.5s ease-in-out forwards;
+      display: flex;
+      flex-direction: column;
+      p {
+        color: #9e9898;
+        width: 60%;
+        margin: 0;
+        text-decoration-line: none;
+      }
+      a {
+        color: $font-fade-blue;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    height: 0px;
+    opacity: 0;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
