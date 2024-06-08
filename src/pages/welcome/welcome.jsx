@@ -16,19 +16,20 @@ import TransitionLayout from "../../components/TransitionLayout/TransitionLayout
 
 // , { useEffect, useState, useRef }
 
-export default function Welcome() {
+export default function Welcome({ handleTransition }) {
   const [loginBtn, setLoginBtn] = useState(false);
   const [register, setRegister] = useState(false);
-  const [isTransition, setIsTransition] = useState(false);
+
+  const [isLogin, setIsLogin] = useState(false);
+  const [isAnimationLogin, setIsAnimationLogin] = useState(false);
   const bigboxContent = useRef();
 
-  const handleTransition = () => {
-    setIsTransition((prev) => !prev);
-  };
-
-  const toggleLogin = () => {
-    setLoginBtn(!loginBtn);
-    handleTransition();
+  const handleLogin = () => {
+    if (isLogin) {
+      setIsAnimationLogin(false);
+    } else {
+      setIsAnimationLogin(true); // opens immediately
+    }
   };
 
   const handleRegister = () => {
@@ -37,10 +38,6 @@ export default function Welcome() {
       setRegister(!register);
     }, 500);
   };
-
-  useEffect(() => {
-    console.log(window.innerHeight, window.innerWidth);
-  });
 
   useGSAP(() => {
     const up = () =>
@@ -56,16 +53,18 @@ export default function Welcome() {
 
   return (
     <>
-      <TransitionLayout isTransition={isTransition} />
       <div className={s.fade}></div>
       <section className={s.welcome}>
         <div className={s.logo}>
           <LogoSVG />
         </div>
         <Navbar
-          active={loginBtn}
-          toggleLogin={toggleLogin}
           handleRegister={handleRegister}
+          isLogin={isLogin}
+          setIsLogin={setIsLogin}
+          handleLogin={handleLogin}
+          isAnimationLogin={isAnimationLogin}
+          handleTransition={handleTransition}
         />
         <BigLetter />
         <ScrollDiscover />

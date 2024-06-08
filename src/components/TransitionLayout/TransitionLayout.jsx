@@ -7,7 +7,7 @@ export default function TransitionLayout({ isTransition }) {
   const transitionRef = useRef(null);
   useGSAP(() => {
     const tl = gsap.timeline();
-    tl.set(transitionRef.current, { zIndex: 30000 })
+    tl.set(transitionRef.current, { zIndex: 50000 })
       .to(transitionRef.current, {
         opacity: 1,
         duration: 0.4,
