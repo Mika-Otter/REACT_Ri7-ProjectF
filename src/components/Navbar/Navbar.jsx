@@ -13,6 +13,7 @@ export default function Navbar({
   setIsLogin,
   handleLogin,
   isAnimationLogin,
+  handleTransition,
 }) {
   const connectRef = useRef(null);
 
@@ -74,6 +75,7 @@ export default function Navbar({
             <Connect
               handleLogin={handleLogin}
               handleRegister={handleRegister}
+              handleTransition={handleTransition}
             />
           ) : null}
         </div>

@@ -16,10 +16,10 @@ import TransitionLayout from "../../components/TransitionLayout/TransitionLayout
 
 // , { useEffect, useState, useRef }
 
-export default function Welcome() {
+export default function Welcome({ handleTransition }) {
   const [loginBtn, setLoginBtn] = useState(false);
   const [register, setRegister] = useState(false);
-  const [isTransition, setIsTransition] = useState(false);
+
   const [isLogin, setIsLogin] = useState(false);
   const [isAnimationLogin, setIsAnimationLogin] = useState(false);
   const bigboxContent = useRef();
@@ -30,10 +30,6 @@ export default function Welcome() {
     } else {
       setIsAnimationLogin(true); // opens immediately
     }
-  };
-
-  const handleTransition = () => {
-    setIsTransition((prev) => !prev);
   };
 
   const handleRegister = () => {
@@ -57,7 +53,6 @@ export default function Welcome() {
 
   return (
     <>
-      <TransitionLayout isTransition={isTransition} />
       <div className={s.fade}></div>
       <section className={s.welcome}>
         <div className={s.logo}>
@@ -69,6 +64,7 @@ export default function Welcome() {
           setIsLogin={setIsLogin}
           handleLogin={handleLogin}
           isAnimationLogin={isAnimationLogin}
+          handleTransition={handleTransition}
         />
         <BigLetter />
         <ScrollDiscover />

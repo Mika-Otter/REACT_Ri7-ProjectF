@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "../public/styles/global.scss";
 
@@ -11,15 +12,23 @@ import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 import VariablePage from "./pages/variablePage/variablePage";
 import SettingsPage from "./pages/settingsPage/settingsPage";
 import Welcome from "./pages/Welcome/Welcome";
+import TransitionLayout from "./components/TransitionLayout/TransitionLayout";
 
 export default function App() {
+  const [isTransition, setIsTransition] = useState(false);
+  const handleTransition = () => {
+    setIsTransition((prev) => !prev);
+  };
   return (
     <>
       <Loaderfont />
+      <TransitionLayout isTransition={isTransition} />
       <Routes>
         {/* public routes */}
-        <Route path="/" element={<Welcome />}></Route>
-        {/* <Route path="register" element={<Register />}></Route> */}
+        <Route
+          path="/"
+          element={<Welcome handleTransition={handleTransition} />}
+        ></Route>
         <Route path="login" element={<Login />}></Route>
         <Route path="unauthorized" element={<Unauthorized />}></Route>
 

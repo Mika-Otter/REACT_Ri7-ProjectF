@@ -6,7 +6,11 @@ import { setUserId, setUserName } from "../../features/authSlice";
 import s from "./Connect.module.scss";
 import axios from "axios";
 
-export default function Connect({ handleRegister, handleLogin }) {
+export default function Connect({
+  handleRegister,
+  handleLogin,
+  handleTransition,
+}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = useSelector((state) => state.auth.userId);
@@ -34,7 +38,10 @@ export default function Connect({ handleRegister, handleLogin }) {
       );
       localStorage.setItem("token", res.data.token);
       handleLogin(res.data);
-      navigate("/home");
+      handleTransition();
+      setTimeout(() => {
+        navigate("/home");
+      }, 500);
     } catch (err) {
       if (err.response) {
         // Errors from the server
