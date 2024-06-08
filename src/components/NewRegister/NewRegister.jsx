@@ -4,7 +4,7 @@ import s from "./NewRegister.module.scss";
 import axios from "../../app/api/axios";
 import ArrowRegisterSVG from "../SVG/ArrowRegisterSVG";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const USER_REGEX = /^[A-Za-z][A-Za-z0-9-]{3,22}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const REGISTER_URL = "http://localhost:8080/server/auth/register";
@@ -52,6 +52,19 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
     }
   };
 
+  const validateUsername = (username) => {
+    if (username.length < 4) {
+      return "Your name is too short.";
+    } else if (username.length > 23) {
+      return "Your name is too long.";
+    } else if (!/^[A-Za-z]/.test(username)) {
+      return "Your name must start with a letter.";
+    } else if (!USER_REGEX.test(username)) {
+      return "Only letters, numbers, underscores, and hyphens are allowed.";
+    }
+    return true; // Validation passed
+  };
+
   return (
     <div className={s.register}>
       <div className={s.register__content}>
@@ -60,7 +73,7 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
           onClick={() => handleRegister()}
         >
           <div className={s.register__backtohome__arrow}>
-            <ArrowRegisterSVG />
+            <ArrowRegisterSVG color={"#8b8a8a"} />
           </div>
           <div className={s.register__backtohome__wrapper}>
             <span className={s.backhome}>Back to home page</span>
@@ -77,11 +90,7 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
                 id="username"
                 {...register("username", {
                   required: "Username is required",
-                  pattern: {
-                    value: USER_REGEX,
-                    message:
-                      "4 to 23 characters. Must begin with a letter. Letters, numbers, underscores, hyphens allowed.",
-                  },
+                  validate: validateUsername,
                 })}
                 aria-invalid={errors.username ? "true" : "false"}
                 aria-describedby="uidnote"
@@ -174,10 +183,14 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
             <div className={s.register__submit}>
               <button
                 type="submit"
-                className={s.register__submit__btn}
+                className={
+                  isValid
+                    ? s.register__submit__btn__valid
+                    : s.register__submit__btn
+                }
                 disabled={!isValid}
               >
-                Register now
+                {isValid ? "Register" : "Please fill in the form"}
               </button>
             </div>
 
