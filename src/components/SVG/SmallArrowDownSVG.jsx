@@ -7,7 +7,7 @@ const SmallArrowDownSVG = (props) => (
     fill="none"
     {...props}
   >
-    <path stroke="#646464" d="M.5.5 4 4 7.5.5" />
+    <path stroke="#9e9898" d="M.5.5 4 4 7.5.5" />
   </svg>
 );
 export default SmallArrowDownSVG;

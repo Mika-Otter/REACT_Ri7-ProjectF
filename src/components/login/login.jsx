@@ -12,7 +12,7 @@ export default function Login({ active, toggleLogin, toggleRegister }) {
           onClick={() => toggleLogin()}
           className={s.login__btn}
         >
-          Login
+          Sign in
         </button>
       </div>
     </>

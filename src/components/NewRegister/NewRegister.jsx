@@ -5,6 +5,7 @@ import axios from "../../app/api/axios";
 import ArrowRegisterSVG from "../SVG/ArrowRegisterSVG";
 import ArrowRegisterBackSVG from "../SVG/ArrowRegisterBackSVG";
 import PrivacyPolicy from "../PrivacyPolicy/PrivacyPolicy";
+import LogoSVG from "../SVG/LogoSVG";
 
 const USER_REGEX = /^[A-Za-z][A-Za-z0-9-]{3,22}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
@@ -78,8 +79,11 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
             <ArrowRegisterBackSVG />
           </div>
           <div className={s.register__backtohome__wrapper}>
-            <span className={s.backhome}>Back to home</span>
-            <span className={s.backhome}>Back to home</span>
+            <div className={s.register__backtohome__wrapper__logo}>
+              <LogoSVG />
+            </div>
+            <span className={s.backhome}>Back</span>
+            {/* <span className={s.backhome}>Back to home</span> */}
           </div>
         </div>
         <div className={s.register__content__frame}>
