@@ -14,11 +14,13 @@ export default function AccordionItem({
   const isOpen = number === curOpen;
 
   return (
-    <div
-      className={cn(s.accordion__item, isOpen ? s.open : s.close)}
-      onClick={() => setIsOpen(number)}
-    >
-      <div className={s.accordion__item__header}>
+    <div className={cn(s.accordion__item, isOpen ? s.open : s.close)}>
+      <div
+        className={s.accordion__item__header}
+        onClick={() => {
+          number === curOpen ? setIsOpen(null) : setIsOpen(number);
+        }}
+      >
         <span className={s.accordion__item__header__title}>{title}</span>
         {isOpen ? (
           <span className={s.accordion__item__header__icon}>-</span>
@@ -33,12 +35,24 @@ export default function AccordionItem({
             ? fonts
                 .filter((font) => font.favorite)
                 .map((font, i) => (
-                  <div className={s.fonts} key={font.name + i}>
+                  <div
+                    className={s.fonts}
+                    key={font.name + i}
+                    onChange={(e) => {
+                      // Prevent the event from bubbling up to the parent div
+                      e.stopPropagation();
+                      handleFonts(font.name);
+                    }}
+                  >
                     <input
                       type="checkbox"
                       name={font.name}
                       checked={font.checked}
-                      onChange={() => handleFonts(font.name)}
+                      onChange={(e) => {
+                        // Prevent the event from bubbling up to the parent div
+                        e.stopPropagation();
+                        handleFonts(font.name);
+                      }}
                     />
                     <label
                       htmlFor={font.name}
@@ -49,12 +63,25 @@ export default function AccordionItem({
                   </div>
                 ))
             : fonts.map((font, i) => (
-                <div className={s.fonts} key={font.name + i}>
+                <div
+                  className={s.fonts}
+                  key={font.name + i}
+                  onClick={(e) => {
+                    // Prevent the event from bubbling up to the parent div
+                    e.stopPropagation();
+                    // Toggle the checkbox
+                    handleFonts(font.name);
+                  }}
+                >
                   <input
                     type="checkbox"
                     name={font.name}
                     checked={font.checked}
-                    onChange={() => handleFonts(font.name)}
+                    onChange={(e) => {
+                      // Prevent the event from bubbling up to the parent div
+                      e.stopPropagation();
+                      handleFonts(font.name);
+                    }}
                   />
                   <label
                     htmlFor={font.name}

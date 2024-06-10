@@ -102,20 +102,6 @@ export default function Folder() {
     setFolder(!folder);
   }
 
-  useGSAP(() => {
-    if (folder) {
-      gsap.to(folderRef.current, {
-        right: "-12vw",
-        duration: 1.3,
-        ease: "power3.inOut",
-      });
-
-      gsap.to(cacheRef.current, { opacity: 1, duration: 1.3, zIndex: 100 });
-    } else {
-      gsap.to(folderRef.current, { right: 0, duration: 1.3 });
-      gsap.to(cacheRef.current, { opacity: 0, duration: 1.3, zIndex: -1 });
-    }
-  }, [folder]);
   //TEST
   // useEffect(() => {
   //     console.log("Choooosed", choosedFonts);

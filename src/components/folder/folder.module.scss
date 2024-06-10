@@ -2,65 +2,29 @@
 @use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
-.folder__name {
-  font-family: "Nacelle";
-  font-size: $fontsize-s;
-  color: $font-darkgrey-color;
-  padding-bottom: 3vh;
-  padding: 1.5vw 1vw;
-}
-
-.cache {
-  width: 100%;
-  height: 80%;
-  background-color: $black-color;
-  opacity: 0;
-  z-index: -1;
-}
 .folder {
   z-index: 999;
-
-  &__name {
-    width: 100%;
-    border-bottom: 1px solid $font-darkgrey-color;
-  }
-  &__folder {
-    width: 90%;
-    margin-bottom: 3vh;
-    margin-top: 1vh;
-
-    &__favorite {
-      width: 90%;
-      margin-top: 1vh;
-      margin-bottom: 3vh;
-    }
-
-    span {
-      color: white;
-      font-family: "Nacelle";
-      font-size: 0.7vw;
-    }
-  }
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .inputFile {
-  position: relative;
+  width: 100%;
+  padding: 0.7vw 1.5vw;
+  border-top: 1px solid rgb(156, 156, 156);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 
   &__label {
     color: $font-darkgrey-color;
-    border: 1px solid $font-darkgrey-color;
-    border-radius: 35px;
-    padding: 3px 7px;
-    font-size: $fontsize-xxs;
+    font-family: "InstrumentSans-Medium";
+    font-size: 1vw;
     z-index: 3;
     cursor: pointer;
-  }
-
-  &__label:hover {
-    color: $white-color;
-    background-color: $font-fade-blue;
-    transition: 0.3s ease-in-out;
-    border: 1px solid $font-fade-blue;
+    transition: all 0.3s ease-in-out;
   }
 
   &__input {
@@ -69,4 +33,12 @@
     top: 0;
     z-index: -1;
   }
+}
+
+.inputFile:hover {
+  border-top: 1px solid $button-blue;
+  background-color: $button-blue;
+}
+.inputFile:hover .inputFile__label {
+  color: $white-color;
 }

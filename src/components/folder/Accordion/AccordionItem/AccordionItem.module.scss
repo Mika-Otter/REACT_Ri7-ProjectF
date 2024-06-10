@@ -2,39 +2,56 @@
 @use "/public/styles/utils/functions" as f;
 @import "../../../../../public/styles/global.scss";
 
-.accordion__item__header {
+.accordion__item {
+  position: relative;
   width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 0.7vw 1.5vw;
-  font-family: "InstrumentSans-Medium";
-  color: $font-darkgrey-color;
-  border-bottom: 1px solid rgb(156, 156, 156);
-  &__title {
-    font-size: 1vw;
+  flex-direction: column;
+  justify-content: start;
+  cursor: pointer;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7vw 1.5vw;
+    font-family: "InstrumentSans-Medium";
+    color: $font-darkgrey-color;
+    border-bottom: 1px solid rgb(156, 156, 156);
+    &__title {
+      font-size: 1vw;
+    }
+    &__icon {
+      font-size: 1.5vw;
+      line-height: 90%;
+    }
   }
-  &__icon {
-    font-size: 1.5vw;
-    line-height: 90%;
+
+  &__content {
+    width: 100%;
+    overflow-y: auto;
   }
 }
 
 .fonts {
-  cursor: pointer;
   width: 90%;
   margin-inline: auto;
   margin-top: 5px;
-  height: 27px;
+  height: 1.5vw;
   flex-wrap: nowrap;
+  //   border: 2px solid red;
   display: flex;
+  align-items: center;
+  cursor: pointer;
 
   input {
+    cursor: pointer;
     appearance: none;
     border-radius: 2px;
     width: 13px;
     height: 13px;
     border: 1px solid #565657;
-    cursor: pointer;
   }
 
   input:checked {
@@ -42,6 +59,7 @@
   }
 
   label {
+    cursor: pointer;
     margin-left: 5px;
     text-wrap: nowrap;
     overflow: hidden;
@@ -51,14 +69,5 @@
   }
 }
 
-.accordion__item {
-  width: 100%;
-  height: fit-content;
-}
-
-.accordion__item__content {
-  height: fit-content;
-  max-height: 50vh;
-  width: 100%;
-  overflow-y: auto;
+.fonts:hover {
 }
