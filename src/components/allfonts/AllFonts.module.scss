@@ -1,0 +1,58 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../public/styles/global";
+
+.allfonts {
+  margin-left: 20%;
+  width: 77%;
+  //   border: 2px solid green;
+}
+
+.content {
+  height: fit-content;
+  margin-top: 15vh;
+  width: 100%;
+
+  &__ctn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vw;
+    row-gap: 1.5vw;
+    margin: 0;
+    padding: 0;
+    // border: 2px solid red;
+    margin-bottom: 10vh;
+  }
+}
+
+.container__title {
+  position: fixed;
+  top: 0;
+  display: flex;
+  //   border: 2px solid red;
+  background-color: $white-color;
+  width: 90%;
+  height: 9vh;
+  border-bottom: 1px solid #cccc;
+  z-index: 1000;
+}
+.title {
+  font-family: "InstrumentSans-Regular";
+  display: flex;
+  gap: 2vw;
+  height: 8vh;
+  //   border: 2px solid blue;
+  align-items: last baseline;
+  background-color: $white-color;
+  h3 {
+    font-family: "InstrumentSans-Regular";
+    font-size: 2vw;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+  }
+
+  span {
+    font-size: 1vw;
+  }
+}

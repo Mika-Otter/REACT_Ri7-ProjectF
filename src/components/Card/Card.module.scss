@@ -1,0 +1,85 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../public/styles/global";
+
+.card {
+  width: 30%;
+  //   border: 2px solid blue;
+  min-width: 200px;
+  aspect-ratio: 1;
+  border-radius: 7px;
+  font-family: "InstrumentSans-Medium";
+  border: 1px solid $grey-color;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  &__box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  &__favorite {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    // border: 2px solid red;
+    width: 30px;
+    height: 30px;
+
+    &__ctn {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      &__input {
+        position: absolute;
+        // border: 2px solid blue;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__letter {
+    font-size: 9vw;
+    padding: 1vw 1.5vw;
+    line-height: 1;
+  }
+
+  &__details {
+    position: absolute;
+    bottom: 0;
+    padding: 1vw 1.5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+    &__links {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        border: none;
+        background: none;
+        font-family: "InstrumentSans-Regular";
+        font-size: 1vw;
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        transition: all 0.15s ease-in-out;
+      }
+    }
+  }
+}
+
+.card:hover {
+  color: $white-color;
+  background-color: $font-darkgrey-color;
+  border: 1px solid $white-color;
+  button {
+    color: $white-color;
+  }
+}
