@@ -1,6 +1,91 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../../public/styles/global.scss";
+
 .accordion {
   width: 100%;
   overflow: hidden;
+  display: inline-block;
+  flex-direction: column;
+  // border: 2px solid red;
+  overflow-y: auto;
+  margin-bottom: -3px;
+}
+
+.accordion__item {
+  position: relative;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  cursor: pointer;
+  overflow-y: auto;
+
+  &__header {
+    height: 2.7vw;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7vw 1.5vw;
+    font-family: "InstrumentSans-Medium";
+    color: $font-darkgrey-color;
+    border-bottom: 1px solid rgb(156, 156, 156);
+    &__title {
+      font-size: 1vw;
+    }
+    &__icon {
+      font-size: 1.5vw;
+      line-height: 90%;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    height: fit-content;
+    overflow-y: auto;
+  }
+}
+
+.emptylist {
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "InstrumentSans-Medium";
+  font-size: 0.8vw;
+  // border: 2px solid rgb(114, 75, 75);
+  padding: 0.7vw 1.5vw;
+  margin: 0;
+}
+.fonts {
+  width: 90%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  height: 1.5vw;
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  input {
+    cursor: pointer;
+    appearance: none;
+    border-radius: 2px;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #565657;
+  }
+
+  input:checked {
+    background-color: #565657;
+  }
+
+  label {
+    cursor: pointer;
+    margin-left: 5px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis " ...";
+    color: $font-darkgrey-color;
+    font-size: $fontsize-xxs;
+  }
 }

@@ -12,7 +12,6 @@ export default function VariablePage() {
         <div className={s.content}>
           <Variable />
         </div>
-        <Folder />
       </section>
     </>
   );

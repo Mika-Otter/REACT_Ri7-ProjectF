@@ -121,19 +121,20 @@ export default function Folder() {
           fonts={fonts}
           handleFonts={handleFonts}
         />
-
-        <div className={s.inputFile}>
-          <label htmlFor="inputFile" className={s.inputFile__label}>
-            + Add font(s){" "}
-          </label>
-          <input
-            id="inputFile"
-            type="file"
-            accept=".ttf,.otf"
-            multiple
-            onChange={(e) => fileUpload(e)}
-            className={s.inputFile__input}
-          />
+        <div className={s.inputFile__box}>
+          <div className={s.inputFile}>
+            <label htmlFor="inputFile" className={s.inputFile__label}>
+              + Add font(s){" "}
+            </label>
+            <input
+              id="inputFile"
+              type="file"
+              accept=".ttf,.otf"
+              multiple
+              onChange={(e) => fileUpload(e)}
+              className={s.inputFile__input}
+            />
+          </div>
         </div>
       </section>
     </>

@@ -12,7 +12,6 @@ export default function FavoritesPage() {
         <div className={s.content}>
           <Favorites />
         </div>
-        <Folder />
       </section>
     </>
   );
