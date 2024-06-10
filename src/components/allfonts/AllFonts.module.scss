@@ -16,8 +16,8 @@
   &__ctn {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5vw;
-    row-gap: 1.5vw;
+    gap: 1vw;
+    row-gap: 1vw;
     margin: 0;
     padding: 0;
     // border: 2px solid red;
@@ -28,22 +28,27 @@
 .container__title {
   position: fixed;
   top: 0;
+  left: 0;
   display: flex;
   //   border: 2px solid red;
-  background-color: $white-color;
-  width: 90%;
-  height: 9vh;
-  border-bottom: 1px solid #cccc;
-  z-index: 1000;
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  background-color: #fff8f8af;
+  width: 100%;
+  min-height: 70px;
+  height: 5vw;
+  border-bottom: 1px solid rgb(156, 156, 156);
+  z-index: 900;
+  box-sizing: border-box;
 }
 .title {
   font-family: "InstrumentSans-Regular";
   display: flex;
   gap: 2vw;
-  height: 8vh;
+  height: 3.5vw;
+  margin-left: 20%;
   //   border: 2px solid blue;
   align-items: last baseline;
-  background-color: $white-color;
   h3 {
     font-family: "InstrumentSans-Regular";
     font-size: 2vw;

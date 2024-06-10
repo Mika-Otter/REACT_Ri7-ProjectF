@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import s from "./menu.module.scss";
+import s from "./Menu.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoSVG from "../SVG/LogoSVG";
@@ -11,29 +11,31 @@ export default function Menu() {
   return (
     <>
       <div className={s.menu}>
-        <div className={s.menu__selector}>
-          <button
-            type="button"
-            className={
-              selector === "menu"
-                ? s.menu__selector__menu
-                : s.menu__selector__button
-            }
-            onClick={() => setSelector("menu")}
-          >
-            Menu
-          </button>
-          <button
-            type="button"
-            className={
-              selector === "folder"
-                ? s.menu__selector__folder
-                : s.menu__selector__button
-            }
-            onClick={() => setSelector("folder")}
-          >
-            Folder
-          </button>
+        <div className={s.menu__box__selector}>
+          <div className={s.menu__selector}>
+            <button
+              type="button"
+              className={
+                selector === "menu"
+                  ? s.menu__selector__menu
+                  : s.menu__selector__button
+              }
+              onClick={() => setSelector("menu")}
+            >
+              Menu
+            </button>
+            <button
+              type="button"
+              className={
+                selector === "folder"
+                  ? s.menu__selector__folder
+                  : s.menu__selector__button
+              }
+              onClick={() => setSelector("folder")}
+            >
+              Folder
+            </button>
+          </div>
         </div>
 
         <div className={s.menu__box}>
@@ -50,7 +52,9 @@ export default function Menu() {
         </div>
         <div className={s.menu__settings}>
           <Link to="/settings">Settings</Link>
-          <button type="button">Logout</button>
+          <button type="button" className={s.menu__settings__button}>
+            Logout
+          </button>
         </div>
         <div className={s.menu__box__logo}>
           <div className={s.menu__logo}>

@@ -6,9 +6,10 @@
   position: fixed;
   left: 0;
   top: 0;
-  bottom: 0;
+  height: 100%;
   width: 17vw;
-  background-color: #d4d1d1;
+  background-color: #fff7f7;
+  //   background-color: #ebe0e0;
   z-index: 999;
   display: flex;
   color: $font-darkgrey-color;
@@ -18,26 +19,35 @@
   font-family: "InstrumentSans-Medium";
   box-shadow: 1px 0px 15.9px 0px rgba(46, 46, 46, 0.16);
 
+  &__box__selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 70px;
+    height: 5vw;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(156, 156, 156);
+  }
   &__selector {
     display: flex;
     justify-content: space-around;
-    margin-top: 1vw;
     gap: 0.2vw;
     border-radius: 100px;
     box-shadow: 0px 2px 10px -3px rgba(0, 0, 0, 0.212);
     backdrop-filter: blur(13px);
     -webkit-backdrop-filter: blur(13px);
     background-color: #fff8f8af;
-    width: fit-content;
     padding: 0.2vw 0.2vw;
+    font-size: 0.9vw;
 
     &__button {
-      font-size: 0.9vw;
       border: none;
       background: none;
       font-size: $fontsize-m;
       font-style: normal;
-      font-family: "InstrumentSans-Medium";
+      font-family: "InstrumentSans-Regular";
+      font-weight: 100;
       display: flex;
       justify-content: center;
       transition: all 0.3s ease-in-out;
@@ -48,9 +58,10 @@
     }
     &__menu,
     &__folder {
-      font-size: 0.9vw;
+      border: none;
       font-style: normal;
-      font-family: "InstrumentSans-Medium";
+      font-family: "InstrumentSans-Regular";
+      font-weight: 500;
       display: flex;
       justify-content: center;
       transition: all 0.3s ease-in-out;
@@ -61,11 +72,11 @@
   }
 
   &__box {
-    border-top: 1px solid rgb(156, 156, 156);
     border-bottom: 1px solid rgb(156, 156, 156);
-    margin-top: 1vw;
     width: 100%;
-    height: 70%;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 65vh;
   }
 
   &__menu {
@@ -94,15 +105,16 @@
   }
 
   &__settings {
-    height: 10%;
-
+    height: 6vw;
+    width: 100%;
+    text-align: left;
     font-size: 1vw;
     display: flex;
     flex-direction: column;
+
     a,
     a:active,
     a:visited {
-      padding: 13px;
       text-decoration: none;
       color: $font-darkgrey-color;
     }
@@ -110,13 +122,15 @@
       border-radius: 12px;
       text-decoration: underline;
     }
-  }
-  button {
-    color: $font-darkgrey-color;
-    border: none;
-    text-align: left;
-    font-style: normal;
-    font-size: $fontsize-m;
+    &__button {
+      color: $font-darkgrey-color;
+      border: none;
+      text-align: left;
+      font-style: normal;
+      margin: 0;
+      padding: 0;
+      font-size: $fontsize-m;
+    }
   }
 
   &__box__logo {
@@ -124,7 +138,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
+    height: 5vw;
     // border: 2px solid red;
     border-top: 1px solid rgb(173, 173, 173);
   }
