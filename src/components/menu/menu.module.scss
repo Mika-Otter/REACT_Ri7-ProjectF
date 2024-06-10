@@ -3,111 +3,141 @@
 @import "../../../public/styles/global";
 
 .menu {
-    padding: 2vw;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 15%;
-    background-color: $black-color;
-    z-index: 999;
-    border-radius: 0px 50px 50px 0px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 17vw;
+  background-color: #d4d1d1;
+  z-index: 999;
+  display: flex;
+  color: $font-darkgrey-color;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "InstrumentSans-Medium";
+  box-shadow: 1px 0px 15.9px 0px rgba(46, 46, 46, 0.16);
+
+  &__selector {
     display: flex;
-    color: $white-color;
+    justify-content: space-around;
+    margin-top: 1vw;
+    gap: 0.2vw;
+    border-radius: 100px;
+    box-shadow: 0px 2px 10px -3px rgba(0, 0, 0, 0.212);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    background-color: #fff8f8af;
+    width: fit-content;
+    padding: 0.2vw 0.2vw;
+
+    &__button {
+      font-size: 0.9vw;
+      border: none;
+      background: none;
+      font-size: $fontsize-m;
+      font-style: normal;
+      font-family: "InstrumentSans-Medium";
+      display: flex;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+      color: $font-darkgrey-color;
+      &:hover {
+        color: $font-fade-blue;
+      }
+    }
+    &__menu,
+    &__folder {
+      font-size: 0.9vw;
+      font-style: normal;
+      font-family: "InstrumentSans-Medium";
+      display: flex;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+      border-radius: 100px;
+      background-color: $primary-color;
+      color: $white-color !important;
+    }
+  }
+
+  &__box {
+    border: 2px solid red;
+    width: 100%;
+    height: 70%;
+  }
+
+  &__menu {
+    padding: 2vw;
+
+    width: 100%;
+    height: 70%;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-
-    &__profil {
-        font-family: "Nacelle-Bold";
-        margin-left: 13px; //padding menu
-        margin-top: 2dvh;
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        position: relative;
-
-        &__text {
-            font-size: $fontsize-s;
-            display: flex;
-            flex-direction: column;
-            span {
-                max-width: 120px;
-                overflow: hidden;
-                text-overflow: ellipsis " ...";
-            }
-
-            &__bigletter {
-                font-size: $fontsize-l;
-                margin: 0;
-                line-height: 0.6;
-                position: absolute;
-                bottom: 0;
-                right: 0;
-            }
-        }
+    gap: 5px;
+    font-weight: 400;
+    font-size: 1vw;
+    transition: 0.3s ease-in-out;
+    a,
+    a:active,
+    a:visited {
+      padding: 13px;
+      text-decoration: none;
+      color: $font-darkgrey-color;
     }
-
-    &__menu {
-        box-sizing: content-box;
-
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        margin-top: -5vh;
-        font-family: "Nacelle";
-        font-weight: 400;
-        font-size: $fontsize-s;
-        a,
-        a:active,
-        a:visited {
-            padding: 13px;
-            text-decoration: none;
-            color: $white-color;
-        }
-        a:hover {
-            border-radius: 12px;
-            background-color: $grey-color;
-        }
+    a:hover {
+      border-radius: 12px;
+      color: $font-fade-blue;
+      transition: 0.3s ease-in-out;
     }
+  }
 
-    &__settings {
-        margin-bottom: 17vh;
+  &__settings {
+    height: 10%;
 
-        font-family: "Nacelle";
-        font-size: $fontsize-s;
-        display: flex;
-        flex-direction: column;
-        a,
-        a:active,
-        a:visited {
-            padding: 13px;
-            text-decoration: none;
-            color: $white-color;
-        }
-        a:hover {
-            border-radius: 12px;
-            text-decoration: underline;
-        }
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    a,
+    a:active,
+    a:visited {
+      padding: 13px;
+      text-decoration: none;
+      color: $font-darkgrey-color;
     }
-    button {
-        color: $white-color;
-        border: none;
-        text-align: left;
-        font-style: normal;
-        font-size: $fontsize-m;
+    a:hover {
+      border-radius: 12px;
+      text-decoration: underline;
     }
+  }
+  button {
+    color: $font-darkgrey-color;
+    border: none;
+    text-align: left;
+    font-style: normal;
+    font-size: $fontsize-m;
+  }
 
-    &__logo {
-        position: absolute;
-        bottom: 6vh;
-        left: 2.3vw;
-        &__typ {
-            font-family: "VCR_OSD";
-            font-size: clamp(f.rem(27), f.rem(30) + 1vw, f.rem(40));
-        }
-        &__pov {
-            font-family: "Vidaloka";
-            font-size: clamp(f.rem(27), f.rem(30) + 1vw, f.rem(40));
-        }
+  &__box__logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    // border: 2px solid red;
+    border-top: 1px solid rgb(173, 173, 173);
+  }
+  &__logo {
+    margin-left: -0.3vw;
+    width: 45%;
+    height: fit-content;
+    // border: 2px solid red;
+    &__typ {
+      font-family: "VCR_OSD";
+      font-size: clamp(f.rem(27), f.rem(30) + 1vw, f.rem(40));
     }
+    &__pov {
+      font-family: "Vidaloka";
+      font-size: clamp(f.rem(27), f.rem(30) + 1vw, f.rem(40));
+    }
+  }
 }

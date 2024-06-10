@@ -5,15 +5,14 @@ import Menu from "../../components/Menu/Menu";
 import AllFonts from "../../components/allfonts/allFonts";
 
 export default function AllFontsPage() {
-    return (
-        <>
-            <section>
-                <Menu />
-                <div className={s.content}>
-                    <AllFonts />
-                </div>
-                <Folder />
-            </section>
-        </>
-    );
+  return (
+    <>
+      <section>
+        <Menu />
+        <div className={s.content}>
+          <AllFonts />
+        </div>
+      </section>
+    </>
+  );
 }
