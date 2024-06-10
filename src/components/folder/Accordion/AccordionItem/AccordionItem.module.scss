@@ -1,0 +1,64 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../../../public/styles/global.scss";
+
+.accordion__item__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7vw 1.5vw;
+  font-family: "InstrumentSans-Medium";
+  color: $font-darkgrey-color;
+  border-bottom: 1px solid rgb(156, 156, 156);
+  &__title {
+    font-size: 1vw;
+  }
+  &__icon {
+    font-size: 1.5vw;
+    line-height: 90%;
+  }
+}
+
+.fonts {
+  cursor: pointer;
+  width: 90%;
+  margin-inline: auto;
+  margin-top: 5px;
+  height: 27px;
+  flex-wrap: nowrap;
+  display: flex;
+
+  input {
+    appearance: none;
+    border-radius: 2px;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #565657;
+    cursor: pointer;
+  }
+
+  input:checked {
+    background-color: #565657;
+  }
+
+  label {
+    margin-left: 5px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis " ...";
+    color: $font-darkgrey-color;
+    font-size: $fontsize-xxs;
+  }
+}
+
+.accordion__item {
+  width: 100%;
+  height: fit-content;
+}
+
+.accordion__item__content {
+  height: fit-content;
+  max-height: 50vh;
+  width: 100%;
+  overflow-y: auto;
+}

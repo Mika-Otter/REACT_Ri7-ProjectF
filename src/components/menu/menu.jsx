@@ -3,7 +3,7 @@ import s from "./menu.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoSVG from "../SVG/LogoSVG";
-import Folder from "../folder/folder";
+import Folder from "../Folder/Folder";
 
 export default function Menu() {
   const username = useSelector((state) => state.auth.username);
