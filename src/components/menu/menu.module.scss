@@ -4,6 +4,9 @@
 
 .menu {
   position: fixed;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   left: 0;
   top: 0;
   height: 100%;
@@ -25,7 +28,7 @@
     align-items: center;
     width: 100%;
     min-height: 70px;
-    height: 5vw;
+    height: 5dvw;
     box-sizing: border-box;
     border-bottom: 1px solid rgb(156, 156, 156);
   }
@@ -40,7 +43,6 @@
     background-color: #fff8f8af;
     padding: 0.2vw 0.2vw;
     font-size: 0.9vw;
-
     &__button {
       border: none;
       background: none;
@@ -76,14 +78,16 @@
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
-    height: 65vh;
+    height: 70%;
+
+    // border: 2px solid red;
   }
 
   &__menu {
     padding: 2vw;
 
     width: 100%;
-    height: 70%;
+    height: 65%;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -105,12 +109,14 @@
   }
 
   &__settings {
-    height: 6vw;
+    // border: 2px solid red;
+    height: 12%;
     width: 100%;
     text-align: left;
     font-size: 1vw;
     display: flex;
     flex-direction: column;
+    padding: 1vw 1.5vw;
 
     a,
     a:active,
@@ -138,8 +144,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5vw;
-    // border: 2px solid red;
+    height: 4vw;
+    border: 2px solid red;
     border-top: 1px solid rgb(173, 173, 173);
   }
   &__logo {
