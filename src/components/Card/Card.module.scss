@@ -20,11 +20,11 @@
   }
   &__favorite {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 0.5vw;
+    right: 0.5vw;
     // border: 2px solid red;
-    width: 30px;
-    height: 30px;
+    width: 1.3vw;
+    height: 1.3vw;
 
     &__ctn {
       width: 100%;
@@ -78,7 +78,7 @@
 
 .card:hover {
   color: $white-color;
-  background-color: $font-darkgrey-color;
+  background-color: #4a4a4d;
   border: 1px solid $white-color;
   button {
     color: $white-color;

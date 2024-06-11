@@ -7,10 +7,10 @@ import Login from "./components/Login/Login";
 import Unauthorized from "./components/unauthorized";
 import RequireAuth from "./components/requireAuth/requireAuth";
 import Loaderfont from "./components/loaderfont/loaderfont";
-import AllFontsPage from "./pages/allfontsPage/allFontsPage";
-import FavoritesPage from "./pages/favoritesPage/favoritesPage";
-import VariablePage from "./pages/variablePage/variablePage";
-import SettingsPage from "./pages/settingsPage/settingsPage";
+import AllFontsPage from "./pages/AllfontsPage/AllFontsPage";
+import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
+import VariablePage from "./pages/VariablePage/VariablePage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import Welcome from "./pages/Welcome/Welcome";
 import TransitionLayout from "./components/TransitionLayout/TransitionLayout";
 
