@@ -1,17 +1,17 @@
 import React from "react";
 import s from "../pages.module.scss";
 import Menu from "../../components/Menu/Menu";
-import Settings from "../../components/settings/settings";
+import Settings from "../../components/Settings/Settings";
 
 export default function SettingsPage() {
-    return (
-        <>
-            <section>
-                <Menu />
-                <div className={s.content}>
-                    <Settings />
-                </div>
-            </section>
-        </>
-    );
+  return (
+    <>
+      <section>
+        <Menu />
+        <div className={s.content}>
+          <Settings />
+        </div>
+      </section>
+    </>
+  );
 }
