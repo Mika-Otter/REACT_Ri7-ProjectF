@@ -9,6 +9,8 @@ import {
   toggleFontState,
 } from "../../features/fontsSlice";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
+import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
+import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 
 export default function Card({ font, i }) {
   const dispatch = useDispatch();
@@ -153,17 +155,7 @@ export default function Card({ font, i }) {
                   handleFavorite(userId, font.id, e.target.checked)
                 }
               />
-              {font.favorite ? (
-                <img
-                  className={s.card__favorite__ctn__img}
-                  src="./assets/icones/favorite-active.png"
-                />
-              ) : (
-                <img
-                  className={s.card__favorite__ctn__img}
-                  src="./assets/icones/favorite-inactive.png"
-                />
-              )}
+              {font.favorite ? <FavoriteAciveSVG /> : <FavoriteEmptySVG />}
             </div>
           </div>
 
