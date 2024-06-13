@@ -165,7 +165,7 @@ export default function Card({ font, i, handleFonts }) {
   }, [fonts]);
 
   if (!fontsLoaded) {
-    return <div>Loading...</div>;
+    return <div className={s.loading}></div>;
   }
 
   return (
