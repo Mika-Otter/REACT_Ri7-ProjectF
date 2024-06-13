@@ -7,7 +7,7 @@
   //   border: 2px solid blue;
   min-width: 200px;
   aspect-ratio: 1;
-  border-radius: 7px;
+  border-radius: 20px;
   font-family: "InstrumentSans-Medium";
   border: 1px solid $grey-color;
   // transition: all 0.15s ease-in-out;
@@ -17,9 +17,10 @@
 
   &__settings {
     position: absolute;
-    top: 1vw;
-    right: 1vw;
+    top: 0.5vw;
+    right: 0.5vw;
     z-index: 3;
+    opacity: 0;
   }
   &__box {
     position: relative;
@@ -115,16 +116,21 @@
 .card:hover {
   color: $white-color;
   background-color: #4a4a4d;
+  transition: 0.3s ease-in-out;
   border: 1px solid $white-color;
   button {
     color: $white-color;
   }
-
+  .card__settings {
+    opacity: 1;
+    transition: all 0.3s ease-in;
+  }
   .card__letter {
     &__letters {
       z-index: -1;
     }
     &__text {
+      transition: all 0.3s 0.1s ease-in;
       opacity: 1;
       z-index: 1;
     }

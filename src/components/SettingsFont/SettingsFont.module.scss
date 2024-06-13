@@ -1,5 +1,86 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../public/styles/global";
+
 .settingsFont {
+  //   backdrop-filter: blur(13px);
+  //   -webkit-backdrop-filter: blur(13px);
+  background-color: #fff8f8;
+  padding: 0.3vw 0.2vw;
+  border-radius: 50px;
+  z-index: -2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  width: 1.7vw;
+  height: 1.7vw;
+  transition: height 0.3s ease-in-out;
+
+  &__open {
+    transition: height 0.3s ease-in-out;
+    height: 12vw;
+  }
   &__note {
-    transform: rotate(180deg);
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5px;
+    margin-top: 0.5vw;
+
+    &__ctn__input {
+      position: relative;
+      width: 1.2vw;
+      height: 1.2vw;
+
+      input {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__star {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__trash {
+    margin-top: 0.7vw;
+    width: 1.2vw;
+  }
+
+  &__openandclose {
+    margin-top: -0.2vw;
+    // border: 2px solid red;
+    width: 2vw;
+    // height: 2vw;
+    display: flex;
+    justify-content: center;
+    span {
+      font-family: "OktaNeue-Regular";
+      height: 1.3vw;
+      line-height: 30%;
+      //   border: 2px solid blue;
+      font-size: 1.4vw;
+      color: $font-darkgrey-color;
+    }
+  }
+  &__close {
+    opacity: 1;
+    position: absolute;
+    top: 0.3vw;
+    width: 1.2vw;
+    transition: all 0.3s ease-in-out;
   }
 }
