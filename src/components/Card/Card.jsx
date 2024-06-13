@@ -11,6 +11,7 @@ import {
 import { setChoosedFonts } from "../../features/choosedFontSlide";
 import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
 import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
+import SettingsFont from "../SettingsFont/SettingsFont";
 
 export default function Card({ font, i }) {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ export default function Card({ font, i }) {
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const userId = useSelector((state) => state.auth.userId);
+  const [text, setText] = useState("");
+  const [isHover, setIsHover] = useState(false);
 
   const [ratings, setRatings] = useState({});
 
@@ -120,6 +123,30 @@ export default function Card({ font, i }) {
     navigate("/variable");
   };
 
+  const listSentences = [
+    "Amazingly few discotheques provide jukeboxes.",
+    "Back in June we delivered oxygen equipment of the same size.",
+    "Crazy Fredrick bought many very exquisite opal jewels.",
+    "Few black taxis drive up major roads on quiet hazy nights.",
+    "Grumpy wizards make toxic brew for the evil Queen and Jack.",
+    "Jackdaws love my big sphinx of quartz.",
+    "Jinxed wizards pluck ivy from the big quilt.",
+    "Pack my box with five dozen liquor jugs.",
+    "The quick brown fox jumps over the lazy dog.",
+    "The five boxing wizards jump quickly.",
+    "Vampire bats quizzed Jim Crow about the next weapon.",
+    "Waltz, bad nymph, for quick jigs vex.",
+    "How razorback-jumping frogs can level six piqued gymnasts!",
+    "Cozy lummox gives smart squid who asks for job pen.",
+    "A quick movement of the enemy will jeopardize six gunboats.",
+    "All questions asked by five watch experts amazed the judge.",
+    "The quick onyx goblin jumps over the lazy dwarf.",
+  ];
+
+  useEffect(() => {
+    setText(listSentences[Math.floor(Math.random() * listSentences.length)]);
+  }, []);
+
   // OTHERS__________________________________________________________________________________
 
   useEffect(() => {
@@ -144,6 +171,14 @@ export default function Card({ font, i }) {
   return (
     <>
       <div className={s.card} key={font.name + i}>
+        <div className={s.card__settings}>
+          <SettingsFont
+            font={font}
+            userId={userId}
+            ratings={ratings}
+            handleRating={handleRating}
+          />
+        </div>
         <div className={s.card__box}>
           <div className={s.card__favorite}>
             <div className={s.card__favorite__ctn}>
@@ -160,7 +195,8 @@ export default function Card({ font, i }) {
           </div>
 
           <div className={s.card__letter} style={{ fontFamily: font.name }}>
-            <span>Aa</span>
+            <span className={s.card__letter__letters}>Aa</span>
+            <div className={s.card__letter__text}>{text}</div>
           </div>
           <div className={s.card__details}>
             <div className={s.card__details__name}>

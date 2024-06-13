@@ -10,6 +10,7 @@
   left: 0;
   top: 0;
   min-height: 100%;
+  height: 100vh;
   width: 17vw;
   background-color: #fff7f7;
   //   background-color: #ebe0e0;
@@ -22,6 +23,13 @@
   font-family: "InstrumentSans-Medium";
   box-shadow: 1px 0px 15.9px 0px rgba(46, 46, 46, 0.16);
 
+  &__top {
+    width: 100%;
+    // max-height: 80vh;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
   &__box__selector {
     display: flex;
     justify-content: center;
@@ -30,7 +38,7 @@
     min-height: 70px;
     height: 5dvw;
     box-sizing: border-box;
-    border-bottom: 1px solid rgb(156, 156, 156);
+    // border-bottom: 1px solid rgb(156, 156, 156);
   }
   &__selector {
     display: flex;
@@ -74,20 +82,22 @@
   }
 
   &__box {
-    border-bottom: 1px solid rgb(156, 156, 156);
+    // border-bottom: 1px solid rgb(156, 156, 156);
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
-    height: 70%;
+
+    // border: 2px solid red;
   }
 
   &__menu {
-    padding: 2vw;
-
+    padding: 1vw 1.5vw;
     width: 100%;
-    height: 65%;
+    // border: 2px solid red;
     display: flex;
+    height: 33vh;
     flex-direction: column;
+    justify-content: center;
     gap: 5px;
     font-weight: 400;
     font-size: 1vw;
@@ -95,7 +105,7 @@
     a,
     a:active,
     a:visited {
-      padding: 13px;
+      padding: 13px 0px;
       text-decoration: none;
       color: $font-darkgrey-color;
     }
@@ -108,7 +118,7 @@
 
   &__settings {
     // border: 2px solid red;
-    height: 12%;
+    border-top: 1px solid rgb(156, 156, 156);
     width: 100%;
     text-align: left;
     font-size: 1vw;

@@ -10,9 +10,17 @@
   border-radius: 7px;
   font-family: "InstrumentSans-Medium";
   border: 1px solid $grey-color;
-  transition: all 0.15s ease-in-out;
+  // transition: all 0.15s ease-in-out;
   cursor: pointer;
   box-shadow: 0px 10px 11px -8px rgba(173, 173, 173, 0.1);
+  position: relative;
+
+  &__settings {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    z-index: 3;
+  }
   &__box {
     position: relative;
     width: 100%;
@@ -45,9 +53,37 @@
   }
 
   &__letter {
-    font-size: 7vw;
     padding: 1vw 1.5vw;
     line-height: 1;
+    position: relative;
+
+    &__letters {
+      position: absolute;
+      top: 0;
+      left: 1.5vw;
+      font-size: 7vw;
+      line-height: 1;
+      // background-color: $white-color;
+      width: 90%;
+      height: 100%;
+    }
+
+    &__text {
+      z-index: -1;
+      position: absolute;
+      opacity: 0;
+      -webkit-user-select: none;
+      user-select: none;
+      top: 1.4vw;
+      left: 1.5vw;
+      height: 30px;
+      width: 75%;
+      // border: 2px solid red;
+      padding: 0;
+      margin: 0;
+      font-size: 1.7vw;
+      line-height: 1;
+    }
   }
 
   &__details {
@@ -70,7 +106,7 @@
         margin: 0;
         padding: 0;
         text-align: left;
-        transition: all 0.15s ease-in-out;
+        // transition: all 0.15s ease-in-out;
       }
     }
   }
@@ -82,5 +118,15 @@
   border: 1px solid $white-color;
   button {
     color: $white-color;
+  }
+
+  .card__letter {
+    &__letters {
+      z-index: -1;
+    }
+    &__text {
+      opacity: 1;
+      z-index: 1;
+    }
   }
 }

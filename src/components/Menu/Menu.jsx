@@ -11,54 +11,58 @@ export default function Menu() {
   return (
     <>
       <div className={s.menu}>
-        <div className={s.menu__box__selector}>
-          <div className={s.menu__selector}>
-            <button
-              type="button"
-              className={
-                selector === "menu"
-                  ? s.menu__selector__menu
-                  : s.menu__selector__button
-              }
-              onClick={() => setSelector("menu")}
-            >
-              Menu
-            </button>
-            <button
-              type="button"
-              className={
-                selector === "folder"
-                  ? s.menu__selector__folder
-                  : s.menu__selector__button
-              }
-              onClick={() => setSelector("folder")}
-            >
-              Folder
-            </button>
+        <div className={s.menu__top}>
+          <div className={s.menu__box__selector}>
+            <div className={s.menu__selector}>
+              <button
+                type="button"
+                className={
+                  selector === "menu"
+                    ? s.menu__selector__menu
+                    : s.menu__selector__button
+                }
+                onClick={() => setSelector("menu")}
+              >
+                Menu
+              </button>
+              <button
+                type="button"
+                className={
+                  selector === "folder"
+                    ? s.menu__selector__folder
+                    : s.menu__selector__button
+                }
+                onClick={() => setSelector("folder")}
+              >
+                Folder
+              </button>
+            </div>
+          </div>
+
+          <div className={s.menu__box}>
+            {selector === "folder" ? (
+              <Folder />
+            ) : (
+              <div className={s.menu__menu}>
+                <Link to="/home">All your fonts</Link>
+                <Link to="/favorites">Your favorites types</Link>
+                <Link to="/variable">Variable text</Link>
+                <Link to="/fonttest">Test fonts</Link>
+              </div>
+            )}
           </div>
         </div>
-
-        <div className={s.menu__box}>
-          {selector === "folder" ? (
-            <Folder />
-          ) : (
-            <div className={s.menu__menu}>
-              <Link to="/home">All your fonts</Link>
-              <Link to="/favorites">Your favorites types</Link>
-              <Link to="/variable">Variable text</Link>
-              <Link to="/fonttest">Test fonts</Link>
+        <div className={s.menu__bottom}>
+          <div className={s.menu__settings}>
+            <Link to="/settings">Settings</Link>
+            <button type="button" className={s.menu__settings__button}>
+              Logout
+            </button>
+          </div>
+          <div className={s.menu__box__logo}>
+            <div className={s.menu__logo}>
+              <LogoSVG />
             </div>
-          )}
-        </div>
-        <div className={s.menu__settings}>
-          <Link to="/settings">Settings</Link>
-          <button type="button" className={s.menu__settings__button}>
-            Logout
-          </button>
-        </div>
-        <div className={s.menu__box__logo}>
-          <div className={s.menu__logo}>
-            <LogoSVG />
           </div>
         </div>
       </div>
