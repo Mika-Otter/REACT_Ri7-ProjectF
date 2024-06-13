@@ -7,8 +7,8 @@ const FavoriteAciveSVG = (props) => (
     {...props}
   >
     <path
-      fill="#3857F9"
-      stroke="#3857F9"
+      fill="#657df7"
+      stroke="#657df7" //#3857F9
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={0.5}

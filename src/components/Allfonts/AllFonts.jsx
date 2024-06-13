@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
 import s from "./AllFonts.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  toggleFavorite,
-  deleteFont,
-  toggleFontState,
-} from "../../features/fontsSlice";
+import { toggleFavorite } from "../../features/fontsSlice";
 import axios from "../../app/api/axios";
 import { useNavigate } from "react-router-dom";
-import {
-  setChoosedFonts,
-  deleteChoosedFont,
-} from "../../features/choosedFontSlide";
-import CardFont from "../cardFont/cardFont";
 import Card from "../Card/Card";
+import useHandleFonts from "../../hooks/useHandleFonts";
 
 export default function AllFonts() {
   const dispatch = useDispatch();
@@ -91,21 +83,7 @@ export default function AllFonts() {
     }
   };
 
-  function handleFonts(name) {
-    dispatch(toggleFontState({ fontName: name })); //reverse state
-
-    const selectedFont = fonts.find((font) => font.name === name); //Find font by name
-    if (selectedFont) {
-      if (!selectedFont.checked) {
-        //Add font if not checked and font name doesn't already exist
-        if (!choosedFonts.find((font) => font.name === name)) {
-          dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
-        }
-      } else {
-        dispatch(deleteChoosedFont(selectedFont)); //if font already exist delete
-      }
-    }
-  }
+  const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
 
   // OTHERS__________________________________________________________________________________
 

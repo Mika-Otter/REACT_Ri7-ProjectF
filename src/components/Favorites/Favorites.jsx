@@ -10,12 +10,15 @@ import axios from "../../app/api/axios";
 import { useNavigate } from "react-router-dom";
 import { setChoosedFonts } from "../../features/choosedFontSlide";
 import CardFont from "../cardFont/cardFont";
+import Card from "../Card/Card";
+import useHandleFonts from "../../hooks/useHandleFonts";
 
 export default function Favorites() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const username = useSelector((state) => state.auth.username);
   const fonts = useSelector((state) => state.fonts.value);
+  const choosedFonts = useSelector((state) => state.choosedFonts.value);
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const userId = useSelector((state) => state.auth.userId);
 
@@ -86,6 +89,8 @@ export default function Favorites() {
     }
   };
 
+  const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
+
   // OTHERS__________________________________________________________________________________
 
   useEffect(() => {
@@ -109,52 +114,29 @@ export default function Favorites() {
 
   return (
     <>
-      <section>
-        <div className={s.typos}>
-          <h3>Your favorites typesfaces</h3>
-          <div className={s.typos__params}>
-            <img
-              src="./assets/icones/viewpanel.png"
-              alt="panels"
-              className={s.panels}
-            />
-            <img
-              src="./assets/icones/viewsquares.png"
-              alt="squares"
-              className={s.squares}
-            />
+      <section className={s.favorites}>
+        <div className={s.container__title}>
+          <div className={s.title}>
+            <h3>Your favorites typesfaces</h3>
             <span>Sort by</span>
             <span className={s.selector}>Rate</span>
           </div>
-          <div className={s.favorite__box}>
-            <div className={s.favorite__box__ctn}>
-              {fonts.map((font, i) =>
-                font.favorite ? (
-                  <CardFont
-                    font={font}
-                    small={false}
-                    i={i}
-                    key={font.name + i}
-                  />
-                ) : null
-              )}
-            </div>
+        </div>
+        <div className={s.favorites__box}>
+          <div className={s.favorites__box__ctn}>
+            {fonts.map((font, i) =>
+              font.favorite ? (
+                <Card
+                  font={font}
+                  i={i}
+                  key={font.name + i}
+                  handleFonts={handleFonts}
+                />
+              ) : null
+            )}
           </div>
         </div>
       </section>
     </>
   );
-}
-
-{
-  /* <div className={s.favorites__typos}>
-<h3>All your types : </h3>
-<div className={s.favorite__box}>
-    <div className={s.favorite__box__ctn}>
-        {fonts.map((font, i) => (
-            <CardFont font={font} small={false} i={i} key={font.name + i} />
-        ))}
-    </div>
-</div>
-</div> */
 }
