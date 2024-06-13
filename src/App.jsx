@@ -13,6 +13,7 @@ import VariablePage from "./pages/VariablePage/VariablePage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import Welcome from "./pages/Welcome/Welcome";
 import TransitionLayout from "./components/TransitionLayout/TransitionLayout";
+import Menu from "./components/Menu/Menu";
 
 export default function App() {
   const [isTransition, setIsTransition] = useState(false);

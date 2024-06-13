@@ -7,7 +7,6 @@ export default function SettingsPage() {
   return (
     <>
       <section>
-        <Menu />
         <div className={s.content}>
           <Settings />
         </div>

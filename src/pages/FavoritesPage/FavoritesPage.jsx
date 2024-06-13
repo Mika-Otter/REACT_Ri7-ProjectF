@@ -8,7 +8,6 @@ export default function FavoritesPage() {
   return (
     <>
       <section>
-        <Menu />
         <div className={s.content}>
           <Favorites />
         </div>

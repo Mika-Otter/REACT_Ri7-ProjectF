@@ -13,7 +13,7 @@ import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
 import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
 
-export default function Card({ font, i }) {
+export default function Card({ font, i, handleFonts }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const username = useSelector((state) => state.auth.username);
@@ -170,30 +170,21 @@ export default function Card({ font, i }) {
 
   return (
     <>
-      <div className={s.card} key={font.name + i}>
+      <div
+        className={s.card}
+        key={font.name + i}
+        onClick={() => handleFonts(font.name)}
+      >
         <div className={s.card__settings}>
           <SettingsFont
             font={font}
             userId={userId}
             ratings={ratings}
             handleRating={handleRating}
+            deleteFonts={deleteFonts}
           />
         </div>
         <div className={s.card__box}>
-          <div className={s.card__favorite}>
-            <div className={s.card__favorite__ctn}>
-              <input
-                className={s.card__favorite__ctn__input}
-                type="checkbox"
-                checked={font.favorite ? font.favorite : false}
-                onChange={(e) =>
-                  handleFavorite(userId, font.id, e.target.checked)
-                }
-              />
-              {font.favorite ? <FavoriteAciveSVG /> : <FavoriteEmptySVG />}
-            </div>
-          </div>
-
           <div className={s.card__letter} style={{ fontFamily: font.name }}>
             <span className={s.card__letter__letters}>Aa</span>
             <div className={s.card__letter__text}>{text}</div>
@@ -205,19 +196,39 @@ export default function Card({ font, i }) {
             <div className={s.card__details__links}>
               <button
                 type="button"
-                onClick={() => gotoVariable(font.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  gotoVariable(font.id);
+                }}
                 className={s.card__details__links__variable}
               >
                 Variable text
               </button>
               <button
                 type="button"
-                onClick={() => gotoTest(font.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  gotoTest(font.id);
+                }}
                 className={s.card__details__links__test}
               >
                 Line font test
               </button>
             </div>
+          </div>
+        </div>
+        <div className={s.card__favorite}>
+          <div className={s.card__favorite__ctn}>
+            <input
+              className={s.card__favorite__ctn__input}
+              type="checkbox"
+              checked={font.favorite ? font.favorite : false}
+              onClick={(e) => e.stopPropagation()}
+              onChange={(e) =>
+                handleFavorite(userId, font.id, e.target.checked)
+              }
+            />
+            {font.favorite ? <FavoriteAciveSVG /> : <FavoriteEmptySVG />}
           </div>
         </div>
       </div>

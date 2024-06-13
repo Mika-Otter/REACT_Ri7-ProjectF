@@ -7,7 +7,6 @@ export default function AllFontsPage() {
   return (
     <>
       <section>
-        <Menu />
         <AllFonts />
       </section>
     </>

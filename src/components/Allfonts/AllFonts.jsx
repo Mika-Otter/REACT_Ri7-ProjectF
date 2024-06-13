@@ -8,7 +8,10 @@ import {
 } from "../../features/fontsSlice";
 import axios from "../../app/api/axios";
 import { useNavigate } from "react-router-dom";
-import { setChoosedFonts } from "../../features/choosedFontSlide";
+import {
+  setChoosedFonts,
+  deleteChoosedFont,
+} from "../../features/choosedFontSlide";
 import CardFont from "../cardFont/cardFont";
 import Card from "../Card/Card";
 
@@ -17,6 +20,7 @@ export default function AllFonts() {
   const navigate = useNavigate();
   const username = useSelector((state) => state.auth.username);
   const fonts = useSelector((state) => state.fonts.value);
+  const choosedFonts = useSelector((state) => state.choosedFonts.value);
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const userId = useSelector((state) => state.auth.userId);
 
@@ -87,6 +91,22 @@ export default function AllFonts() {
     }
   };
 
+  function handleFonts(name) {
+    dispatch(toggleFontState({ fontName: name })); //reverse state
+
+    const selectedFont = fonts.find((font) => font.name === name); //Find font by name
+    if (selectedFont) {
+      if (!selectedFont.checked) {
+        //Add font if not checked and font name doesn't already exist
+        if (!choosedFonts.find((font) => font.name === name)) {
+          dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
+        }
+      } else {
+        dispatch(deleteChoosedFont(selectedFont)); //if font already exist delete
+      }
+    }
+  }
+
   // OTHERS__________________________________________________________________________________
 
   useEffect(() => {
@@ -123,7 +143,12 @@ export default function AllFonts() {
         <div className={s.content}>
           <div className={s.content__ctn}>
             {fonts.map((font, i) => (
-              <Card font={font} i={i} key={font.name + i} />
+              <Card
+                font={font}
+                i={i}
+                key={font.name + i}
+                handleFonts={handleFonts}
+              />
             ))}
           </div>
         </div>

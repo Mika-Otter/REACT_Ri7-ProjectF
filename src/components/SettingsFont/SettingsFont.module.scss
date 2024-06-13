@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column-reverse;
     gap: 5px;
-    margin-top: 0.5vw;
+    margin-top: 0.9vw;
 
     &__ctn__input {
       position: relative;
@@ -58,6 +58,7 @@
   &__trash {
     margin-top: 0.7vw;
     width: 1.2vw;
+    z-index: 100;
   }
 
   &__openandclose {

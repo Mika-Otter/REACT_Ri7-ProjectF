@@ -39,8 +39,6 @@ export default function TestText() {
     <>
       <div className={s.layout}></div>
       <section>
-        <Menu />
-
         <div className={s.test}>
           <div className={s.test__title}>
             <h2>Test fonts</h2>

@@ -8,7 +8,6 @@ export default function VariablePage() {
   return (
     <>
       <section>
-        <Menu />
         <div className={s.content}>
           <Variable />
         </div>

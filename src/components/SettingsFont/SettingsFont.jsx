@@ -6,15 +6,27 @@ import StarActiveSVG from "../SVG/StarActiveSVG";
 import TrashSVG from "../SVG/TrashSVG";
 import CrossSettingsSVG from "../SVG/CrossSettingsSVG";
 
-export default function SettingsFont({ font, userId, ratings, handleRating }) {
+export default function SettingsFont({
+  font,
+  userId,
+  ratings,
+  handleRating,
+  deleteFonts,
+}) {
   const [openSettings, setOpenSetting] = useState(false);
 
   return (
     <>
-      <div className={cn(s.settingsFont, openSettings && s.settingsFont__open)}>
+      <div
+        className={cn(s.settingsFont, openSettings && s.settingsFont__open)}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div
           className={s.settingsFont__openandclose}
-          onClick={() => setOpenSetting((prev) => !prev)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpenSetting((prev) => !prev);
+          }}
         >
           {openSettings && (
             <div className={s.settingsFont__close}>
@@ -40,7 +52,8 @@ export default function SettingsFont({ font, userId, ratings, handleRating }) {
                 <input
                   type="checkbox"
                   checked={ratings[font.name] >= i + 1}
-                  onChange={() =>
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) =>
                     handleRating(userId, font.id, font.name, i + 1)
                   }
                 />
@@ -48,7 +61,13 @@ export default function SettingsFont({ font, userId, ratings, handleRating }) {
             </div>
           ))}
         </div>
-        <div className={s.settingsFont__trash}>
+        <div
+          className={s.settingsFont__trash}
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteFonts(font.id);
+          }}
+        >
           <TrashSVG />
         </div>
       </div>
