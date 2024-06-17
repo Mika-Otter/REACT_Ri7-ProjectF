@@ -8,9 +8,7 @@ export default function VariablePage() {
   return (
     <>
       <section>
-        <div className={s.content}>
-          <Variable />
-        </div>
+        <Variable />
       </section>
     </>
   );

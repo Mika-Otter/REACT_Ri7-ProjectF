@@ -1,0 +1,250 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../../public/styles/global";
+
+.box__variableText {
+  margin-top: 1vw;
+  width: 100%;
+  // display: flex;
+  // justify-content: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  // border: 2px solid cyan;
+}
+
+.variableText {
+  display: flex;
+  flex-direction: column;
+  background-color: $white-color;
+  width: 100%;
+  // border: 2px solid purple;
+
+  &__title {
+    position: sticky;
+    z-index: 300;
+    top: 0;
+    margin-top: 3vh;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    background-color: $white-color;
+    margin-inline: auto;
+    border-bottom: 1px solid $black-color;
+    gap: 10px;
+    h2 {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-size: $fontsize-m;
+    }
+  }
+
+  &__fontcard {
+    display: flex;
+    width: 100%;
+
+    &__ctn {
+      //   border: 2px solid blue;
+      width: 17vw;
+      height: 15vw;
+      min-width: 200px;
+      min-height: 200px;
+    }
+  }
+}
+
+.withTitle,
+.withoutTitle {
+  font-style: normal;
+  border-radius: 100px;
+  padding: 5px 10px;
+  height: 30%;
+}
+
+.withTitle {
+  background-color: $black-color;
+  color: $white-color;
+}
+
+.fontcard__ctn {
+  height: 17vh;
+  // border: 2px solid blue;
+}
+
+.cursor__box {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  // border: 2px solid green;
+  width: 100%;
+  gap: 10px;
+}
+
+.range {
+  // border: 2px solid red;
+  z-index: 100;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  gap: 3px;
+  &__label {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: $fontsize-s;
+  }
+  &__span {
+    // margin-top: -7px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: $fontsize-xxs;
+  }
+}
+
+.paragraph__section {
+  width: 100%;
+  min-height: 350px;
+  margin-top: 4vh;
+  padding: 20px 30px;
+  overflow: hidden;
+  text-overflow: clip;
+
+  //   border: 2px solid red;
+
+  &__text {
+    height: 100%;
+    resize: none;
+    background: none;
+    border: none;
+    width: 100%;
+    padding-right: 5vw;
+  }
+}
+
+// excess height to improve interactive area / accessibility
+$height: 20px;
+$thumb-height: 13px;
+$track-height: 2px;
+
+// colours
+$upper-color: #cfcfcf;
+
+$upper-background: linear-gradient(to bottom, $upper-color, $upper-color) 100%
+  50% / 100% $track-height no-repeat transparent;
+$lower-background: linear-gradient(to bottom, $black-color, $black-color) 100%
+  50% / 100% $track-height no-repeat transparent;
+
+// Webkit cannot style progress so we fake it with a long shadow
+// on the thumb element
+@function webkit-slider-thumb-shadow($i: 1) {
+  $val: #{$i}px 0 0 -#{calc(($thumb-height - $track-height) / 2)} #{$upper-color};
+  @if $i == 1 {
+    @for $k from 2 through 1000 {
+      $val: #{$val}, webkit-slider-thumb-shadow($k);
+    }
+  }
+  @return $val;
+}
+
+.input__range {
+  display: block;
+  appearance: none;
+  width: 80%;
+  margin: 0;
+  height: $height;
+  overflow: hidden;
+  background-color: $white-color;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Webkit
+.input__range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: $height;
+  background: $lower-background;
+}
+
+.input__range::-webkit-slider-thumb {
+  position: relative;
+  appearance: none;
+  height: $thumb-height;
+  width: $thumb-height;
+  background: $black-color;
+  border-radius: 100%;
+  border: 0;
+  top: 50%;
+  margin-top: calc($thumb-height / 2 * -1);
+  box-shadow: webkit-slider-thumb-shadow();
+  transition: background-color 150ms;
+}
+
+// Firefox
+.input__range::-moz-range-track,
+.input__range::-moz-range-progress {
+  width: 100%;
+  height: $height;
+  background: $upper-background;
+}
+
+.input__range::-moz-range-progress {
+  background: $lower-background;
+}
+
+.input__range::-moz-range-thumb {
+  appearance: none;
+  margin: 0;
+  height: $thumb-height;
+  width: $thumb-height;
+  background: $black-color;
+  border-radius: 100%;
+  border: 0;
+  transition: background-color 150ms;
+}
+
+// Internet Exploder
+.input__range::-ms-track {
+  width: 100%;
+  height: $height;
+  border: 0;
+  // color needed to hide track marks
+  color: transparent;
+  background: transparent;
+}
+
+.input__range::-ms-fill-lower {
+  background: $lower-background;
+}
+
+.input__range::-ms-fill-upper {
+  background: $upper-background;
+}
+
+.input__range::-ms-thumb {
+  appearance: none;
+  height: $thumb-height;
+  width: $thumb-height;
+  background: $black-color;
+  border-radius: 100%;
+  border: 0;
+  transition: background-color 150ms;
+  // IE Edge thinks it can support -webkit prefixes
+  top: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.input__range:hover,
+.input__range:focus {
+  &::-webkit-slider-thumb {
+    background-color: $black-color;
+  }
+  &::-moz-range-thumb {
+    background-color: $black-color;
+  }
+  &::-ms-thumb {
+    background-color: $black-color;
+  }
+}
+
+/*
+   * CodePen demo housekeeping only
+   */

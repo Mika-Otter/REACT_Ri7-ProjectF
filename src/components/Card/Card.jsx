@@ -13,7 +13,7 @@ import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
 import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
 
-export default function Card({ font, i, handleFonts }) {
+export default function Card({ font, i, handleFonts, small }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const username = useSelector((state) => state.auth.username);
@@ -171,7 +171,7 @@ export default function Card({ font, i, handleFonts }) {
   return (
     <>
       <div
-        className={s.card}
+        className={small ? s.card__small : s.card}
         key={font.name + i}
         onClick={() => handleFonts(font.name)}
       >
