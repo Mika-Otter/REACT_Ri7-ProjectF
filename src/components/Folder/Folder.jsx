@@ -37,7 +37,7 @@ export default function Folder() {
       const res = await axios.post("/upload/add", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: localStorage.getItem("token"), //send token from localStorage //CHANGE TO SESSION STORAGE !!!
+          Authorization: localStorage.getItem("token"), //send token from localStorage //CHANGE TO SESSION STORAGE ?
         },
       });
       if (res.status === 200) {
@@ -53,29 +53,19 @@ export default function Folder() {
 
   // HANDLE CHANGING CHECKED FONT
   function handleFonts(name) {
-    dispatch(toggleFontState({ fontName: name })); //reverse state
+    dispatch(toggleFontState({ fontName: name }));
 
-    const selectedFont = fonts.find((font) => font.name === name); //Find font by name
+    const selectedFont = fonts.find((font) => font.name === name);
     if (selectedFont) {
       if (!selectedFont.checked) {
-        //Add font if not checked and font name doesn't already exist
         if (!choosedFonts.find((font) => font.name === name)) {
           dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
         }
       } else {
-        dispatch(deleteChoosedFont(selectedFont)); //if font already exist delete
+        dispatch(deleteChoosedFont(selectedFont));
       }
     }
   }
-
-  function handleFolder() {
-    setFolder(!folder);
-  }
-
-  //TEST
-  // useEffect(() => {
-  //     console.log("Choooosed", choosedFonts);
-  // }, [choosedFonts]);
 
   const dataAccordion = [
     { title: "Favorites fonts", isFavorite: true },

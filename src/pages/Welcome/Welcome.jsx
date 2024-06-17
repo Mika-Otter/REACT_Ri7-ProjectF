@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "./Welcome.module.scss";
-import cn from "classnames";
-
-import Login from "../../components/Login/Login";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Navbar from "../../components/Navbar/Navbar";
@@ -10,9 +7,7 @@ import LogoSVG from "../../components/SVG/LogoSVG";
 import BigLetter from "../../components/BigLetter/BigLetter";
 import ScrollDiscover from "../../components/ScrollDiscover/ScrollDiscover";
 import RegisterNow from "../../components/RegisterNow/RegisterNow";
-import Register from "../../components/Register/Register";
 import NewRegister from "../../components/NewRegister/NewRegister";
-import TransitionLayout from "../../components/TransitionLayout/TransitionLayout";
 
 // , { useEffect, useState, useRef }
 

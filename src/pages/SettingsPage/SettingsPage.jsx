@@ -7,9 +7,7 @@ export default function SettingsPage() {
   return (
     <>
       <section>
-        <div className={s.content}>
-          <Settings />
-        </div>
+        <Settings />
       </section>
     </>
   );

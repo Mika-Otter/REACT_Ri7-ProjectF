@@ -102,16 +102,17 @@ export default function Settings() {
   return (
     <>
       <section className={s.profil__section}>
+        <div className={s.title}>
+          <h2 className={s.title__title}>Settings</h2>
+        </div>
         <div className={s.profil}>
-          <h1>Settings</h1>
-
           <form
             className={s.profil__user}
             onSubmit={(e) => handleChangeName(e, userId, user)}
             autoComplete="off"
             id="usernameForm"
           >
-            <h3>User Profil</h3>
+            <h3 className={s.profil__user__title}>User Profil</h3>
             <div className={s.profil__user__name}>
               <label htmlFor="username">Name</label>
               <input
@@ -140,12 +141,12 @@ export default function Settings() {
             </div>
             <div className={s.wrapper__settings}>
               <div id={s.hover}></div>
-              <button type="submit" form="usernameForm">
+              <button type="submit" form="usernameForm" className={s.button}>
                 Update profil
               </button>
             </div>
           </form>
-          <h3>Change password</h3>
+          <h3 className={s.profil__user__title}>Change Password</h3>
           {success === "password" ? (
             <p>Password correctly changed ! </p>
           ) : (
@@ -238,14 +239,14 @@ export default function Settings() {
               <p></p>
               <div className={s.wrapper__settings}>
                 <div id={s.hover}></div>
-                <button type="submit" form="passwordForm">
+                <button type="submit" form="passwordForm" className={s.button}>
                   Change Password
                 </button>
               </div>
             </form>
           )}
 
-          <h3>Email preferences</h3>
+          <h3 className={s.profil__user__title}>Email Preferences</h3>
           <div className={s.email__preferences}>
             <span>user.email</span>
             <button type="button" className={s.manage}>
@@ -256,16 +257,4 @@ export default function Settings() {
       </section>
     </>
   );
-}
-
-{
-  /* <h3>Custom</h3>
-<div className={s.email__preferences}>
-    <label htmlFor="custonFont">Change the font :</label>
-    <select name="customfont" id="custonFont">
-        <option>Nacelle</option>
-        <option>Other</option>
-        <option>Last</option>
-    </select>
-</div> */
 }
