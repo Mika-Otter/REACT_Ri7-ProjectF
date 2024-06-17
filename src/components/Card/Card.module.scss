@@ -16,6 +16,16 @@
   overflow: hidden;
 }
 
+.card__small:hover {
+  color: $white-color;
+  background-color: #4a4a4d;
+  transition: 0.3s ease-in-out;
+  border: 1px solid $white-color;
+  button {
+    color: $white-color;
+  }
+}
+
 .card {
   width: 23%;
   // border: 2px solid blue;

@@ -22,7 +22,6 @@ export default function Card({ font, i, handleFonts, small }) {
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const userId = useSelector((state) => state.auth.userId);
   const [text, setText] = useState("");
-  const [isHover, setIsHover] = useState(false);
 
   const [ratings, setRatings] = useState({});
 
@@ -217,20 +216,22 @@ export default function Card({ font, i, handleFonts, small }) {
             </div>
           </div>
         </div>
-        <div className={s.card__favorite}>
-          <div className={s.card__favorite__ctn}>
-            <input
-              className={s.card__favorite__ctn__input}
-              type="checkbox"
-              checked={font.favorite ? font.favorite : false}
-              onClick={(e) => e.stopPropagation()}
-              onChange={(e) =>
-                handleFavorite(userId, font.id, e.target.checked)
-              }
-            />
-            {font.favorite ? <FavoriteAciveSVG /> : <FavoriteEmptySVG />}
+        {!small && (
+          <div className={s.card__favorite}>
+            <div className={s.card__favorite__ctn}>
+              <input
+                className={s.card__favorite__ctn__input}
+                type="checkbox"
+                checked={font.favorite ? font.favorite : false}
+                onClick={(e) => e.stopPropagation()}
+                onChange={(e) => {
+                  handleFavorite(userId, font.id, e.target.checked);
+                }}
+              />
+              {font.favorite ? <FavoriteAciveSVG /> : <FavoriteEmptySVG />}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

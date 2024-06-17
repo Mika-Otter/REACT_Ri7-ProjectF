@@ -21,6 +21,8 @@ export default function VariableText({
 
   const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
 
+  console.log(fonts);
+
   function changeLineHeight(e) {
     const updatedLineHeight = parseFloat(e.target.value);
     setLineHeight(updatedLineHeight);
@@ -37,6 +39,7 @@ export default function VariableText({
                   font={font}
                   handleFonts={handleFonts}
                   i={i}
+                  key={font.name + i}
                   small={true}
                 />
               </div>

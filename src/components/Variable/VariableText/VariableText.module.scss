@@ -20,17 +20,17 @@
 
   &__title {
     position: sticky;
-    z-index: 300;
     top: 0;
-    margin-top: 3vh;
+    left: 0;
     display: flex;
-    align-items: center;
-    height: 80px;
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+    background-color: #fff8f8af;
     width: 100%;
-    background-color: $white-color;
-    margin-inline: auto;
-    border-bottom: 1px solid $black-color;
-    gap: 10px;
+    min-height: 70px;
+    height: 5dvw;
+    z-index: 900;
+    box-sizing: border-box;
     h2 {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       font-size: $fontsize-m;
@@ -49,19 +49,6 @@
       min-height: 200px;
     }
   }
-}
-
-.withTitle,
-.withoutTitle {
-  font-style: normal;
-  border-radius: 100px;
-  padding: 5px 10px;
-  height: 30%;
-}
-
-.withTitle {
-  background-color: $black-color;
-  color: $white-color;
 }
 
 .fontcard__ctn {

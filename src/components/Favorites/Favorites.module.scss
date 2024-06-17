@@ -7,7 +7,7 @@
   width: 77%;
 
   &__box {
-    margin-top: 15vh;
+    margin-top: 5vh;
     width: 100%;
 
     &__ctn {
@@ -23,12 +23,12 @@
 }
 
 .container__title {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   display: flex;
-  -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
   background-color: #fff8f8af;
   width: 100%;
   min-height: 70px;
@@ -42,11 +42,12 @@
   display: flex;
   gap: 2vw;
   height: 3.5vw;
-  margin-left: 20%;
-  align-items: last baseline;
+  align-items: center;
   h3 {
     font-family: "InstrumentSans-Regular";
     font-size: 2vw;
+    height: 3.5vw;
+    line-height: 250%;
     font-weight: 300;
     margin: 0;
     padding: 0;
