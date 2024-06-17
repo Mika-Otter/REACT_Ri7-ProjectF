@@ -12,11 +12,11 @@ import { setChoosedFonts } from "../../features/choosedFontSlide";
 import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
 import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
+import listSentences from "../../app/data/sentences";
 
 export default function Card({ font, i, handleFonts, small }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const username = useSelector((state) => state.auth.username);
   const fonts = useSelector((state) => state.fonts.value);
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -121,26 +121,6 @@ export default function Card({ font, i, handleFonts, small }) {
     }
     navigate("/variable");
   };
-
-  const listSentences = [
-    "Amazingly few discotheques provide jukeboxes.",
-    "Back in June we delivered oxygen equipment of the same size.",
-    "Crazy Fredrick bought many very exquisite opal jewels.",
-    "Few black taxis drive up major roads on quiet hazy nights.",
-    "Grumpy wizards make toxic brew for the evil Queen and Jack.",
-    "Jackdaws love my big sphinx of quartz.",
-    "Jinxed wizards pluck ivy from the big quilt.",
-    "Pack my box with five dozen liquor jugs.",
-    "The quick brown fox jumps over the lazy dog.",
-    "The five boxing wizards jump quickly.",
-    "Vampire bats quizzed Jim Crow about the next weapon.",
-    "Waltz, bad nymph, for quick jigs vex.",
-    "How razorback-jumping frogs can level six piqued gymnasts!",
-    "Cozy lummox gives smart squid who asks for job pen.",
-    "A quick movement of the enemy will jeopardize six gunboats.",
-    "All questions asked by five watch experts amazed the judge.",
-    "The quick onyx goblin jumps over the lazy dwarf.",
-  ];
 
   useEffect(() => {
     setText(listSentences[Math.floor(Math.random() * listSentences.length)]);
