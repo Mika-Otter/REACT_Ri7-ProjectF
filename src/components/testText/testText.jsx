@@ -82,10 +82,15 @@ export default function TestText() {
         <div className={s.test__section}>
           {choosedFonts.length === 0 ? (
             <>
-              <p className={s.nochoosedfont}>
-                Please select a font in your folder...
-              </p>
-              <button type="button">Folder</button>
+              <div className={s.paragraph__section}>
+                <p className={s.nochoosedfont}>
+                  Please select a font in your folder...
+                </p>
+                <p className={s.tips}>
+                  TIPS ! You can select or deselect a font by clicking on its
+                  card.
+                </p>
+              </div>
             </>
           ) : (
             choosedFonts.map((font, index) => (

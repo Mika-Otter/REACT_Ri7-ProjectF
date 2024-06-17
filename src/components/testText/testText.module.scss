@@ -2,15 +2,11 @@
 @use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
-.nochoosedfont {
-  font-size: $fontsize-s;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .test,
 .test__section {
   width: 80%;
   margin-left: 20%;
+  color: $font-darkgrey-color;
 
   // border: 2px solid red;
 }
@@ -97,12 +93,12 @@
     height: f.rem(30);
     width: 70%;
     background: none;
-    color: $black-color;
+    color: $font-darkgrey-color;
     border-bottom: 1px solid $grey-input;
     font-size: $fontsize-s;
     display: flex;
     align-items: center;
-    font-family: "Nacelle";
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   input:focus {
     outline: none;
@@ -119,7 +115,7 @@
   align-items: center;
   label {
     margin-left: -10px;
-    font-family: "Nacelle";
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: $fontsize-xxs;
   }
   input {
@@ -134,4 +130,19 @@
   input:checked {
     background-color: $grey-input;
   }
+}
+
+.nochoosedfont {
+  font-size: $fontsize-s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.tips {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9vw;
+  color: $font-fade-blue;
 }
