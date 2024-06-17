@@ -3,136 +3,135 @@
 @import "../../../public/styles/global";
 
 .nochoosedfont {
-    font-size: $fontsize-s;
-    font-family: "Nacelle";
+  font-size: $fontsize-s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .test,
 .test__section {
-    width: 65%;
-    margin-inline: auto;
+  width: 80%;
+  margin-left: 20%;
 
-    // border: 2px solid red;
+  // border: 2px solid red;
+}
+
+.test {
+  position: sticky;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+  background-color: #fff8f8af;
 }
 
 .test__section {
-    overflow-y: auto;
-    height: 73vh;
+  overflow-y: auto;
 }
 
 .test__title {
-    position: sticky;
-    z-index: 300;
-    top: 0;
-    margin-top: 3vh;
-    display: flex;
-    align-items: center;
-    height: 80px;
-    width: 100%;
-    background-color: $white-color;
-    margin-inline: auto;
-    border-bottom: 1px solid $black-color;
-    gap: 10px;
-    h2 {
-        font-family: "Nacelle-Bold";
-        font-size: $fontsize-m;
-    }
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  min-height: 70px;
+  height: 5dvw;
+  z-index: 900;
+  box-sizing: border-box;
+  h2 {
+    font-family: "InstrumentSans-Regular";
+    font-size: 2vw;
+    height: 3.5vw;
+    line-height: 250%;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+  }
 }
 .test__view {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1vw;
 
-    &__big {
-        overflow: hidden;
-        width: 150%;
-        text-overflow: clip;
-        margin: 0;
-        margin-bottom: -10px;
-        min-height: f.rem(75);
-        font-size: 3vw;
-        padding-left: 20px;
-    }
-    &__medium {
-        margin: 0;
-        margin-top: -10px;
-        padding-left: 20px;
-        font-size: 2vw;
-    }
-    &__small {
-        margin: 0;
-        padding-left: 20px;
-        font-size: 1vw;
-        margin-bottom: 10px;
-    }
-    &__typeface {
-        padding-left: 20px;
-        font-size: 0.7vw;
-        font-family: "Nacelle-Bold";
-    }
+  &__big {
+    overflow: hidden;
+    text-overflow: clip;
+    margin: 0;
+    min-height: f.rem(75);
+    font-size: 3vw;
+    padding-left: 20px;
+    line-height: 160%;
+    height: 2vw;
+  }
+  &__medium {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 2vw;
+    height: 2vw;
+    line-height: 1;
+  }
+  &__small {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 1vw;
+    height: 1vw;
+    margin-top: 1vw;
+    line-height: 1;
+  }
+  &__typeface {
+    margin-top: 0.5vw;
+    padding-left: 20px;
+    font-size: 1vw;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+  }
 }
 
 .test__text {
+  display: flex;
+  align-items: center;
+  input {
+    box-sizing: content-box;
+    margin-top: 0.5vw;
+    border: none;
+    height: f.rem(30);
+    width: 70%;
+    background: none;
+    color: $black-color;
+    border-bottom: 1px solid $grey-input;
+    font-size: $fontsize-s;
     display: flex;
     align-items: center;
-    input {
-        box-sizing: content-box;
-        margin-top: 3vh;
-        border: none;
-        height: f.rem(30);
-        width: 70%;
-        background: none;
-        color: $black-color;
-        border-bottom: 2px solid $black-color;
-        font-size: $fontsize-s;
-        display: flex;
-        align-items: center;
-        font-family: "Nacelle";
-    }
-    input:focus {
-        outline: none;
-        border-bottom: 3px solid $black-color;
-    }
+    font-family: "Nacelle";
+  }
+  input:focus {
+    outline: none;
+    border-bottom: 2px solid $grey-input;
+  }
 }
 
 .test__buttons {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 30px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    label {
-        margin-left: -10px;
-        font-family: "Nacelle";
-        font-size: $fontsize-xxs;
-    }
-    input {
-        cursor: pointer;
-        appearance: none;
-        border: 2px solid $black-color;
-        height: 13px;
-        width: 13px;
-    }
+  padding-bottom: 1vw;
+  margin-top: 10px;
+  margin-left: 30px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  label {
+    margin-left: -10px;
+    font-family: "Nacelle";
+    font-size: $fontsize-xxs;
+  }
+  input {
+    cursor: pointer;
+    appearance: none;
+    border: 1px solid $grey-input;
+    border-radius: 3px;
+    height: 13px;
+    width: 13px;
+  }
 
-    input:checked {
-        background-color: $black-color;
-    }
-}
-
-.border__left,
-.border__right {
-    display: flex;
-    align-items: center;
-    height: 50px;
-    margin-top: 20px;
-}
-
-.border__left {
-    margin-right: 10px;
-}
-
-.border__right {
-    // border: 2px solid red;
-    transform: rotate(180deg);
-    margin-left: 10px;
+  input:checked {
+    background-color: $grey-input;
+  }
 }

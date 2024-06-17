@@ -60,7 +60,7 @@
       font-weight: 100;
       display: flex;
       justify-content: center;
-      transition: all 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
       color: $font-darkgrey-color;
       &:hover {
         color: $font-fade-blue;
@@ -102,6 +102,7 @@
     a,
     a:active,
     a:visited {
+      transition: 0.3s ease-in-out;
       padding: 13px 0px;
       text-decoration: none;
       color: $font-darkgrey-color;
