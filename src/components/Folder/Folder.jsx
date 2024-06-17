@@ -20,7 +20,6 @@ export default function Folder() {
   const userId = useSelector((state) => state.auth.userId);
   const [folder, setFolder] = useState(true);
   const folderRef = useRef();
-  const cacheRef = useRef();
 
   // UPLOAD A NEW TYPEFACE
   const fileUpload = async (e) => {
@@ -51,35 +50,6 @@ export default function Folder() {
       console.error("Failed to upload files :", err);
     }
   };
-
-  // GET FONT USER'S FONTS
-  const getUserFonts = async () => {
-    try {
-      const res = await axios.post("/fonts/getAll", { userId });
-      if (res.status === 200) {
-        const fontsData = res.data.fonts;
-        fontsData.forEach((font) => {
-          if (!fonts.some((existingFont) => existingFont.name === font.name)) {
-            dispatch(
-              setFonts({
-                name: font.name,
-                url: font.url,
-                id: font.id,
-              })
-            );
-          }
-        });
-      } else {
-        console.error("Failed to fetch user fonts: ", res.statusText);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getUserFonts(); //First rendering get all user's fonts
-  }, []);
 
   // HANDLE CHANGING CHECKED FONT
   function handleFonts(name) {
