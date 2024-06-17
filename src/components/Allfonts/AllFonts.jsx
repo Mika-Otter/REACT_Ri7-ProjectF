@@ -3,7 +3,6 @@ import s from "./AllFonts.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Card/Card";
 import useHandleFonts from "../../hooks/useHandleFonts";
-import useGetUserFonts from "../../hooks/useGetUserFonts";
 
 export default function AllFonts() {
   const dispatch = useDispatch();

@@ -39,6 +39,10 @@ export default function Variable() {
                 <p className={s.nochoosedfont}>
                   Please select a font in your folder...
                 </p>
+                <p className={s.tips}>
+                  TIPS ! You can select or deselect a font by clicking on its
+                  card.
+                </p>
               </div>
             ) : (
               choosedFonts.map((font, i) => (

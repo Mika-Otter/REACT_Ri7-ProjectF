@@ -84,21 +84,12 @@ function AccordionItem({
             )
           ) : (
             fonts.map((font, i) => (
-              <div
-                className={s.fonts}
-                key={font.name + i}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  // Toggle the checkbox
-                  handleFonts(font.name);
-                }}
-              >
+              <div className={s.fonts} key={font.name + i}>
                 <input
                   type="checkbox"
                   name={font.name}
                   checked={font.checked}
                   onChange={(e) => {
-                    // Prevent the event from bubbling up to the parent div
                     e.stopPropagation();
                     handleFonts(font.name);
                   }}
@@ -106,6 +97,10 @@ function AccordionItem({
                 <label
                   htmlFor={font.name}
                   style={{ fontFamily: `${font.name}` }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFonts(font.name);
+                  }}
                 >
                   {font.name}
                 </label>
