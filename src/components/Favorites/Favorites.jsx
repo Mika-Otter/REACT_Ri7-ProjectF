@@ -11,23 +11,24 @@ export default function Favorites() {
   const dispatch = useDispatch();
   const fonts = useSelector((state) => state.fonts.value);
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
-  const [fontsLoaded, setFontsLoaded] = useState(false);
   const userId = useSelector((state) => state.auth.userId);
+  const [ratingChanged, setRatingChanged] = useState(false);
 
   const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
-  const { sortedFonts, setSortedFonts, sortFonts } = useFonts(userId);
 
-  // OTHERS__________________________________________________________________________________
+  const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } = useFonts(
+    userId,
+    ratingChanged
+  );
 
   useEffect(() => {
-    if (fonts.length > 0) {
-      setFontsLoaded(true);
-    }
-  }, [fonts]);
+    console.log(ratingChanged, "ratingChanged");
+  }, [ratingChanged]);
 
-  if (!fontsLoaded) {
-    return <div>Loading...</div>;
-  }
+  const onRatingChange = () => {
+    setRatingChanged(true);
+    setTimeout(() => setRatingChanged(false), 300);
+  };
 
   return (
     <>
@@ -47,6 +48,7 @@ export default function Favorites() {
                   i={i}
                   key={font.name + i}
                   handleFonts={handleFonts}
+                  onRatingChange={onRatingChange}
                 />
               ) : null
             )}

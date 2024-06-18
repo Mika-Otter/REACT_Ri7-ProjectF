@@ -31,11 +31,10 @@ export default function App() {
           path="/"
           element={<Welcome handleTransition={handleTransition} />}
         ></Route>
-        <Route path="login" element={<Login />}></Route>
         <Route path="unauthorized" element={<Unauthorized />}></Route>
 
         {/* protected routes */}
-        <Route element={<RequireAuth />}>
+        <Route element={<RequireAuth handleTransition={handleTransition} />}>
           <Route path="favorites" element={<FavoritesPage />}></Route>
           <Route path="fonttest" element={<TestText />}></Route>
           <Route path="home" element={<AllFontsPage />}></Route>

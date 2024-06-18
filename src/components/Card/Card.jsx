@@ -35,7 +35,6 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   };
 
   const sendRate = async (userId, fontId, rating) => {
-    onRatingChange();
     try {
       const res = await axios.post("/fonts/rate", { userId, fontId, rating });
       return res.status === 200;
@@ -162,6 +161,7 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
             ratings={ratings}
             handleRating={handleRating}
             deleteFonts={deleteFonts}
+            onRatingChange={onRatingChange}
           />
         </div>
         <div className={s.card__box}>

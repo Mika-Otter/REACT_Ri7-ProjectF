@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoSVG from "../SVG/LogoSVG";
 import Folder from "../Folder/Folder";
+import Logout from "../Logout/Logout";
 
-export default function Menu() {
+export default function Menu({ handleTransition }) {
   const username = useSelector((state) => state.auth.username);
   const [selector, setSelector] = useState("menu");
   return (
@@ -55,9 +56,7 @@ export default function Menu() {
         <div className={s.menu__bottom}>
           <div className={s.menu__settings}>
             <Link to="/settings">Settings</Link>
-            <button type="button" className={s.menu__settings__button}>
-              Logout
-            </button>
+            <Logout handleTransition={handleTransition} />
           </div>
           <div className={s.menu__box__logo}>
             <div className={s.menu__logo}>

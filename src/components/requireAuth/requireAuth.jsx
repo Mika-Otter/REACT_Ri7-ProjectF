@@ -2,13 +2,13 @@ import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Menu from "../Menu/Menu";
 
-export default function RequireAuth() {
+export default function RequireAuth({ handleTransition }) {
   const userId = useSelector((state) => state.auth.userId);
   const location = useLocation();
 
   return userId ? (
     <>
-      <Menu />
+      <Menu handleTransition={handleTransition} />
       <Outlet />
     </>
   ) : (
