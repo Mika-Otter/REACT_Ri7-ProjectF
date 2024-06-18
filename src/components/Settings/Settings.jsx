@@ -1,102 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 import s from "./Settings.module.scss";
 
 import axios from "../../app/api/axios";
-import { setUserName } from "../../features/authSlice";
+// import { setUserName } from "../../features/authSlice";
 import { useDispatch } from "react-redux";
+import ChangeUsername from "./ChangeUsername/ChangeUsername";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,15}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
-// const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const SETTING_URL = "http://localhost:8080/settings/update";
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const SETTING_URL = "http://localhost:8080/update/pwd";
 
 export default function Settings() {
   const dispatch = useDispatch();
   const username = useSelector((state) => state.auth.username);
   const userId = useSelector((state) => state.auth.userId);
-  const [user, setUser] = useState("");
-  const [validName, setValidName] = useState(true);
-  const [error, setError] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isValid },
+  } = useForm({ mode: "onBlur" });
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorInput, setErrorInput] = useState("");
   const [success, setSuccess] = useState("");
 
-  const [pwd, setPwd] = useState("");
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdBlur, setPwdBlur] = useState(false);
-
-  const [newPwd, setNewPwd] = useState("");
-  const [validNewPwd, setValidNewPwd] = useState(false);
-  const [newPwdBlur, setNewPwdBlur] = useState(false);
-
-  const [matchPwd, setMatchPwd] = useState("");
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchBlur, setMatchBlur] = useState(false);
-
-  useEffect(() => {
-    if (username) {
-      setUser(username);
-    }
-  }, [username]);
-
-  useEffect(() => {
-    setValidPwd(PWD_REGEX.test(pwd));
-    setValidNewPwd(PWD_REGEX.test(newPwd));
-    const match = newPwd === matchPwd;
-    setValidMatch(match);
-  }, [pwd, newPwd, matchPwd]);
-
-  const handleChangeName = async (e, userId, userName) => {
-    e.preventDefault();
-
-    const v1 = USER_REGEX.test(user);
-
-    if (!v1) {
-      setValidName(false);
-      return;
-    }
-
+  const onSubmit = async (data) => {
     try {
-      const res = await axios.post(SETTING_URL + "/name", { userId, userName });
-      setSuccess("name");
-      dispatch(setUserName(userName));
-      return res.status === 200;
-    } catch (err) {
-      if (!err?.response) {
-        setError(
-          "Sorry, we have actually a problem with our server connection... Try later."
+      await axios.post(SETTING_URL, data);
+      setSuccess(
+        "Registration successful ! You will redirected in a few seconds..."
+      );
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        setErrorMessage(error.response.data.message);
+        setErrorInput(error.response.data.input);
+      } else if (error.request) {
+        console.log(
+          "No response received from server... Whoops ! Please, try again later."
         );
-      } else if (err.response?.status === 409) {
-        setError("Username already used");
       } else {
-        setError("Impossible to change name", err.response.data);
+        console.log("Error", error.message);
       }
     }
   };
 
-  const handleChangePassword = async (e, userId, pwd, newPwd) => {
-    e.preventDefault();
-
-    if (validMatch) {
-      try {
-        console.log("TOOOOOO");
-        const res = await axios.post(SETTING_URL + "/pwd", {
-          userId,
-          pwd,
-          newPwd,
-        });
-        setSuccess("password");
-        setError("");
-        return res.status === 200;
-      } catch (err) {
-        if (!err?.response) {
-          setError(
-            "Sorry, we have actually a problem with our server connection... Try later."
-          );
-        } else {
-          setError("Impossible to change password", err.response.data);
-        }
-      }
+  const validateUsername = (username) => {
+    if (username.length < 4) {
+      return "Your name is too short.";
+    } else if (username.length > 23) {
+      return "Your name is too long.";
+    } else if (!/^[A-Za-z]/.test(username)) {
+      return "Your name must start with a letter.";
+    } else if (!USER_REGEX.test(username)) {
+      return "Only letters, numbers, underscores, and hyphens are allowed.";
     }
+    return true; // Validation passed
   };
 
   return (
@@ -106,145 +69,100 @@ export default function Settings() {
           <h2 className={s.title__title}>Settings</h2>
         </div>
         <div className={s.profil}>
+          <ChangeUsername />
+          <h3 className={s.profil__user__title}>Change Password</h3>
           <form
-            className={s.profil__user}
-            onSubmit={(e) => handleChangeName(e, userId, user)}
+            className={s.profil__password}
             autoComplete="off"
-            id="usernameForm"
+            onSubmit={handleSubmit(onSubmit)}
+            id="passwordForm"
           >
-            <h3 className={s.profil__user__title}>User Profil</h3>
-            <div className={s.profil__user__name}>
-              <label htmlFor="username">Name</label>
+            <div className={s.profil__password__old}>
+              <label htmlFor="OldPassword">Old password</label>
               <input
-                type="text"
-                id="username"
-                required
-                placeholder="Enter an username"
-                name="username"
-                data-form-type="other"
-                autoComplete="off"
-                value={user}
-                onChange={(e) => {
-                  setUser(e.target.value);
-                }}
+                type="password"
+                id="OldPassword"
+                {...register("OldPassword", {
+                  required: "Password is required",
+                  pattern: {
+                    value: PWD_REGEX,
+                    message:
+                      "8 to 24 characters. Must include uppercase and lowercase letters, a number, and a special character.",
+                  },
+                })}
+                aria-invalid={errors.OldPassword ? "true" : "false"}
+                aria-describedby="pwdnote"
+                className={s.formInput__input}
               />
-              {success === "name" ? <p>Username changed</p> : null}
-              {error ? <p>{error}</p> : null}
-              {!validName ? (
-                <p className={s.error}>
-                  4 to 24 characters. Must begin with a letter. <br />
-                  Letters, numbers, underscores, hyphens allowed.
-                </p>
-              ) : (
-                ""
-              )}
+              {errors.OldPassword &&
+                (errors.OldPassword.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.password.message}</p>
+                ))}
             </div>
+            <div className={s.profil__password__new}>
+              <label htmlFor="password">New password</label>
+              <input
+                type="password"
+                id="password"
+                {...register("password", {
+                  required: "Password is required",
+                  pattern: {
+                    value: PWD_REGEX,
+                    message:
+                      "8 to 24 characters. Must include uppercase and lowercase letters, a number, and a special character.",
+                  },
+                })}
+                aria-invalid={errors.password ? "true" : "false"}
+                aria-describedby="pwdnote"
+                className={s.formInput__input}
+              />
+              {errors.password &&
+                (errors.password.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.password.message}</p>
+                ))}
+            </div>
+            <div className={s.profil__password__confirm}>
+              <label htmlFor="confirmPwd">Confirm new password</label>
+              <input
+                type="password"
+                id="confirmPwd"
+                {...register("confirmPwd", {
+                  required: "Please confirm your password",
+                  validate: (value) =>
+                    value === watch("password") || "Passwords do not match",
+                })}
+                aria-invalid={errors.confirmPwd ? "true" : "false"}
+                aria-describedby="confirmPwdnote"
+                className={s.formInput__input}
+              />
+              {errors.confirmPwd &&
+                (errors.confirmPwd.type === "required" ? (
+                  <p className={s.required}>REQUIRED</p>
+                ) : (
+                  <p className={s.error}>{errors.confirmPwd.message}</p>
+                ))}
+            </div>
+            <p></p>
             <div className={s.wrapper__settings}>
               <div id={s.hover}></div>
-              <button type="submit" form="usernameForm" className={s.button}>
-                Update profil
+              <button
+                type="submit"
+                className={
+                  isValid
+                    ? s.register__submit__btn__valid
+                    : s.register__submit__btn
+                }
+                disabled={!isValid}
+              >
+                {isValid ? "Change Password" : "Please fill in the fields"}
               </button>
             </div>
+            {success && <p className={s.success}>{success}</p>}
           </form>
-          <h3 className={s.profil__user__title}>Change Password</h3>
-          {success === "password" ? (
-            <p>Password correctly changed ! </p>
-          ) : (
-            <form
-              className={s.profil__password}
-              autoComplete="off"
-              onSubmit={(e) => {
-                handleChangePassword(e, userId, pwd, matchPwd);
-              }}
-              id="passwordForm"
-            >
-              <div className={s.profil__password__old}>
-                <label htmlFor="oldPassword">Old password</label>
-                <input
-                  type="password"
-                  id="oldPassword"
-                  name="oldPassword"
-                  autoComplete="off"
-                  required
-                  onChange={(e) => {
-                    setPwd(e.target.value);
-                  }}
-                  onBlur={() => setPwdBlur(true)}
-                  aria-invalid={validPwd ? "false" : "true"}
-                  aria-describedby="pwdnote"
-                />
-                <p
-                  id="pwdnote"
-                  className={
-                    pwdBlur && !validPwd ? s.instructions : s.offscreen
-                  }
-                >
-                  This password is not valid !
-                </p>
-              </div>
-              <div className={s.profil__password__new}>
-                <label htmlFor="newPassword">New password</label>
-                <input
-                  type="password"
-                  id="newPassword"
-                  name="newPassword"
-                  autoComplete="off"
-                  required
-                  onChange={(e) => {
-                    setNewPwd(e.target.value);
-                  }}
-                  onBlur={() => {
-                    if (newPwd.length > 0) setNewPwdBlur(true);
-                  }}
-                  aria-invalid={validNewPwd ? "false" : "true"}
-                  aria-describedby="newpwdnote"
-                />
-                <p
-                  id="newpwdnote"
-                  className={
-                    newPwdBlur && !validNewPwd ? s.instructions : s.offscreen
-                  }
-                >
-                  8 to 25 characters. Must includ uppercase and lowercase
-                  letters, a number <br /> and a special character.
-                </p>
-              </div>
-              <div className={s.profil__password__confirm}>
-                <label htmlFor="confirmPassword">Confirm new password</label>
-                <input
-                  type="password"
-                  id="matchPassword"
-                  name="matchPassword"
-                  autoComplete="off"
-                  required
-                  onChange={(e) => {
-                    setMatchPwd(e.target.value);
-                    handleChangePassword(e);
-                  }}
-                  onBlur={() => {
-                    if (matchPwd.length > 0) setMatchBlur(true);
-                  }}
-                  aria-invalid={validMatch ? "false" : "true"}
-                  aria-describedby="matchnote"
-                />
-                <p
-                  id="matchnote"
-                  className={
-                    matchBlur && !validMatch ? s.instructions : s.offscreen
-                  }
-                >
-                  This password need to be the same of the precedent field !
-                </p>
-              </div>
-              <p></p>
-              <div className={s.wrapper__settings}>
-                <div id={s.hover}></div>
-                <button type="submit" form="passwordForm" className={s.button}>
-                  Change Password
-                </button>
-              </div>
-            </form>
-          )}
 
           <h3 className={s.profil__user__title}>Email Preferences</h3>
           <div className={s.email__preferences}>

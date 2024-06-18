@@ -65,29 +65,4 @@
   }
 }
 
-.sort {
-  display: flex;
-  align-items: last baseline;
-  justify-content: center;
-  // border: 2px solid blue;
-  font-size: 1vw;
-  gap: 01vw;
 
-  &__selector,
-  span {
-    margin: 0;
-    padding: 0;
-  }
-
-  &__selector {
-    transition: 0.3s ease-in-out;
-    color: $font-darkgrey-color;
-  }
-  &__selector:hover {
-    color: $font-fade-blue;
-  }
-}
-
-.active {
-  color: $font-fade-blue;
-}

@@ -12,7 +12,7 @@ import { setChoosedFonts } from "../../features/choosedFontSlide";
 import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
 import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
-import listSentences from "../../app/data/sentences";
+import { listSentences } from "./listSentencesData";
 
 export default function Card({ font, i, handleFonts, small }) {
   const dispatch = useDispatch();

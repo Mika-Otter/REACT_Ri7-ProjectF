@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import s from "./NewRegister.module.scss";
 import axios from "../../app/api/axios";
-import ArrowRegisterSVG from "../SVG/ArrowRegisterSVG";
 import ArrowRegisterBackSVG from "../SVG/ArrowRegisterBackSVG";
 import PrivacyPolicy from "../PrivacyPolicy/PrivacyPolicy";
 import LogoSVG from "../SVG/LogoSVG";
@@ -24,10 +23,6 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
   const [errorInput, setErrorInput] = useState("");
   const [success, setSuccess] = useState("");
 
-  useEffect(() => {
-    console.log(errorInput, "Error input");
-  }, [errorInput]);
-
   const onSubmit = async (data) => {
     try {
       await axios.post(REGISTER_URL, data);
@@ -43,13 +38,11 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
         console.log(error.response.data);
         setErrorMessage(error.response.data.message);
         setErrorInput(error.response.data.input);
-        console.log(error.response.data.message); // "Username already exists!"
       } else if (error.request) {
         console.log(
           "No response received from server... Whoops ! Please, try again later."
         );
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.log("Error", error.message);
       }
     }
@@ -83,7 +76,6 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
               <LogoSVG />
             </div>
             <span className={s.backhome}>Back</span>
-            {/* <span className={s.backhome}>Back to home</span> */}
           </div>
         </div>
         <div className={s.register__content__frame}>
