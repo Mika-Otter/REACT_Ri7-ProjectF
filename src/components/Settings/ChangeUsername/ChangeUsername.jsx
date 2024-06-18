@@ -73,7 +73,7 @@ export default function ChangeUsername() {
         autoComplete="off"
         id="usernameForm"
       >
-        <h3 className={s.profil__user__title}>User Profile</h3>
+        <h4 className={s.profil__user__title}>User Profile</h4>
         <div className={s.profil__user__name}>
           <label htmlFor="username">Name</label>
           <input

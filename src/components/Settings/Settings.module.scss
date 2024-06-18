@@ -52,7 +52,7 @@ form {
   color: #646464;
   font-size: 0.9vw;
   margin: 0;
-  margin-top: 2vw;
+  margin-top: 1vw;
 }
 
 button {
@@ -69,16 +69,18 @@ button {
 }
 
 .profil__user {
-  margin-top: 5vw;
+  margin-top: 6vw;
 
   &__title {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     font-size: 1.3vw;
+    margin: 0;
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
     color: $font-darkgrey-color;
   }
-  &__name,
-  &__email {
+  &__name {
     display: flex;
     flex-direction: column;
     gap: 0.5vw;
@@ -118,10 +120,22 @@ button {
   &__old,
   &__new,
   &__confirm {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.5vw;
   }
+}
+
+.profil__password__title {
+  font-family: "InstrumentSans-Regular";
+  font-size: 1.3vw;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  color: $font-darkgrey-color;
+  margin-top: 3.5vw;
+  margin-bottom: 1.5vw;
 }
 
 .email__preferences {
@@ -167,9 +181,20 @@ button {
   }
 }
 
+.required {
+  position: absolute;
+  top: 0.2vw;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0.75vw;
+  color: rgb(240, 61, 61);
+}
+
 .error,
 .success {
   margin: 0;
+  padding: 0;
   font-size: 0.8vw;
   height: 0px;
   opacity: 0;
@@ -185,12 +210,8 @@ button {
   color: rgb(92, 170, 62);
 }
 
-.instructions {
-  padding: 3px 5px;
-  color: #fe4444;
-  border: 1px solid #fe4444;
-  border-radius: 5px;
-  font-size: 0.8vw;
+.formInput__input[aria-invalid="true"] {
+  border-color: rgb(250, 138, 138);
 }
 
 @keyframes slideIn {

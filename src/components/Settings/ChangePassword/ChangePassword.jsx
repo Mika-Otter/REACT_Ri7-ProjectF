@@ -88,6 +88,7 @@ export default function ChangePassword() {
 
   return (
     <>
+      <h3 className={s.profil__password__title}>Change Password</h3>
       <form
         className={s.profil__password}
         autoComplete="off"
@@ -172,17 +173,13 @@ export default function ChangePassword() {
               <p className={s.error}>{errors.confirmPwd.message}</p>
             ))}
         </div>
-        <p></p>
-        <div className={s.wrapper__settings}>
-          <div id={s.hover}></div>
-          <button
-            type="submit"
-            className={isValid ? s.btn__valid : s.btn}
-            disabled={!isValid}
-          >
-            {isValid ? "Change Password" : "Please fill in the fields"}
-          </button>
-        </div>
+        <button
+          type="submit"
+          className={isValid ? s.btn__valid : s.btn}
+          disabled={!isValid}
+        >
+          {isValid ? "Change Password" : "Please fill in the fields"}
+        </button>
         {errorMessage !== "" && <p className={s.error}>{errorMessage}</p>}
         {success && <p className={s.success}>{success}</p>}
       </form>

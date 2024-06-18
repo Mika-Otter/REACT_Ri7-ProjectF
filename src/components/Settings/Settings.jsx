@@ -12,7 +12,6 @@ export default function Settings() {
         </div>
         <div className={s.profil}>
           <ChangeUsername />
-          <h3 className={s.profil__user__title}>Change Password</h3>
           <ChangePassword />
         </div>
       </section>
