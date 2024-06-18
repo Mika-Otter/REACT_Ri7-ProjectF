@@ -14,8 +14,8 @@ export default function ChangeUsername() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({ mode: "onBlur" });
+    formState: { errors, isValid },
+  } = useForm({ mode: "onChange" });
 
   const userId = useSelector((state) => state.auth.userId);
   const username = useSelector((state) => state.auth.username);
@@ -24,6 +24,11 @@ export default function ChangeUsername() {
   const [success, setSuccess] = useState("");
 
   const onSubmitName = async (data) => {
+    if (data.username === username) {
+      setSuccess("User name already set !");
+      setErrorMessage("");
+      return;
+    }
     try {
       const requestData = {
         userId,
@@ -75,10 +80,14 @@ export default function ChangeUsername() {
             type="text"
             id="username"
             defaultValue={username}
-            onChange={(e) => setErrorInput("")}
             {...register("username", {
               required: "Username is required",
               validate: validateUsername,
+              onChange: (e) => {
+                setSuccess("");
+                setErrorInput("");
+                setErrorMessage("");
+              },
             })}
             aria-invalid={errors.username ? "true" : "false"}
             aria-describedby="uidnote"
@@ -91,8 +100,13 @@ export default function ChangeUsername() {
         </div>
         <div className={s.wrapper__settings}>
           <div id={s.hover}></div>
-          <button type="submit" form="usernameForm" className={s.button}>
-            Update profile
+          <button
+            form="usernameForm"
+            type="submit"
+            className={isValid ? s.btn__valid : s.btn}
+            disabled={!isValid}
+          >
+            {isValid ? "Change username" : "Enter a valid username"}
           </button>
           {errorMessage && success === "" && errorInput !== "email" && (
             <p className={s.error}>{errorMessage}</p>

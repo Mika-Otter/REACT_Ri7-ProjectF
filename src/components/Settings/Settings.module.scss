@@ -137,10 +137,10 @@ button {
   color: $white-color;
 }
 
-.button {
+.btn {
   height: 2.8vw;
-  background-color: $button-blue;
-  color: $white-color;
+  background-color: $font-fade-blue;
+  color: #ffffffbe;
   font-style: normal;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.2vw;
@@ -149,16 +149,40 @@ button {
   width: 100%;
   transition: 0.3s ease-in-out;
   line-height: 70%;
+  cursor: not-allowed;
+
+  &__valid {
+    height: 2.8vw;
+    font-style: normal;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2vw;
+    padding-bottom: 0.8vw;
+    border: none;
+    width: 100%;
+    background-color: $button-blue;
+    color: $white-color;
+    transition: 0.3s ease-in-out;
+    line-height: 70%;
+    cursor: pointer;
+  }
+}
+
+.error,
+.success {
+  margin: 0;
+  font-size: 0.8vw;
+  height: 0px;
+  opacity: 0;
+  animation: slideIn 0.3s ease-in-out forwards;
 }
 
 .error {
-  margin: 0;
-  margin-top: 5px;
-  font-size: 0.8rem;
-  height: 0px;
-  opacity: 0;
   color: #fe4444;
-  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+.success {
+  padding-top: 10px;
+  color: rgb(92, 170, 62);
 }
 
 .instructions {
@@ -166,13 +190,13 @@ button {
   color: #fe4444;
   border: 1px solid #fe4444;
   border-radius: 5px;
-  font-size: 0.8rem;
+  font-size: 0.8vw;
 }
 
 @keyframes slideIn {
   0% {
     opacity: 0;
-
+    height: 0;
     margin: 0;
     padding: 0;
     transform: translateY(-100%);
@@ -181,7 +205,6 @@ button {
     opacity: 1;
     height: 1.5vw;
     margin: 0;
-    padding: 0;
     transform: translateY(0);
   }
 }
