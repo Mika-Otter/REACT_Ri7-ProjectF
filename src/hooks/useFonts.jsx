@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "../app/api/axios";
 
-export const useFonts = (userId) => {
+export const useFonts = (userId, ratingChanged) => {
   const fonts = useSelector((state) => state.fonts.value);
   const [fontRatings, setFontRatings] = useState([]);
   const [sortedFonts, setSortedFonts] = useState("");
@@ -48,7 +48,7 @@ export const useFonts = (userId) => {
       };
       fetchData();
     }
-  }, [userId]);
+  }, [userId, ratingChanged]);
 
   return { sortFonts, fontRatings, sortedFonts, setSortedFonts };
 };

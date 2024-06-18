@@ -12,6 +12,7 @@ export default function SettingsFont({
   ratings,
   handleRating,
   deleteFonts,
+  onRatingChange,
 }) {
   const [openSettings, setOpenSetting] = useState(false);
 
@@ -53,9 +54,10 @@ export default function SettingsFont({
                   type="checkbox"
                   checked={ratings[font.name] >= i + 1}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) =>
-                    handleRating(userId, font.id, font.name, i + 1)
-                  }
+                  onChange={(e) => {
+                    handleRating(userId, font.id, font.name, i + 1);
+                    onRatingChange();
+                  }}
                 />
               </div>
             </div>

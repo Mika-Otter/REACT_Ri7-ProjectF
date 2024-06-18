@@ -11,11 +11,23 @@ export default function AllFonts() {
   const fonts = useSelector((state) => state.fonts.value);
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
   const userId = useSelector((state) => state.auth.userId);
+  const [ratingChanged, setRatingChanged] = useState(false);
 
   const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
 
-  const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
-    useFonts(userId);
+  const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } = useFonts(
+    userId,
+    ratingChanged
+  );
+
+  useEffect(() => {
+    console.log(ratingChanged, "ratingChanged");
+  }, [ratingChanged]);
+
+  const onRatingChange = () => {
+    setRatingChanged(true);
+    setTimeout(() => setRatingChanged(false), 300);
+  };
 
   return (
     <>
@@ -34,6 +46,7 @@ export default function AllFonts() {
                 i={i}
                 key={font.name + i}
                 handleFonts={handleFonts}
+                onRatingChange={onRatingChange}
               />
             ))}
           </div>

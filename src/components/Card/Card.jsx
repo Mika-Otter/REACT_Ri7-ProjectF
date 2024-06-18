@@ -14,7 +14,7 @@ import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
 import { listSentences } from "./listSentencesData";
 
-export default function Card({ font, i, handleFonts, small }) {
+export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const fonts = useSelector((state) => state.fonts.value);
@@ -35,6 +35,7 @@ export default function Card({ font, i, handleFonts, small }) {
   };
 
   const sendRate = async (userId, fontId, rating) => {
+    onRatingChange();
     try {
       const res = await axios.post("/fonts/rate", { userId, fontId, rating });
       return res.status === 200;
