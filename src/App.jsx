@@ -13,6 +13,7 @@ import VariablePage from "./pages/VariablePage/VariablePage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import Welcome from "./pages/Welcome/Welcome";
 import TransitionLayout from "./components/TransitionLayout/TransitionLayout";
+import Loader from "./components/Loader/Loader";
 
 export default function App() {
   const [isTransition, setIsTransition] = useState(false);
@@ -21,6 +22,7 @@ export default function App() {
   };
   return (
     <>
+      <Loader />
       <Loaderfont />
       <TransitionLayout isTransition={isTransition} />
       <Routes>

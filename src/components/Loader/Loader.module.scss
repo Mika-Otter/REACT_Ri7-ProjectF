@@ -1,0 +1,52 @@
+@import "../../../public/styles/global.scss";
+
+.loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(24, 25, 29);
+
+  &__container {
+    // border: 2px solid red;
+    display: flex;
+    align-items: last baseline;
+  }
+}
+
+.circle {
+  width: 7.5vw;
+  height: 7.5vw;
+  border-radius: 50%;
+  background-color: $font-fade-blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5vw;
+  margin-top: -2vw;
+  transform: translateY(-500%);
+}
+
+.letter {
+  font-family: "RightDidone-CompactDark";
+  font-size: 11vw;
+  color: $white-color;
+  opacity: 0;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-500%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5%);
+  }
+}
