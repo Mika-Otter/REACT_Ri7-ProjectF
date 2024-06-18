@@ -3,9 +3,6 @@ import s from "./Sort.module.scss";
 import cn from "classnames";
 
 export default function Sort({ setSortedFonts, sortedFonts }) {
-  useEffect(() => {
-    console.log("sortedFonts", sortedFonts);
-  }, [sortedFonts]);
   return (
     <>
       <div className={s.sort}>

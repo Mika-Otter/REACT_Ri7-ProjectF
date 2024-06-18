@@ -18,14 +18,14 @@ export default function Loader() {
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    tl.set(tLetterRef.current, { opacity: 1, delay: 0.5 })
-      .set(yLetterRef.current, { opacity: 1, delay: 0.5 }, ">")
-      .set(pLetterRef.current, { opacity: 1, delay: 0.5 }, ">")
+    tl.set(tLetterRef.current, { opacity: 1, delay: 0.6 })
+      .set(yLetterRef.current, { opacity: 1, delay: 0.1 }, ">")
+      .set(pLetterRef.current, { opacity: 1, delay: 0.1 }, ">")
       .set(pScdLetterRef.current, { opacity: 1, delay: 0.5 }, ">")
-      .set(vLetterRef.current, { opacity: 1, delay: 1 }, ">")
+      .set(vLetterRef.current, { opacity: 1, delay: 0.9 }, ">")
       .to(
         circleRef.current,
-        { translateY: "0", duration: 0.3, ease: "power1.in" },
+        { translateY: "0", duration: 0.3, ease: "power1.in", delay: 0.5 },
         ">"
       )
       .to(

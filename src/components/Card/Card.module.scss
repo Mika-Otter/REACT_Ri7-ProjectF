@@ -57,6 +57,7 @@
     padding: 1vw 1.5vw;
     line-height: 1;
     position: relative;
+    font-display: swap;
 
     &__letters {
       position: absolute;
@@ -179,9 +180,39 @@
   }
 }
 
+$anim-duration: 1; // in seconds
+
 .loading {
   width: 23%;
   aspect-ratio: 1;
-  background-color: #eaeaecbe;
+  background-color: #e6e6e98e;
   border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.397),
+      transparent
+    );
+    animation: slide 0.5s linear forwards;
+  }
+}
+
+@keyframes slide {
+  0% {
+    left: -200%;
+    transition-property: left;
+  }
+  100% {
+    left: 200%;
+    transition-property: left;
+  }
 }

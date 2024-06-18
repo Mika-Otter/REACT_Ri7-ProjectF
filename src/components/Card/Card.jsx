@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import s from "./Card.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +54,7 @@ export default function Card({ font, i, handleFonts, small }) {
         }));
       });
     } catch (err) {
-      console.error("FAILED : Try to get all rates => ", err);
+      console.error("FAILED : Try to get all rates Card => ", err);
     }
   };
 
@@ -135,7 +135,7 @@ export default function Card({ font, i, handleFonts, small }) {
       setFontsLoaded(true);
     };
     fetchData();
-  }, [userId]);
+  }, []);
 
   useEffect(() => {
     if (fonts.length > 0) {

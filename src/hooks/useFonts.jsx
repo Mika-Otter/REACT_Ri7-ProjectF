@@ -1,7 +1,6 @@
-// useFonts.js
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import axios from "../app/api/axios";
 
 export const useFonts = (userId) => {
   const fonts = useSelector((state) => state.fonts.value);
@@ -10,11 +9,11 @@ export const useFonts = (userId) => {
 
   const getRate = async (userId) => {
     try {
-      const res = await axios.post("/fonts/rate/getAll", { userId });
+      const res = await axios.post("/fonts/rate/getAll", { userId: userId });
       const fontRates = res.data.data;
       setFontRatings(fontRates);
     } catch (err) {
-      console.error("FAILED : Try to get all rates => ", err);
+      console.error("FAILED : Try to get all rates UseFonts => ", err);
     }
   };
 
@@ -44,7 +43,10 @@ export const useFonts = (userId) => {
 
   useEffect(() => {
     if (userId) {
-      getRate(userId);
+      const fetchData = async () => {
+        await getRate(userId);
+      };
+      fetchData();
     }
   }, [userId]);
 

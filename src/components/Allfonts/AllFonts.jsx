@@ -14,7 +14,8 @@ export default function AllFonts() {
 
   const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
 
-  const { sortFonts, sortedFonts, setSortedFonts } = useFonts(userId);
+  const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
+    useFonts(userId);
 
   return (
     <>
