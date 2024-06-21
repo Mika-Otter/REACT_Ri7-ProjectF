@@ -9,9 +9,8 @@ import {
 } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
 
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import Accordion from "./Accordion/Accordion";
+import useCsrfToken from "../../hooks/useCsrfToken";
 
 export default function Folder() {
   const dispatch = useDispatch();
@@ -20,6 +19,7 @@ export default function Folder() {
   const userId = useSelector((state) => state.auth.userId);
   const [folder, setFolder] = useState(true);
   const folderRef = useRef();
+  const csrfToken = useCsrfToken();
 
   // UPLOAD A NEW TYPEFACE
   const fileUpload = async (e) => {
@@ -34,11 +34,13 @@ export default function Folder() {
 
     formData.append("userId", userId);
     try {
-      const res = await axios.post("/upload/add", formData, {
+      const res = await axios.post("/upload/addFont", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: localStorage.getItem("token"), //send token from localStorage //CHANGE TO SESSION STORAGE ?
+          "X-CSRF-Token": csrfToken,
         },
+        withCredentials: true,
       });
       if (res.status === 200) {
         const newFonts = res.data.fonts;
@@ -89,7 +91,7 @@ export default function Folder() {
             <input
               id="inputFile"
               type="file"
-              accept=".ttf,.otf"
+              accept=".ttf,.otf,.woff"
               multiple
               onChange={(e) => fileUpload(e)}
               className={s.inputFile__input}

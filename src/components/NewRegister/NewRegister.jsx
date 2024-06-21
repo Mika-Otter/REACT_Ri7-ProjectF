@@ -9,7 +9,7 @@ import LogoSVG from "../SVG/LogoSVG";
 const USER_REGEX = /^[A-Za-z][A-Za-z0-9-]{3,22}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const REGISTER_URL = "http://localhost:8080/server/auth/register";
+const REGISTER_URL = "http://localhost:8080/authentification/register";
 
 export default function NewRegister({ handleRegister, setLoginBtn }) {
   const {
@@ -23,9 +23,26 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
   const [errorInput, setErrorInput] = useState("");
   const [success, setSuccess] = useState("");
 
+  const [csrfToken, setCsrfToken] = useState("");
+
+  useEffect(() => {
+    async function fetchCsrfToken() {
+      const response = await axios.get("http://localhost:8080/getCSRFToken", {
+        withCredentials: true,
+      });
+      setCsrfToken(response.data.csrfToken);
+    }
+    fetchCsrfToken();
+  }, []);
+
   const onSubmit = async (data) => {
     try {
-      await axios.post(REGISTER_URL, data);
+      await axios.post(REGISTER_URL, data, {
+        headers: {
+          "X-CSRF-Token": csrfToken,
+        },
+        withCredentials: true,
+      });
       setLoginBtn(true);
       setSuccess(
         "Registration successful ! You will redirected in a few seconds..."

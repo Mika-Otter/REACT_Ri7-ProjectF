@@ -5,6 +5,7 @@ import { setUserId, setUserName } from "../../features/authSlice";
 
 import s from "./Connect.module.scss";
 import axios from "axios";
+import useCsrfToken from "../../hooks/useCsrfToken";
 
 export default function Connect({
   handleRegister,
@@ -19,17 +20,8 @@ export default function Connect({
     email: "",
     password: "",
   });
-  const [csrfToken, setCsrfToken] = useState("");
 
-  useEffect(() => {
-    async function fetchCsrfToken() {
-      const response = await axios.get("http://localhost:8080/getCSRFToken", {
-        withCredentials: true,
-      });
-      setCsrfToken(response.data.csrfToken);
-    }
-    fetchCsrfToken();
-  }, []);
+  const csrfToken = useCsrfToken();
 
   function handleLogin(userData) {
     dispatch(setUserId(userData.id));
@@ -44,7 +36,7 @@ export default function Connect({
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8080/server/auth/login",
+        "http://localhost:8080/authentification/login",
         inputsConnect,
         {
           headers: {
