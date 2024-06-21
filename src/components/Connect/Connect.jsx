@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserId, setUserName } from "../../features/authSlice";
 
@@ -19,6 +19,17 @@ export default function Connect({
     email: "",
     password: "",
   });
+  const [csrfToken, setCsrfToken] = useState("");
+
+  useEffect(() => {
+    async function fetchCsrfToken() {
+      const response = await axios.get("http://localhost:8080/getCSRFToken", {
+        withCredentials: true,
+      });
+      setCsrfToken(response.data.csrfToken);
+    }
+    fetchCsrfToken();
+  }, []);
 
   function handleLogin(userData) {
     dispatch(setUserId(userData.id));
@@ -34,7 +45,13 @@ export default function Connect({
     try {
       const res = await axios.post(
         "http://localhost:8080/server/auth/login",
-        inputsConnect
+        inputsConnect,
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true,
+        }
       );
       localStorage.setItem("token", res.data.token);
       handleLogin(res.data);
@@ -63,6 +80,7 @@ export default function Connect({
           <div className={s.loginForm__fields}>
             <div className={s.loginForm__email}>
               <label htmlFor="email">Email</label>
+
               <input
                 type="email"
                 autoComplete="on"
@@ -91,7 +109,6 @@ export default function Connect({
             <span>Don&rsquo;t you have an account ? </span>{" "}
             <a
               onClick={() => {
-                // handleLogin()
                 handleRegister();
               }}
             >
