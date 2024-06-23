@@ -53,13 +53,10 @@ export default function Connect({
       }, 500);
     } catch (err) {
       if (err.response) {
-        // Errors from the server
         setError(err.response.data.message || "An error occurred.");
       } else if (err.request) {
-        // Errors from the request
         setError("Whoops... The server is not responding. Try again later.");
       } else {
-        // Other errors
         setError("An error occurred while processing your request.");
       }
     }
