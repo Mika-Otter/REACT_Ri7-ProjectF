@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import "../public/styles/global.scss";
 
 import TestText from "./components/testText/testText";
-import Login from "./components/Login/Login";
 import Unauthorized from "./components/unauthorized";
 import RequireAuth from "./components/requireAuth/requireAuth";
 import Loaderfont from "./components/loaderfont/loaderfont";
@@ -14,14 +13,17 @@ import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import Welcome from "./pages/Welcome/Welcome";
 import TransitionLayout from "./components/TransitionLayout/TransitionLayout";
 import Loader from "./components/Loader/Loader";
+import ScreenListener from "./components/ScreenListener/ScreenListener";
 
 export default function App() {
   const [isTransition, setIsTransition] = useState(false);
   const handleTransition = () => {
     setIsTransition((prev) => !prev);
   };
+
   return (
     <>
+      <ScreenListener />
       <Loader />
       <Loaderfont />
       <TransitionLayout isTransition={isTransition} />
