@@ -3,15 +3,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFonts } from "../../features/fontsSlice";
 import AllFonts from "../../components/Allfonts/AllFonts";
 import axios from "../../app/api/axios";
+import useCsrfToken from "../../hooks/useCsrfToken";
 
 export default function AllFontsPage() {
   const dispatch = useDispatch();
   const fonts = useSelector((state) => state.fonts.value);
   const userId = useSelector((state) => state.auth.userId);
 
+  const csrfToken = useCsrfToken();
+
   const getUserFonts = async () => {
     try {
-      const res = await axios.post("/fonts/getAll", { userId });
+      const res = await axios.post(
+        "/fonts/getAll",
+        { userId },
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true,
+        }
+      );
       if (res.status === 200) {
         const fontsData = res.data.fonts;
         fontsData.forEach((font) => {

@@ -3,9 +3,9 @@ import s from "./Favorites.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import Card from "../Card/Card";
-import useHandleFonts from "../../hooks/useHandleFonts";
+import useHandleFonts from "../../hooks/useHandleSelectedFonts";
 import Sort from "../Sort/Sort";
-import { useFonts } from "../../hooks/useFonts";
+import { useFonts } from "../../hooks/useSortedFonts";
 
 export default function Favorites() {
   const dispatch = useDispatch();

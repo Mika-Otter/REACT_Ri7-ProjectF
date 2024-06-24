@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import VariableText from "./VariableText/VariableText";
 
 import s from "./Variable.module.scss";
-import cn from "classnames";
-import Card from "../Card/Card";
-import useHandleFonts from "../../hooks/useHandleFonts";
 
 export default function Variable() {
   const choosedFonts = useSelector((state) => state.choosedFonts.value);

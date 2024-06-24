@@ -7,7 +7,7 @@ import PrivacyPolicy from "../PrivacyPolicy/PrivacyPolicy";
 import LogoSVG from "../SVG/LogoSVG";
 
 const USER_REGEX = /^[A-Za-z][A-Za-z0-9-]{3,22}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{8,24}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!.@?$%]).{6,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const REGISTER_URL = "http://localhost:8080/authentification/register";
 
@@ -158,7 +158,7 @@ export default function NewRegister({ handleRegister, setLoginBtn }) {
                   pattern: {
                     value: PWD_REGEX,
                     message:
-                      "8 to 24 characters. Must include uppercase and lowercase letters, a number, and a special character.",
+                      "6 to 24 characters. Must include uppercase and lowercase letters, a number, and a special character.",
                   },
                 })}
                 aria-invalid={errors.password ? "true" : "false"}

@@ -3,7 +3,7 @@ import s from "./VariableText.module.scss";
 import cn from "classnames";
 import Card from "../../Card/Card";
 import { useDispatch } from "react-redux";
-import useHandleFonts from "../../../hooks/useHandleFonts";
+import useHandleFonts from "../../../hooks/useHandleSelectedFonts";
 
 export default function VariableText({
   fontName,

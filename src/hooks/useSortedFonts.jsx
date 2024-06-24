@@ -1,15 +1,29 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "../app/api/axios";
+import useCsrfToken from "./useCsrfToken";
 
-export const useFonts = (userId, ratingChanged) => {
+export const useSortedFonts = (userId, ratingChanged) => {
   const fonts = useSelector((state) => state.fonts.value);
   const [fontRatings, setFontRatings] = useState([]);
   const [sortedFonts, setSortedFonts] = useState("");
 
+  const csrfToken = useCsrfToken();
+
   const getRate = async (userId) => {
     try {
-      const res = await axios.post("/fonts/rate/getAll", { userId: userId });
+      const res = await axios.post(
+        "/fonts/rate/getAll",
+        {
+          userId: userId,
+        },
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true,
+        }
+      );
       const fontRates = res.data.data;
       setFontRatings(fontRates);
     } catch (err) {

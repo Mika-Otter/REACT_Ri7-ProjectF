@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import s from "./AllFonts.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Card/Card";
-import useHandleFonts from "../../hooks/useHandleFonts";
+import useHandleSelectedFonts from "../../hooks/useHandleSelectedFonts";
 import Sort from "../Sort/Sort";
-import { useFonts } from "../../hooks/useFonts";
+import { useSortedFonts } from "../../hooks/useSortedFonts";
 
 export default function AllFonts() {
   const dispatch = useDispatch();
@@ -13,12 +13,10 @@ export default function AllFonts() {
   const userId = useSelector((state) => state.auth.userId);
   const [ratingChanged, setRatingChanged] = useState(false);
 
-  const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
+  const handleFonts = useHandleSelectedFonts(fonts, choosedFonts, dispatch);
 
-  const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } = useFonts(
-    userId,
-    ratingChanged
-  );
+  const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
+    useSortedFonts(userId, ratingChanged);
 
   useEffect(() => {
     console.log(ratingChanged, "ratingChanged");
