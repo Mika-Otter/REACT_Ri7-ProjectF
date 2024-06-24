@@ -1,5 +1,5 @@
 import {
-  deleteChoosedFont,
+  unselectChoosedFont,
   setChoosedFonts,
 } from "../features/choosedFontSlide";
 import { toggleFontState } from "../features/fontsSlice";
@@ -16,7 +16,7 @@ export default function useHandleSelectedFonts(fonts, choosedFonts, dispatch) {
           dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
         }
       } else {
-        dispatch(deleteChoosedFont(selectedFont)); //if font already exist delete
+        dispatch(unselectChoosedFont(selectedFont)); //if font already exist unselect it
       }
     }
   };

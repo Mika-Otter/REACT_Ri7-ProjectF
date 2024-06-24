@@ -1,10 +1,9 @@
 import React, { useState } from "react";
+import s from "./VariableTextSection.module.scss";
 import { useSelector } from "react-redux";
 import VariableText from "./VariableText/VariableText";
 
-import s from "./Variable.module.scss";
-
-export default function Variable() {
+export default function VariableTextSection() {
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
   const fonts = useSelector((state) => state.fonts.value);
   const [addTitle, setAddTitle] = useState(false);

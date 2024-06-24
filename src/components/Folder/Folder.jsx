@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setFonts, toggleFontState } from "../../features/fontsSlice";
 import {
-  deleteChoosedFont,
   setChoosedFonts,
+  unselectChoosedFont,
 } from "../../features/choosedFontSlide";
 import axios from "../../app/api/axios";
 
@@ -64,7 +64,7 @@ export default function Folder() {
           dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
         }
       } else {
-        dispatch(deleteChoosedFont(selectedFont));
+        dispatch(unselectChoosedFont(selectedFont));
       }
     }
   }

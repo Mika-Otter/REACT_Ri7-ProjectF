@@ -11,7 +11,7 @@ const choosedFontSlice = createSlice({
     setChoosedFonts: (state, action) => {
       state.value = action.payload;
     },
-    deleteChoosedFont: (state, action) => {
+    unselectChoosedFont: (state, action) => {
       const fontToDelete = action.payload;
       state.value = state.value.filter(
         (font) => font.name !== fontToDelete.name
@@ -20,5 +20,6 @@ const choosedFontSlice = createSlice({
   },
 });
 
-export const { setChoosedFonts, deleteChoosedFont } = choosedFontSlice.actions;
+export const { setChoosedFonts, unselectChoosedFont } =
+  choosedFontSlice.actions;
 export default choosedFontSlice.reducer;

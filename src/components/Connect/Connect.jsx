@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserId, setUserName } from "../../features/authentificationSlice";
 import s from "./Connect.module.scss";
-import axios from "axios";
+import axios from "../../app/api/axios";
 import useCsrfToken from "../../hooks/useCsrfToken";
 import { setCsrfToken } from "../../features/tokenCsrfSlice";
 
@@ -20,7 +20,6 @@ export default function Connect({
     email: "",
     password: "",
   });
-
   useCsrfToken();
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
@@ -36,16 +35,12 @@ export default function Connect({
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:8080/authentification/login",
-        inputsConnect,
-        {
-          headers: {
-            "X-CSRF-Token": csrfToken,
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post("/authentification/login", inputsConnect, {
+        headers: {
+          "X-CSRF-Token": csrfToken,
+        },
+        withCredentials: true,
+      });
       setCsrfToken(res.data.csrfToken);
       localStorage.setItem("token", res.data.token);
       handleLogin(res.data);

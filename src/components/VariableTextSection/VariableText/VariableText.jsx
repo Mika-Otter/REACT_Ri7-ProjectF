@@ -3,7 +3,7 @@ import s from "./VariableText.module.scss";
 import cn from "classnames";
 import Card from "../../Card/Card";
 import { useDispatch } from "react-redux";
-import useHandleFonts from "../../../hooks/useHandleSelectedFonts";
+import useHandleSelectedFonts from "../../../hooks/useHandleSelectedFonts";
 
 export default function VariableText({
   fontName,
@@ -19,9 +19,7 @@ export default function VariableText({
   const [lineHeight, setLineHeight] = useState(100);
   const [letterSpacing, setLetterSpacing] = useState(0);
 
-  const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
-
-  console.log(fonts);
+  const handleFonts = useHandleSelectedFonts(fonts, choosedFonts, dispatch);
 
   function changeLineHeight(e) {
     const updatedLineHeight = parseFloat(e.target.value);
