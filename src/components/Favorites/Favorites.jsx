@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "../Card/Card";
 import useHandleFonts from "../../hooks/useHandleSelectedFonts";
 import Sort from "../Sort/Sort";
-import { useFonts } from "../../hooks/useSortedFonts";
+import { useSortedFonts } from "../../hooks/useSortedFonts";
 
 export default function Favorites() {
   const dispatch = useDispatch();
@@ -15,11 +15,8 @@ export default function Favorites() {
   const [ratingChanged, setRatingChanged] = useState(false);
 
   const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
-
-  const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } = useFonts(
-    userId,
-    ratingChanged
-  );
+  const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
+    useSortedFonts(userId, ratingChanged);
 
   useEffect(() => {
     console.log(ratingChanged, "ratingChanged");

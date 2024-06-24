@@ -14,7 +14,6 @@ export default function AllFonts() {
   const [ratingChanged, setRatingChanged] = useState(false);
 
   const handleFonts = useHandleSelectedFonts(fonts, choosedFonts, dispatch);
-
   const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
     useSortedFonts(userId, ratingChanged);
 

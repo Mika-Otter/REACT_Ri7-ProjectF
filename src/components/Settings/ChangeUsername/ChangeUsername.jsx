@@ -3,7 +3,7 @@ import s from "../Settings.module.scss";
 import { useForm } from "react-hook-form";
 import axios from "../../../app/api/axios";
 import { useSelector } from "react-redux";
-import { setUserName } from "../../../features/authSlice";
+import { setUserName } from "../../../features/authentificationSlice";
 import { useDispatch } from "react-redux";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,15}$/;

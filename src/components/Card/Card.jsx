@@ -13,16 +13,19 @@ import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
 import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
 import { listSentences } from "./listSentencesData";
+import useCsrfToken from "../../hooks/useCsrfToken";
 
 export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const fonts = useSelector((state) => state.fonts.value);
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
-  const [fontsLoaded, setFontsLoaded] = useState(false);
   const userId = useSelector((state) => state.auth.userId);
-  const [text, setText] = useState("");
+  const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [text, setText] = useState("");
   const [ratings, setRatings] = useState({});
 
   // _HANDLE RATE FAVORITE ______________________________________________________________________________
@@ -36,7 +39,16 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
 
   const sendRate = async (userId, fontId, rating) => {
     try {
-      const res = await axios.post("/fonts/rate", { userId, fontId, rating });
+      const res = await axios.post(
+        "/fonts/rate",
+        { userId, fontId, rating },
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true,
+        }
+      );
       return res.status === 200;
     } catch (err) {
       console.error("FAILED : Try to rate typeface => ", err);
@@ -45,7 +57,16 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
 
   const getRate = async (userId) => {
     try {
-      const res = await axios.post("/fonts/rate/getAll", { userId });
+      const res = await axios.post(
+        "/fonts/rate/getAll",
+        { userId },
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true,
+        }
+      );
       const fontRates = res.data.data;
       fontRates.forEach((rate) => {
         setRatings((prev) => ({
@@ -66,11 +87,20 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
 
   const sendFavorite = async (userId, fontId, state) => {
     try {
-      const res = await axios.post("/fonts/favorite", {
-        userId,
-        fontId,
-        state,
-      });
+      const res = await axios.post(
+        "/fonts/favorite",
+        {
+          userId,
+          fontId,
+          state,
+        },
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true,
+        }
+      );
       return res.status === 200;
     } catch (err) {
       console.error("FAILED : Try to handle favorite => ", err);
@@ -79,14 +109,24 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
 
   const getFavorites = async (userId) => {
     try {
-      const res = await axios.post("/fonts/favorite/getAll", { userId });
+      const res = await axios.post(
+        "/fonts/favorite/getAll",
+        { userId },
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true,
+        }
+      );
       const data = res.data.data;
       data.forEach((favorite) => {
         dispatch(toggleFavorite({ fontId: favorite.fontId, favorite: true }));
       });
+      console.log("getFavorites yeeeees");
       return res.status === 200;
     } catch (err) {
-      console.error("FAILED : Try to get all favorites =>, ", err);
+      console.error("FAILED : Try to get all favorites here =>, ", err);
     }
   };
 
@@ -94,7 +134,16 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const deleteFonts = async (fontId) => {
     try {
       dispatch(deleteFont(fontId));
-      const res = await axios.post("/fonts/delete", { fontId });
+      const res = await axios.post(
+        "/fonts/delete",
+        { fontId },
+        {
+          headers: {
+            "X-CSRF-Token": csrfToken,
+          },
+          withCredentials: true,
+        }
+      );
       return res.status === 200;
     } catch (err) {
       console.error("FAILED : Try to delete typo => ", err);

@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Logout.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearUserId } from "../../features/authSlice";
+import { clearUserId } from "../../features/authentificationSlice";
 
 export default function Logout({ handleTransition }) {
   const dispatch = useDispatch();

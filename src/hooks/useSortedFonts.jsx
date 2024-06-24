@@ -7,8 +7,7 @@ export const useSortedFonts = (userId, ratingChanged) => {
   const fonts = useSelector((state) => state.fonts.value);
   const [fontRatings, setFontRatings] = useState([]);
   const [sortedFonts, setSortedFonts] = useState("");
-
-  const csrfToken = useCsrfToken();
+  const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
   const getRate = async (userId) => {
     try {
@@ -26,8 +25,9 @@ export const useSortedFonts = (userId, ratingChanged) => {
       );
       const fontRates = res.data.data;
       setFontRatings(fontRates);
+      console.log("yooo");
     } catch (err) {
-      console.error("FAILED : Try to get all rates UseFonts => ", err);
+      console.error("FAILED : Try to get all rates UseSortedFonts => ", err);
     }
   };
 
