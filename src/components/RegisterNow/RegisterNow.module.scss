@@ -25,6 +25,14 @@
   z-index: 1000;
   padding-right: 1vw;
 
+  @include u.breakpoint("large") {
+    width: 40vw;
+    height: 9vw;
+    font-size: 4vw;
+    bottom: 2vw;
+    right: 5vw;
+  }
+
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -32,12 +40,19 @@
     overflow: hidden;
     margin-top: 0.1vw;
 
+    @include u.breakpoint("large") {
+      height: 5.3vw;
+    }
+
     &__span {
       height: 2vw;
       //   border: 2px solid red;
       //   color: black;
       margin-right: 2vw;
       transition: 0.3s ease-in-out;
+      @include u.breakpoint("large") {
+        height: 5.4vw;
+      }
     }
   }
   &__wrapper:hover &__wrapper__span {

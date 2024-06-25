@@ -6,7 +6,6 @@ $anim-duration: 5; // in seconds
 $anim-speed: 0.65;
 
 .login {
-  position: relative;
   font-family: "InstrumentSans-Regular";
   font-size: $fontsize-m;
   background-color: $primary-color;
@@ -17,6 +16,12 @@ $anim-speed: 0.65;
   padding: 0.4vw 1.3vw;
   cursor: pointer;
   overflow: hidden; //overflow the hover animation
+
+  @include u.breakpoint("large") {
+    font-size: 3.5vw;
+    padding: 1vw 3.5vw;
+  }
+
   &::before {
     pointer-events: none !important;
     content: "";
@@ -47,9 +52,14 @@ $anim-speed: 0.65;
   &__btn {
     font-family: "InstrumentSans-Regular";
     font-style: normal;
+    font-size: clamp(f.rem(13), 1.3vw, f.rem(18));
     border: none;
     padding: 0;
     margin: 0;
     color: $white-color;
+    @include u.breakpoint("large") {
+      width: 100%;
+      font-size: 4vw;
+    }
   }
 }

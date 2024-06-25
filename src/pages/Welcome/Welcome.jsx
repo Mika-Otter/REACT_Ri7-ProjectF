@@ -8,8 +8,6 @@ import BigLetter from "../../components/BigLetter/BigLetter";
 import RegisterNow from "../../components/RegisterNow/RegisterNow";
 import NewRegister from "../../components/NewRegister/NewRegister";
 
-// , { useEffect, useState, useRef }
-
 export default function Welcome({ handleTransition }) {
   const [loginBtn, setLoginBtn] = useState(false);
   const [register, setRegister] = useState(false);

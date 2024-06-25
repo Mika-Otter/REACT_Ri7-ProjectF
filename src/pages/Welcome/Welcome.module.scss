@@ -18,6 +18,10 @@
   top: 1vw;
   left: 1vw;
   width: 6vw;
+
+  @include u.breakpoint("large") {
+    width: 20vw;
+  }
 }
 
 .welcome {

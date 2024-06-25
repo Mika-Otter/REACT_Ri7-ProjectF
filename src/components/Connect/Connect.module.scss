@@ -20,6 +20,10 @@
   padding-bottom: 0;
   box-shadow: 0px 2px 10px -3px rgba(0, 0, 0, 0.212);
 
+  @include u.breakpoint("large") {
+    padding: 3vw;
+  }
+
   &__fields {
     width: 100%;
     margin-inline: auto;
@@ -32,6 +36,10 @@
       margin-bottom: f.rem(5);
       font-weight: 400;
       font-size: 0.9vw;
+
+      @include u.breakpoint("large") {
+        font-size: 2.5vw;
+      }
     }
     input {
       background: #fffbfb;

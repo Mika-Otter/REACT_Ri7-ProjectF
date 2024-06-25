@@ -9,6 +9,9 @@
   min-height: 600px;
   position: relative;
   overflow: hidden;
+  @include u.breakpoint("large") {
+    height: 100dvh;
+  }
 }
 
 .circle__big {
@@ -24,6 +27,10 @@
   backdrop-filter: blur(7.650000095367432px);
   -webkit-backdrop-filter: blur(7.650000095367432px);
   z-index: 2;
+  @include u.breakpoint("large") {
+    width: 40vw;
+    height: 40vw;
+  }
 }
 
 .circle__medium {
@@ -39,12 +46,17 @@
   backdrop-filter: blur(7.650000095367432px);
   -webkit-backdrop-filter: blur(7.650000095367432px);
   z-index: 2;
+
+  @include u.breakpoint("large") {
+    width: 60vw;
+    height: 60vw;
+  }
 }
 
 .circle__small {
   position: absolute;
-  bottom: 3vw;
-  right: 25vw;
+  bottom: -20vw;
+  right: -10vw;
   border-radius: 15vw;
   width: 15vw;
   height: 15vw;
@@ -54,6 +66,10 @@
   backdrop-filter: blur(7.650000095367432px);
   -webkit-backdrop-filter: blur(7.650000095367432px);
   z-index: 2;
+  @include u.breakpoint("large") {
+    width: 70vw;
+    height: 70vw;
+  }
 }
 
 .box__left {
@@ -67,6 +83,9 @@
   margin-top: 4vh;
   margin-left: -1vw;
   min-height: 600px;
+  @include u.breakpoint("large") {
+    display: none;
+  }
 }
 
 .box__right {
@@ -75,6 +94,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: end;
   row-gap: 1.5vw;
   position: relative;
 
@@ -83,6 +103,11 @@
   margin-top: 10vh;
   min-height: 600px;
   // border: 2px solid purple;
+  @include u.breakpoint("large") {
+    margin-top: 0vh;
+    width: 100%;
+    right: -8vw;
+  }
 }
 .font {
   // position: absolute;
@@ -96,15 +121,20 @@
   min-height: 150px;
   line-height: 0.4;
 
+  @include u.breakpoint("large") {
+    font-size: clamp(f.rem(120), 80vw, f.rem(340));
+    // border: 2px solid red;
+    height: clamp(f.rem(100), 60vw, f.rem(200));
+  }
+
   &__right {
     text-align: right;
     &__first {
       display: flex;
       justify-content: end;
       gap: 2vw;
-
-      span {
-        // border: 2px solid blue;
+      @include u.breakpoint("large") {
+        margin-top: 13vh;
       }
       &__text {
         z-index: 2000;
@@ -123,6 +153,10 @@
           line-height: 79.19%;
           height: 2.5vw;
           // border: 2px solid red;
+          @include u.breakpoint("large") {
+            font-size: clamp(f.rem(20), 5.6vw, f.rem(90));
+            height: clamp(f.rem(20), 5.6vw, f.rem(90));
+          }
         }
         p {
           margin: 0;
@@ -130,6 +164,10 @@
           font-family: "InstrumentSans-Regular";
           line-height: 1.1;
           font-size: 1.1vw;
+
+          @include u.breakpoint("large") {
+            font-size: clamp(f.rem(13), 2.2vw, f.rem(18));
+          }
         }
       }
     }
@@ -140,9 +178,6 @@
       // border: 2px solid red;
       gap: 0.5vw;
 
-      span {
-        // border: 2px solid blue;
-      }
       &__text {
         z-index: 2000;
         color: $font-black-color;
