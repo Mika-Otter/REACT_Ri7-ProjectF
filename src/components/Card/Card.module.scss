@@ -40,6 +40,10 @@
   position: relative;
   overflow: hidden;
 
+  @include u.breakpoint("large") {
+    width: 80%;
+  }
+
   &__settings {
     position: absolute;
     top: 0.7vw;
@@ -65,9 +69,13 @@
       left: 1.5vw;
       font-size: 7vw;
       line-height: 1;
-      // background-color: $white-color;
       width: 90%;
       height: 100%;
+
+      @include u.breakpoint("large") {
+        font-size: 37vw;
+        left: 5vw;
+      }
     }
 
     &__text {
@@ -85,6 +93,10 @@
       margin: 0;
       font-size: 1.7vw;
       line-height: 1;
+      @include u.breakpoint("large") {
+        font-size: 7.5vw;
+        left: 5vw;
+      }
     }
   }
 
@@ -96,9 +108,12 @@
     flex-direction: column;
     gap: 0.5vw;
     width: 100%;
+    @include u.breakpoint("large") {
+      bottom: 1vw;
+      left: 2vw;
+    }
     &__name {
       width: 100%;
-      // font-size: 1.2vw;
       overflow: hidden;
       text-overflow: ellipsis " ...";
 
@@ -106,6 +121,9 @@
         font-size: 1.1vw;
         width: 90%;
         text-wrap: nowrap;
+        @include u.breakpoint("large") {
+          font-size: 4.5vw;
+        }
       }
     }
     &__links {
@@ -114,6 +132,11 @@
       flex-direction: column;
       gap: 0.2vw;
       // border: 2px solid red;
+      @include u.breakpoint("large") {
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+        gap: 2vw;
+      }
 
       button {
         border: none;
@@ -124,7 +147,10 @@
         margin: 0;
         padding: 0;
         text-align: left;
-        // transition: all 0.15s ease-in-out;
+
+        @include u.breakpoint("large") {
+          font-size: 4vw;
+        }
       }
     }
   }
@@ -132,9 +158,15 @@
     position: absolute;
     bottom: 0.7vw;
     right: 0.7vw;
-    // border: 2px solid red;
     width: 1.5vw;
     height: 1.5vw;
+
+    @include u.breakpoint("large") {
+      bottom: 1vw;
+      right: 2vw;
+      width: 9vw;
+      height: 9vw;
+    }
 
     &__ctn {
       width: 100%;

@@ -13,7 +13,6 @@ import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
 import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
 import { listSentences } from "./listSentencesData";
-import useCsrfToken from "../../hooks/useCsrfToken";
 
 export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const dispatch = useDispatch();

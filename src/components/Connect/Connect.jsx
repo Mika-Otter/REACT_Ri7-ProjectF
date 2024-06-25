@@ -50,7 +50,10 @@ export default function Connect({
       }, 500);
     } catch (err) {
       if (err.response) {
-        setError(err.response.data.message || "An error occurred.");
+        setError(
+          err.response.data.message ||
+            "Shortest password is 6 characters or error occurred while processing your request."
+        );
       } else if (err.request) {
         setError("Whoops... The server is not responding. Try again later.");
       } else {

@@ -7,6 +7,10 @@
   width: 80%;
   box-sizing: border-box;
   color: $font-darkgrey-color;
+  @include u.breakpoint("large") {
+    margin-left: 0%;
+    width: 100%;
+  }
 }
 
 .content {
@@ -23,6 +27,12 @@
     padding: 0;
     // border: 2px solid red;
     margin-bottom: 10vh;
+
+    @include u.breakpoint("large") {
+      gap: 2vw;
+      row-gap: 3vw;
+      justify-content: center;
+    }
   }
 }
 
@@ -64,5 +74,3 @@
     font-style: normal;
   }
 }
-
-

@@ -54,6 +54,10 @@
       border: 1px solid #c8c5c5;
       font-weight: 500;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      @include u.breakpoint("large") {
+        padding-left: 2vw;
+        font-size: 3vw;
+      }
     }
     input:focus {
       transition: 0.2s ease-in-out;
@@ -133,6 +137,10 @@
     margin: 0;
     padding: 0;
   }
+
+  @include u.breakpoint("large") {
+    font-size: 3vw;
+  }
 }
 
 .error {
@@ -144,4 +152,7 @@
   // width: 70%;
   text-wrap: wrap;
   // margin-top: 0.5vw;
+  @include u.breakpoint("large") {
+    font-size: 2.5vw;
+  }
 }
