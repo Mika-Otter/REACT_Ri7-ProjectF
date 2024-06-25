@@ -3,7 +3,7 @@ import s from "./Favorites.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import Card from "../Card/Card";
-import useHandleFonts from "../../hooks/useHandleSelectedFonts";
+import { useHandleSelectedFonts } from "../../hooks/useHandleSelectedFonts";
 import Sort from "../Sort/Sort";
 import { useSortedFonts } from "../../hooks/useSortedFonts";
 
@@ -14,7 +14,7 @@ export default function Favorites() {
   const userId = useSelector((state) => state.auth.userId);
   const [ratingChanged, setRatingChanged] = useState(false);
 
-  const handleFonts = useHandleFonts(fonts, choosedFonts, dispatch);
+  const handleFonts = useHandleSelectedFonts(fonts, choosedFonts, dispatch);
   const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
     useSortedFonts(userId, ratingChanged);
 

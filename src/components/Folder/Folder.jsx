@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import s from "./Folder.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,7 +10,7 @@ import {
 import axios from "../../app/api/axios";
 
 import Accordion from "./Accordion/Accordion";
-import useCsrfToken from "../../hooks/useCsrfToken";
+import { useCsrfToken } from "../../hooks/useCsrfToken";
 
 export default function Folder() {
   const dispatch = useDispatch();

@@ -43,9 +43,5 @@ export const useFavoritesFonts = (userId) => {
     }
   };
 
-  useEffect(() => {
-    getFavorites();
-  }, [userId]);
-
-  return { sendFavorite };
+  return { sendFavorite, getFavorites };
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import s from "./AllFonts.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Card/Card";
-import useHandleSelectedFonts from "../../hooks/useHandleSelectedFonts";
+import { useHandleSelectedFonts } from "../../hooks/useHandleSelectedFonts";
 import Sort from "../Sort/Sort";
 import { useSortedFonts } from "../../hooks/useSortedFonts";
 

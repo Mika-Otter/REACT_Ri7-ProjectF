@@ -44,9 +44,5 @@ export const useRatingFonts = (userId) => {
     }
   };
 
-  useEffect(() => {
-    getRate();
-  }, [userId]);
-
-  return { ratings, sendRate };
+  return { ratings, sendRate, getRate };
 };

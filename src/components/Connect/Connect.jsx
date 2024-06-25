@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserId, setUserName } from "../../features/authentificationSlice";
 import s from "./Connect.module.scss";
 import axios from "../../app/api/axios";
-import useCsrfToken from "../../hooks/useCsrfToken";
+import { useCsrfToken } from "../../hooks/useCsrfToken";
 import { setCsrfToken } from "../../features/tokenCsrfSlice";
 
 export default function Connect({
