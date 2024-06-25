@@ -49,6 +49,10 @@
   height: 5dvw;
   z-index: 900;
   box-sizing: border-box;
+  @include u.breakpoint("large") {
+    min-height: 70px;
+    height: 20dvw;
+  }
 }
 .title {
   font-family: "InstrumentSans-Regular";
@@ -56,7 +60,12 @@
   gap: 2vw;
   height: 3.5vw;
   align-items: last baseline;
-  // border: 2px solid red;
+  @include u.breakpoint("large") {
+    height: 10vw;
+    margin-left: 5%;
+    flex-direction: column;
+    margin-top: 2vh;
+  }
 
   h3 {
     font-family: "InstrumentSans-Regular";
@@ -66,6 +75,10 @@
     font-weight: 300;
     margin: 0;
     padding: 0;
+    @include u.breakpoint("large") {
+      font-size: 8vw;
+      line-height: 100%;
+    }
   }
 
   button {

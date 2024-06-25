@@ -1,3 +1,4 @@
+@use "/public/styles/utils/breakpoints" as u;
 @import "../../../public/styles/global";
 
 body {
@@ -24,6 +25,7 @@ body {
     // border-bottom: 1px solid rgb(156, 156, 156);
     z-index: 900;
     box-sizing: border-box;
+
     &__ctn {
       font-family: "InstrumentSans-Regular";
       display: flex;
@@ -40,6 +42,10 @@ body {
         font-weight: 300;
         margin: 0;
         padding: 0;
+        @include u.breakpoint("large") {
+          font-size: 12vw;
+          height: 13.5vw;
+        }
       }
     }
   }

@@ -50,6 +50,12 @@
     right: 0.7vw;
     z-index: 3;
     opacity: 0;
+
+    @include u.breakpoint("large") {
+      opacity: 1;
+      top: 2vw;
+      right: 2vw;
+    }
   }
   &__box {
     position: relative;
