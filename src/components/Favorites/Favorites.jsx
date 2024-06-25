@@ -18,10 +18,6 @@ export default function Favorites() {
   const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
     useSortedFonts(userId, ratingChanged);
 
-  useEffect(() => {
-    console.log(ratingChanged, "ratingChanged");
-  }, [ratingChanged]);
-
   const onRatingChange = () => {
     setRatingChanged(true);
     setTimeout(() => setRatingChanged(false), 300);

@@ -25,7 +25,6 @@ export const useSortedFonts = (userId, ratingChanged) => {
       );
       const fontRates = res.data.data;
       setFontRatings(fontRates);
-      console.log("yooo");
     } catch (err) {
       console.error("FAILED : Try to get all rates UseSortedFonts => ", err);
     }

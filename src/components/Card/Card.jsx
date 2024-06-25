@@ -122,7 +122,6 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
       data.forEach((favorite) => {
         dispatch(toggleFavorite({ fontId: favorite.fontId, favorite: true }));
       });
-      console.log("getFavorites yeeeees");
       return res.status === 200;
     } catch (err) {
       console.error("FAILED : Try to get all favorites here =>, ", err);

@@ -15,8 +15,11 @@
   overflow: hidden;
 
   &__letter__letters {
-    font-size: 27vw;
-    margin-left: 2vw;
+    font-size: 6vw;
+
+    @include u.breakpoint("large") {
+      font-size: 27vw;
+    }
   }
 }
 

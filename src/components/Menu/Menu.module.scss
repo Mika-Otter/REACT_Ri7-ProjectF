@@ -141,13 +141,15 @@
       top: 3vw;
       left: 5vw;
       width: 20%;
-      // border: 2px solid red;
     }
   }
   &__logo {
     margin-left: -0.3vw;
-    width: 100%;
+    width: 40%;
     height: fit-content;
-    // border: 2px solid red;
+
+    @include u.breakpoint("large") {
+      width: 100%;
+    }
   }
 }
