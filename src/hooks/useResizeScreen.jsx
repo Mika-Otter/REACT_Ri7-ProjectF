@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function useResizeScreen(setWindowWidth, setIsMobile) {
+export const useResizeScreen = (setWindowWidth, setIsMobile) => {
   useEffect(() => {
     const handleResize = () => {
       const newWidth = window.innerWidth;
@@ -19,4 +19,4 @@ export default function useResizeScreen(setWindowWidth, setIsMobile) {
       window.removeEventListener("resize", handleResize);
     };
   }, [setWindowWidth, setIsMobile]);
-}
+};

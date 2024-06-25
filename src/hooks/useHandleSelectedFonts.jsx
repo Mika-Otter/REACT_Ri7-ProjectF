@@ -4,7 +4,7 @@ import {
 } from "../features/choosedFontSlide";
 import { toggleFontState } from "../features/fontsSlice";
 
-export default function useHandleSelectedFonts(fonts, choosedFonts, dispatch) {
+export const useHandleSelectedFonts = (fonts, choosedFonts, dispatch) => {
   return function (name) {
     dispatch(toggleFontState({ fontName: name })); //reverse state
 
@@ -20,4 +20,4 @@ export default function useHandleSelectedFonts(fonts, choosedFonts, dispatch) {
       }
     }
   };
-}
+};

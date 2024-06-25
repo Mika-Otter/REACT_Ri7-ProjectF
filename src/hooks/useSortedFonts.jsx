@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "../app/api/axios";
-import useCsrfToken from "./useCsrfToken";
 
 export const useSortedFonts = (userId, ratingChanged) => {
   const fonts = useSelector((state) => state.fonts.value);

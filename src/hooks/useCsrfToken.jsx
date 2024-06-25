@@ -3,7 +3,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setCsrfToken } from "../features/tokenCsrfSlice";
 
-export default function useCsrfToken() {
+export const useCsrfToken = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,4 +19,4 @@ export default function useCsrfToken() {
     }
     fetchCsrfToken();
   }, [dispatch]);
-}
+};
