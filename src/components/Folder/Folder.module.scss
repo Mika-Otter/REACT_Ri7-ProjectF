@@ -1,5 +1,4 @@
 @use "/public/styles/utils/breakpoints" as u;
-@use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
 .folder {
@@ -9,16 +8,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @include u.breakpoint("large") {
+    margin-top: 15vh;
+  }
 }
 
 .inputFile {
   position: relative;
-  bottom: 0;
   width: 100%;
   padding: 0.7vw 1.5vw;
   border-top: 1px solid #bbb5b5;
   background-color: #fff7f7;
-  // background-color: #ebe0e0;
+  z-index: 200;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
@@ -29,6 +31,9 @@
     z-index: 3;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    @include u.breakpoint("large") {
+      font-size: 4vw;
+    }
   }
 
   &__input {

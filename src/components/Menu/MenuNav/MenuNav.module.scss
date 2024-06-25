@@ -1,0 +1,68 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
+@import "../../../../public/styles/global";
+
+.menuNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 70px;
+  height: 5dvw;
+  box-sizing: border-box;
+  // border-bottom: 1px solid rgb(156, 156, 156);
+
+  @include u.breakpoint("large") {
+    position: fixed;
+    width: 50vw;
+    bottom: 3vh;
+    left: 25vw;
+  }
+  &__selector {
+    display: flex;
+    justify-content: space-around;
+    gap: 0.2vw;
+    border-radius: 100px;
+    box-shadow: 0px 2px 10px -3px rgba(0, 0, 0, 0.212);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    background-color: #fff8f8af;
+    padding: 4px 4px;
+    font-size: 0.9vw;
+    &__button {
+      border: none;
+      background: none;
+      font-size: $fontsize-m;
+      font-style: normal;
+      font-family: "InstrumentSans-Regular";
+      font-weight: 100;
+      display: flex;
+      justify-content: center;
+      transition: 0.3s ease-in-out;
+      color: $font-darkgrey-color;
+      @include u.breakpoint("large") {
+        font-size: 4vw;
+      }
+      &:hover {
+        color: $font-fade-blue;
+      }
+    }
+    &__menu,
+    &__folder {
+      border: none;
+      font-style: normal;
+      font-family: "InstrumentSans-Regular";
+      font-size: $fontsize-m;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+      border-radius: 100px;
+      background-color: $primary-color;
+      color: $white-color !important;
+      @include u.breakpoint("large") {
+        font-size: 4vw;
+      }
+    }
+  }
+}

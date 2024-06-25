@@ -25,13 +25,5 @@ export default function ScreenListener() {
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    if (windowWidth < 900) {
-      dispatch(setIsMobile(true));
-    } else {
-      dispatch(setIsMobile(false));
-    }
-  }, [windowWidth, dispatch]);
-
   return null;
 }

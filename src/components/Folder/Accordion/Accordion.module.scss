@@ -7,9 +7,11 @@
   overflow: hidden;
   display: inline-block;
   flex-direction: column;
-  // border: 2px solid red;
   overflow-y: auto;
   margin-bottom: -3px;
+  @include u.breakpoint("large") {
+    height: 57vh;
+  }
 }
 
 .accordion__item {
@@ -31,12 +33,22 @@
     font-family: "InstrumentSans-Medium";
     color: $font-darkgrey-color;
     border-bottom: 1px solid #bbb5b5;
+    @include u.breakpoint("large") {
+      height: 9vw;
+      margin-top: 2vw;
+    }
     &__title {
       font-size: 1vw;
+      @include u.breakpoint("large") {
+        font-size: 4vw;
+      }
     }
     &__icon {
       font-size: 1.5vw;
       line-height: 90%;
+      @include u.breakpoint("large") {
+        font-size: 7vw;
+      }
     }
   }
 
@@ -52,7 +64,6 @@
   width: 100%;
   font-family: "InstrumentSans-Medium";
   font-size: 0.8vw;
-  // border: 2px solid rgb(114, 75, 75);
   padding: 0.7vw 1.5vw;
   margin: 0;
 }
@@ -66,6 +77,10 @@
   align-items: center;
   cursor: pointer;
 
+  @include u.breakpoint("large") {
+    height: 8vw;
+  }
+
   input {
     cursor: pointer;
     appearance: none;
@@ -74,6 +89,10 @@
     height: 13px;
     border: 1px solid #565657;
     z-index: 10;
+    @include u.breakpoint("large") {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   input:checked {
@@ -89,5 +108,8 @@
     text-overflow: ellipsis " ...";
     color: $font-darkgrey-color;
     font-size: $fontsize-xxs;
+    @include u.breakpoint("large") {
+      font-size: 4vw;
+    }
   }
 }

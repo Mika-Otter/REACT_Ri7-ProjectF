@@ -1,3 +1,5 @@
+@use "/public/styles/utils/breakpoints" as u;
+@use "/public/styles/utils/functions" as f;
 @import "../../../public/styles/global";
 
 .logout > button {
@@ -8,4 +10,9 @@
   margin: 0;
   padding: 0;
   font-size: $fontsize-m;
+
+  @include u.breakpoint("large") {
+    font-size: 3.5vw;
+    font-style: normal;
+  }
 }
