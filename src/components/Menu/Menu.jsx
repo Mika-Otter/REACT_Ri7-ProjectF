@@ -50,10 +50,38 @@ export default function Menu({ handleTransition }) {
               <Folder />
             ) : (
               <div className={s.menu__menu}>
-                <Link to="/home">All your fonts</Link>
-                <Link to="/favorites">Your favorites types</Link>
-                <Link to="/variable">Variable text</Link>
-                <Link to="/fonttest">Test fonts</Link>
+                <Link
+                  to="/home"
+                  onClick={() => {
+                    isMobile && handleIsOpenMenu();
+                  }}
+                >
+                  All your fonts
+                </Link>
+                <Link
+                  to="/favorites"
+                  onClick={() => {
+                    isMobile && handleIsOpenMenu();
+                  }}
+                >
+                  Your favorites types
+                </Link>
+                <Link
+                  to="/variable"
+                  onClick={() => {
+                    isMobile && handleIsOpenMenu();
+                  }}
+                >
+                  Variable text
+                </Link>
+                <Link
+                  to="/fonttest"
+                  onClick={() => {
+                    isMobile && handleIsOpenMenu();
+                  }}
+                >
+                  Test fonts
+                </Link>
               </div>
             )}
           </div>

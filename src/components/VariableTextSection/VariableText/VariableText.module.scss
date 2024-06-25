@@ -41,12 +41,22 @@
     display: flex;
     width: 100%;
 
+    @include u.breakpoint("large") {
+      align-items: center;
+      flex-direction: column;
+      row-gap: 3vw;
+    }
+
     &__ctn {
-      //   border: 2px solid blue;
       width: 17vw;
       height: 15vw;
       min-width: 200px;
       min-height: 200px;
+
+      @include u.breakpoint("large") {
+        width: 60%;
+        height: 100%;
+      }
     }
   }
 }
@@ -63,13 +73,17 @@
   // border: 2px solid green;
   width: 100%;
   gap: 10px;
+  @include u.breakpoint("large") {
+    justify-content: center;
+    width: 90%;
+    margin-left: 5%;
+  }
 }
 
 .range {
-  // border: 2px solid red;
   z-index: 100;
   display: flex;
-  width: 50%;
+  width: 30%;
   flex-direction: column;
   gap: 3px;
   &__label {

@@ -214,7 +214,13 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
         </div>
         <div className={s.card__box}>
           <div className={s.card__letter} style={{ fontFamily: font.name }}>
-            <span className={s.card__letter__letters}>Aa</span>
+            <span
+              className={
+                small ? s.card__small__letter__letters : s.card__letter__letters
+              }
+            >
+              Aa
+            </span>
             <div className={s.card__letter__text}>{text}</div>
           </div>
           <div className={s.card__details}>

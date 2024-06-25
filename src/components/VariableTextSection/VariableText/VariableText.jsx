@@ -96,7 +96,6 @@ export default function VariableText({
                   />
                   <span className={s.range__span}>{lineHeight} %</span>
                 </div>
-                <div className={s.range}></div>
               </div>
             </div>
 

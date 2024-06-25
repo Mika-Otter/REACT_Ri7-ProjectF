@@ -10,6 +10,10 @@ body {
   width: 80%;
   margin-left: 20%;
   color: $font-darkgrey-color;
+  @include u.breakpoint("large") {
+    width: 100%;
+    margin-left: 0%;
+  }
 
   &__title {
     position: sticky;
@@ -25,14 +29,22 @@ body {
     // border-bottom: 1px solid rgb(156, 156, 156);
     z-index: 900;
     box-sizing: border-box;
-
+    @include u.breakpoint("large") {
+      min-height: 70px;
+      height: 20dvw;
+    }
     &__ctn {
       font-family: "InstrumentSans-Regular";
       display: flex;
       gap: 2vw;
       height: 3.5vw;
-
       align-items: center;
+      @include u.breakpoint("large") {
+        height: 10vw;
+        margin-left: 5%;
+        margin-top: 2vh;
+      }
+
       h3 {
         font-family: "InstrumentSans-Regular";
         font-size: 2vw;
@@ -43,8 +55,8 @@ body {
         margin: 0;
         padding: 0;
         @include u.breakpoint("large") {
-          font-size: 12vw;
-          height: 13.5vw;
+          font-size: 8vw;
+          line-height: 100%;
         }
       }
     }
@@ -57,6 +69,11 @@ body {
   margin: 0;
   padding: 0;
   margin-top: 2vw;
+
+  @include u.breakpoint("large") {
+    font-size: 4vw;
+    margin-left: 5%;
+  }
 }
 
 .tips {
@@ -65,6 +82,11 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.9vw;
   color: $font-fade-blue;
+
+  @include u.breakpoint("large") {
+    font-size: 3vw;
+    margin-left: 5%;
+  }
 }
 
 .variable__section {
@@ -81,6 +103,9 @@ body {
   border-radius: 100px;
   padding: 5px 10px;
   padding-top: 10px;
+  @include u.breakpoint("large") {
+    margin-top: 5vw;
+  }
 }
 
 .withoutTitle {
