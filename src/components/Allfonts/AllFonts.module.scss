@@ -7,6 +7,7 @@
   width: 80%;
   box-sizing: border-box;
   color: $font-darkgrey-color;
+
   @include u.breakpoint("large") {
     margin-left: 0%;
     width: 100%;
@@ -25,7 +26,6 @@
     row-gap: 1vw;
     margin: 0;
     padding: 0;
-    // border: 2px solid red;
     margin-bottom: 10vh;
 
     @include u.breakpoint("large") {
@@ -49,6 +49,7 @@
   height: 5dvw;
   z-index: 900;
   box-sizing: border-box;
+
   @include u.breakpoint("large") {
     min-height: 70px;
     height: 20dvw;
@@ -60,6 +61,7 @@
   gap: 2vw;
   height: 3.5vw;
   align-items: last baseline;
+
   @include u.breakpoint("large") {
     height: 10vw;
     margin-left: 5%;
@@ -75,6 +77,7 @@
     font-weight: 300;
     margin: 0;
     padding: 0;
+
     @include u.breakpoint("large") {
       font-size: 8vw;
       line-height: 100%;

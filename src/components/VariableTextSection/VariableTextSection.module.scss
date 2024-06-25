@@ -10,6 +10,7 @@ body {
   width: 80%;
   margin-left: 20%;
   color: $font-darkgrey-color;
+
   @include u.breakpoint("large") {
     width: 100%;
     margin-left: 0%;
@@ -26,9 +27,9 @@ body {
     width: 100%;
     min-height: 70px;
     height: 5dvw;
-    // border-bottom: 1px solid rgb(156, 156, 156);
     z-index: 900;
     box-sizing: border-box;
+
     @include u.breakpoint("large") {
       min-height: 70px;
       height: 20dvw;
@@ -39,6 +40,7 @@ body {
       gap: 2vw;
       height: 3.5vw;
       align-items: center;
+
       @include u.breakpoint("large") {
         height: 10vw;
         margin-left: 5%;
@@ -49,11 +51,11 @@ body {
         font-family: "InstrumentSans-Regular";
         font-size: 2vw;
         height: 3.5vw;
-        // border: 2px solid red;
         line-height: 250%;
         font-weight: 300;
         margin: 0;
         padding: 0;
+
         @include u.breakpoint("large") {
           font-size: 8vw;
           line-height: 100%;
@@ -93,7 +95,6 @@ body {
   height: 100dvh;
   width: 100%;
   overflow-y: scroll;
-  // border: 2px solid brown;
 }
 
 .withTitle,
@@ -103,6 +104,7 @@ body {
   border-radius: 100px;
   padding: 5px 10px;
   padding-top: 10px;
+
   @include u.breakpoint("large") {
     margin-top: 5vw;
   }

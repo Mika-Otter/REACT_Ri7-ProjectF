@@ -3,8 +3,6 @@
 @import "../../../public/styles/global";
 
 .settingsFont {
-  //   backdrop-filter: blur(13px);
-  //   -webkit-backdrop-filter: blur(13px);
   background-color: #fff8f8;
   padding: 0.3vw 0.2vw;
   border-radius: 50px;
@@ -85,16 +83,13 @@
 
   &__openandclose {
     margin-top: -0.2vw;
-    // border: 2px solid red;
     width: 2vw;
-    // height: 2vw;
     display: flex;
     justify-content: center;
     span {
       font-family: "OktaNeue-Regular";
       height: 1.3vw;
       line-height: 50%;
-      //   border: 2px solid blue;
       font-size: 1.4vw;
       color: $font-darkgrey-color;
 
@@ -111,6 +106,7 @@
     top: 0.3vw;
     width: 1.2vw;
     transition: all 0.3s ease-in-out;
+
     @include u.breakpoint("large") {
       top: 1vw;
       width: 6vw;

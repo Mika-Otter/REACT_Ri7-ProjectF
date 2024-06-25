@@ -54,6 +54,7 @@
       border: 1px solid #c8c5c5;
       font-weight: 500;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
       @include u.breakpoint("large") {
         padding-left: 2vw;
         font-size: 3vw;
@@ -117,15 +118,13 @@
       }
     }
     &:active {
-      outline: 2px solid $font-fade-blue; // Replace $some-color with the color you want
+      outline: 2px solid $font-fade-blue;
     }
   }
 }
 
 .register {
-  // text-align: center;
   font-weight: 500;
-
   font-size: $fontsize-xxs;
   margin: 0;
   padding: 0;
@@ -149,9 +148,8 @@
   font-weight: 500;
   margin: 0;
   padding: 0.3vw 0;
-  // width: 70%;
   text-wrap: wrap;
-  // margin-top: 0.5vw;
+
   @include u.breakpoint("large") {
     font-size: 2.5vw;
   }
