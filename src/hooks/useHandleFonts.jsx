@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../app/api/axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { deleteFont, toggleFontState } from "../features/fontsSlice";
 import { setChoosedFonts } from "../features/choosedFontSlide";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,6 @@ export const useHandleFonts = () => {
   const fonts = useSelector((state) => state.fonts.value);
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
-  const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const deleteFonts = async (fontId) => {
     try {
@@ -26,7 +25,7 @@ export const useHandleFonts = () => {
       );
       return res.status === 200;
     } catch (err) {
-      console.error("FAILED : Try to delete typo => ", err);
+      console.error("FAILED : Try to deleteFonts useHandleFonts => ", err);
     }
   };
 
@@ -39,11 +38,5 @@ export const useHandleFonts = () => {
     navigate(route);
   };
 
-  useEffect(() => {
-    if (fonts.length > 0) {
-      setFontsLoaded(true);
-    }
-  }, [fonts]);
-
-  return { fonts, fontsLoaded, deleteFonts, selectFontAndNavigate };
+  return { fonts, deleteFonts, selectFontAndNavigate };
 };

@@ -19,13 +19,12 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = useSelector((state) => state.auth.userId);
+  const csrfToken = useSelector((state) => state.csrf.csrfToken);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const { fonts, deleteFonts, selectFontAndNavigate } = useHandleFonts();
 
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
-
-  const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
   const [text, setText] = useState("");
   const [ratings, setRatings] = useState({});
