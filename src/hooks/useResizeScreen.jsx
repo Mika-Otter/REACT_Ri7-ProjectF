@@ -7,7 +7,7 @@ export const useResizeScreen = (setWindowWidth, setIsMobile) => {
       if (newWidth > 900) {
         setWindowWidth(newWidth);
         setIsMobile(true);
-        window.location.reload();
+        // window.location.reload();
       } else {
         setIsMobile(false);
       }

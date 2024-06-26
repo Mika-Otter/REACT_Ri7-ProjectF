@@ -23,7 +23,6 @@ export default function App() {
 
   return (
     <>
-      <ScreenListener />
       <Loader />
       <Loaderfont />
       <TransitionLayout isTransition={isTransition} />

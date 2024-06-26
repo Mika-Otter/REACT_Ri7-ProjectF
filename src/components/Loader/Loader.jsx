@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import s from "./Loader.module.scss";
 import cn from "classnames";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useSelector } from "react-redux";
 
 export default function Loader() {
   const tLetterRef = useRef(null);
@@ -16,11 +15,7 @@ export default function Loader() {
   const containerRef = useRef(null);
   const loaderRef = useRef(null);
 
-  const isMobile = useSelector((state) => state.isMobile.isMobile);
-
-  useEffect(() => {
-    console.log(isMobile, "isMobile");
-  }, [isMobile]);
+  // const isMobile = useSelector((state) => state.isMobile.isMobile);
 
   useGSAP(() => {
     const tl = gsap.timeline();
