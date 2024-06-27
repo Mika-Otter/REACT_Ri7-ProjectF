@@ -89,6 +89,10 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: $fontsize-xxs;
   }
+
+  @include u.breakpoint("large") {
+    margin-top: 3vh;
+  }
 }
 
 .paragraph__section {
