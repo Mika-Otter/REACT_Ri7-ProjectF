@@ -3,11 +3,7 @@ import s from "./Connect.module.scss";
 import { useCsrfToken } from "../../hooks/useCsrfToken";
 import { useLogin } from "../../hooks/useLogin";
 
-export default function Connect({
-  handleRegister,
-  handleLogin,
-  handleTransition,
-}) {
+export default function Connect({ handleRegister, handleTransition }) {
   const [err, setError] = useState(null);
   useCsrfToken();
 

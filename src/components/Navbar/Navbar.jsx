@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import s from "./Navbar.module.scss";
 import Login from "../Login/Login";
 import cn from "classnames";
 import Connect from "../Connect/Connect";
-import { set } from "react-hook-form";
 
 import gsap from "gsap";
 
@@ -39,10 +38,6 @@ export default function Navbar({
     }
   }, [isAnimationLogin]);
 
-  useEffect(() => {
-    console.log(isLogin, "isLogin");
-  }, [isLogin]);
-
   return (
     <>
       <section className={s.bigbox}>
@@ -73,7 +68,6 @@ export default function Navbar({
         <div className={s.connect} ref={connectRef}>
           {isLogin === true ? (
             <Connect
-              handleLogin={handleLogin}
               handleRegister={handleRegister}
               handleTransition={handleTransition}
             />
