@@ -13,6 +13,10 @@ export default function AllFonts() {
   const userId = useSelector((state) => state.auth.userId);
   const [ratingChanged, setRatingChanged] = useState(false);
 
+  useEffect(() => {
+    console.log(fonts);
+  });
+
   const handleFonts = useHandleSelectedFonts(fonts, choosedFonts, dispatch);
   const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
     useSortedFonts(userId, ratingChanged);

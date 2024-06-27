@@ -10,16 +10,14 @@ import {
 import axios from "../../app/api/axios";
 
 import Accordion from "./Accordion/Accordion";
-import { useCsrfToken } from "../../hooks/useCsrfToken";
 
 export default function Folder() {
   const dispatch = useDispatch();
   const fonts = useSelector((state) => state.fonts.value);
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
   const userId = useSelector((state) => state.auth.userId);
-  const [folder, setFolder] = useState(true);
   const folderRef = useRef();
-  const csrfToken = useCsrfToken();
+  const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
   // UPLOAD A NEW TYPEFACE
   const fileUpload = async (e) => {
