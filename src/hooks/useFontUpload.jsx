@@ -21,7 +21,7 @@ const useFontUpload = () => {
       const res = await axios.post("/upload/addFont", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: localStorage.getItem("token"), //send token from localStorage //CHANGE TO SESSION STORAGE ?
+          Authorization: sessionStorage.getItem("token"),
           "X-CSRF-Token": csrfToken,
         },
         withCredentials: true,

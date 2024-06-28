@@ -34,7 +34,7 @@ export const useLogin = ({ setError, handleTransition }) => {
         withCredentials: true,
       });
       setCsrfToken(res.data.csrfToken);
-      localStorage.setItem("token", res.data.token);
+      sessionStorage.setItem("token", res.data.token);
       successLoginUser(res.data);
       handleTransition();
       setTimeout(() => {
