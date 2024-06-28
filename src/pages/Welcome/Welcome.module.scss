@@ -15,12 +15,15 @@
 
 .logo {
   position: fixed;
-  top: 1vw;
+  top: -0.5vw;
   left: 1vw;
   width: 6vw;
+  height: 3vw;
+  // border: 2px solid red;
 
   @include u.breakpoint("large") {
     width: 20vw;
+    top: 0px;
   }
 }
 

@@ -14,6 +14,9 @@
   align-items: end;
   z-index: 10000;
   width: 30%;
+  @include u.breakpoint("large") {
+    top: 20px;
+  }
 }
 
 .navbar {

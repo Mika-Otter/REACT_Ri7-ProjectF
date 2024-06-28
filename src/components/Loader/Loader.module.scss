@@ -1,3 +1,4 @@
+@use "/public/styles/utils/breakpoints" as u;
 @import "../../../public/styles/global.scss";
 
 .loader {
@@ -13,7 +14,6 @@
   background-color: rgb(24, 25, 29);
 
   &__container {
-    // border: 2px solid red;
     display: flex;
     align-items: last baseline;
   }
@@ -29,7 +29,12 @@
   align-items: center;
   margin: 0 0.5vw;
   margin-top: -2vw;
-  transform: translateY(-500%);
+  transform: translateY(-1000%);
+  @include u.breakpoint("large") {
+    width: 13vw;
+    height: 13vw;
+    transform: translateY(-1500%);
+  }
 }
 
 .letter {
@@ -37,16 +42,26 @@
   font-size: 11vw;
   color: $white-color;
   opacity: 0;
+  @include u.breakpoint("large") {
+    font-size: 20vw;
+  }
 }
 
 @keyframes pulse {
   0% {
-    transform: translateY(-500%);
+    transform: translateY(-1000%);
+
+    @include u.breakpoint("large") {
+      transform: translateY(-1500%);
+    }
   }
   50% {
     transform: translateY(0);
   }
   100% {
     transform: translateY(-5%);
+    @include u.breakpoint("large") {
+      transform: translateY(-1500%);
+    }
   }
 }
