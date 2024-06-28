@@ -10,6 +10,7 @@ import {
 import axios from "../../app/api/axios";
 
 import Accordion from "./Accordion/Accordion";
+import useFontUpload from "../../hooks/useFontUpload";
 
 export default function Folder() {
   const dispatch = useDispatch();
@@ -19,38 +20,7 @@ export default function Folder() {
   const folderRef = useRef();
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
-  // UPLOAD A NEW TYPEFACE
-  const fileUpload = async (e) => {
-    const fontList = e.target.files;
-
-    const formData = new FormData();
-
-    for (let i = 0; i < fontList.length; i++) {
-      formData.append("files", fontList[i]);
-      formData.append("fontNames", fontList[i].name);
-    }
-
-    formData.append("userId", userId);
-    try {
-      const res = await axios.post("/upload/addFont", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: localStorage.getItem("token"), //send token from localStorage //CHANGE TO SESSION STORAGE ?
-          "X-CSRF-Token": csrfToken,
-        },
-        withCredentials: true,
-      });
-      if (res.status === 200) {
-        const newFonts = res.data.fonts;
-        newFonts.forEach((font) => {
-          dispatch(setFonts({ name: font.name, url: font.url, id: font.id }));
-        });
-      }
-    } catch (err) {
-      console.error("Failed to upload files :", err);
-    }
-  };
-
+  const { fontUpload } = useFontUpload();
   // HANDLE CHANGING CHECKED FONT
   function handleFonts(name) {
     dispatch(toggleFontState({ fontName: name }));
@@ -91,7 +61,7 @@ export default function Folder() {
               type="file"
               accept=".ttf,.otf,.woff"
               multiple
-              onChange={(e) => fileUpload(e)}
+              onChange={(e) => fontUpload(e)}
               className={s.inputFile__input}
             />
           </div>

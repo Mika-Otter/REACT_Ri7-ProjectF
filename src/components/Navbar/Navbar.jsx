@@ -34,7 +34,8 @@ export default function Navbar({
       });
       setTimeout(() => {
         setIsLogin(false);
-      }, 150); // delay of 300ms when closing the component
+      }, 150);
+      // delay of 300ms when closing the component
     }
   }, [isAnimationLogin]);
 
