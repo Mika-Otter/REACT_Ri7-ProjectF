@@ -28,7 +28,6 @@
     color: $font-darkgrey-color;
     font-family: "InstrumentSans-Medium";
     font-size: 1vw;
-    z-index: 3;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     @include u.breakpoint("large") {
@@ -40,7 +39,6 @@
     position: absolute;
     opacity: 0;
     top: 0;
-    z-index: -1;
   }
 }
 
