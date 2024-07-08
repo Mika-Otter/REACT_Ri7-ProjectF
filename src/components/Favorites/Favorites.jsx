@@ -34,16 +34,30 @@ export default function Favorites() {
         </div>
         <div className={s.favorites__box}>
           <div className={s.favorites__box__ctn}>
-            {sortFonts(sortedFonts).map((font, i) =>
-              font.favorite ? (
-                <Card
-                  font={font}
-                  i={i}
-                  key={font.name + i}
-                  handleFonts={handleFonts}
-                  onRatingChange={onRatingChange}
-                />
-              ) : null
+            {sortedFonts.length === 0 ? (
+              <>
+                <div className={s.paragraph__section}>
+                  <p className={s.nochoosedfont}>
+                    Welcome font lover, start by going to your folder to add
+                    your first fonts...{" "}
+                  </p>
+                  <p className={s.tips}>
+                    TIPS ! You can add several fonts at once.{" "}
+                  </p>
+                </div>
+              </>
+            ) : (
+              sortFonts(sortedFonts).map((font, i) =>
+                font.favorite ? (
+                  <Card
+                    font={font}
+                    i={i}
+                    key={font.name + i}
+                    handleFonts={handleFonts}
+                    onRatingChange={onRatingChange}
+                  />
+                ) : null
+              )
             )}
           </div>
         </div>

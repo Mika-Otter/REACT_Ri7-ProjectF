@@ -59,3 +59,18 @@
     padding: 0;
   }
 }
+
+.nochoosedfont {
+  font-size: $fontsize-s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.tips {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9vw;
+  color: $font-fade-blue;
+}
