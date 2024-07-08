@@ -23,6 +23,8 @@ export default function Favorites() {
     setTimeout(() => setRatingChanged(false), 300);
   };
 
+  const hasFavoriteFonts = fonts.some((font) => font.favorite);
+
   return (
     <>
       <section className={s.favorites}>
@@ -34,19 +36,7 @@ export default function Favorites() {
         </div>
         <div className={s.favorites__box}>
           <div className={s.favorites__box__ctn}>
-            {sortedFonts.length === 0 ? (
-              <>
-                <div className={s.paragraph__section}>
-                  <p className={s.nochoosedfont}>
-                    Welcome font lover, start by going to your folder to add
-                    your first fonts...{" "}
-                  </p>
-                  <p className={s.tips}>
-                    TIPS ! You can add several fonts at once.{" "}
-                  </p>
-                </div>
-              </>
-            ) : (
+            {hasFavoriteFonts ? (
               sortFonts(sortedFonts).map((font, i) =>
                 font.favorite ? (
                   <Card
@@ -58,6 +48,17 @@ export default function Favorites() {
                   />
                 ) : null
               )
+            ) : (
+              <div className={s.paragraph__section}>
+                <p className={s.nochoosedfont}>
+                  Add your favorite fonts by clicking on the heart of the chosen
+                  font.
+                </p>
+                <p className={s.tips}>
+                  TIPS! You can also rate your fonts by clicking on the
+                  &rdquo;...&rdquo; button of the police card.
+                </p>
+              </div>
             )}
           </div>
         </div>

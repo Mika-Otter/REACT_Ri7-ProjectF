@@ -17,10 +17,6 @@ export default function AllFonts() {
   const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
     useSortedFonts(userId, ratingChanged);
 
-  useEffect(() => {
-    console.log(ratingChanged, "ratingChanged");
-  }, [ratingChanged]);
-
   const onRatingChange = () => {
     setRatingChanged(true);
     setTimeout(() => setRatingChanged(false), 300);
@@ -37,7 +33,7 @@ export default function AllFonts() {
         </div>
         <div className={s.content}>
           <div className={s.content__ctn}>
-            {sortedFonts.length === 0 ? (
+            {fonts.length === 0 ? (
               <>
                 <div className={s.paragraph__section}>
                   <p className={s.nochoosedfont}>
