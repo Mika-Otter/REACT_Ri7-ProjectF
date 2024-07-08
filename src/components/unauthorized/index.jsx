@@ -15,9 +15,20 @@ export default function Unauthorized() {
           <div className={s.unauthorized__text__link__arrow}>
             <ArrowRegisterBackSVG />
           </div>
-          Back to{" "}
-          <div className={s.unauthorized__text__link__logo}>
-            <LogoSVG />
+
+          <div className={s.unauthorized__text__link__backto}>
+            <div className={s.unauthorized__text__link__backto__wrapper}>
+              Back to
+              <div className={s.unauthorized__text__link__backto__logo}>
+                <LogoSVG />
+              </div>
+            </div>
+            <div className={s.unauthorized__text__link__backto__wrapper}>
+              Back to
+              <div className={s.unauthorized__text__link__backto__logo}>
+                <LogoSVG />
+              </div>
+            </div>
           </div>
         </a>
         <div className={s.unauthorized__404}>

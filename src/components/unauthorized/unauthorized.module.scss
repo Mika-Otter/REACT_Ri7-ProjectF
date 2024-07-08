@@ -50,8 +50,8 @@
         color: $button-blue;
       }
 
-      &:hover &__arrow {
-        transform: translateX(-15px);
+      &:hover &__backto__wrapper {
+        transform: translateY(-100%);
       }
 
       &__arrow {
@@ -59,9 +59,25 @@
         width: 2.5vw;
         height: 2.3vw;
       }
-      &__logo {
-        margin-top: 0.7vw;
-        width: 6vw;
+
+      &__backto {
+        display: flex;
+        flex-direction: column;
+        height: 2vw;
+        overflow: hidden;
+
+        &__wrapper {
+          transition: 0.3s ease-in-out;
+          display: flex;
+          align-items: center;
+          gap: 0.6vw;
+          //   border: 2px solid red;
+          height: 2vw;
+        }
+        &__logo {
+          margin-top: 0.7vw;
+          width: 6vw;
+        }
       }
     }
   }
