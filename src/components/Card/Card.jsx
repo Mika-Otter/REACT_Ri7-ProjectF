@@ -22,7 +22,7 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const { fonts, deleteFonts, selectFontAndNavigate } = useHandleFonts();
-  const { sendFavorite, getFavorites } = useFavoritesFonts(userId);
+  const { getFavorites, handleFavorite } = useFavoritesFonts(userId);
 
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
@@ -81,10 +81,10 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   };
 
   // _HANDLE FAVORITE ______________________________________________________________________________
-  const handleFavorite = (userId, fontId, state) => {
-    dispatch(toggleFavorite({ fontId: fontId, favorite: state }));
-    sendFavorite(userId, fontId, state);
-  };
+  // const handleFavorite = (userId, fontId, state) => {
+  //   dispatch(toggleFavorite({ fontId: fontId, favorite: state }));
+  //   sendFavorite(userId, fontId, state);
+  // };
 
   useEffect(() => {
     setText(listSentences[Math.floor(Math.random() * listSentences.length)]);

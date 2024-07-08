@@ -22,6 +22,11 @@ export const useFavoritesFonts = () => {
     }
   };
 
+  const handleFavorite = (userId, fontId, state) => {
+    dispatch(toggleFavorite({ fontId: fontId, favorite: state }));
+    sendFavorite(userId, fontId, state);
+  };
+
   const getFavorites = async (userId) => {
     try {
       const res = await axios.post(
@@ -42,5 +47,5 @@ export const useFavoritesFonts = () => {
     }
   };
 
-  return { sendFavorite, getFavorites };
+  return { getFavorites, handleFavorite };
 };
