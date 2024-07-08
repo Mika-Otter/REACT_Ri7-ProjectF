@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "../app/api/axios";
 import { useSelector } from "react-redux";
 
-export const useRatingFonts = (userId) => {
+export const useRatingFonts = () => {
   const [ratings, setRatings] = useState({});
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
-  const sendRate = async (fontId, rating) => {
+  const sendRate = async (userId, fontId, rating) => {
     try {
       const res = await axios.post(
         "/fonts/rate",
@@ -22,7 +22,15 @@ export const useRatingFonts = (userId) => {
     }
   };
 
-  const getRate = async () => {
+  const handleRating = (userId, fontId, fontName, rating) => {
+    setRatings((prev) => ({
+      ...prev,
+      [fontName]: rating,
+    }));
+    sendRate(userId, fontId, rating);
+  };
+
+  const getRate = async (userId) => {
     try {
       const res = await axios.post(
         "/fonts/rate/getAll",
@@ -44,5 +52,5 @@ export const useRatingFonts = (userId) => {
     }
   };
 
-  return { ratings, sendRate, getRate };
+  return { ratings, handleRating, getRate };
 };
