@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../app/api/axios";
-import { useEffect } from "react";
 import { toggleFavorite } from "../features/fontsSlice";
 
-export const useFavoritesFonts = (userId) => {
+export const useFavoritesFonts = () => {
   const dispatch = useDispatch();
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
-  const sendFavorite = async (fontId, state) => {
+  const sendFavorite = async (userId, fontId, state) => {
     try {
       const res = await axios.post(
         "/fonts/favorite",
@@ -23,7 +22,7 @@ export const useFavoritesFonts = (userId) => {
     }
   };
 
-  const getFavorites = async () => {
+  const getFavorites = async (userId) => {
     try {
       const res = await axios.post(
         "/fonts/favorite/getAll",

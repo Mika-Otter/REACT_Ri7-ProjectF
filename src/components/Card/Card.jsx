@@ -14,16 +14,15 @@ import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
 import { listSentences } from "./listSentencesData";
 import { useHandleFonts } from "../../hooks/useHandleFonts";
+import { useFavoritesFonts } from "../../hooks/useFavoritesFonts";
 
 export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const userId = useSelector((state) => state.auth.userId);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const { fonts, deleteFonts, selectFontAndNavigate } = useHandleFonts();
-
-  const choosedFonts = useSelector((state) => state.choosedFonts.value);
+  const { sendFavorite, getFavorites } = useFavoritesFonts(userId);
 
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
@@ -86,91 +85,6 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
     dispatch(toggleFavorite({ fontId: fontId, favorite: state }));
     sendFavorite(userId, fontId, state);
   };
-
-  const sendFavorite = async (userId, fontId, state) => {
-    try {
-      const res = await axios.post(
-        "/fonts/favorite",
-        {
-          userId,
-          fontId,
-          state,
-        },
-        {
-          headers: {
-            "X-CSRF-Token": csrfToken,
-          },
-          withCredentials: true,
-        }
-      );
-      return res.status === 200;
-    } catch (err) {
-      console.error("FAILED : Try to handle favorite => ", err);
-    }
-  };
-
-  const getFavorites = async (userId) => {
-    try {
-      const res = await axios.post(
-        "/fonts/favorite/getAll",
-        { userId },
-        {
-          headers: {
-            "X-CSRF-Token": csrfToken,
-          },
-          withCredentials: true,
-        }
-      );
-      const data = res.data.data;
-      data.forEach((favorite) => {
-        dispatch(toggleFavorite({ fontId: favorite.fontId, favorite: true }));
-      });
-      return res.status === 200;
-    } catch (err) {
-      console.error("FAILED : Try to get all favorites here =>, ", err);
-    }
-  };
-
-  // DELETE FONTS____________________________________________________________________________
-  // const deleteFonts = async (fontId) => {
-  //   try {
-  //     dispatch(deleteFont(fontId));
-  //     const res = await axios.post(
-  //       "/fonts/delete",
-  //       { fontId },
-  //       {
-  //         headers: {
-  //           "X-CSRF-Token": csrfToken,
-  //         },
-  //         withCredentials: true,
-  //       }
-  //     );
-  //     return res.status === 200;
-  //   } catch (err) {
-  //     console.error("FAILED : Try to delete typo => ", err);
-  //   }
-  // };
-
-  // GO TO _________(can be update in one function ?)___________________________________________________________________
-  // const gotoTest = (fontId) => {
-  //   //select and add the selected font to choosedfonts before go to /fontest
-  //   const selectedFont = fonts.find((font) => font.id === fontId);
-  //   if (!selectedFont.checked) {
-  //     dispatch(toggleFontState({ fontName: selectedFont.name }));
-  //     dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
-  //   }
-  //   navigate("/fonttest");
-  // };
-
-  // const gotoVariable = (fontId) => {
-  //   //select and add the selected font to choosedfonts before go to /variable
-  //   const selectedFont = fonts.find((font) => font.id === fontId);
-  //   if (!selectedFont.checked) {
-  //     dispatch(toggleFontState({ fontName: selectedFont.name }));
-  //     dispatch(setChoosedFonts([...choosedFonts, selectedFont]));
-  //   }
-  //   navigate("/variable");
-  // };
 
   useEffect(() => {
     setText(listSentences[Math.floor(Math.random() * listSentences.length)]);
