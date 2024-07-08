@@ -2,8 +2,8 @@ import * as React from "react";
 const ArrowRegisterBackSVG = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={26}
-    height={8}
+    viewBox="0 0 26 8"
+    style={{ width: "100%" }}
     fill="none"
     {...props}
   >

@@ -50,6 +50,12 @@ export default function Navbar({
                 s.navbar__links__link,
                 s.navbar__links__link__contact
               )}
+              onClick={() => {
+                window.open(
+                  "mailto:mi.otter.side@gmail.com?subject=Typpov Contact&body=Hey,%20...",
+                  "_blank"
+                );
+              }}
             >
               Contact
             </button>

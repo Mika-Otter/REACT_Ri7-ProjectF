@@ -1,0 +1,87 @@
+@use "/public/styles/utils/breakpoints" as u;
+@import "../../../public/styles/global";
+
+.unauthorized {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  color: $font-darkgrey-color;
+  background-image: url("/background.png");
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  &__title {
+    z-index: 2;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 9vw;
+    margin: 0;
+    padding: 0;
+    color: $button-blue;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 3;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.3vw;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4vw;
+    &__link {
+      z-index: 4;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.8vw;
+      font-size: 1.5vw;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: $button-blue;
+      cursor: pointer;
+      //   border: 2px solid red;
+
+      &:visited,
+      :hover,
+      :focus,
+      :active {
+        text-decoration: none;
+        color: $button-blue;
+      }
+
+      &:hover &__arrow {
+        transform: translateX(-15px);
+      }
+
+      &__arrow {
+        transition: 0.2s ease-in-out;
+        width: 2.5vw;
+        height: 2.3vw;
+      }
+      &__logo {
+        margin-top: 0.7vw;
+        width: 6vw;
+      }
+    }
+  }
+  &__404 {
+    z-index: 1;
+    position: absolute;
+    height: 110vh;
+    top: -10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2vw;
+    row-gap: 7vw;
+    overflow: hidden;
+    &__span {
+      height: 20vw;
+      font-family: "RightDidone-CompactDark";
+      font-size: 30vw;
+      color: $secondary-color;
+    }
+  }
+}
