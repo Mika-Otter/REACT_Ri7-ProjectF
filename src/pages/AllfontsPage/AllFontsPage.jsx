@@ -11,8 +11,9 @@ export default function AllFontsPage() {
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
   useEffect(() => {
-    console.log(csrfToken, "csrfToken");
-  }, [csrfToken]);
+    console.log(fonts, "fonts");
+    console.log(userId, "userId");
+  });
 
   const getUserFonts = async () => {
     try {

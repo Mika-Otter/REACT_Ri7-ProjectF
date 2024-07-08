@@ -33,9 +33,15 @@ const fontsSlice = createSlice({
       const fontId = action.payload;
       state.value = state.value.filter((font) => font.id !== fontId);
     },
+    resetFonts: () => initialState,
   },
 });
 
-export const { setFonts, toggleFontState, toggleFavorite, deleteFont } =
-  fontsSlice.actions;
+export const {
+  setFonts,
+  toggleFontState,
+  toggleFavorite,
+  deleteFont,
+  resetFonts,
+} = fontsSlice.actions;
 export default fontsSlice.reducer;

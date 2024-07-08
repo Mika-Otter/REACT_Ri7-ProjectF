@@ -3,6 +3,7 @@ import s from "./Logout.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearUserId } from "../../features/authentificationSlice";
+import { resetFonts } from "../../features/fontsSlice";
 
 export default function Logout({ handleTransition }) {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export default function Logout({ handleTransition }) {
       navigate("/");
       setTimeout(() => {
         dispatch(clearUserId());
+        dispatch(resetFonts());
       }, 300);
     }, 300);
   };

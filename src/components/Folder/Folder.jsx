@@ -11,7 +11,7 @@ export default function Folder() {
   const choosedFonts = useSelector((state) => state.choosedFonts.value);
 
   const { fontUpload } = useFontUpload();
-  const { handleFonts } = useHandleSelectedFonts(fonts, choosedFonts, dispatch);
+  const handleFonts = useHandleSelectedFonts(fonts, choosedFonts, dispatch);
 
   const dataAccordion = [
     { title: "Favorites fonts", isFavorite: true },

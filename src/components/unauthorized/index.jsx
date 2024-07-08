@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./unauthorized.module.scss";
 import LogoSVG from "../SVG/LogoSVG";
 import ArrowRegisterBackSVG from "../SVG/ArrowRegisterBackSVG";
+import { useDispatch } from "react-redux";
+import { resetFonts } from "../../features/fontsSlice";
 
 export default function Unauthorized() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetFonts());
+  }, []);
+
   return (
     <>
       <section className={s.unauthorized}>

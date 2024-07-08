@@ -13,10 +13,6 @@ export default function AllFonts() {
   const userId = useSelector((state) => state.auth.userId);
   const [ratingChanged, setRatingChanged] = useState(false);
 
-  useEffect(() => {
-    console.log(fonts);
-  });
-
   const handleFonts = useHandleSelectedFonts(fonts, choosedFonts, dispatch);
   const { sortFonts, fontsRatings, sortedFonts, setSortedFonts } =
     useSortedFonts(userId, ratingChanged);
@@ -41,15 +37,29 @@ export default function AllFonts() {
         </div>
         <div className={s.content}>
           <div className={s.content__ctn}>
-            {sortFonts(sortedFonts).map((font, i) => (
-              <Card
-                font={font}
-                i={i}
-                key={font.name + i}
-                handleFonts={handleFonts}
-                onRatingChange={onRatingChange}
-              />
-            ))}
+            {sortedFonts.length === 0 ? (
+              <>
+                <div className={s.paragraph__section}>
+                  <p className={s.nochoosedfont}>
+                    Welcome font lover, start by going to your folder to add
+                    your first fonts...{" "}
+                  </p>
+                  <p className={s.tips}>
+                    TIPS ! You can add several fonts at once.{" "}
+                  </p>
+                </div>
+              </>
+            ) : (
+              sortFonts(sortedFonts).map((font, i) => (
+                <Card
+                  font={font}
+                  i={i}
+                  key={font.name + i}
+                  handleFonts={handleFonts}
+                  onRatingChange={onRatingChange}
+                />
+              ))
+            )}
           </div>
         </div>
       </section>
