@@ -25,7 +25,7 @@ $padding-l: 2vw;
 $padding-xl: 3vw;
 
 html {
-  box-sizing: border-box; //if box width is 300px and you add 20px of padding, the size of the box stay 300px instead 340px
+  box-sizing: border-box;
   font-size: 100%;
   background-color: $white-color;
 }

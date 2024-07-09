@@ -19,7 +19,7 @@ export default function AllFonts() {
 
   const onRatingChange = () => {
     setRatingChanged(true);
-    setTimeout(() => setRatingChanged(false), 300);
+    setTimeout(() => setRatingChanged(false), 70);
   };
 
   return (
