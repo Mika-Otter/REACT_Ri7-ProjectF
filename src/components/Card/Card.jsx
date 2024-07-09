@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import s from "./Card.module.scss";
 import { useSelector } from "react-redux";
-import axios from "../../app/api/axios";
-
 import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
 import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
 import SettingsFont from "../SettingsFont/SettingsFont";
@@ -13,7 +11,6 @@ import { useRatingFonts } from "../../hooks/useRatingFonts";
 
 export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const userId = useSelector((state) => state.auth.userId);
-  const csrfToken = useSelector((state) => state.csrf.csrfToken);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const { fonts, deleteFonts, selectFontAndNavigate } = useHandleFonts();
@@ -21,7 +18,6 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const { ratings, handleRating, getRate } = useRatingFonts();
 
   const [text, setText] = useState("");
-
   useEffect(() => {
     setText(listSentences[Math.floor(Math.random() * listSentences.length)]);
   }, []);

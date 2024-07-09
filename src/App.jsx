@@ -13,7 +13,6 @@ import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import Welcome from "./pages/Welcome/Welcome";
 import TransitionLayout from "./components/TransitionLayout/TransitionLayout";
 import Loader from "./components/Loader/Loader";
-import ScreenListener from "./components/ScreenListener/ScreenListener";
 import { Navigate } from "react-router-dom";
 
 export default function App() {

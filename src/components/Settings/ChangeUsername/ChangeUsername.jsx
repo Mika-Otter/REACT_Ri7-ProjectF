@@ -19,6 +19,7 @@ export default function ChangeUsername() {
 
   const userId = useSelector((state) => state.auth.userId);
   const username = useSelector((state) => state.auth.username);
+  const csrfToken = useSelector((state) => state.csrf.csrfToken);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorInput, setErrorInput] = useState("");
   const [success, setSuccess] = useState("");
@@ -34,7 +35,15 @@ export default function ChangeUsername() {
         userId,
         userName: data.username,
       };
-      await axios.post(UPDATENAME_URL, requestData);
+      console.log(requestData, "requestdata");
+      await axios.post(UPDATENAME_URL, requestData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: sessionStorage.getItem("token"),
+          "X-CSRF-Token": csrfToken,
+        },
+        withCredentials: true,
+      });
       dispatch(setUserName(data.username));
       setSuccess("The user name has been changed !");
     } catch (error) {

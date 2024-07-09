@@ -13,7 +13,6 @@ export default function ChangePassword() {
     register,
     handleSubmit,
     watch,
-    control,
     formState: { errors, isValid },
     setError,
     clearErrors,

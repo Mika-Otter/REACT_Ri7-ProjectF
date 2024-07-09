@@ -12,6 +12,6 @@ export default function RequireAuth({ handleTransition }) {
       <Outlet />
     </>
   ) : (
-    <Navigate to="/unauthorized" state={{ from: location }} replace />
+    <Navigate to="/404" state={{ from: location }} replace />
   );
 }
