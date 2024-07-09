@@ -10,14 +10,18 @@ export default function CardSettings({
   deleteFonts,
   onRatingChange,
 }) {
-  <div className={s.card__settings}>
-    <SettingsFont
-      font={font}
-      userId={userId}
-      ratings={ratings}
-      handleRating={handleRating}
-      deleteFonts={deleteFonts}
-      onRatingChange={onRatingChange}
-    />
-  </div>;
+  return (
+    <>
+      <div className={s.card__settings}>
+        <SettingsFont
+          font={font}
+          userId={userId}
+          ratings={ratings}
+          handleRating={handleRating}
+          deleteFonts={deleteFonts}
+          onRatingChange={onRatingChange}
+        />
+      </div>
+    </>
+  );
 }

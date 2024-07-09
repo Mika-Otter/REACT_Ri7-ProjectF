@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import s from "./testText.module.scss";
 import cn from "classnames";
 import { useSelector } from "react-redux";
-import Folder from "../Folder/Folder";
-import Menu from "../Menu/Menu";
-import Border from "../SVG/border";
-// import { setFonts } from "../../src/features/fonts/fontsSlice";
 
 export default function TestText() {
   const choosedFonts = useSelector((state) => state.choosedFonts.value);

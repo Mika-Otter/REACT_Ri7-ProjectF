@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import "../public/styles/global.scss";
+import { Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import TestText from "./components/testText/testText";
 import Unauthorized from "./components/unauthorized";
@@ -13,7 +14,6 @@ import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import Welcome from "./pages/Welcome/Welcome";
 import TransitionLayout from "./components/TransitionLayout/TransitionLayout";
 import Loader from "./components/Loader/Loader";
-import { Navigate } from "react-router-dom";
 
 export default function App() {
   const [isTransition, setIsTransition] = useState(false);

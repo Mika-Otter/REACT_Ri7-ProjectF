@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import s from "./Card.module.scss";
 import { useSelector } from "react-redux";
-import FavoriteEmptySVG from "../SVG/FavoriteInactiveSVG";
-import FavoriteAciveSVG from "../SVG/FavoriteActiveSVG";
-import SettingsFont from "../SettingsFont/SettingsFont";
 import { listSentences } from "./listSentencesData";
 import { useHandleFonts } from "../../hooks/useHandleFonts";
 import { useFavoritesFonts } from "../../hooks/useFavoritesFonts";
 import { useRatingFonts } from "../../hooks/useRatingFonts";
 import CardDetails from "./CardDetails";
 import CardFavorite from "./CardFavorite";
+import CardSettings from "./CardSettings";
 
 export default function Card({ font, i, handleFonts, small, onRatingChange }) {
   const userId = useSelector((state) => state.auth.userId);
@@ -44,16 +42,14 @@ export default function Card({ font, i, handleFonts, small, onRatingChange }) {
         key={font.name + i}
         onClick={() => handleFonts(font.name)}
       >
-        <div className={s.card__settings}>
-          <SettingsFont
-            font={font}
-            userId={userId}
-            ratings={ratings}
-            handleRating={handleRating}
-            deleteFonts={deleteFonts}
-            onRatingChange={onRatingChange}
-          />
-        </div>
+        <CardSettings
+          font={font}
+          userId={userId}
+          ratings={ratings}
+          handleRating={handleRating}
+          deleteFonts={deleteFonts}
+          onRatingChange={onRatingChange}
+        />
         <CardDetails
           font={font}
           text={text}
