@@ -10,11 +10,6 @@ export default function AllFontsPage() {
   const userId = useSelector((state) => state.auth.userId);
   const csrfToken = useSelector((state) => state.csrf.csrfToken);
 
-  useEffect(() => {
-    console.log(fonts, "fonts");
-    console.log(userId, "userId");
-  });
-
   const getUserFonts = async () => {
     try {
       const res = await axios.post(

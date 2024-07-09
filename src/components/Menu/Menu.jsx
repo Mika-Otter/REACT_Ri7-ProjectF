@@ -10,7 +10,6 @@ import MenuNav from "./MenuNav/MenuNav";
 import ArrowRegisterBackSVG from "../SVG/ArrowRegisterBackSVG";
 
 export default function Menu({ handleTransition }) {
-  const username = useSelector((state) => state.auth.username);
   const [selector, setSelector] = useState("menu");
   const isMobile = useSelector((state) => state.isMobile.isMobile);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
